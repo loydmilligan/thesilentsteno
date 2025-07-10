@@ -1,0 +1,88 @@
+{
+  "version": "1.0",
+  "generated": "2025-07-10T00:00:00Z",
+  "project": {
+    "name": "thesilentsteno",
+    "description": "Bluetooth AI Meeting Recorder - A Raspberry Pi 5 device that acts as an invisible audio intermediary for AI-powered transcription and analysis",
+    "version": "0.1.0",
+    "tech_stack": "Python, Raspberry Pi 5, BlueZ Bluetooth, Whisper AI, Local LLM (Phi-3 Mini), SQLite, Touch UI",
+    "deployment": "Raspberry Pi 5 with 3.5-5 inch touchscreen, wall-powered device",
+    "repository": "local development repository"
+  },
+  "documentation": {
+    "mvp": "docs/mvp.md",
+    "prd": "docs/prd.md",
+    "task_list": "tasks/task_list.md",
+    "proposed_final_manifest": "docs/proposed_final_manifest.json",
+    "manifest_evolution": "docs/manifest_evolution.md",
+    "architecture_notes": "Bluetooth audio proxy with dual A2DP connections, real-time audio pipeline with <40ms latency, local AI processing chain"
+  },
+  "files": {
+    "// Note": "Files will be added as they are implemented through tasks"
+  },
+  "dependencies": {
+    "system": [
+      "Raspberry Pi OS",
+      "BlueZ Bluetooth stack",
+      "ALSA/PulseAudio audio system",
+      "Python 3.8+"
+    ],
+    "python": [
+      "whisper (for speech-to-text)",
+      "transformers (for local LLM)",
+      "torch (for AI model inference)",
+      "sqlite3 (for data storage)",
+      "bluetooth libraries",
+      "audio processing libraries"
+    ],
+    "audio_codecs": [
+      "SBC", "AAC", "aptX", "Samsung Scalable"
+    ]
+  },
+  "architecture": {
+    "main_flow": "Phone → Bluetooth A2DP → Pi 5 Audio Capture → Audio Forwarding → Headphones + Real-time AI Processing",
+    "data_flow": "Live Audio → Voice Activity Detection → Whisper Transcription → LLM Analysis → Local Storage → Export Options",
+    "configuration": "Touch UI for device settings, Bluetooth pairing, AI model configuration, storage management",
+    "key_components": [
+      "Bluetooth Audio Proxy (dual A2DP connections)",
+      "Real-time Audio Pipeline (<40ms latency)",
+      "Local Whisper Transcription Engine",
+      "Local LLM Analysis (Phi-3 Mini)",
+      "Touch UI System",
+      "SQLite Data Management",
+      "Export and Sharing System"
+    ],
+    "integration_points": [
+      "BlueZ Bluetooth stack",
+      "ALSA/PulseAudio audio system",
+      "Whisper AI model",
+      "Local LLM inference",
+      "Touch display interface",
+      "File system and storage"
+    ]
+  },
+  "development": {
+    "approach": "manifest-driven development with git workflow integration",
+    "workflow": "process_task -> implement_task -> check_task -> resolve_mismatch (if needed) -> commit_task",
+    "task_status": "ready to begin Phase 1: Foundation & Hardware Setup",
+    "current_phase": "initial bootstrap completed",
+    "manifest_evolution": "tracked in docs/manifest_evolution.md",
+    "version_control": "git commits tied to task completion with detailed commit messages"
+  },
+  "performance_targets": {
+    "audio_latency": "<40ms end-to-end",
+    "transcription_lag": "<3 seconds behind live audio",
+    "session_start_time": "<10 seconds from tap to active",
+    "transcription_accuracy": ">90% for clear speech",
+    "session_reliability": ">99% completion rate",
+    "storage_capacity": "32GB+ SD card supporting 20+ hours of meetings"
+  },
+  "hardware_requirements": {
+    "platform": "Raspberry Pi 5 (4GB+ RAM recommended)",
+    "display": "3.5-5 inch touchscreen (480x320 or 800x480)",
+    "audio": "Built-in audio + optional USB audio interface",
+    "connectivity": "Built-in WiFi and Bluetooth 5.0",
+    "power": "Wall adapter (no battery requirement)",
+    "enclosure": "3D printable case with screen cutout"
+  }
+}
