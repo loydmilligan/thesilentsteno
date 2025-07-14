@@ -1,0 +1,823 @@
+{
+  "project_info": {
+    "name": "Bluetooth AI Meeting Recorder",
+    "description": "Raspberry Pi 5 device that captures phone audio via Bluetooth, forwards to headphones, and provides AI-powered transcription and analysis",
+    "version": "1.0.0",
+    "baseline_manifest": "codebase_manifest.json",
+    "estimated_timeline": "12-16 weeks for complete MVP",
+    "minimum_viable_demo": ["Task-1.1", "Task-1.2", "Task-1.3", "Task-2.1", "Task-3.1", "Task-4.1", "Task-4.2"]
+  },
+  "tasks": {
+    "Task-1.1": {
+      "id": "Task-1.1",
+      "title": "Hardware Platform Setup",
+      "priority": "critical",
+      "estimated_time": "8 hours",
+      "dependencies": [],
+      "phase": "Phase 1: Foundation & Hardware Setup",
+      "description": "Fully configured Pi 5 with touchscreen and basic OS ready for development",
+      "actions": [
+        "Install Raspberry Pi OS with desktop environment",
+        "Configure touchscreen (3.5\" or 5\" display)",
+        "Set up SSH and VNC access for development",
+        "Install basic development tools (Python, git, build-essential)",
+        "Configure auto-boot to application",
+        "Test hardware functionality (screen, touch, audio, Bluetooth)"
+      ],
+      "acceptance_criteria": [
+        "Pi 5 boots reliably with desktop environment",
+        "Touchscreen responds accurately to touch input",
+        "SSH and VNC access working remotely",
+        "All development tools installed and functional",
+        "Auto-boot configured and tested",
+        "All hardware components tested and working"
+      ],
+      "files_to_create": [
+        "scripts/setup_hardware.sh",
+        "config/display_config.txt",
+        "scripts/autostart.sh",
+        "docs/hardware_setup.md"
+      ],
+      "files_to_modify": [
+        "/boot/config.txt",
+        "/etc/rc.local"
+      ],
+      "dependencies_to_add": [
+        "python3-dev",
+        "build-essential",
+        "git",
+        "vim"
+      ]
+    },
+    "Task-1.2": {
+      "id": "Task-1.2", 
+      "title": "Bluetooth Stack Configuration",
+      "priority": "critical",
+      "estimated_time": "12 hours",
+      "dependencies": ["Task-1.1"],
+      "phase": "Phase 1: Foundation & Hardware Setup",
+      "description": "BlueZ configured for dual audio connections with high-quality codec support",
+      "actions": [
+        "Install and configure BlueZ with A2DP support",
+        "Set up device to advertise as high-quality headphones",
+        "Configure audio codecs (SBC, AAC, aptX, Samsung Scalable)",
+        "Test basic Bluetooth pairing with phone",
+        "Implement connection persistence and auto-reconnect",
+        "Create Bluetooth service management scripts"
+      ],
+      "acceptance_criteria": [
+        "BlueZ installed with A2DP sink and source support",
+        "Device successfully pairs with smartphones",
+        "Multiple audio codecs working and selectable",
+        "Auto-reconnect working after device restart",
+        "Service management scripts functional",
+        "Dual audio connections stable"
+      ],
+      "files_to_create": [
+        "src/bluetooth/bluez_manager.py",
+        "config/bluetooth_main.conf",
+        "config/bluetooth_audio.conf",
+        "scripts/bluetooth_service.sh",
+        "src/bluetooth/connection_manager.py"
+      ],
+      "files_to_modify": [
+        "/etc/bluetooth/main.conf",
+        "/etc/systemd/system/"
+      ],
+      "dependencies_to_add": [
+        "bluez",
+        "bluez-tools", 
+        "pulseaudio-module-bluetooth",
+        "python3-dbus"
+      ]
+    },
+    "Task-1.3": {
+      "id": "Task-1.3",
+      "title": "Audio Pipeline Architecture", 
+      "priority": "critical",
+      "estimated_time": "16 hours",
+      "dependencies": ["Task-1.2"],
+      "phase": "Phase 1: Foundation & Hardware Setup",
+      "description": "Real-time audio capture and forwarding system with low latency",
+      "actions": [
+        "Set up ALSA/PulseAudio for low-latency audio",
+        "Implement audio capture from Bluetooth A2DP sink",
+        "Create audio forwarding to headphones (Bluetooth A2DP source)",
+        "Measure and optimize audio latency (<40ms target)",
+        "Implement audio format conversion pipeline",
+        "Add audio level monitoring and visualization"
+      ],
+      "acceptance_criteria": [
+        "Audio latency consistently under 40ms",
+        "Stable audio capture from phone via Bluetooth",
+        "Reliable audio forwarding to headphones",
+        "Audio format conversion working for all codecs",
+        "Real-time audio level monitoring functional",
+        "No audio dropouts during normal operation"
+      ],
+      "files_to_create": [
+        "src/audio/audio_pipeline.py",
+        "src/audio/alsa_manager.py", 
+        "src/audio/latency_optimizer.py",
+        "src/audio/format_converter.py",
+        "src/audio/level_monitor.py"
+      ],
+      "files_to_modify": [
+        "/etc/pulse/default.pa",
+        "/etc/asound.conf"
+      ],
+      "dependencies_to_add": [
+        "python3-pyaudio",
+        "python3-numpy",
+        "pulseaudio",
+        "alsa-utils"
+      ]
+    },
+    "Task-2.1": {
+      "id": "Task-2.1",
+      "title": "Audio Recording System",
+      "priority": "high",
+      "estimated_time": "10 hours", 
+      "dependencies": ["Task-1.3"],
+      "phase": "Phase 2: Core Audio Processing",
+      "description": "Session-based audio recording with metadata and preprocessing",
+      "actions": [
+        "Create audio session management (start/stop/pause)",
+        "Implement high-quality audio recording (FLAC/WAV)",
+        "Add audio preprocessing (noise reduction, normalization)",
+        "Create audio file naming and organization system",
+        "Implement session metadata tracking (duration, participants, etc.)",
+        "Add storage space monitoring and management"
+      ],
+      "acceptance_criteria": [
+        "Session management with reliable start/stop/pause",
+        "High-quality recordings in FLAC/WAV format",
+        "Audio preprocessing improves quality measurably",
+        "Logical file naming and folder organization",
+        "Complete session metadata collection",
+        "Storage monitoring prevents disk full errors"
+      ],
+      "files_to_create": [
+        "src/recording/session_manager.py",
+        "src/recording/audio_recorder.py",
+        "src/recording/preprocessor.py",
+        "src/recording/file_manager.py",
+        "src/recording/metadata_tracker.py",
+        "src/recording/storage_monitor.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": [
+        "python3-scipy",
+        "python3-librosa",
+        "ffmpeg"
+      ]
+    },
+    "Task-2.2": {
+      "id": "Task-2.2",
+      "title": "Real-Time Audio Analysis",
+      "priority": "high", 
+      "estimated_time": "12 hours",
+      "dependencies": ["Task-2.1"],
+      "phase": "Phase 2: Core Audio Processing",
+      "description": "Live audio processing pipeline with voice activity and speaker detection",
+      "actions": [
+        "Implement voice activity detection (VAD)",
+        "Add speaker change detection for diarization",
+        "Create real-time audio chunking for processing",
+        "Implement audio quality assessment",
+        "Add silence detection and trimming",
+        "Create audio statistics collection (speaking time, etc.)"
+      ],
+      "acceptance_criteria": [
+        "VAD accurately detects speech vs silence",
+        "Speaker change detection identifies different voices",
+        "Real-time chunking maintains processing pipeline",
+        "Audio quality assessment provides useful metrics",
+        "Silence detection and trimming working",
+        "Statistics collection tracks speaking patterns"
+      ],
+      "files_to_create": [
+        "src/analysis/voice_activity_detector.py",
+        "src/analysis/speaker_detector.py", 
+        "src/analysis/audio_chunker.py",
+        "src/analysis/quality_assessor.py",
+        "src/analysis/silence_detector.py",
+        "src/analysis/statistics_collector.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": [
+        "python3-webrtcvad",
+        "python3-sklearn",
+        "python3-matplotlib"
+      ]
+    },
+    "Task-3.1": {
+      "id": "Task-3.1",
+      "title": "Local Whisper Integration",
+      "priority": "critical",
+      "estimated_time": "14 hours",
+      "dependencies": ["Task-2.2"],
+      "phase": "Phase 3: AI Integration", 
+      "description": "Real-time speech-to-text transcription using Whisper Base model",
+      "actions": [
+        "Install and configure Whisper Base model on Pi 5",
+        "Create real-time transcription pipeline",
+        "Implement chunked audio processing for low latency",
+        "Add speaker diarization (speaker labels)",
+        "Create transcript formatting with timestamps",
+        "Optimize Whisper performance for Pi 5 hardware"
+      ],
+      "acceptance_criteria": [
+        "Whisper Base model running stable on Pi 5",
+        "Real-time transcription with acceptable latency",
+        "Chunked processing maintains transcription quality",
+        "Speaker diarization assigns correct labels",
+        "Timestamps accurate to within 1 second",
+        "Performance optimized for Pi 5 capabilities"
+      ],
+      "files_to_create": [
+        "src/ai/whisper_transcriber.py",
+        "src/ai/transcription_pipeline.py",
+        "src/ai/audio_chunker.py",
+        "src/ai/speaker_diarizer.py",
+        "src/ai/transcript_formatter.py",
+        "src/ai/performance_optimizer.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": [
+        "openai-whisper",
+        "torch",
+        "torchaudio",
+        "python3-transformers"
+      ]
+    },
+    "Task-3.2": {
+      "id": "Task-3.2",
+      "title": "Local LLM Setup",
+      "priority": "high",
+      "estimated_time": "10 hours",
+      "dependencies": ["Task-3.1"],
+      "phase": "Phase 3: AI Integration",
+      "description": "Local AI analysis capabilities using lightweight LLM",
+      "actions": [
+        "Install lightweight LLM (Phi-3 Mini or similar)",
+        "Configure model for meeting analysis tasks", 
+        "Create prompt templates for summarization",
+        "Implement action item extraction",
+        "Add key topic identification",
+        "Create structured output formatting (JSON/Markdown)"
+      ],
+      "acceptance_criteria": [
+        "LLM running stable with acceptable memory usage",
+        "Model configured for meeting-specific tasks",
+        "Prompt templates produce consistent results",
+        "Action item extraction identifies tasks accurately",
+        "Topic identification captures key themes",
+        "Structured output format is machine-readable"
+      ],
+      "files_to_create": [
+        "src/ai/llm_manager.py",
+        "src/ai/prompt_templates.py",
+        "src/ai/summarizer.py",
+        "src/ai/action_extractor.py",
+        "src/ai/topic_identifier.py",
+        "src/ai/output_formatter.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": [
+        "ollama",
+        "python3-requests",
+        "python3-json-schema"
+      ]
+    },
+    "Task-3.3": {
+      "id": "Task-3.3", 
+      "title": "AI Processing Pipeline",
+      "priority": "high",
+      "estimated_time": "8 hours",
+      "dependencies": ["Task-3.2"],
+      "phase": "Phase 3: AI Integration",
+      "description": "End-to-end AI analysis workflow with error handling",
+      "actions": [
+        "Create post-meeting analysis triggers",
+        "Implement meeting summarization",
+        "Add action item extraction with assignees",
+        "Create participant analysis (speaking time, engagement)",
+        "Implement confidence scoring for AI outputs", 
+        "Add processing status tracking and error handling"
+      ],
+      "acceptance_criteria": [
+        "Analysis triggers automatically after sessions",
+        "Meeting summaries capture key points accurately",
+        "Action items include clear assignees when possible",
+        "Participant analysis provides useful insights",
+        "Confidence scores help assess output quality",
+        "Error handling prevents pipeline failures"
+      ],
+      "files_to_create": [
+        "src/ai/analysis_pipeline.py",
+        "src/ai/meeting_analyzer.py",
+        "src/ai/participant_analyzer.py",
+        "src/ai/confidence_scorer.py",
+        "src/ai/status_tracker.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": []
+    },
+    "Task-4.1": {
+      "id": "Task-4.1",
+      "title": "Touch UI Framework",
+      "priority": "critical",
+      "estimated_time": "12 hours",
+      "dependencies": ["Task-1.1"],
+      "phase": "Phase 4: User Interface",
+      "description": "Basic touch interface with navigation and responsive design",
+      "actions": [
+        "Set up UI framework (Kivy, PyQt, or web-based)",
+        "Create responsive layout for touchscreen",
+        "Implement basic navigation structure",
+        "Add touch-optimized buttons and controls",
+        "Create dark mode theme",
+        "Implement visual feedback for all interactions"
+      ],
+      "acceptance_criteria": [
+        "UI framework running stable on touchscreen",
+        "Layout responsive to screen size and orientation",
+        "Navigation intuitive and touch-friendly",
+        "All buttons and controls sized for finger use",
+        "Dark mode theme easy on eyes",
+        "Visual feedback immediate for all touches"
+      ],
+      "files_to_create": [
+        "src/ui/main_window.py",
+        "src/ui/navigation.py",
+        "src/ui/touch_controls.py",
+        "src/ui/themes.py",
+        "src/ui/feedback_manager.py",
+        "assets/css/styles.css"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": [
+        "python3-kivy",
+        "python3-kivymd"
+      ]
+    },
+    "Task-4.2": {
+      "id": "Task-4.2",
+      "title": "Live Session Interface",
+      "priority": "high",
+      "estimated_time": "10 hours",
+      "dependencies": ["Task-4.1", "Task-2.1"],
+      "phase": "Phase 4: User Interface",
+      "description": "Real-time meeting monitoring UI with live transcription",
+      "actions": [
+        "Create live transcription display with scrolling",
+        "Add real-time audio level indicators",
+        "Implement session timer and status display",
+        "Add start/stop/pause controls",
+        "Create speaker identification display",
+        "Implement connection status indicators"
+      ],
+      "acceptance_criteria": [
+        "Live transcription updates smoothly without lag",
+        "Audio levels display accurately in real-time", 
+        "Session timer shows elapsed time correctly",
+        "Controls responsive and clearly labeled",
+        "Speaker identification updates with changes",
+        "Connection status always visible and accurate"
+      ],
+      "files_to_create": [
+        "src/ui/live_session_view.py",
+        "src/ui/transcription_display.py",
+        "src/ui/audio_level_widget.py",
+        "src/ui/session_controls.py",
+        "src/ui/status_indicators.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": []
+    },
+    "Task-4.3": {
+      "id": "Task-4.3",
+      "title": "Session Management UI",
+      "priority": "medium",
+      "estimated_time": "8 hours",
+      "dependencies": ["Task-4.2"],
+      "phase": "Phase 4: User Interface",
+      "description": "Complete session lifecycle management interface",
+      "actions": [
+        "Create session list view with search/filter",
+        "Add session details view (metadata, duration, etc.)",
+        "Implement session export options",
+        "Add delete/archive functionality",
+        "Create storage usage display",
+        "Implement settings and configuration screens"
+      ],
+      "acceptance_criteria": [
+        "Session list shows all recordings with key info",
+        "Search and filter help find specific sessions",
+        "Session details view comprehensive and clear",
+        "Export options work for multiple formats",
+        "Delete/archive with confirmation prevents accidents",
+        "Settings screen allows all configuration changes"
+      ],
+      "files_to_create": [
+        "src/ui/session_list_view.py",
+        "src/ui/session_details_view.py",
+        "src/ui/export_dialog.py",
+        "src/ui/settings_view.py",
+        "src/ui/storage_monitor_widget.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": []
+    },
+    "Task-5.1": {
+      "id": "Task-5.1",
+      "title": "Database and Storage System",
+      "priority": "high",
+      "estimated_time": "10 hours",
+      "dependencies": ["Task-2.1"],
+      "phase": "Phase 5: Data Management",
+      "description": "Robust data persistence and organization with SQLite",
+      "actions": [
+        "Set up SQLite database for metadata",
+        "Create database schema for sessions, transcripts, analysis",
+        "Implement data models and ORM",
+        "Add database migration system",
+        "Create automated backup/restore functionality", 
+        "Implement data retention policies"
+      ],
+      "acceptance_criteria": [
+        "SQLite database handles all metadata reliably",
+        "Schema supports all required data types",
+        "Data models provide clean API for application",
+        "Migration system handles schema updates safely",
+        "Backup/restore preserves all data integrity",
+        "Retention policies prevent storage overflow"
+      ],
+      "files_to_create": [
+        "src/data/database.py",
+        "src/data/models.py",
+        "src/data/migrations.py",
+        "src/data/backup_manager.py",
+        "src/data/retention_manager.py",
+        "schema/database_schema.sql"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": [
+        "python3-sqlalchemy",
+        "python3-alembic"
+      ]
+    },
+    "Task-5.2": {
+      "id": "Task-5.2",
+      "title": "Export and Sharing System",
+      "priority": "medium",
+      "estimated_time": "8 hours",
+      "dependencies": ["Task-5.1"],
+      "phase": "Phase 5: Data Management",
+      "description": "Multiple export options for meeting data sharing",
+      "actions": [
+        "Implement email export functionality",
+        "Add USB file transfer capabilities",
+        "Create PDF generation for transcripts and summaries",
+        "Add network sharing (SMB/HTTP)",
+        "Implement bulk export options",
+        "Create export format customization"
+      ],
+      "acceptance_criteria": [
+        "Email export works with attachments",
+        "USB transfer detects drives and copies files",
+        "PDF generation creates readable documents",
+        "Network sharing accessible from other devices",
+        "Bulk export handles multiple sessions",
+        "Export formats customizable by user"
+      ],
+      "files_to_create": [
+        "src/export/email_exporter.py",
+        "src/export/usb_exporter.py",
+        "src/export/pdf_generator.py",
+        "src/export/network_sharing.py",
+        "src/export/bulk_exporter.py",
+        "src/export/format_customizer.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": [
+        "python3-reportlab",
+        "python3-smtplib",
+        "samba"
+      ]
+    },
+    "Task-6.1": {
+      "id": "Task-6.1",
+      "title": "Application Integration Layer",
+      "priority": "critical",
+      "estimated_time": "12 hours",
+      "dependencies": ["Task-3.3", "Task-4.3", "Task-5.2"],
+      "phase": "Phase 6: System Integration",
+      "description": "Unified application with all components working together",
+      "actions": [
+        "Create main application controller",
+        "Implement component communication (audio ↔ AI ↔ UI)",
+        "Add configuration management system",
+        "Create logging and monitoring system",
+        "Implement error handling and recovery",
+        "Add performance monitoring and optimization"
+      ],
+      "acceptance_criteria": [
+        "Main controller coordinates all components",
+        "Components communicate reliably via defined APIs",
+        "Configuration system manages all settings centrally",
+        "Logging captures issues for debugging",
+        "Error handling prevents crashes and data loss",
+        "Performance monitoring identifies bottlenecks"
+      ],
+      "files_to_create": [
+        "src/main.py",
+        "src/core/application_controller.py",
+        "src/core/component_manager.py",
+        "src/core/config_manager.py",
+        "src/core/logging_manager.py",
+        "src/core/error_handler.py",
+        "src/core/performance_monitor.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": [
+        "python3-logging",
+        "python3-configparser"
+      ]
+    },
+    "Task-6.2": {
+      "id": "Task-6.2",
+      "title": "Device Management Features",
+      "priority": "medium",
+      "estimated_time": "6 hours",
+      "dependencies": ["Task-6.1"],
+      "phase": "Phase 6: System Integration",
+      "description": "Self-maintaining device capabilities and system management",
+      "actions": [
+        "Create automatic storage cleanup",
+        "Implement software update mechanism",
+        "Add system health monitoring",
+        "Create diagnostic and troubleshooting tools",
+        "Implement factory reset functionality",
+        "Add remote management capabilities (optional)"
+      ],
+      "acceptance_criteria": [
+        "Storage cleanup prevents disk full conditions",
+        "Update mechanism keeps software current",
+        "Health monitoring detects system issues",
+        "Diagnostic tools help troubleshoot problems",
+        "Factory reset returns to clean state",
+        "Remote management works when enabled"
+      ],
+      "files_to_create": [
+        "src/system/storage_cleanup.py",
+        "src/system/update_manager.py",
+        "src/system/health_monitor.py",
+        "src/system/diagnostics.py",
+        "src/system/factory_reset.py",
+        "src/system/remote_manager.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": []
+    },
+    "Task-7.1": {
+      "id": "Task-7.1",
+      "title": "Performance Optimization",
+      "priority": "high",
+      "estimated_time": "10 hours",
+      "dependencies": ["Task-6.2"],
+      "phase": "Phase 7: Testing and Optimization",
+      "description": "Optimized system meeting all performance targets",
+      "actions": [
+        "Profile and optimize audio latency",
+        "Tune AI model performance for Pi 5",
+        "Optimize memory usage and garbage collection",
+        "Implement efficient audio codec selection",
+        "Add performance monitoring and alerting",
+        "Create benchmarking and stress testing"
+      ],
+      "acceptance_criteria": [
+        "Audio latency consistently under target",
+        "AI processing doesn't impact real-time audio",
+        "Memory usage stable during long sessions",
+        "Codec selection optimizes for quality and performance",
+        "Performance alerts help prevent issues",
+        "Stress testing validates system limits"
+      ],
+      "files_to_create": [
+        "src/optimization/latency_optimizer.py",
+        "src/optimization/ai_tuner.py",
+        "src/optimization/memory_optimizer.py",
+        "src/optimization/codec_selector.py",
+        "src/optimization/performance_alerter.py",
+        "tests/stress_test.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": [
+        "python3-psutil",
+        "python3-memory-profiler"
+      ]
+    },
+    "Task-7.2": {
+      "id": "Task-7.2",
+      "title": "Integration Testing",
+      "priority": "high",
+      "estimated_time": "12 hours",
+      "dependencies": ["Task-7.1"],
+      "phase": "Phase 7: Testing and Optimization",
+      "description": "Fully tested system with various real-world scenarios",
+      "actions": [
+        "Test with multiple phone models and OS versions",
+        "Validate with different meeting platforms",
+        "Test various headphone types and codecs",
+        "Validate long-duration meeting handling",
+        "Test edge cases (connection drops, low storage, etc.)",
+        "Create automated testing suite"
+      ],
+      "acceptance_criteria": [
+        "Works reliably with major phone models",
+        "Compatible with popular meeting platforms",
+        "Supports wide range of headphone types",
+        "Handles meetings over 2 hours without issues",
+        "Gracefully handles all edge cases",
+        "Automated tests catch regressions"
+      ],
+      "files_to_create": [
+        "tests/integration_test_suite.py",
+        "tests/phone_compatibility_tests.py",
+        "tests/platform_tests.py",
+        "tests/headphone_tests.py",
+        "tests/endurance_tests.py",
+        "tests/edge_case_tests.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": [
+        "python3-pytest",
+        "python3-unittest"
+      ]
+    },
+    "Task-7.3": {
+      "id": "Task-7.3",
+      "title": "User Experience Polish",
+      "priority": "medium",
+      "estimated_time": "8 hours",
+      "dependencies": ["Task-7.2"],
+      "phase": "Phase 7: Testing and Optimization",
+      "description": "Production-ready user experience with polish and accessibility",
+      "actions": [
+        "Optimize UI responsiveness and animations",
+        "Add helpful user guidance and tutorials",
+        "Implement accessibility features",
+        "Create comprehensive error messages",
+        "Add user feedback collection",
+        "Implement analytics and usage tracking"
+      ],
+      "acceptance_criteria": [
+        "UI feels responsive and smooth",
+        "User guidance helps new users get started",
+        "Accessibility features support diverse users",
+        "Error messages help users understand issues",
+        "Feedback collection provides improvement insights",
+        "Analytics help understand usage patterns"
+      ],
+      "files_to_create": [
+        "src/ui/animation_manager.py",
+        "src/ui/tutorial_system.py",
+        "src/ui/accessibility.py",
+        "src/ui/error_messages.py",
+        "src/system/feedback_collector.py",
+        "src/system/analytics.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": []
+    },
+    "Task-8.1": {
+      "id": "Task-8.1",
+      "title": "Deployment Automation",
+      "priority": "medium",
+      "estimated_time": "10 hours",
+      "dependencies": ["Task-7.3"],
+      "phase": "Phase 8: Deployment and Documentation",
+      "description": "Automated device setup and deployment system",
+      "actions": [
+        "Create SD card image with pre-configured system",
+        "Implement zero-touch device setup",
+        "Add automated testing for deployed images",
+        "Create device provisioning system",
+        "Implement over-the-air update mechanism",
+        "Add deployment validation checklist"
+      ],
+      "acceptance_criteria": [
+        "SD card image boots to working system",
+        "Zero-touch setup requires no user intervention",
+        "Deployed images pass all automated tests",
+        "Provisioning system scales to multiple devices",
+        "OTA updates work reliably and safely",
+        "Validation checklist ensures quality deployments"
+      ],
+      "files_to_create": [
+        "deployment/create_image.sh",
+        "deployment/zero_touch_setup.py",
+        "deployment/image_test.py",
+        "deployment/provisioning_system.py",
+        "deployment/ota_updater.py",
+        "deployment/validation_checklist.md"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": []
+    },
+    "Task-8.2": {
+      "id": "Task-8.2",
+      "title": "Documentation and Support",
+      "priority": "low",
+      "estimated_time": "8 hours",
+      "dependencies": ["Task-8.1"],
+      "phase": "Phase 8: Deployment and Documentation",
+      "description": "Complete user and developer documentation with support materials",
+      "actions": [
+        "Create user manual with setup instructions",
+        "Add troubleshooting guide and FAQ",
+        "Create developer documentation for extensibility",
+        "Add API documentation for integrations",
+        "Create video tutorials for common tasks",
+        "Implement in-app help system"
+      ],
+      "acceptance_criteria": [
+        "User manual covers all setup and usage scenarios",
+        "Troubleshooting guide addresses common issues",
+        "Developer docs enable third-party extensions",
+        "API documentation supports integrations",
+        "Video tutorials demonstrate key features",
+        "In-app help provides contextual assistance"
+      ],
+      "files_to_create": [
+        "docs/user_manual.md",
+        "docs/troubleshooting.md",
+        "docs/developer_guide.md",
+        "docs/api_reference.md",
+        "docs/video_tutorials/",
+        "src/ui/help_system.py"
+      ],
+      "files_to_modify": [],
+      "dependencies_to_add": []
+    }
+  },
+  "phases": {
+    "Phase 1": {
+      "name": "Foundation & Hardware Setup",
+      "description": "Core hardware configuration and Bluetooth audio pipeline",
+      "tasks": ["Task-1.1", "Task-1.2", "Task-1.3"],
+      "critical_path": true
+    },
+    "Phase 2": {
+      "name": "Core Audio Processing", 
+      "description": "Audio recording and real-time analysis capabilities",
+      "tasks": ["Task-2.1", "Task-2.2"],
+      "critical_path": false
+    },
+    "Phase 3": {
+      "name": "AI Integration",
+      "description": "Local AI transcription and analysis pipeline",
+      "tasks": ["Task-3.1", "Task-3.2", "Task-3.3"],
+      "critical_path": true
+    },
+    "Phase 4": {
+      "name": "User Interface",
+      "description": "Touch interface for device interaction",
+      "tasks": ["Task-4.1", "Task-4.2", "Task-4.3"],
+      "critical_path": true
+    },
+    "Phase 5": {
+      "name": "Data Management",
+      "description": "Storage, database, and export systems",
+      "tasks": ["Task-5.1", "Task-5.2"],
+      "critical_path": false
+    },
+    "Phase 6": {
+      "name": "System Integration",
+      "description": "Unified application and device management",
+      "tasks": ["Task-6.1", "Task-6.2"],
+      "critical_path": true
+    },
+    "Phase 7": {
+      "name": "Testing and Optimization",
+      "description": "Performance tuning and comprehensive testing",
+      "tasks": ["Task-7.1", "Task-7.2", "Task-7.3"],
+      "critical_path": false
+    },
+    "Phase 8": {
+      "name": "Deployment and Documentation",
+      "description": "Production deployment and documentation",
+      "tasks": ["Task-8.1", "Task-8.2"],
+      "critical_path": false
+    }
+  },
+  "critical_path": ["Task-1.1", "Task-1.2", "Task-1.3", "Task-2.1", "Task-3.1", "Task-4.1", "Task-6.1"],
+  "parallel_opportunities": {
+    "after_task_1_3": ["Task-2.1", "Task-2.2", "Task-4.1"],
+    "after_task_3_1": ["Task-3.2", "Task-5.1"],
+    "after_task_4_1": ["Task-4.2", "Task-4.3"],
+    "after_task_6_1": ["Task-7.1", "Task-8.1"]
+  }
+}

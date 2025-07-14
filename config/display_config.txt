@@ -1,0 +1,60 @@
+# Display Configuration for The Silent Steno
+# Touchscreen display configuration and calibration settings
+
+# Current Configuration Status
+# Generated: 2025-07-14
+# Platform: Raspberry Pi 5
+# Display: Touchscreen (configured but reliability issues noted)
+
+# Display Parameters
+DISPLAY_TYPE=touchscreen
+SCREEN_SIZE=unknown  # 3.5" or 5" - to be determined
+RESOLUTION=unknown   # 480x320 or 800x480 - to be determined
+INTERFACE=unknown    # GPIO/SPI/DSI - to be determined
+
+# Touch Calibration
+# Note: Touchscreen configured but has reliability issues
+TOUCH_CALIBRATION_STATUS=needs_improvement
+TOUCH_RELIABILITY=low
+
+# Boot Configuration (/boot/config.txt)
+# The following settings may be needed depending on display type:
+
+# For 3.5" GPIO touchscreen (example):
+# dtoverlay=piscreen,speed=16000000,rotate=90
+# enable_dpi_lcd=1
+# display_default_lcd=1
+
+# For 5" HDMI touchscreen (example):
+# hdmi_group=2
+# hdmi_mode=87
+# hdmi_cvt=800 480 60 6 0 0 0
+
+# For DSI touchscreen (example):
+# dtoverlay=vc4-kms-v3d
+# display_auto_detect=1
+
+# Current /boot/config.txt Analysis
+# No specific display configuration found in /boot/config.txt
+# This suggests either:
+# 1. Default HDMI output is being used
+# 2. Display configuration is handled elsewhere
+# 3. Touchscreen is using default drivers
+
+# Troubleshooting Notes
+# - Touchscreen is functional but has reliability issues
+# - May need proper calibration
+# - Consider checking dmesg for touch device detection
+# - Verify touch input devices in /dev/input/
+
+# Recommended Actions
+# 1. Identify exact touchscreen model and interface
+# 2. Add proper dtoverlay configuration to /boot/config.txt
+# 3. Calibrate touch input
+# 4. Test touch responsiveness after calibration
+
+# Commands for diagnosis:
+# dmesg | grep -i touch
+# ls /dev/input/
+# cat /proc/bus/input/devices
+# xinput list (if X11 is running)

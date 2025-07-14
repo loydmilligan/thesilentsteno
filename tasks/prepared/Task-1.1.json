@@ -1,0 +1,268 @@
+{
+  "task_id": "Task-1.1",
+  "task_description": "Fully configured Pi 5 with touchscreen and basic OS ready for development",
+  "baseline_manifest": {
+    "version": "1.0",
+    "generated": "2025-07-10T00:00:00Z",
+    "project": {
+      "name": "thesilentsteno",
+      "description": "Bluetooth AI Meeting Recorder - A Raspberry Pi 5 device that acts as an invisible audio intermediary for AI-powered transcription and analysis",
+      "version": "0.1.0",
+      "tech_stack": "Python, Raspberry Pi 5, BlueZ Bluetooth, Whisper AI, Local LLM (Phi-3 Mini), SQLite, Touch UI",
+      "deployment": "Raspberry Pi 5 with 3.5-5 inch touchscreen, wall-powered device",
+      "repository": "local development repository"
+    },
+    "documentation": {
+      "mvp": "docs/mvp.md",
+      "prd": "docs/prd.md",
+      "task_list": "tasks/task_list.md",
+      "proposed_final_manifest": "docs/proposed_final_manifest.json",
+      "manifest_evolution": "docs/manifest_evolution.md",
+      "architecture_notes": "Bluetooth audio proxy with dual A2DP connections, real-time audio pipeline with <40ms latency, local AI processing chain"
+    },
+    "files": {
+      "// Note": "Files will be added as they are implemented through tasks"
+    },
+    "dependencies": {
+      "system": [
+        "Raspberry Pi OS",
+        "BlueZ Bluetooth stack",
+        "ALSA/PulseAudio audio system",
+        "Python 3.8+"
+      ],
+      "python": [
+        "whisper (for speech-to-text)",
+        "transformers (for local LLM)",
+        "torch (for AI model inference)",
+        "sqlite3 (for data storage)",
+        "bluetooth libraries",
+        "audio processing libraries"
+      ],
+      "audio_codecs": [
+        "SBC", "AAC", "aptX", "Samsung Scalable"
+      ]
+    },
+    "architecture": {
+      "main_flow": "Phone → Bluetooth A2DP → Pi 5 Audio Capture → Audio Forwarding → Headphones + Real-time AI Processing",
+      "data_flow": "Live Audio → Voice Activity Detection → Whisper Transcription → LLM Analysis → Local Storage → Export Options",
+      "configuration": "Touch UI for device settings, Bluetooth pairing, AI model configuration, storage management",
+      "key_components": [
+        "Bluetooth Audio Proxy (dual A2DP connections)",
+        "Real-time Audio Pipeline (<40ms latency)",
+        "Local Whisper Transcription Engine",
+        "Local LLM Analysis (Phi-3 Mini)",
+        "Touch UI System",
+        "SQLite Data Management",
+        "Export and Sharing System"
+      ],
+      "integration_points": [
+        "BlueZ Bluetooth stack",
+        "ALSA/PulseAudio audio system",
+        "Whisper AI model",
+        "Local LLM inference",
+        "Touch display interface",
+        "File system and storage"
+      ]
+    },
+    "development": {
+      "approach": "manifest-driven development with git workflow integration",
+      "workflow": "process_task -> implement_task -> check_task -> resolve_mismatch (if needed) -> commit_task",
+      "task_status": "ready to begin Phase 1: Foundation & Hardware Setup",
+      "current_phase": "initial bootstrap completed",
+      "manifest_evolution": "tracked in docs/manifest_evolution.md",
+      "version_control": "git commits tied to task completion with detailed commit messages"
+    },
+    "performance_targets": {
+      "audio_latency": "<40ms end-to-end",
+      "transcription_lag": "<3 seconds behind live audio",
+      "session_start_time": "<10 seconds from tap to active",
+      "transcription_accuracy": ">90% for clear speech",
+      "session_reliability": ">99% completion rate",
+      "storage_capacity": "32GB+ SD card supporting 20+ hours of meetings"
+    },
+    "hardware_requirements": {
+      "platform": "Raspberry Pi 5 (4GB+ RAM recommended)",
+      "display": "3.5-5 inch touchscreen (480x320 or 800x480)",
+      "audio": "Built-in audio + optional USB audio interface",
+      "connectivity": "Built-in WiFi and Bluetooth 5.0",
+      "power": "Wall adapter (no battery requirement)",
+      "enclosure": "3D printable case with screen cutout"
+    }
+  },
+  "expected_manifest": {
+    "version": "1.0",
+    "generated": "2025-07-14T00:00:00Z",
+    "project": {
+      "name": "thesilentsteno",
+      "description": "Bluetooth AI Meeting Recorder - A Raspberry Pi 5 device that acts as an invisible audio intermediary for AI-powered transcription and analysis",
+      "version": "0.1.0",
+      "tech_stack": "Python, Raspberry Pi 5, BlueZ Bluetooth, Whisper AI, Local LLM (Phi-3 Mini), SQLite, Touch UI",
+      "deployment": "Raspberry Pi 5 with 3.5-5 inch touchscreen, wall-powered device",
+      "repository": "local development repository"
+    },
+    "documentation": {
+      "mvp": "docs/mvp.md",
+      "prd": "docs/prd.md",
+      "task_list": "tasks/task_list.md",
+      "proposed_final_manifest": "docs/proposed_final_manifest.json",
+      "manifest_evolution": "docs/manifest_evolution.md",
+      "architecture_notes": "Bluetooth audio proxy with dual A2DP connections, real-time audio pipeline with <40ms latency, local AI processing chain"
+    },
+    "files": {
+      "scripts/setup_hardware.sh": {
+        "purpose": "Hardware setup automation script",
+        "type": "bash_script",
+        "exports": ["hardware configuration functions"],
+        "description": "Automates Pi 5 hardware configuration and development tool installation"
+      },
+      "config/display_config.txt": {
+        "purpose": "Display configuration parameters",
+        "type": "config",
+        "exports": ["display settings"],
+        "description": "Touchscreen display configuration and calibration settings"
+      },
+      "scripts/autostart.sh": {
+        "purpose": "Application auto-start script",
+        "type": "bash_script", 
+        "exports": ["startup configuration"],
+        "description": "Configures system to auto-boot to main application"
+      },
+      "docs/hardware_setup.md": {
+        "purpose": "Hardware setup documentation",
+        "type": "documentation",
+        "exports": ["setup instructions"],
+        "description": "Complete hardware setup and troubleshooting guide"
+      }
+    },
+    "dependencies": {
+      "system": [
+        "Raspberry Pi OS",
+        "BlueZ Bluetooth stack",
+        "ALSA/PulseAudio audio system",
+        "Python 3.8+",
+        "python3-dev",
+        "build-essential",
+        "git",
+        "vim"
+      ],
+      "python": [
+        "whisper (for speech-to-text)",
+        "transformers (for local LLM)",
+        "torch (for AI model inference)",
+        "sqlite3 (for data storage)",
+        "bluetooth libraries",
+        "audio processing libraries"
+      ],
+      "audio_codecs": [
+        "SBC", "AAC", "aptX", "Samsung Scalable"
+      ]
+    },
+    "architecture": {
+      "main_flow": "Phone → Bluetooth A2DP → Pi 5 Audio Capture → Audio Forwarding → Headphones + Real-time AI Processing",
+      "data_flow": "Live Audio → Voice Activity Detection → Whisper Transcription → LLM Analysis → Local Storage → Export Options",
+      "configuration": "Touch UI for device settings, Bluetooth pairing, AI model configuration, storage management",
+      "key_components": [
+        "Bluetooth Audio Proxy (dual A2DP connections)",
+        "Real-time Audio Pipeline (<40ms latency)",
+        "Local Whisper Transcription Engine",
+        "Local LLM Analysis (Phi-3 Mini)",
+        "Touch UI System",
+        "SQLite Data Management",
+        "Export and Sharing System"
+      ],
+      "integration_points": [
+        "BlueZ Bluetooth stack",
+        "ALSA/PulseAudio audio system",
+        "Whisper AI model",
+        "Local LLM inference",
+        "Touch display interface",
+        "File system and storage"
+      ],
+      "hardware_setup": {
+        "platform_configured": true,
+        "development_tools_installed": true,
+        "auto_boot_configured": true,
+        "hardware_tested": true
+      }
+    },
+    "development": {
+      "approach": "manifest-driven development with git workflow integration",
+      "workflow": "process_task -> implement_task -> check_task -> resolve_mismatch (if needed) -> commit_task",
+      "task_status": "Task-1.1 completed - hardware platform ready",
+      "current_phase": "Phase 1: Foundation & Hardware Setup - Task 1.1 complete",
+      "manifest_evolution": "tracked in docs/manifest_evolution.md",
+      "version_control": "git commits tied to task completion with detailed commit messages"
+    },
+    "performance_targets": {
+      "audio_latency": "<40ms end-to-end",
+      "transcription_lag": "<3 seconds behind live audio",
+      "session_start_time": "<10 seconds from tap to active",
+      "transcription_accuracy": ">90% for clear speech",
+      "session_reliability": ">99% completion rate",
+      "storage_capacity": "32GB+ SD card supporting 20+ hours of meetings"
+    },
+    "hardware_requirements": {
+      "platform": "Raspberry Pi 5 (4GB+ RAM recommended)",
+      "display": "3.5-5 inch touchscreen (480x320 or 800x480)",
+      "audio": "Built-in audio + optional USB audio interface",
+      "connectivity": "Built-in WiFi and Bluetooth 5.0",
+      "power": "Wall adapter (no battery requirement)",
+      "enclosure": "3D printable case with screen cutout"
+    }
+  },
+  "implementation_notes": {
+    "approach": "Focus on remaining hardware setup tasks since OS, touchscreen, and SSH are already configured",
+    "files_to_create": [
+      {
+        "file": "scripts/setup_hardware.sh",
+        "purpose": "Automate remaining hardware configuration and tool installation",
+        "key_exports": ["install_dev_tools", "configure_autoboot", "test_hardware"]
+      },
+      {
+        "file": "config/display_config.txt", 
+        "purpose": "Document current display configuration for reference",
+        "key_exports": ["display_parameters", "touch_calibration"]
+      },
+      {
+        "file": "scripts/autostart.sh",
+        "purpose": "Configure auto-boot to application when ready",
+        "key_exports": ["autostart_configuration"]
+      },
+      {
+        "file": "docs/hardware_setup.md",
+        "purpose": "Document complete hardware setup process and troubleshooting",
+        "key_exports": ["setup_guide", "troubleshooting_steps"]
+      }
+    ],
+    "files_to_modify": [
+      {
+        "file": "/boot/config.txt",
+        "changes": "May need display-specific configuration updates"
+      },
+      {
+        "file": "/etc/rc.local", 
+        "changes": "Add auto-boot configuration when application is ready"
+      }
+    ],
+    "dependencies": ["python3-dev", "build-essential", "git", "vim"],
+    "integration_points": ["System package management", "Boot configuration", "Display subsystem"],
+    "testing_approach": "Verify all development tools installed, test hardware components (screen touch responsiveness, audio, Bluetooth), confirm auto-boot capability",
+    "user_context": "OS, touchscreen, and SSH already configured. Focus on development tools, auto-boot setup, hardware testing, and optional VNC."
+  },
+  "acceptance_criteria": [
+    "Pi 5 boots reliably with desktop environment (already met)",
+    "Touchscreen responds accurately to touch input (partially met - reliability issues noted)",
+    "SSH and VNC access working remotely (SSH complete, VNC optional)",
+    "All development tools installed and functional",
+    "Auto-boot configured and tested", 
+    "All hardware components tested and working"
+  ],
+  "estimated_complexity": "Medium",
+  "prerequisites": [],
+  "baseline_metadata": {
+    "loaded_from": "codebase_manifest.json",
+    "timestamp": "2025-07-14T07:00:00Z",
+    "file_count": "0 (bootstrap state)",
+    "file_size": "3699 bytes"
+  }
+}
