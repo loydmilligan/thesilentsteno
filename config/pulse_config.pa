@@ -1,0 +1,179 @@
+#!/usr/bin/pulseaudio -nF
+#
+# PulseAudio Configuration for The Silent Steno
+# Optimized for low-latency Bluetooth audio forwarding
+#
+# This configuration template provides optimal settings for:
+# - Bluetooth A2DP audio capture and forwarding
+# - Minimal audio latency (<40ms target)
+# - High-quality audio processing
+# - Stable Bluetooth connections
+
+# Load core modules
+.include /etc/pulse/system.pa
+
+# Set default sample rate and format for optimal performance
+set-default-sample-rate 44100
+set-default-sample-format s16le
+set-default-sample-channels 2
+
+# Low-latency fragment settings
+# Smaller fragments = lower latency but higher CPU usage
+set-default-fragment-size-msec 5
+set-default-fragments 4
+
+# Load Bluetooth modules with optimized settings
+load-module module-bluetooth-policy auto_switch=true
+load-module module-bluetooth-discover
+
+# A2DP sink module for receiving audio from phones
+load-module module-bluez5-device \
+    profile=a2dp_sink \
+    autoconnect=true \
+    rate=44100 \
+    channels=2 \
+    format=s16le
+
+# A2DP source module for sending audio to headphones  
+load-module module-bluez5-device \
+    profile=a2dp_source \
+    autoconnect=true \
+    rate=44100 \
+    channels=2 \
+    format=s16le
+
+# ALSA modules for local audio devices
+load-module module-alsa-sink \
+    device=hw:0,0 \
+    tsched=1 \
+    tsched_buffer_size=8192 \
+    tsched_buffer_watermark=2048 \
+    rate=44100 \
+    channels=2 \
+    format=s16le
+
+load-module module-alsa-source \
+    device=hw:0,0 \
+    tsched=1 \
+    tsched_buffer_size=8192 \
+    tsched_buffer_watermark=2048 \
+    rate=44100 \
+    channels=2 \
+    format=s16le
+
+# Loopback module for audio forwarding
+# This forwards audio from Bluetooth input to Bluetooth output
+load-module module-loopback \
+    source=bluez_source \
+    sink=bluez_sink \
+    latency_msec=40 \
+    adjust_time=2 \
+    max_latency_msec=80
+
+# Echo cancellation (optional, may increase latency)
+# load-module module-echo-cancel \
+#     source_name=echo_cancelled_source \
+#     sink_name=echo_cancelled_sink \
+#     aec_method=webrtc \
+#     aec_args="analog_gain_control=0 digital_gain_control=1"
+
+# Native protocol for applications
+load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulse-socket
+
+# D-Bus interface for external control
+load-module module-dbus-protocol
+
+# Automatic device switching
+load-module module-switch-on-port-available
+load-module module-switch-on-connect
+
+# Stream routing policies
+load-module module-intended-roles
+
+# Audio processing modules
+load-module module-filter-heuristics
+load-module module-filter-apply
+
+# Volume and muting
+load-module module-stream-restore restore_device=false restore_volume=true restore_muted=true
+load-module module-device-restore
+load-module module-card-restore
+
+# Session management
+load-module module-default-device-restore
+load-module module-rescue-streams
+
+# Position event sounds
+load-module module-position-event-sounds
+
+# Cork music/video streams when phone streams are active
+load-module module-role-cork
+
+# X11 integration (if available)
+.ifexists module-x11-publish.so
+load-module module-x11-publish
+.endif
+
+# CLI interface
+load-module module-cli-protocol-unix
+
+# Performance optimizations
+set-log-level 2
+set-log-meta false
+set-log-time false
+set-log-backtrace 0
+
+# CPU and memory optimizations
+set-realtime-scheduling yes
+set-realtime-priority 9
+set-nice-level -11
+set-rlimit-rtprio 9
+set-rlimit-nice -11
+set-rlimit-memlock 4194304
+
+# Network optimizations (for future remote features)
+set-shm-size-bytes 67108864
+
+# Audio latency optimizations
+set-default-sink-latency-offset 0
+set-default-source-latency-offset 0
+
+# Bluetooth codec preferences
+# Prefer higher quality codecs when available
+set-card-profile bluez_card.XX_XX_XX_XX_XX_XX a2dp-sink-aac
+set-card-profile bluez_card.YY_YY_YY_YY_YY_YY a2dp-source-aac
+
+# Fallback to SBC if AAC not available
+# set-card-profile bluez_card.XX_XX_XX_XX_XX_XX a2dp-sink-sbc
+# set-card-profile bluez_card.YY_YY_YY_YY_YY_YY a2dp-source-sbc
+
+# Device-specific optimizations
+# Raspberry Pi 5 audio optimizations
+set-sink-mute alsa_output.platform-soc_audio.analog-stereo false
+set-source-mute alsa_input.platform-soc_audio.analog-mono false
+
+# Volume normalization
+set-sink-volume @DEFAULT_SINK@ 65536
+set-source-volume @DEFAULT_SOURCE@ 65536
+
+# Suspend policy for power management
+load-module module-suspend-on-idle timeout=60
+
+# Cork streams on Bluetooth disconnect
+load-module module-role-ducking trigger_roles=phone ducking_roles=music,video
+
+# Adaptive sample rate (experimental)
+# load-module module-allow-passthrough
+
+# Real-time scheduling optimizations
+.ifexists module-rt-prio.so
+load-module module-rt-prio rtprio=9
+.endif
+
+# Memory lock for real-time performance
+.ifexists module-memlock.so
+load-module module-memlock
+.endif
+
+# End of configuration
+# All modules loaded - PulseAudio ready for low-latency operation
