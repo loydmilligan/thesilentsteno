@@ -1,0 +1,292 @@
+{
+  "task_id": "Task-3.2",
+  "task_description": "Local LLM Setup - Local AI analysis capabilities with Phi-3 Mini for meeting analysis, summarization, action item extraction, and key topic identification",
+  "baseline_manifest": {
+    "version": "1.0",
+    "generated": "2025-07-15T10:50:00Z",
+    "task_completion_status": "Task-3.1 completed - Local Whisper Integration implemented",
+    "project": {
+      "name": "thesilentsteno",
+      "description": "Bluetooth AI Meeting Recorder - A Raspberry Pi 5 device that acts as an invisible audio intermediary for AI-powered transcription and analysis",
+      "version": "0.1.0",
+      "tech_stack": "Python, Raspberry Pi 5, BlueZ Bluetooth, ALSA/PulseAudio, Whisper AI, Local LLM (Phi-3 Mini), SQLite, Touch UI",
+      "deployment": "Raspberry Pi 5 with 3.5-5 inch touchscreen, wall-powered device",
+      "repository": "local development repository"
+    },
+    "ai_integration": {
+      "whisper_transcription": {
+        "implementation": "Local Whisper Base model with Pi 5 optimization and multiple model support",
+        "latency": "<3 seconds transcription lag",
+        "accuracy": ">90% for clear speech",
+        "features": ["Real-time processing", "Chunked audio", "Quality optimization", "Resource monitoring", "Multiple model types"]
+      },
+      "speaker_diarization": {
+        "implementation": "MFCC-based speaker identification with clustering integration",
+        "accuracy": "Speaker labels within 1 second timestamp accuracy",
+        "features": ["Multi-speaker support", "Real-time labeling", "Confidence scoring", "Speaker modeling"]
+      },
+      "transcript_formatting": {
+        "implementation": "Multi-format output with timestamps and speaker attribution",
+        "features": ["Multiple formats (text, JSON, SRT, VTT, HTML)", "Real-time formatting", "Speaker attribution", "Timestamp accuracy"]
+      },
+      "performance_optimization": {
+        "implementation": "Pi 5 hardware optimization with adaptive resource management",
+        "features": ["CPU/memory monitoring", "Model quantization", "Adaptive performance", "Resource optimization"]
+      }
+    },
+    "architecture": {
+      "main_flow": "Phone → Bluetooth A2DP → Pi 5 Audio Capture → Real-time Processing → Analysis System → Whisper Transcription → Speaker Diarization → Formatted Output → Recording System + Storage + Live Audio Forwarding → Headphones",
+      "transcription_flow": "Live Audio → VAD → Chunking → Quality Assessment → Whisper Processing → Speaker Diarization → Transcript Formatting → Output"
+    },
+    "dependencies": {
+      "python": [
+        "openai-whisper",
+        "torch",
+        "torchaudio",
+        "transformers",
+        "numpy",
+        "scipy",
+        "librosa",
+        "soundfile",
+        "pydub",
+        "webrtcvad",
+        "sklearn",
+        "matplotlib"
+      ],
+      "ai_models": [
+        "whisper-base",
+        "microsoft/Phi-3-mini-4k-instruct"
+      ]
+    },
+    "performance_targets": {
+      "transcription_lag": "<3 seconds behind live audio",
+      "transcription_accuracy": ">90% for clear speech",
+      "model_loading_time": "<30 seconds on Pi 5",
+      "memory_usage": "<2GB for Whisper Base model",
+      "cpu_usage": "<80% during transcription",
+      "real_time_factor": "<0.5 (processing faster than real-time)"
+    }
+  },
+  "expected_manifest": {
+    "version": "1.0",
+    "generated": "2025-07-15T11:00:00Z",
+    "task_completion_status": "Task-3.2 completed - Local LLM Setup implemented",
+    "project": {
+      "name": "thesilentsteno",
+      "description": "Bluetooth AI Meeting Recorder - A Raspberry Pi 5 device that acts as an invisible audio intermediary for AI-powered transcription and analysis",
+      "version": "0.1.0",
+      "tech_stack": "Python, Raspberry Pi 5, BlueZ Bluetooth, ALSA/PulseAudio, Whisper AI, Local LLM (Phi-3 Mini), SQLite, Touch UI",
+      "deployment": "Raspberry Pi 5 with 3.5-5 inch touchscreen, wall-powered device",
+      "repository": "local development repository"
+    },
+    "documentation": {
+      "mvp": "docs/mvp.md",
+      "prd": "docs/prd.md",
+      "task_list": "tasks/task_list.md",
+      "proposed_final_manifest": "docs/proposed_final_manifest.json",
+      "manifest_evolution": "docs/manifest_evolution.md",
+      "architecture_notes": "Bluetooth audio proxy with dual A2DP connections, real-time audio pipeline with <40ms latency, comprehensive recording system with session management, real-time audio analysis with VAD, speaker detection, chunking, quality assessment, and statistics collection, local Whisper transcription with speaker diarization and Pi 5 optimization, local LLM analysis with Phi-3 Mini for meeting summarization and action item extraction"
+    },
+    "files": {
+      "src/llm/__init__.py": {
+        "purpose": "LLM processing module initializer",
+        "type": "python_module",
+        "exports": ["LLMAnalysisSystem", "LocalLLMProcessor", "PromptTemplateManager", "MeetingAnalyzer", "ActionItemExtractor", "TopicIdentifier", "create_meeting_llm_system", "create_analysis_llm_system"],
+        "description": "Complete LLM processing module with local Phi-3 Mini integration for meeting analysis and structured output generation"
+      },
+      "src/llm/local_llm_processor.py": {
+        "purpose": "Local LLM processing engine with Phi-3 Mini",
+        "type": "python_module",
+        "exports": ["LocalLLMProcessor", "LLMConfig", "LLMResult", "ModelType", "ProcessingMode", "create_phi3_processor", "create_optimized_processor"],
+        "description": "Local Phi-3 Mini model integration with Pi 5 optimization, context management, and structured output generation"
+      },
+      "src/llm/prompt_templates.py": {
+        "purpose": "Prompt template management for meeting analysis",
+        "type": "python_module",
+        "exports": ["PromptTemplateManager", "PromptTemplate", "TemplateConfig", "TemplateType", "create_meeting_templates", "create_analysis_templates"],
+        "description": "Comprehensive prompt template system for meeting summarization, action item extraction, and topic identification"
+      },
+      "src/llm/meeting_analyzer.py": {
+        "purpose": "Meeting analysis engine with summarization and insights",
+        "type": "python_module",
+        "exports": ["MeetingAnalyzer", "AnalysisConfig", "AnalysisResult", "AnalysisType", "create_comprehensive_analyzer", "create_quick_analyzer"],
+        "description": "Meeting analysis system with summarization, participant analysis, and key insights extraction"
+      },
+      "src/llm/action_item_extractor.py": {
+        "purpose": "Action item extraction with assignee identification",
+        "type": "python_module",
+        "exports": ["ActionItemExtractor", "ActionItem", "ExtractorConfig", "ExtractorResult", "create_meeting_extractor", "create_interview_extractor"],
+        "description": "Intelligent action item extraction with assignee identification, priority scoring, and deadline detection"
+      },
+      "src/llm/topic_identifier.py": {
+        "purpose": "Key topic and theme identification system",
+        "type": "python_module",
+        "exports": ["TopicIdentifier", "Topic", "TopicConfig", "TopicResult", "create_meeting_topic_identifier", "create_discussion_topic_identifier"],
+        "description": "Topic identification system with theme clustering, importance scoring, and trend analysis"
+      },
+      "src/llm/output_formatter.py": {
+        "purpose": "Structured output formatting for analysis results",
+        "type": "python_module",
+        "exports": ["OutputFormatter", "OutputConfig", "FormattedOutput", "OutputFormat", "create_json_formatter", "create_markdown_formatter"],
+        "description": "Multi-format output system for LLM analysis results with JSON, Markdown, and HTML support"
+      }
+    },
+    "ai_integration": {
+      "whisper_transcription": {
+        "implementation": "Local Whisper Base model with Pi 5 optimization and multiple model support",
+        "latency": "<3 seconds transcription lag",
+        "accuracy": ">90% for clear speech",
+        "features": ["Real-time processing", "Chunked audio", "Quality optimization", "Resource monitoring", "Multiple model types"]
+      },
+      "speaker_diarization": {
+        "implementation": "MFCC-based speaker identification with clustering integration",
+        "accuracy": "Speaker labels within 1 second timestamp accuracy",
+        "features": ["Multi-speaker support", "Real-time labeling", "Confidence scoring", "Speaker modeling"]
+      },
+      "transcript_formatting": {
+        "implementation": "Multi-format output with timestamps and speaker attribution",
+        "features": ["Multiple formats (text, JSON, SRT, VTT, HTML)", "Real-time formatting", "Speaker attribution", "Timestamp accuracy"]
+      },
+      "performance_optimization": {
+        "implementation": "Pi 5 hardware optimization with adaptive resource management",
+        "features": ["CPU/memory monitoring", "Model quantization", "Adaptive performance", "Resource optimization"]
+      },
+      "local_llm_analysis": {
+        "implementation": "Local Phi-3 Mini model with meeting analysis capabilities",
+        "model": "microsoft/Phi-3-mini-4k-instruct",
+        "context_length": "4096 tokens",
+        "features": ["Meeting summarization", "Action item extraction", "Topic identification", "Participant analysis", "Structured output"]
+      }
+    },
+    "architecture": {
+      "main_flow": "Phone → Bluetooth A2DP → Pi 5 Audio Capture → Real-time Processing → Analysis System → Whisper Transcription → Speaker Diarization → Formatted Output → LLM Analysis → Structured Results → Recording System + Storage + Live Audio Forwarding → Headphones",
+      "transcription_flow": "Live Audio → VAD → Chunking → Quality Assessment → Whisper Processing → Speaker Diarization → Transcript Formatting → Output",
+      "llm_analysis_flow": "Transcription → Context Preparation → Prompt Generation → LLM Processing → Result Parsing → Output Formatting → Structured Analysis"
+    },
+    "dependencies": {
+      "python": [
+        "openai-whisper",
+        "torch",
+        "torchaudio",
+        "transformers",
+        "numpy",
+        "scipy",
+        "librosa",
+        "soundfile",
+        "pydub",
+        "webrtcvad",
+        "sklearn",
+        "matplotlib",
+        "accelerate",
+        "sentencepiece",
+        "protobuf",
+        "jinja2",
+        "tiktoken"
+      ],
+      "ai_models": [
+        "whisper-base",
+        "microsoft/Phi-3-mini-4k-instruct"
+      ]
+    },
+    "integration_points": [
+      "Bluetooth system integration with audio pipeline for transparent forwarding",
+      "Audio pipeline integration with analysis system for real-time processing",
+      "Analysis system VAD integration for transcription triggers",
+      "Audio chunker integration for optimal segment processing",
+      "Speaker detector integration for diarization labeling",
+      "Quality assessor integration for transcription quality control",
+      "Recording system integration for transcript storage and session management",
+      "Statistics collector integration for transcription and participation metrics",
+      "Performance optimizer integration for adaptive resource management",
+      "LLM integration with transcription system for post-processing analysis",
+      "Transcript formatter integration with LLM for structured output generation"
+    ],
+    "performance_targets": {
+      "transcription_lag": "<3 seconds behind live audio",
+      "transcription_accuracy": ">90% for clear speech",
+      "model_loading_time": "<30 seconds on Pi 5",
+      "memory_usage": "<2GB for Whisper Base model",
+      "cpu_usage": "<80% during transcription",
+      "real_time_factor": "<0.5 (processing faster than real-time)",
+      "llm_processing_time": "<60 seconds for meeting analysis",
+      "llm_memory_usage": "<1.5GB for Phi-3 Mini model",
+      "analysis_accuracy": ">85% for action item extraction",
+      "summary_relevance": ">90% for meeting summarization"
+    }
+  },
+  "implementation_notes": {
+    "approach": "Implement local Phi-3 Mini LLM system that integrates with existing transcription pipeline to provide post-meeting analysis capabilities. Focus on Pi 5 optimization, structured output generation, and comprehensive meeting analysis features including summarization, action item extraction, and topic identification.",
+    "files_to_create": [
+      {
+        "file": "src/llm/local_llm_processor.py",
+        "purpose": "Core Phi-3 Mini model interface with Pi 5 optimization and context management",
+        "key_exports": ["LocalLLMProcessor", "LLMConfig", "LLMResult", "ModelType", "ProcessingMode"]
+      },
+      {
+        "file": "src/llm/prompt_templates.py",
+        "purpose": "Comprehensive prompt template system for meeting analysis tasks",
+        "key_exports": ["PromptTemplateManager", "PromptTemplate", "TemplateConfig", "TemplateType"]
+      },
+      {
+        "file": "src/llm/meeting_analyzer.py",
+        "purpose": "Meeting analysis orchestration with summarization and insights extraction",
+        "key_exports": ["MeetingAnalyzer", "AnalysisConfig", "AnalysisResult", "AnalysisType"]
+      },
+      {
+        "file": "src/llm/action_item_extractor.py",
+        "purpose": "Intelligent action item extraction with assignee identification and priority scoring",
+        "key_exports": ["ActionItemExtractor", "ActionItem", "ExtractorConfig", "ExtractorResult"]
+      },
+      {
+        "file": "src/llm/topic_identifier.py",
+        "purpose": "Key topic and theme identification with clustering and importance scoring",
+        "key_exports": ["TopicIdentifier", "Topic", "TopicConfig", "TopicResult"]
+      },
+      {
+        "file": "src/llm/output_formatter.py",
+        "purpose": "Multi-format structured output generation for analysis results",
+        "key_exports": ["OutputFormatter", "OutputConfig", "FormattedOutput", "OutputFormat"]
+      },
+      {
+        "file": "src/llm/__init__.py",
+        "purpose": "LLM module initialization with comprehensive analysis system API",
+        "key_exports": ["LLMAnalysisSystem", "LocalLLMProcessor", "PromptTemplateManager", "MeetingAnalyzer"]
+      }
+    ],
+    "files_to_modify": [],
+    "dependencies": [
+      "transformers",
+      "accelerate",
+      "sentencepiece",
+      "protobuf",
+      "jinja2",
+      "tiktoken"
+    ],
+    "integration_points": [
+      "Transcription system integration for receiving formatted transcripts",
+      "AI system integration for unified analysis pipeline",
+      "Performance optimizer integration for resource management",
+      "Recording system integration for analysis result storage",
+      "Statistics collector integration for enhanced meeting metrics"
+    ],
+    "testing_approach": "Test Phi-3 Mini model loading and initialization on Pi 5, validate meeting analysis accuracy with sample transcripts, verify action item extraction with test conversations, test topic identification with various meeting types, validate output formatting with multiple formats, test performance optimization under load"
+  },
+  "acceptance_criteria": [
+    "Phi-3 Mini model running stable on Pi 5 with <30 second loading time",
+    "Meeting summarization produces coherent summaries with >90% relevance score",
+    "Action item extraction identifies tasks with >85% accuracy and correct assignees",
+    "Topic identification extracts key themes with appropriate importance scoring",
+    "Structured output formatting produces valid JSON and Markdown formats",
+    "Performance optimization maintains <1.5GB memory usage during LLM processing",
+    "Analysis processing completes within 60 seconds for typical meeting transcripts",
+    "Integration with existing transcription system works seamlessly"
+  ],
+  "estimated_complexity": "Medium-High",
+  "prerequisites": ["Task-3.1"],
+  "baseline_metadata": {
+    "loaded_from": "codebase_manifest.json",
+    "timestamp": "2025-07-15T11:00:00Z",
+    "file_count": "66 bytes manifest with AI integration",
+    "file_size": "2.3KB manifest with Whisper transcription system"
+  }
+}
