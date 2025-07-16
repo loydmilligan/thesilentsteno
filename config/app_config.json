@@ -1,0 +1,194 @@
+{
+  "application": {
+    "name": "SilentSteno",
+    "version": "0.1.0",
+    "environment": "development",
+    "startup_timeout": 30.0,
+    "shutdown_timeout": 15.0,
+    "enable_monitoring": true,
+    "enable_auto_recovery": true,
+    "thread_pool_size": 4
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "structured",
+    "enable_console": true,
+    "enable_file": true,
+    "file_path": "logs/silentst.log",
+    "max_file_size": 10485760,
+    "backup_count": 5,
+    "enable_rotation": true,
+    "include_caller": true,
+    "include_timestamp": true,
+    "include_thread": true,
+    "extra_fields": {
+      "service": "silentst",
+      "version": "0.1.0"
+    }
+  },
+  "performance": {
+    "health_check_interval": 30.0,
+    "max_component_errors": 5,
+    "metrics_retention_hours": 24,
+    "alert_cooldown_seconds": 300
+  },
+  "components": {
+    "audio_pipeline": {
+      "enabled": true,
+      "startup_priority": 20,
+      "latency_target_ms": 40,
+      "buffer_size": 1024,
+      "sample_rate": 44100
+    },
+    "bluetooth": {
+      "enabled": true,
+      "startup_priority": 10,
+      "auto_reconnect": true,
+      "connection_timeout": 10.0,
+      "scan_timeout": 30.0
+    },
+    "ai_processing": {
+      "enabled": true,
+      "startup_priority": 30,
+      "whisper_model": "base",
+      "chunk_duration": 30.0,
+      "transcription_lag_threshold": 3.0
+    },
+    "ui_system": {
+      "enabled": true,
+      "startup_priority": 40,
+      "theme": "dark",
+      "screen_timeout": 300,
+      "touch_sensitivity": "normal"
+    },
+    "database": {
+      "enabled": true,
+      "startup_priority": 15,
+      "file_path": "data/silentst.db",
+      "backup_enabled": true,
+      "backup_interval_hours": 6,
+      "retention_days": 30
+    },
+    "export_system": {
+      "enabled": true,
+      "startup_priority": 50,
+      "default_format": "PDF",
+      "email_enabled": true,
+      "usb_enabled": true,
+      "network_sharing_enabled": true
+    }
+  },
+  "audio": {
+    "recording": {
+      "format": "FLAC",
+      "sample_rate": 44100,
+      "channels": 2,
+      "bit_depth": 16,
+      "compression_level": 5
+    },
+    "processing": {
+      "noise_reduction": true,
+      "automatic_gain_control": true,
+      "echo_cancellation": false,
+      "voice_activity_detection": true
+    },
+    "monitoring": {
+      "level_monitoring": true,
+      "frequency_analysis": true,
+      "quality_assessment": true
+    }
+  },
+  "ai": {
+    "transcription": {
+      "model": "base",
+      "language": "auto",
+      "confidence_threshold": 0.8,
+      "enable_timestamps": true,
+      "enable_speaker_labels": true
+    },
+    "analysis": {
+      "llm_model": "phi-3-mini",
+      "enable_summarization": true,
+      "enable_action_items": true,
+      "enable_topic_extraction": true,
+      "enable_sentiment_analysis": false
+    }
+  },
+  "storage": {
+    "base_path": "data",
+    "audio_path": "data/audio",
+    "exports_path": "data/exports",
+    "backups_path": "data/backups",
+    "temp_path": "data/temp",
+    "max_storage_gb": 50,
+    "cleanup_enabled": true,
+    "cleanup_threshold_percent": 90
+  },
+  "network": {
+    "wifi": {
+      "enabled": true,
+      "auto_connect": true,
+      "scan_interval": 60
+    },
+    "bluetooth": {
+      "enabled": true,
+      "discoverable": false,
+      "pairing_timeout": 120,
+      "max_connections": 2
+    },
+    "sharing": {
+      "smb_enabled": false,
+      "http_enabled": true,
+      "http_port": 8080,
+      "access_control": true,
+      "password_protected": false
+    }
+  },
+  "security": {
+    "encryption": {
+      "enable_at_rest": false,
+      "enable_in_transit": true,
+      "key_rotation_days": 90
+    },
+    "access_control": {
+      "enable_user_authentication": false,
+      "session_timeout_minutes": 60,
+      "max_failed_attempts": 5
+    },
+    "privacy": {
+      "auto_delete_after_days": 0,
+      "anonymize_transcripts": false,
+      "disable_cloud_features": true
+    }
+  },
+  "ui": {
+    "display": {
+      "brightness": 80,
+      "auto_brightness": true,
+      "sleep_timeout_minutes": 5,
+      "orientation": "landscape"
+    },
+    "interaction": {
+      "touch_feedback": true,
+      "sound_feedback": false,
+      "gesture_navigation": true,
+      "accessibility_mode": false
+    },
+    "theming": {
+      "theme": "dark",
+      "primary_color": "#2196F3",
+      "accent_color": "#FF5722",
+      "font_size": "medium",
+      "high_contrast": false
+    }
+  },
+  "experimental": {
+    "enable_experimental_features": false,
+    "features": {
+      "real_time_translation": false,
+      "advanced_speaker_diarization": false,
+      "emotion_detection": false,
+      "meeting_insights": false
+    }
+  }
+}

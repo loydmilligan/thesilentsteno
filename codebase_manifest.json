@@ -1,25 +1,29 @@
 {
-  "version": "1.2",
-  "generated": "2025-07-16T15:35:00Z",
-  "task_completion_status": "Task-5.2 completed - Export and Sharing System implemented with comprehensive multi-format export capabilities including email, USB, PDF, network sharing, bulk operations, and customizable templates",
+  "version": "1.3",
+  "generated": "2025-07-16T16:00:00Z",
+  "task_completion_status": "Task-6.1 completed - Application Integration Layer implemented with unified controller, inter-component communication, configuration management, comprehensive logging, error handling, and performance monitoring",
   "project": {
     "name": "thesilentsteno",
     "description": "Bluetooth AI Meeting Recorder - A Raspberry Pi 5 device that acts as an invisible audio intermediary for AI-powered transcription and analysis",
     "version": "0.1.0",
-    "tech_stack": "Python, Raspberry Pi 5, BlueZ Bluetooth, ALSA/PulseAudio, Whisper AI, Local LLM (Phi-3 Mini), SQLite, SQLAlchemy, Touch UI (Kivy), CSS Styling, ReportLab PDF Generation, psutil System Monitoring",
+    "tech_stack": "Python, Raspberry Pi 5, BlueZ Bluetooth, ALSA/PulseAudio, Whisper AI, Local LLM (Phi-3 Mini), SQLite, SQLAlchemy, Touch UI (Kivy), CSS Styling, ReportLab PDF Generation, psutil System Monitoring, Structured Logging, Configuration Management",
     "deployment": "Raspberry Pi 5 with 3.5-5 inch touchscreen, wall-powered device",
     "repository": "local development repository"
   },
   "architecture": {
     "audio_pipeline": "Phone → Bluetooth A2DP → Pi 5 Audio Capture → Audio Forwarding → Headphones with parallel Real-time Processing → Whisper Transcription → LLM Analysis",
-    "processing_flow": "Audio Capture → Real-time Analysis → Database Storage → UI Updates → Export Processing",
+    "processing_flow": "Audio Capture → Real-time Analysis → Database Storage → UI Updates → Export Processing → Monitoring & Logging",
+    "integration_layer": "Central Application Controller coordinates all subsystems with event-driven communication, shared configuration, and unified error handling",
     "integration_points": [
       "Bluetooth stack integration for dual A2DP connections",
       "Audio pipeline integration with ALSA/PulseAudio",
       "AI model integration for local processing",
       "Database integration for session management and data persistence",
       "Touch UI integration for user interaction and session control",
-      "Export system integration for data sharing and external delivery"
+      "Export system integration for data sharing and external delivery",
+      "Application controller orchestrating all subsystem communication",
+      "Configuration management system for all component settings",
+      "Centralized logging and monitoring for system health"
     ]
   },
   "performance_targets": {
@@ -32,7 +36,11 @@
     "email_delivery": "<30 seconds including attachments",
     "usb_transfer": "<60 seconds for complete session data",
     "network_sharing": "<5 seconds to access shared files",
-    "bulk_export": "<300 seconds for 10 sessions"
+    "bulk_export": "<300 seconds for 10 sessions",
+    "system_startup": "<20 seconds to ready state",
+    "error_recovery": "<5 seconds for automatic recovery",
+    "configuration_load": "<2 seconds for settings initialization",
+    "performance_monitoring": "<1% CPU overhead for monitoring"
   },
   "database_system": {
     "implementation": "Complete SQLAlchemy-based data management system with comprehensive models and utilities",
@@ -91,6 +99,34 @@
       "Responsive layout for various screen sizes",
       "Demo mode for testing and presentation"
     ]
+  },
+  "application_integration": {
+    "implementation": "Central application controller with event-driven architecture and unified component communication",
+    "architecture": "Modular event-driven system with centralized coordination and distributed processing",
+    "features": {
+      "main_controller": "Central application orchestrator managing all subsystem lifecycle and communication",
+      "event_system": "Publish-subscribe event bus for loose coupling between components",
+      "configuration_management": "Hierarchical configuration system with validation and hot-reload capabilities",
+      "logging_system": "Structured logging with multiple outputs (file, console, remote) and log rotation",
+      "error_handling": "Comprehensive error recovery with fallback mechanisms and user notification",
+      "performance_monitoring": "Real-time system metrics collection and alerting for health monitoring",
+      "component_registry": "Dynamic component registration and dependency injection system",
+      "state_management": "Application-wide state coordination with persistence and recovery"
+    },
+    "communication_patterns": {
+      "audio_to_ai": "Real-time audio chunks via queues with backpressure handling",
+      "ai_to_database": "Structured transcript data via events with batch processing",
+      "database_to_ui": "Live updates via observers with rate limiting",
+      "ui_to_export": "Export requests via command patterns with progress tracking",
+      "system_to_monitoring": "Metrics and health data via collectors with aggregation"
+    },
+    "error_recovery": {
+      "audio_failures": "Automatic reconnection with exponential backoff and user notification",
+      "ai_failures": "Graceful degradation with offline mode and retry mechanisms",
+      "database_failures": "Transaction rollback with data integrity checks and repair",
+      "export_failures": "Retry logic with user feedback and alternative methods",
+      "ui_failures": "Component restart with state preservation and error reporting"
+    }
   },
   "files": {
     "src/data/database.py": {
@@ -270,6 +306,87 @@
         "save_settings", "reset_settings", "validate_settings"
       ],
       "description": "Settings interface for export configuration, audio settings, and system preferences"
+    },
+    "src/core/__init__.py": {
+      "purpose": "Core application package initialization and main entry points",
+      "type": "python_module",
+      "exports": [
+        "SilentStenoApp", "ApplicationController", "ComponentRegistry",
+        "create_application", "start_application", "shutdown_application"
+      ],
+      "description": "Main application package providing unified entry points and core application management"
+    },
+    "src/core/application.py": {
+      "purpose": "Main application controller orchestrating all subsystems",
+      "type": "python_module",
+      "exports": [
+        "ApplicationController", "AppState", "ApplicationConfig", "ComponentManager",
+        "start_app", "stop_app", "restart_component", "get_app_status"
+      ],
+      "description": "Central application controller managing component lifecycle, communication, and state coordination"
+    },
+    "src/core/events.py": {
+      "purpose": "Event system for inter-component communication",
+      "type": "python_module",
+      "exports": [
+        "EventBus", "Event", "EventHandler", "EventSubscription",
+        "publish_event", "subscribe_to_event", "unsubscribe", "create_event_bus"
+      ],
+      "description": "Publish-subscribe event system enabling loose coupling between application components"
+    },
+    "src/core/config.py": {
+      "purpose": "Configuration management system with validation and hot-reload",
+      "type": "python_module",
+      "exports": [
+        "ConfigManager", "ConfigSchema", "ConfigValidator", "ConfigWatcher",
+        "load_config", "save_config", "validate_config", "watch_config_changes"
+      ],
+      "description": "Hierarchical configuration system with validation, hot-reload, and environment-specific settings"
+    },
+    "src/core/logging.py": {
+      "purpose": "Structured logging system with multiple outputs and rotation",
+      "type": "python_module",
+      "exports": [
+        "LogManager", "LogConfig", "StructuredLogger", "LogRotator",
+        "setup_logging", "get_logger", "configure_log_rotation", "add_log_handler"
+      ],
+      "description": "Comprehensive logging system with structured output, multiple handlers, and automatic rotation"
+    },
+    "src/core/monitoring.py": {
+      "purpose": "Performance monitoring and system health tracking",
+      "type": "python_module",
+      "exports": [
+        "PerformanceMonitor", "HealthChecker", "MetricsCollector", "AlertManager",
+        "start_monitoring", "collect_metrics", "check_system_health", "send_alert"
+      ],
+      "description": "Real-time performance monitoring with metrics collection, health checks, and alerting system"
+    },
+    "src/core/errors.py": {
+      "purpose": "Error handling and recovery system",
+      "type": "python_module",
+      "exports": [
+        "ErrorHandler", "RecoveryManager", "ErrorReporter", "FallbackManager",
+        "handle_error", "attempt_recovery", "report_error", "activate_fallback"
+      ],
+      "description": "Comprehensive error handling with automatic recovery mechanisms and user notification"
+    },
+    "src/core/registry.py": {
+      "purpose": "Component registration and dependency injection system",
+      "type": "python_module",
+      "exports": [
+        "ComponentRegistry", "register_component", "get_component", "inject_dependencies", "create_component"
+      ],
+      "description": "Dynamic component registration with dependency injection and factory pattern support"
+    },
+    "config/app_config.json": {
+      "purpose": "Main application configuration file",
+      "type": "json_config",
+      "description": "Central configuration file containing all application settings, component configurations, and environment-specific parameters"
+    },
+    "config/logging_config.json": {
+      "purpose": "Logging system configuration",
+      "type": "json_config", 
+      "description": "Logging configuration including handlers, formatters, log levels, and rotation settings"
     }
   },
   "dependencies": {
@@ -278,7 +395,9 @@
       "sqlalchemy>=1.4.0", 
       "alembic>=1.8.0",
       "reportlab>=3.6.0",
-      "psutil>=5.9.0"
+      "psutil>=5.9.0",
+      "pydantic>=1.10.0",
+      "watchdog>=2.1.0"
     ],
     "system_packages": [
       "python3-dev",
@@ -311,15 +430,15 @@
       "Task-4.2: Live session interface",
       "Task-4.3: Session management UI",
       "Task-5.1: Database and storage system",
-      "Task-5.2: Export and sharing system"
+      "Task-5.2: Export and sharing system",
+      "Task-6.1: Application integration layer"
     ],
-    "current_task": "Task-5.2 completed",
+    "current_task": "Task-6.1 completed",
     "next_tasks": [
-      "Task-6.1: Application integration layer",
       "Task-6.2: Device management features"
     ]
   },
-  "file_count": 18,
-  "total_exports": 142,
-  "last_updated": "2025-07-16T15:35:00Z"
+  "file_count": 28,
+  "total_exports": 210,
+  "last_updated": "2025-07-16T16:00:00Z"
 }
