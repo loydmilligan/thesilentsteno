@@ -235,7 +235,7 @@ class StatusIndicatorWidget(Widget):
     def _start_blink(self):
         """Start blink animation."""
         if self.blink_animation:
-            self.blink_animation.cancel()
+            self.blink_animation.cancel(self)
             
         if self.config.enable_animations:
             self.blink_animation = Animation(
@@ -249,7 +249,7 @@ class StatusIndicatorWidget(Widget):
     def _stop_blink(self):
         """Stop blink animation."""
         if self.blink_animation:
-            self.blink_animation.cancel()
+            self.blink_animation.cancel(self)
             self.blink_animation = None
         self.opacity = 1.0
         

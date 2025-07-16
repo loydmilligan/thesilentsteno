@@ -288,7 +288,14 @@ class LogManager:
     def _setup_root_logger(self):
         """Setup root logger configuration."""
         root_logger = logging.getLogger()
-        root_logger.setLevel(self.config.level.value)
+        
+        # Handle level configuration (string or enum)
+        if hasattr(self.config.level, 'value'):
+            level = self.config.level.value
+        else:
+            level = getattr(logging, self.config.level.upper(), logging.INFO)
+        
+        root_logger.setLevel(level)
         
         # Clear existing handlers
         root_logger.handlers.clear()

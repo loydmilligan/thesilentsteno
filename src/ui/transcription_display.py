@@ -163,8 +163,15 @@ class TranscriptEntryWidget(BoxLayout):
         
         # Enable word wrap
         if self.config.enable_word_wrap:
-            text_label.bind(width=lambda *x: text_label.setter('text_size')(text_label, (text_label.width, None)))
-            text_label.bind(texture_size=text_label.setter('height'))
+            def update_text_size(instance, value):
+                instance.text_size = (instance.width, None)
+            def update_height(instance, value):
+                if hasattr(value, '__len__') and len(value) >= 2:
+                    instance.height = value[1]
+                else:
+                    instance.height = dp(self.config.font_size * 1.5)
+            text_label.bind(width=update_text_size)
+            text_label.bind(texture_size=update_height)
         else:
             text_label.height = dp(self.config.font_size * 1.5)
             

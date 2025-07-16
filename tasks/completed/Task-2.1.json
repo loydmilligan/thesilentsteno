@@ -1,0 +1,805 @@
+{
+  "task_id": "Task-2.1",
+  "task_description": "Session-based audio recording with metadata and preprocessing",
+  "baseline_manifest": {
+    "version": "1.0",
+    "generated": "2025-07-14T08:30:00Z",
+    "project": {
+      "name": "thesilentsteno",
+      "description": "Bluetooth AI Meeting Recorder - A Raspberry Pi 5 device that acts as an invisible audio intermediary for AI-powered transcription and analysis",
+      "version": "0.1.0",
+      "tech_stack": "Python, Raspberry Pi 5, BlueZ Bluetooth, Whisper AI, Local LLM (Phi-3 Mini), SQLite, Touch UI",
+      "deployment": "Raspberry Pi 5 with 3.5-5 inch touchscreen, wall-powered device",
+      "repository": "local development repository"
+    },
+    "documentation": {
+      "mvp": "docs/mvp.md",
+      "prd": "docs/prd.md",
+      "task_list": "tasks/task_list.md",
+      "proposed_final_manifest": "docs/proposed_final_manifest.json",
+      "manifest_evolution": "docs/manifest_evolution.md",
+      "architecture_notes": "Bluetooth audio proxy with dual A2DP connections, real-time audio pipeline with <40ms latency, local AI processing chain"
+    },
+    "files": {
+      "scripts/setup_hardware.sh": {
+        "purpose": "Hardware setup automation script",
+        "type": "bash_script",
+        "exports": [
+          "install_dev_tools",
+          "configure_autoboot",
+          "test_hardware",
+          "check_system_status"
+        ],
+        "description": "Automates Pi 5 hardware configuration and development tool installation"
+      },
+      "config/display_config.txt": {
+        "purpose": "Display configuration parameters",
+        "type": "config",
+        "exports": [
+          "display settings"
+        ],
+        "description": "Touchscreen display configuration and calibration settings"
+      },
+      "scripts/autostart.sh": {
+        "purpose": "Application auto-start script",
+        "type": "bash_script",
+        "exports": [
+          "startup configuration"
+        ],
+        "description": "Configures system to auto-boot to main application"
+      },
+      "docs/hardware_setup.md": {
+        "purpose": "Hardware setup documentation",
+        "type": "documentation",
+        "exports": [
+          "setup instructions"
+        ],
+        "description": "Complete hardware setup and troubleshooting guide"
+      },
+      "src/bluetooth/bluez_manager.py": {
+        "purpose": "BlueZ Bluetooth stack management",
+        "type": "python_module",
+        "exports": [
+          "BlueZManager",
+          "start_bluetooth",
+          "stop_bluetooth",
+          "get_bluetooth_status"
+        ],
+        "description": "Python interface for controlling BlueZ Bluetooth stack with A2DP support"
+      },
+      "config/bluetooth_main.conf": {
+        "purpose": "BlueZ main configuration template",
+        "type": "config",
+        "exports": [
+          "bluetooth configuration"
+        ],
+        "description": "BlueZ main.conf configuration template for dual A2DP connections"
+      },
+      "config/bluetooth_audio.conf": {
+        "purpose": "BlueZ audio configuration template",
+        "type": "config",
+        "exports": [
+          "audio configuration"
+        ],
+        "description": "BlueZ audio.conf configuration for high-quality codec support"
+      },
+      "scripts/bluetooth_service.sh": {
+        "purpose": "Bluetooth service management script",
+        "type": "bash_script",
+        "exports": [
+          "start_bluetooth_service",
+          "stop_bluetooth_service",
+          "restart_bluetooth_service"
+        ],
+        "description": "Service management script for Bluetooth with automatic reconnection"
+      },
+      "src/bluetooth/connection_manager.py": {
+        "purpose": "Bluetooth connection management",
+        "type": "python_module",
+        "exports": [
+          "ConnectionManager",
+          "pair_device",
+          "connect_device",
+          "manage_connections"
+        ],
+        "description": "Manages Bluetooth device pairing, connection persistence, and auto-reconnection"
+      },
+      "src/__init__.py": {
+        "purpose": "Main source package initializer",
+        "type": "python_module",
+        "exports": [
+          "package structure"
+        ],
+        "description": "Python package initialization for src module"
+      },
+      "src/bluetooth/__init__.py": {
+        "purpose": "Bluetooth module initializer",
+        "type": "python_module",
+        "exports": [
+          "BlueZManager",
+          "ConnectionManager",
+          "DeviceRole",
+          "start_bluetooth",
+          "stop_bluetooth",
+          "get_bluetooth_status",
+          "pair_device",
+          "connect_device",
+          "manage_connections"
+        ],
+        "description": "Bluetooth module initialization with comprehensive API exports"
+      }
+    },
+    "dependencies": {
+      "system": [
+        "Raspberry Pi OS",
+        "BlueZ Bluetooth stack",
+        "ALSA/PulseAudio audio system",
+        "Python 3.8+",
+        "python3-dev",
+        "build-essential",
+        "git",
+        "vim",
+        "bluez",
+        "bluez-tools",
+        "pulseaudio-module-bluetooth",
+        "python3-dbus"
+      ],
+      "python": [
+        "whisper (for speech-to-text)",
+        "transformers (for local LLM)",
+        "torch (for AI model inference)",
+        "sqlite3 (for data storage)",
+        "bluetooth libraries",
+        "audio processing libraries",
+        "dbus-python (for BlueZ communication)",
+        "pybluez (for Bluetooth operations)"
+      ],
+      "audio_codecs": [
+        "SBC",
+        "AAC",
+        "aptX",
+        "Samsung Scalable"
+      ]
+    },
+    "architecture": {
+      "main_flow": "Phone \u2192 Bluetooth A2DP \u2192 Pi 5 Audio Capture \u2192 Audio Forwarding \u2192 Headphones + Real-time AI Processing",
+      "data_flow": "Live Audio \u2192 Voice Activity Detection \u2192 Whisper Transcription \u2192 LLM Analysis \u2192 Local Storage \u2192 Export Options",
+      "configuration": "Touch UI for device settings, Bluetooth pairing, AI model configuration, storage management",
+      "key_components": [
+        "Bluetooth Audio Proxy (dual A2DP connections)",
+        "Real-time Audio Pipeline (<40ms latency)",
+        "Local Whisper Transcription Engine",
+        "Local LLM Analysis (Phi-3 Mini)",
+        "Touch UI System",
+        "SQLite Data Management",
+        "Export and Sharing System"
+      ],
+      "integration_points": [
+        "BlueZ Bluetooth stack",
+        "ALSA/PulseAudio audio system",
+        "Whisper AI model",
+        "Local LLM inference",
+        "Touch display interface",
+        "File system and storage"
+      ],
+      "hardware_setup": {
+        "platform_configured": true,
+        "development_tools_installed": true,
+        "auto_boot_configured": true,
+        "hardware_tested": true
+      },
+      "bluetooth_setup": {
+        "bluez_configured": true,
+        "a2dp_sink_enabled": true,
+        "a2dp_source_enabled": true,
+        "codec_support": [
+          "SBC",
+          "AAC",
+          "aptX",
+          "Samsung Scalable"
+        ],
+        "dual_connections": true,
+        "auto_reconnect": true
+      }
+    },
+    "development": {
+      "approach": "manifest-driven development with git workflow integration",
+      "workflow": "process_task -> implement_task -> check_task -> resolve_mismatch (if needed) -> commit_task",
+      "task_status": "Task-1.2 completed - Bluetooth stack configured",
+      "current_phase": "Phase 1: Foundation & Hardware Setup - Task 1.2 complete",
+      "manifest_evolution": "tracked in docs/manifest_evolution.md",
+      "version_control": "git commits tied to task completion with detailed commit messages"
+    },
+    "performance_targets": {
+      "audio_latency": "<40ms end-to-end",
+      "transcription_lag": "<3 seconds behind live audio",
+      "session_start_time": "<10 seconds from tap to active",
+      "transcription_accuracy": ">90% for clear speech",
+      "session_reliability": ">99% completion rate",
+      "storage_capacity": "32GB+ SD card supporting 20+ hours of meetings"
+    },
+    "hardware_requirements": {
+      "platform": "Raspberry Pi 5 (4GB+ RAM recommended)",
+      "display": "3.5-5 inch touchscreen (480x320 or 800x480)",
+      "audio": "Built-in audio + optional USB audio interface",
+      "connectivity": "Built-in WiFi and Bluetooth 5.0",
+      "power": "Wall adapter (no battery requirement)",
+      "enclosure": "3D printable case with screen cutout"
+    }
+  },
+  "expected_manifest": {
+    "version": "1.0",
+    "generated": "2025-07-14T09:30:00Z",
+    "project": {
+      "name": "thesilentsteno",
+      "description": "Bluetooth AI Meeting Recorder - A Raspberry Pi 5 device that acts as an invisible audio intermediary for AI-powered transcription and analysis",
+      "version": "0.1.0",
+      "tech_stack": "Python, Raspberry Pi 5, BlueZ Bluetooth, Whisper AI, Local LLM (Phi-3 Mini), SQLite, Touch UI",
+      "deployment": "Raspberry Pi 5 with 3.5-5 inch touchscreen, wall-powered device",
+      "repository": "local development repository"
+    },
+    "documentation": {
+      "mvp": "docs/mvp.md",
+      "prd": "docs/prd.md",
+      "task_list": "tasks/task_list.md",
+      "proposed_final_manifest": "docs/proposed_final_manifest.json",
+      "manifest_evolution": "docs/manifest_evolution.md",
+      "architecture_notes": "Bluetooth audio proxy with dual A2DP connections, real-time audio pipeline with <40ms latency, local AI processing chain, session-based recording system"
+    },
+    "files": {
+      "scripts/setup_hardware.sh": {
+        "purpose": "Hardware setup automation script",
+        "type": "bash_script",
+        "exports": [
+          "install_dev_tools",
+          "configure_autoboot",
+          "test_hardware",
+          "check_system_status"
+        ],
+        "description": "Automates Pi 5 hardware configuration and development tool installation"
+      },
+      "config/display_config.txt": {
+        "purpose": "Display configuration parameters",
+        "type": "config",
+        "exports": [
+          "display settings"
+        ],
+        "description": "Touchscreen display configuration and calibration settings"
+      },
+      "scripts/autostart.sh": {
+        "purpose": "Application auto-start script",
+        "type": "bash_script",
+        "exports": [
+          "startup configuration"
+        ],
+        "description": "Configures system to auto-boot to main application"
+      },
+      "docs/hardware_setup.md": {
+        "purpose": "Hardware setup documentation",
+        "type": "documentation",
+        "exports": [
+          "setup instructions"
+        ],
+        "description": "Complete hardware setup and troubleshooting guide"
+      },
+      "src/bluetooth/bluez_manager.py": {
+        "purpose": "BlueZ Bluetooth stack management",
+        "type": "python_module",
+        "exports": [
+          "BlueZManager",
+          "start_bluetooth",
+          "stop_bluetooth",
+          "get_bluetooth_status"
+        ],
+        "description": "Python interface for controlling BlueZ Bluetooth stack with A2DP support"
+      },
+      "config/bluetooth_main.conf": {
+        "purpose": "BlueZ main configuration template",
+        "type": "config",
+        "exports": [
+          "bluetooth configuration"
+        ],
+        "description": "BlueZ main.conf configuration template for dual A2DP connections"
+      },
+      "config/bluetooth_audio.conf": {
+        "purpose": "BlueZ audio configuration template",
+        "type": "config",
+        "exports": [
+          "audio configuration"
+        ],
+        "description": "BlueZ audio.conf configuration for high-quality codec support"
+      },
+      "scripts/bluetooth_service.sh": {
+        "purpose": "Bluetooth service management script",
+        "type": "bash_script",
+        "exports": [
+          "start_bluetooth_service",
+          "stop_bluetooth_service",
+          "restart_bluetooth_service"
+        ],
+        "description": "Service management script for Bluetooth with automatic reconnection"
+      },
+      "src/bluetooth/connection_manager.py": {
+        "purpose": "Bluetooth connection management",
+        "type": "python_module",
+        "exports": [
+          "ConnectionManager",
+          "pair_device",
+          "connect_device",
+          "manage_connections"
+        ],
+        "description": "Manages Bluetooth device pairing, connection persistence, and auto-reconnection"
+      },
+      "src/__init__.py": {
+        "purpose": "Main source package initializer",
+        "type": "python_module",
+        "exports": [
+          "package structure"
+        ],
+        "description": "Python package initialization for src module"
+      },
+      "src/bluetooth/__init__.py": {
+        "purpose": "Bluetooth module initializer",
+        "type": "python_module",
+        "exports": [
+          "BlueZManager",
+          "ConnectionManager",
+          "DeviceRole",
+          "start_bluetooth",
+          "stop_bluetooth",
+          "get_bluetooth_status",
+          "pair_device",
+          "connect_device",
+          "manage_connections"
+        ],
+        "description": "Bluetooth module initialization with comprehensive API exports"
+      },
+      "src/audio/audio_pipeline.py": {
+        "purpose": "Real-time audio pipeline management",
+        "type": "python_module",
+        "exports": [
+          "AudioPipeline",
+          "start_pipeline",
+          "stop_pipeline",
+          "get_pipeline_status"
+        ],
+        "description": "Main audio pipeline for capture, processing, and forwarding with low latency"
+      },
+      "src/audio/alsa_manager.py": {
+        "purpose": "ALSA audio system management",
+        "type": "python_module",
+        "exports": [
+          "ALSAManager",
+          "configure_alsa",
+          "get_audio_devices",
+          "optimize_latency"
+        ],
+        "description": "ALSA audio system configuration and management for low-latency operation"
+      },
+      "src/audio/latency_optimizer.py": {
+        "purpose": "Audio latency optimization",
+        "type": "python_module",
+        "exports": [
+          "LatencyOptimizer",
+          "measure_latency",
+          "optimize_buffers",
+          "tune_performance"
+        ],
+        "description": "Audio latency measurement and optimization to achieve <40ms target"
+      },
+      "src/audio/format_converter.py": {
+        "purpose": "Audio format conversion pipeline",
+        "type": "python_module",
+        "exports": [
+          "FormatConverter",
+          "convert_audio",
+          "supported_formats",
+          "codec_conversion"
+        ],
+        "description": "Real-time audio format conversion between different codecs and sample rates"
+      },
+      "src/audio/level_monitor.py": {
+        "purpose": "Real-time audio level monitoring",
+        "type": "python_module",
+        "exports": [
+          "LevelMonitor",
+          "get_audio_levels",
+          "monitor_clipping",
+          "visualize_levels"
+        ],
+        "description": "Real-time audio level monitoring and visualization for pipeline health"
+      },
+      "src/audio/__init__.py": {
+        "purpose": "Audio module initializer",
+        "type": "python_module",
+        "exports": [
+          "AudioPipeline",
+          "ALSAManager",
+          "LatencyOptimizer",
+          "FormatConverter",
+          "LevelMonitor"
+        ],
+        "description": "Audio module initialization with comprehensive audio processing API"
+      },
+      "config/pulse_config.pa": {
+        "purpose": "PulseAudio configuration template",
+        "type": "config",
+        "exports": [
+          "pulseaudio configuration"
+        ],
+        "description": "PulseAudio configuration optimized for low-latency Bluetooth audio"
+      },
+      "config/alsa_config.conf": {
+        "purpose": "ALSA configuration template",
+        "type": "config",
+        "exports": [
+          "alsa configuration"
+        ],
+        "description": "ALSA configuration for optimal audio performance and latency"
+      },
+      "src/recording/session_manager.py": {
+        "purpose": "Audio session lifecycle management",
+        "type": "python_module",
+        "exports": [
+          "SessionManager",
+          "start_session",
+          "stop_session",
+          "pause_session",
+          "resume_session",
+          "get_session_status"
+        ],
+        "description": "Manages audio recording sessions with start/stop/pause functionality and state persistence"
+      },
+      "src/recording/audio_recorder.py": {
+        "purpose": "High-quality audio recording engine",
+        "type": "python_module",
+        "exports": [
+          "AudioRecorder",
+          "start_recording",
+          "stop_recording",
+          "get_recording_info",
+          "export_formats"
+        ],
+        "description": "Core audio recording functionality with FLAC/WAV support and real-time processing"
+      },
+      "src/recording/preprocessor.py": {
+        "purpose": "Audio preprocessing and enhancement",
+        "type": "python_module",
+        "exports": [
+          "AudioPreprocessor",
+          "apply_noise_reduction",
+          "normalize_audio",
+          "enhance_speech",
+          "get_quality_metrics"
+        ],
+        "description": "Real-time and post-processing audio enhancement including noise reduction and normalization"
+      },
+      "src/recording/file_manager.py": {
+        "purpose": "Audio file organization and naming",
+        "type": "python_module",
+        "exports": [
+          "FileManager",
+          "generate_filename",
+          "organize_files",
+          "cleanup_temp_files",
+          "get_file_info"
+        ],
+        "description": "Manages audio file naming, organization, and storage structure with metadata integration"
+      },
+      "src/recording/metadata_tracker.py": {
+        "purpose": "Session metadata collection and tracking",
+        "type": "python_module",
+        "exports": [
+          "MetadataTracker",
+          "track_session",
+          "update_metadata",
+          "get_session_metadata",
+          "export_metadata"
+        ],
+        "description": "Collects and tracks session metadata including duration, participants, audio quality metrics"
+      },
+      "src/recording/storage_monitor.py": {
+        "purpose": "Storage space monitoring and management",
+        "type": "python_module",
+        "exports": [
+          "StorageMonitor",
+          "check_available_space",
+          "monitor_usage",
+          "cleanup_old_files",
+          "get_storage_status"
+        ],
+        "description": "Monitors storage space, manages disk usage, and prevents storage-related errors"
+      },
+      "src/recording/__init__.py": {
+        "purpose": "Recording module initializer",
+        "type": "python_module",
+        "exports": [
+          "SessionManager",
+          "AudioRecorder",
+          "AudioPreprocessor",
+          "FileManager",
+          "MetadataTracker",
+          "StorageMonitor"
+        ],
+        "description": "Recording module initialization with comprehensive session-based recording API"
+      }
+    },
+    "dependencies": {
+      "system": [
+        "Raspberry Pi OS",
+        "BlueZ Bluetooth stack",
+        "ALSA/PulseAudio audio system",
+        "Python 3.8+",
+        "python3-dev",
+        "build-essential",
+        "git",
+        "vim",
+        "bluez",
+        "bluez-tools",
+        "pulseaudio-module-bluetooth",
+        "python3-dbus",
+        "python3-pyaudio",
+        "python3-numpy",
+        "pulseaudio",
+        "alsa-utils",
+        "python3-scipy",
+        "python3-librosa",
+        "ffmpeg"
+      ],
+      "python": [
+        "whisper (for speech-to-text)",
+        "transformers (for local LLM)",
+        "torch (for AI model inference)",
+        "sqlite3 (for data storage)",
+        "bluetooth libraries",
+        "audio processing libraries",
+        "dbus-python (for BlueZ communication)",
+        "pybluez (for Bluetooth operations)",
+        "pyaudio (for real-time audio I/O)",
+        "numpy (for audio signal processing)",
+        "scipy (for audio filtering and analysis)",
+        "librosa (for audio feature extraction)",
+        "soundfile (for audio file I/O)",
+        "pydub (for audio processing and conversion)"
+      ],
+      "audio_codecs": [
+        "SBC",
+        "AAC",
+        "aptX",
+        "Samsung Scalable"
+      ]
+    },
+    "architecture": {
+      "main_flow": "Phone \u2192 Bluetooth A2DP \u2192 Pi 5 Audio Capture \u2192 Audio Forwarding \u2192 Headphones + Real-time AI Processing",
+      "data_flow": "Live Audio \u2192 Voice Activity Detection \u2192 Whisper Transcription \u2192 LLM Analysis \u2192 Local Storage \u2192 Export Options",
+      "configuration": "Touch UI for device settings, Bluetooth pairing, AI model configuration, storage management",
+      "key_components": [
+        "Bluetooth Audio Proxy (dual A2DP connections)",
+        "Real-time Audio Pipeline (<40ms latency)",
+        "Session-based Recording System",
+        "Audio Preprocessing and Enhancement",
+        "Local Whisper Transcription Engine",
+        "Local LLM Analysis (Phi-3 Mini)",
+        "Touch UI System",
+        "SQLite Data Management",
+        "Export and Sharing System"
+      ],
+      "integration_points": [
+        "BlueZ Bluetooth stack",
+        "ALSA/PulseAudio audio system",
+        "Audio pipeline for recording integration",
+        "File system for audio storage",
+        "Metadata database integration",
+        "Whisper AI model",
+        "Local LLM inference",
+        "Touch display interface",
+        "File system and storage"
+      ],
+      "hardware_setup": {
+        "platform_configured": true,
+        "development_tools_installed": true,
+        "auto_boot_configured": true,
+        "hardware_tested": true
+      },
+      "bluetooth_setup": {
+        "bluez_configured": true,
+        "a2dp_sink_enabled": true,
+        "a2dp_source_enabled": true,
+        "codec_support": [
+          "SBC",
+          "AAC",
+          "aptX",
+          "Samsung Scalable"
+        ],
+        "dual_connections": true,
+        "auto_reconnect": true
+      },
+      "audio_pipeline": {
+        "low_latency_configured": true,
+        "a2dp_capture_enabled": true,
+        "a2dp_forwarding_enabled": true,
+        "format_conversion_enabled": true,
+        "level_monitoring_enabled": true,
+        "latency_target": "<40ms",
+        "buffer_optimization": true
+      },
+      "recording_system": {
+        "session_management": true,
+        "high_quality_recording": true,
+        "preprocessing_enabled": true,
+        "metadata_tracking": true,
+        "storage_monitoring": true,
+        "file_organization": true,
+        "supported_formats": [
+          "FLAC",
+          "WAV",
+          "MP3"
+        ],
+        "real_time_processing": true
+      }
+    },
+    "development": {
+      "approach": "manifest-driven development with git workflow integration",
+      "workflow": "process_task -> implement_task -> check_task -> resolve_mismatch (if needed) -> commit_task",
+      "task_status": "Task-2.1 completed - Audio recording system implemented",
+      "current_phase": "Phase 2: Core Audio Processing - Task 2.1 complete",
+      "manifest_evolution": "tracked in docs/manifest_evolution.md",
+      "version_control": "git commits tied to task completion with detailed commit messages"
+    },
+    "performance_targets": {
+      "audio_latency": "<40ms end-to-end",
+      "transcription_lag": "<3 seconds behind live audio",
+      "session_start_time": "<10 seconds from tap to active",
+      "transcription_accuracy": ">90% for clear speech",
+      "session_reliability": ">99% completion rate",
+      "storage_capacity": "32GB+ SD card supporting 20+ hours of meetings",
+      "recording_quality": "48kHz/24-bit FLAC for archival, 44.1kHz/16-bit for processing",
+      "preprocessing_latency": "<500ms for real-time enhancement"
+    },
+    "hardware_requirements": {
+      "platform": "Raspberry Pi 5 (4GB+ RAM recommended)",
+      "display": "3.5-5 inch touchscreen (480x320 or 800x480)",
+      "audio": "Built-in audio + optional USB audio interface",
+      "connectivity": "Built-in WiFi and Bluetooth 5.0",
+      "power": "Wall adapter (no battery requirement)",
+      "enclosure": "3D printable case with screen cutout",
+      "storage": "High-speed microSD card (Class 10+ recommended for recording)"
+    }
+  },
+  "implementation_notes": {
+    "approach": "Build comprehensive session-based recording system that integrates with existing audio pipeline while maintaining low-latency forwarding. Focus on modular architecture with clear separation between real-time processing and recording functionality.",
+    "files_to_create": [
+      {
+        "file": "src/recording/session_manager.py",
+        "purpose": "Main orchestrator for recording sessions with lifecycle management",
+        "key_exports": [
+          "SessionManager",
+          "start_session",
+          "stop_session",
+          "pause_session",
+          "resume_session",
+          "get_session_status"
+        ]
+      },
+      {
+        "file": "src/recording/audio_recorder.py",
+        "purpose": "Core recording engine with high-quality audio capture and encoding",
+        "key_exports": [
+          "AudioRecorder",
+          "start_recording",
+          "stop_recording",
+          "get_recording_info",
+          "export_formats"
+        ]
+      },
+      {
+        "file": "src/recording/preprocessor.py",
+        "purpose": "Audio enhancement and preprocessing for improved quality",
+        "key_exports": [
+          "AudioPreprocessor",
+          "apply_noise_reduction",
+          "normalize_audio",
+          "enhance_speech",
+          "get_quality_metrics"
+        ]
+      },
+      {
+        "file": "src/recording/file_manager.py",
+        "purpose": "File organization system with intelligent naming and structure",
+        "key_exports": [
+          "FileManager",
+          "generate_filename",
+          "organize_files",
+          "cleanup_temp_files",
+          "get_file_info"
+        ]
+      },
+      {
+        "file": "src/recording/metadata_tracker.py",
+        "purpose": "Comprehensive session metadata collection and management",
+        "key_exports": [
+          "MetadataTracker",
+          "track_session",
+          "update_metadata",
+          "get_session_metadata",
+          "export_metadata"
+        ]
+      },
+      {
+        "file": "src/recording/storage_monitor.py",
+        "purpose": "Storage monitoring and management system",
+        "key_exports": [
+          "StorageMonitor",
+          "check_available_space",
+          "monitor_usage",
+          "cleanup_old_files",
+          "get_storage_status"
+        ]
+      },
+      {
+        "file": "src/recording/__init__.py",
+        "purpose": "Recording module package initialization and API exports",
+        "key_exports": [
+          "SessionManager",
+          "AudioRecorder",
+          "AudioPreprocessor",
+          "FileManager",
+          "MetadataTracker",
+          "StorageMonitor"
+        ]
+      }
+    ],
+    "files_to_modify": [],
+    "dependencies": [
+      "python3-scipy",
+      "python3-librosa",
+      "ffmpeg"
+    ],
+    "integration_points": [
+      "Audio pipeline integration for live recording from Bluetooth stream",
+      "File system integration for organized storage structure",
+      "Future database integration for metadata persistence",
+      "Future UI integration for session management controls",
+      "Future AI processing integration for transcription triggers"
+    ],
+    "testing_approach": "Test session lifecycle management, validate recording quality across different audio formats, verify storage monitoring prevents disk full errors, test preprocessing effectiveness with real-world audio samples, validate metadata accuracy and completeness"
+  },
+  "acceptance_criteria": [
+    "Session management with reliable start/stop/pause",
+    "High-quality recordings in FLAC/WAV format",
+    "Audio preprocessing improves quality measurably",
+    "Logical file naming and folder organization",
+    "Complete session metadata collection",
+    "Storage monitoring prevents disk full errors"
+  ],
+  "estimated_complexity": "Medium",
+  "prerequisites": [
+    "Task-1.3"
+  ],
+  "baseline_metadata": {
+    "loaded_from": "codebase_manifest.json",
+    "timestamp": "2025-07-14T09:30:00Z",
+    "file_count": "11 (Task-1.2 baseline + Task-1.3 audio pipeline)",
+    "file_size": "7471 bytes"
+  },
+  "completion": {
+    "status": "completed",
+    "commit_hash": "148e01c623d47b269ee6708a31e74328c4878f0d",
+    "commit_timestamp": "2025-07-14T01:17:51.966914",
+    "validation_status": "PASS",
+    "implementation_quality": "excellent",
+    "lessons_learned": [
+      "Comprehensive session-based architecture provides excellent foundation",
+      "Modular design enables independent component testing and integration",
+      "Quality presets allow flexible configuration for different use cases",
+      "Storage monitoring prevents critical disk space issues",
+      "Thread-safe operations essential for real-time audio processing"
+    ],
+    "performance_achievements": [
+      "Architecture designed for <40ms audio latency maintenance",
+      "Multi-threaded recording without blocking real-time forwarding",
+      "Intelligent file organization reduces storage management overhead",
+      "Comprehensive metadata provides foundation for AI processing"
+    ]
+  }
+}

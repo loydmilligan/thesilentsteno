@@ -1,0 +1,937 @@
+{
+  "version": "1.0",
+  "generated": "2025-07-15T11:10:00Z",
+  "task_completion_status": "Task-3.2 implementation analysis - checking LLM system files",
+  "project": {
+    "name": "thesilentsteno",
+    "description": "Bluetooth AI Meeting Recorder - A Raspberry Pi 5 device that acts as an invisible audio intermediary for AI-powered transcription and analysis",
+    "version": "0.1.0",
+    "tech_stack": "Python, Raspberry Pi 5, BlueZ Bluetooth, ALSA/PulseAudio, Whisper AI, Local LLM (Phi-3 Mini), SQLite, Touch UI",
+    "deployment": "Raspberry Pi 5 with 3.5-5 inch touchscreen, wall-powered device",
+    "repository": "local development repository"
+  },
+  "files": {
+    "src/__init__.py": {
+      "purpose": "Module with 0 exports and 0 imports",
+      "type": "python_module",
+      "size": 40,
+      "lines": 1,
+      "exports": [],
+      "imports": []
+    },
+    "src/bluetooth/__init__.py": {
+      "purpose": "Module with 0 exports and 2 imports",
+      "type": "python_module",
+      "size": 657,
+      "lines": 22,
+      "exports": [],
+      "imports": [
+        "from .bluez_manager import BlueZManager, start_bluetooth, stop_bluetooth, get_bluetooth_status",
+        "from .connection_manager import ConnectionManager, pair_device, connect_device, manage_connections, DeviceRole"
+      ]
+    },
+    "src/bluetooth/bluez_manager.py": {
+      "purpose": "Module with 12 exports and 7 imports",
+      "type": "python_module",
+      "size": 15677,
+      "lines": 450,
+      "exports": [
+        "BluetoothState",
+        "CodecType",
+        "BlueZManager",
+        "start_bluetooth",
+        "stop_bluetooth",
+        "restart_bluetooth",
+        "get_bluetooth_status",
+        "enable_discoverable",
+        "disable_discoverable",
+        "start_bluetooth"
+      ],
+      "imports": [
+        "import subprocess",
+        "import logging",
+        "import time",
+        "import dbus",
+        "import dbus.mainloop.glib"
+      ]
+    },
+    "src/bluetooth/connection_manager.py": {
+      "purpose": "Module with 20 exports and 11 imports",
+      "type": "python_module",
+      "size": 21968,
+      "lines": 569,
+      "exports": [
+        "ConnectionState",
+        "DeviceRole",
+        "BluetoothDevice",
+        "to_dict",
+        "from_dict",
+        "ConnectionManager",
+        "load_devices",
+        "save_devices",
+        "add_connection_callback",
+        "pair_device"
+      ],
+      "imports": [
+        "import subprocess",
+        "import threading",
+        "import time",
+        "import json",
+        "import os"
+      ]
+    },
+    "src/ai/__init__.py": {
+      "purpose": "Module with 14 exports and 12 imports",
+      "type": "python_module",
+      "size": 24789,
+      "lines": 706,
+      "exports": [
+        "AITranscriptionSystem",
+        "initialize",
+        "transcribe_audio",
+        "transcribe_with_diarization",
+        "format_transcript",
+        "export_transcript",
+        "add_transcription_callback",
+        "add_error_callback",
+        "get_stats",
+        "get_status"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "from typing import Optional, Dict, Any, List, Callable, Union",
+        "from .whisper_transcriber import ("
+      ]
+    },
+    "src/ai/performance_optimizer.py": {
+      "purpose": "Module with 23 exports and 18 imports",
+      "type": "python_module",
+      "size": 36885,
+      "lines": 1001,
+      "exports": [
+        "OptimizationLevel",
+        "ResourceType",
+        "PerformanceMode",
+        "SystemMetrics",
+        "to_dict",
+        "OptimizationConfig",
+        "OptimizationResult",
+        "to_dict",
+        "SystemMonitor",
+        "start_monitoring"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "import threading",
+        "import time"
+      ]
+    },
+    "src/ai/speaker_diarizer.py": {
+      "purpose": "Module with 19 exports and 20 imports",
+      "type": "python_module",
+      "size": 36716,
+      "lines": 929,
+      "exports": [
+        "SpeakerLabel",
+        "get_numbered_label",
+        "SpeakerSegment",
+        "to_dict",
+        "DiarizationConfig",
+        "get_speaker_label",
+        "DiarizationResult",
+        "to_dict",
+        "SpeakerDiarizer",
+        "initialize"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "import threading",
+        "import time"
+      ]
+    },
+    "src/ai/transcription_pipeline.py": {
+      "purpose": "Module with 20 exports and 20 imports",
+      "type": "python_module",
+      "size": 27236,
+      "lines": 756,
+      "exports": [
+        "ProcessingMode",
+        "QualitySettings",
+        "PipelineConfig",
+        "ChunkResult",
+        "to_dict",
+        "PipelineResult",
+        "to_dict",
+        "TranscriptionPipeline",
+        "initialize",
+        "process_audio"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "import threading",
+        "import time"
+      ]
+    },
+    "src/ai/audio_chunker.py": {
+      "purpose": "Module with 18 exports and 18 imports",
+      "type": "python_module",
+      "size": 40615,
+      "lines": 1049,
+      "exports": [
+        "ChunkType",
+        "ChunkQuality",
+        "TranscriptionChunkConfig",
+        "to_dict",
+        "AudioAnalysis",
+        "to_dict",
+        "OptimalChunk",
+        "to_dict",
+        "AIAudioChunker",
+        "initialize"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "import time",
+        "import threading"
+      ]
+    },
+    "src/ai/whisper_transcriber.py": {
+      "purpose": "Module with 17 exports and 19 imports",
+      "type": "python_module",
+      "size": 24728,
+      "lines": 699,
+      "exports": [
+        "ModelSize",
+        "WhisperModel",
+        "TranscriptionConfig",
+        "to_dict",
+        "TranscriptionResult",
+        "to_dict",
+        "WhisperTranscriber",
+        "initialize",
+        "transcribe_audio",
+        "add_result_callback"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "import threading",
+        "import time"
+      ]
+    },
+    "src/ai/transcript_formatter.py": {
+      "purpose": "Module with 17 exports and 19 imports",
+      "type": "python_module",
+      "size": 39209,
+      "lines": 1061,
+      "exports": [
+        "OutputFormat",
+        "TimestampFormat",
+        "FormattingConfig",
+        "TranscriptSegment",
+        "TranscriptMetadata",
+        "FormattedTranscript",
+        "to_dict",
+        "TranscriptFormatter",
+        "initialize",
+        "format_transcript"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "import threading",
+        "import time"
+      ]
+    },
+    "src/analysis/__init__.py": {
+      "purpose": "Module with 11 exports and 9 imports",
+      "type": "python_module",
+      "size": 16696,
+      "lines": 444,
+      "exports": [
+        "create_analysis_system",
+        "IntegratedAnalyzer",
+        "analyze_audio_frame",
+        "start_processing",
+        "stop_processing",
+        "get_component",
+        "get_current_statistics",
+        "reset_all_components",
+        "create_integrated_analyzer",
+        "create_default_analysis_system"
+      ],
+      "imports": [
+        "import logging",
+        "from typing import Optional, Dict, Any",
+        "from .voice_activity_detector import (",
+        "from .speaker_detector import (",
+        "from .audio_chunker import ("
+      ]
+    },
+    "src/analysis/voice_activity_detector.py": {
+      "purpose": "Module with 22 exports and 11 imports",
+      "type": "python_module",
+      "size": 21391,
+      "lines": 560,
+      "exports": [
+        "VADMode",
+        "VADSensitivity",
+        "VADConfig",
+        "VADResult",
+        "to_dict",
+        "VoiceActivityDetector",
+        "add_voice_start_callback",
+        "add_voice_end_callback",
+        "add_result_callback",
+        "remove_callback"
+      ],
+      "imports": [
+        "import time",
+        "import threading",
+        "import logging",
+        "from typing import Dict, List, Optional, Callable, Any, Tuple",
+        "from dataclasses import dataclass, field"
+      ]
+    },
+    "src/analysis/statistics_collector.py": {
+      "purpose": "Module with 28 exports and 10 imports",
+      "type": "python_module",
+      "size": 38463,
+      "lines": 898,
+      "exports": [
+        "MetricType",
+        "IntervalType",
+        "StatisticsConfig",
+        "SpeakingTimeStats",
+        "to_dict",
+        "ParticipationMetrics",
+        "to_dict",
+        "AudioStatistics",
+        "to_dict",
+        "SpeakerEvent"
+      ],
+      "imports": [
+        "import time",
+        "import threading",
+        "import logging",
+        "from typing import Dict, List, Optional, Callable, Any, Tuple, Union",
+        "from dataclasses import dataclass, field"
+      ]
+    },
+    "src/analysis/audio_chunker.py": {
+      "purpose": "Module with 25 exports and 10 imports",
+      "type": "python_module",
+      "size": 32533,
+      "lines": 805,
+      "exports": [
+        "ChunkingStrategy",
+        "ChunkPriority",
+        "ChunkConfig",
+        "ChunkMetadata",
+        "to_dict",
+        "AudioChunk",
+        "get_duration_seconds",
+        "get_sample_rate",
+        "to_dict",
+        "AudioChunker"
+      ],
+      "imports": [
+        "import time",
+        "import threading",
+        "import logging",
+        "from typing import Dict, List, Optional, Callable, Any, Tuple, Union",
+        "from dataclasses import dataclass, field"
+      ]
+    },
+    "src/analysis/silence_detector.py": {
+      "purpose": "Module with 30 exports and 9 imports",
+      "type": "python_module",
+      "size": 41730,
+      "lines": 994,
+      "exports": [
+        "SilenceMethod",
+        "SilenceMode",
+        "TrimMode",
+        "SilenceThreshold",
+        "adjust_for_mode",
+        "SilenceConfig",
+        "SilenceResult",
+        "to_dict",
+        "SilenceSegment",
+        "to_dict"
+      ],
+      "imports": [
+        "import time",
+        "import threading",
+        "import logging",
+        "from typing import Dict, List, Optional, Callable, Any, Tuple, Union",
+        "from dataclasses import dataclass, field"
+      ]
+    },
+    "src/analysis/speaker_detector.py": {
+      "purpose": "Module with 23 exports and 12 imports",
+      "type": "python_module",
+      "size": 30679,
+      "lines": 788,
+      "exports": [
+        "SpeakerChangeMethod",
+        "SpeakerConfidence",
+        "SpeakerConfig",
+        "SpeakerFeatures",
+        "to_vector",
+        "SpeakerResult",
+        "to_dict",
+        "SpeakerChangeDetection",
+        "SpeakerDetector",
+        "add_speaker_change_callback"
+      ],
+      "imports": [
+        "import time",
+        "import threading",
+        "import logging",
+        "from typing import Dict, List, Optional, Callable, Any, Tuple, Union",
+        "from dataclasses import dataclass, field"
+      ]
+    },
+    "src/analysis/quality_assessor.py": {
+      "purpose": "Module with 23 exports and 10 imports",
+      "type": "python_module",
+      "size": 38072,
+      "lines": 923,
+      "exports": [
+        "QualityLevel",
+        "QualityMetric",
+        "QualityThresholds",
+        "QualityConfig",
+        "QualityMetrics",
+        "to_dict",
+        "QualityResult",
+        "get_quality_summary",
+        "get_primary_issues",
+        "QualityAssessor"
+      ],
+      "imports": [
+        "import time",
+        "import threading",
+        "import logging",
+        "from typing import Dict, List, Optional, Callable, Any, Tuple, Union",
+        "from dataclasses import dataclass, field"
+      ]
+    },
+    "src/recording/__init__.py": {
+      "purpose": "Module with 12 exports and 9 imports",
+      "type": "python_module",
+      "size": 13061,
+      "lines": 403,
+      "exports": [
+        "RecordingSystem",
+        "start_session",
+        "stop_session",
+        "pause_session",
+        "resume_session",
+        "get_session_status",
+        "get_storage_status",
+        "get_system_stats",
+        "shutdown",
+        "create_recording_system"
+      ],
+      "imports": [
+        "from src.recording import SessionManager, RecordingConfig",
+        "import logging",
+        "from typing import Dict, List, Optional, Any",
+        "from .session_manager import (",
+        "from .audio_recorder import ("
+      ]
+    },
+    "src/recording/audio_recorder.py": {
+      "purpose": "Module with 20 exports and 13 imports",
+      "type": "python_module",
+      "size": 31698,
+      "lines": 808,
+      "exports": [
+        "RecordingFormat",
+        "QualityPreset",
+        "RecordingState",
+        "RecordingConfig",
+        "RecordingInfo",
+        "AudioRecorder",
+        "set_audio_pipeline",
+        "set_preprocessor",
+        "set_level_monitor",
+        "add_recording_callback"
+      ],
+      "imports": [
+        "import os",
+        "import wave",
+        "import threading",
+        "import time",
+        "import logging"
+      ]
+    },
+    "src/recording/preprocessor.py": {
+      "purpose": "Module with 14 exports and 12 imports",
+      "type": "python_module",
+      "size": 31709,
+      "lines": 836,
+      "exports": [
+        "ProcessingMode",
+        "NoiseProfile",
+        "ProcessingConfig",
+        "QualityMetrics",
+        "AudioPreprocessor",
+        "add_quality_callback",
+        "add_processing_callback",
+        "apply_noise_reduction",
+        "normalize_audio",
+        "enhance_speech"
+      ],
+      "imports": [
+        "import numpy as np",
+        "import logging",
+        "import threading",
+        "import time",
+        "from typing import Dict, List, Optional, Callable, Any, Tuple"
+      ]
+    },
+    "src/recording/metadata_tracker.py": {
+      "purpose": "Module with 18 exports and 13 imports",
+      "type": "python_module",
+      "size": 33855,
+      "lines": 845,
+      "exports": [
+        "MetadataCategory",
+        "ParticipantInfo",
+        "AudioQualityMetrics",
+        "SystemPerformanceMetrics",
+        "ContextualMetadata",
+        "SessionMetadata",
+        "MetadataTracker",
+        "set_level_monitor",
+        "set_performance_monitor",
+        "track_session"
+      ],
+      "imports": [
+        "import json",
+        "import time",
+        "import uuid",
+        "import logging",
+        "import threading"
+      ]
+    },
+    "src/recording/storage_monitor.py": {
+      "purpose": "Module with 15 exports and 11 imports",
+      "type": "python_module",
+      "size": 24227,
+      "lines": 663,
+      "exports": [
+        "StorageAlert",
+        "StorageStatus",
+        "StorageStats",
+        "StorageConfig",
+        "AlertInfo",
+        "StorageMonitor",
+        "set_file_manager",
+        "add_alert_callback",
+        "start_monitoring",
+        "stop_monitoring"
+      ],
+      "imports": [
+        "import os",
+        "import shutil",
+        "import time",
+        "import threading",
+        "import logging"
+      ]
+    },
+    "src/recording/file_manager.py": {
+      "purpose": "Module with 14 exports and 12 imports",
+      "type": "python_module",
+      "size": 30410,
+      "lines": 777,
+      "exports": [
+        "OrganizationScheme",
+        "FileType",
+        "FileInfo",
+        "StorageConfig",
+        "FileManager",
+        "generate_filename",
+        "organize_files",
+        "cleanup_temp_files",
+        "get_file_info",
+        "create_temp_file"
+      ],
+      "imports": [
+        "import os",
+        "import shutil",
+        "import time",
+        "import hashlib",
+        "import json"
+      ]
+    },
+    "src/recording/session_manager.py": {
+      "purpose": "Module with 26 exports and 11 imports",
+      "type": "python_module",
+      "size": 30650,
+      "lines": 790,
+      "exports": [
+        "SessionState",
+        "SessionType",
+        "SessionConfig",
+        "SessionInfo",
+        "SessionManager",
+        "set_audio_recorder",
+        "set_metadata_tracker",
+        "set_storage_monitor",
+        "set_file_manager",
+        "add_state_callback"
+      ],
+      "imports": [
+        "import os",
+        "import json",
+        "import time",
+        "import uuid",
+        "import threading"
+      ]
+    },
+    "src/llm/__init__.py": {
+      "purpose": "Module with 16 exports and 10 imports",
+      "type": "python_module",
+      "size": 22960,
+      "lines": 703,
+      "exports": [
+        "LLMAnalysisSystem",
+        "initialize",
+        "analyze_meeting",
+        "extract_action_items",
+        "identify_topics",
+        "generate_summary",
+        "format_analysis_results",
+        "complete_analysis_workflow",
+        "add_analysis_callback",
+        "add_error_callback"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "from typing import Optional, Dict, Any, List, Callable, Union",
+        "from .local_llm_processor import ("
+      ]
+    },
+    "src/llm/action_item_extractor.py": {
+      "purpose": "Module with 14 exports and 11 imports",
+      "type": "python_module",
+      "size": 19737,
+      "lines": 541,
+      "exports": [
+        "Priority",
+        "Status",
+        "ActionItem",
+        "to_dict",
+        "ExtractorConfig",
+        "to_dict",
+        "ExtractorResult",
+        "to_dict",
+        "ActionItemExtractor",
+        "extract_action_items"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "import re",
+        "import json"
+      ]
+    },
+    "src/llm/topic_identifier.py": {
+      "purpose": "Module with 14 exports and 18 imports",
+      "type": "python_module",
+      "size": 27503,
+      "lines": 729,
+      "exports": [
+        "TopicType",
+        "ImportanceLevel",
+        "Topic",
+        "to_dict",
+        "TopicConfig",
+        "to_dict",
+        "TopicResult",
+        "to_dict",
+        "TopicIdentifier",
+        "identify_topics"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "import re",
+        "import json"
+      ]
+    },
+    "src/llm/local_llm_processor.py": {
+      "purpose": "Module with 19 exports and 19 imports",
+      "type": "python_module",
+      "size": 26768,
+      "lines": 746,
+      "exports": [
+        "ModelType",
+        "ProcessingMode",
+        "OutputFormat",
+        "LLMConfig",
+        "to_dict",
+        "LLMResult",
+        "to_dict",
+        "LocalLLMProcessor",
+        "initialize",
+        "generate"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "import threading",
+        "import time"
+      ]
+    },
+    "src/llm/output_formatter.py": {
+      "purpose": "Module with 13 exports and 13 imports",
+      "type": "python_module",
+      "size": 31560,
+      "lines": 874,
+      "exports": [
+        "OutputFormat",
+        "TemplateType",
+        "OutputConfig",
+        "to_dict",
+        "FormattedOutput",
+        "to_dict",
+        "OutputFormatter",
+        "format_output",
+        "save_to_file",
+        "get_status"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "import json",
+        "import re"
+      ]
+    },
+    "src/llm/prompt_templates.py": {
+      "purpose": "Module with 22 exports and 11 imports",
+      "type": "python_module",
+      "size": 25755,
+      "lines": 693,
+      "exports": [
+        "TemplateType",
+        "MeetingType",
+        "OutputFormat",
+        "TemplateConfig",
+        "to_dict",
+        "PromptTemplate",
+        "format_prompt",
+        "to_dict",
+        "PromptTemplateManager",
+        "get_template"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "import json",
+        "from typing import Dict, Any, List, Optional, Union"
+      ]
+    },
+    "src/llm/meeting_analyzer.py": {
+      "purpose": "Module with 16 exports and 17 imports",
+      "type": "python_module",
+      "size": 33978,
+      "lines": 938,
+      "exports": [
+        "AnalysisType",
+        "MeetingPhase",
+        "AnalysisConfig",
+        "to_dict",
+        "AnalysisResult",
+        "to_dict",
+        "MeetingAnalyzer",
+        "initialize",
+        "analyze_meeting",
+        "get_stats"
+      ],
+      "imports": [
+        "import os",
+        "import sys",
+        "import logging",
+        "import time",
+        "import json"
+      ]
+    },
+    "src/audio/__init__.py": {
+      "purpose": "Module with 8 exports and 6 imports",
+      "type": "python_module",
+      "size": 8385,
+      "lines": 330,
+      "exports": [
+        "create_audio_pipeline",
+        "setup_low_latency_audio",
+        "get_audio_system_status",
+        "apply_quality_preset",
+        "AudioPerformanceMonitor",
+        "increment",
+        "get_stats",
+        "get_performance_stats"
+      ],
+      "imports": [
+        "from .audio_pipeline import (",
+        "from .alsa_manager import (",
+        "from .latency_optimizer import (",
+        "from .format_converter import (",
+        "from .level_monitor import ("
+      ]
+    },
+    "src/audio/level_monitor.py": {
+      "purpose": "Module with 17 exports and 8 imports",
+      "type": "python_module",
+      "size": 22194,
+      "lines": 640,
+      "exports": [
+        "LevelScale",
+        "AlertType",
+        "AudioLevels",
+        "AudioAlert",
+        "MonitorConfig",
+        "LevelMonitor",
+        "add_level_callback",
+        "add_alert_callback",
+        "start_monitoring",
+        "stop_monitoring"
+      ],
+      "imports": [
+        "import numpy as np",
+        "import logging",
+        "import threading",
+        "import time",
+        "from typing import Dict, List, Optional, Callable, Any, Tuple"
+      ]
+    },
+    "src/audio/audio_pipeline.py": {
+      "purpose": "Module with 22 exports and 14 imports",
+      "type": "python_module",
+      "size": 19350,
+      "lines": 554,
+      "exports": [
+        "PipelineState",
+        "AudioFormat",
+        "AudioConfig",
+        "PipelineMetrics",
+        "AudioPipeline",
+        "alsa_manager",
+        "latency_optimizer",
+        "format_converter",
+        "level_monitor",
+        "add_state_callback"
+      ],
+      "imports": [
+        "import threading",
+        "import time",
+        "import logging",
+        "import queue",
+        "import numpy as np"
+      ]
+    },
+    "src/audio/latency_optimizer.py": {
+      "purpose": "Module with 16 exports and 8 imports",
+      "type": "python_module",
+      "size": 25051,
+      "lines": 652,
+      "exports": [
+        "LatencyComponent",
+        "OptimizationLevel",
+        "LatencyMeasurement",
+        "LatencyProfile",
+        "OptimizationConfig",
+        "LatencyOptimizer",
+        "add_latency_callback",
+        "add_optimization_callback",
+        "measure_latency",
+        "optimize_buffers"
+      ],
+      "imports": [
+        "import time",
+        "import threading",
+        "import logging",
+        "import subprocess",
+        "import numpy as np"
+      ]
+    },
+    "src/audio/alsa_manager.py": {
+      "purpose": "Module with 13 exports and 7 imports",
+      "type": "python_module",
+      "size": 18544,
+      "lines": 559,
+      "exports": [
+        "DeviceType",
+        "DeviceState",
+        "AudioDevice",
+        "ALSAConfig",
+        "ALSAManager",
+        "refresh_devices",
+        "get_audio_devices",
+        "get_bluetooth_devices",
+        "get_default_device",
+        "configure_alsa"
+      ],
+      "imports": [
+        "import subprocess",
+        "import logging",
+        "import os",
+        "import re",
+        "from typing import Dict, List, Optional, Tuple, Any"
+      ]
+    },
+    "src/audio/format_converter.py": {
+      "purpose": "Module with 12 exports and 7 imports",
+      "type": "python_module",
+      "size": 17761,
+      "lines": 479,
+      "exports": [
+        "SampleRate",
+        "BitDepth",
+        "ChannelConfig",
+        "AudioFormat",
+        "ConversionSpec",
+        "FormatConverter",
+        "get_supported_formats",
+        "validate_format",
+        "convert_audio",
+        "codec_conversion"
+      ],
+      "imports": [
+        "import numpy as np",
+        "import logging",
+        "from typing import Dict, List, Optional, Tuple, Any, Union",
+        "from enum import Enum",
+        "from dataclasses import dataclass"
+      ]
+    }
+  },
+  "dependencies": {
+    "python": [],
+    "ai_models": []
+  },
+  "ai_integration": {}
+}

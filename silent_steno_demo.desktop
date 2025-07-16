@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Silent Steno Demo
+Comment=Test the Silent Steno Live Session Interface
+Exec=/usr/bin/python3 /home/mmariani/projects/thesilentsteno/demo_live_session.py
+Icon=/home/mmariani/projects/thesilentsteno/assets/icon.png
+Path=/home/mmariani/projects/thesilentsteno
+Terminal=false
+StartupNotify=true
+Categories=AudioVideo;Recording;Development;
+Keywords=meeting;recorder;transcription;bluetooth;ai;
+StartupWMClass=Silent Steno Demo
