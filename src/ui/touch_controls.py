@@ -81,7 +81,7 @@ class TouchButton(ButtonBehavior, Widget):
         
         self.config = config or TouchConfig()
         self.text = text
-        self.state = TouchControlState.NORMAL
+        self.control_state = TouchControlState.NORMAL
         
         # Ensure minimum size
         self.size_hint = (None, None)
@@ -94,6 +94,9 @@ class TouchButton(ButtonBehavior, Widget):
         self.is_long_press = False
         self.tap_count = 0
         self.last_tap_time = 0
+        
+        # Control state (use different name to avoid conflict with Kivy's state)
+        self.control_state = TouchControlState.NORMAL
         
         # Visual elements
         self.background_color = [0.2, 0.2, 0.2, 1]
@@ -138,7 +141,7 @@ class TouchButton(ButtonBehavior, Widget):
         if not self.collide_point(*touch.pos):
             return False
         
-        if self.state == TouchControlState.DISABLED:
+        if self.control_state == TouchControlState.DISABLED:
             return False
         
         # Grab touch
@@ -167,10 +170,10 @@ class TouchButton(ButtonBehavior, Widget):
         
         # Check if still within button bounds
         if not self.collide_point(*touch.pos):
-            if self.state == TouchControlState.PRESSED:
+            if self.control_state == TouchControlState.PRESSED:
                 self._set_state(TouchControlState.NORMAL)
         else:
-            if self.state == TouchControlState.NORMAL:
+            if self.control_state == TouchControlState.NORMAL:
                 self._set_state(TouchControlState.PRESSED)
         
         return True
@@ -205,7 +208,7 @@ class TouchButton(ButtonBehavior, Widget):
     
     def _check_long_press(self, dt):
         """Check for long press"""
-        if self.state == TouchControlState.PRESSED:
+        if self.control_state == TouchControlState.PRESSED:
             self.is_long_press = True
             self._provide_feedback(FeedbackType.HAPTIC, 'long_press')
     
@@ -245,11 +248,11 @@ class TouchButton(ButtonBehavior, Widget):
     
     def _set_state(self, new_state: TouchControlState):
         """Change button state"""
-        if self.state == new_state:
+        if self.control_state == new_state:
             return
         
-        old_state = self.state
-        self.state = new_state
+        old_state = self.control_state
+        self.control_state = new_state
         
         # Update visual appearance
         self._update_appearance()
@@ -259,9 +262,9 @@ class TouchButton(ButtonBehavior, Widget):
     
     def _update_appearance(self):
         """Update button appearance based on state"""
-        if self.state == TouchControlState.PRESSED:
+        if self.control_state == TouchControlState.PRESSED:
             color = self.press_color
-        elif self.state == TouchControlState.DISABLED:
+        elif self.control_state == TouchControlState.DISABLED:
             color = self.disabled_color
         else:
             color = self.background_color
