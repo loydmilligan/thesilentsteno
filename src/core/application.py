@@ -20,6 +20,7 @@ from .config import ConfigManager
 from .errors import ErrorHandler, handle_error
 from .monitoring import PerformanceMonitor, start_monitoring
 from .registry import ComponentRegistry, register_component, get_component
+from ..system.device_manager import DeviceManager, DeviceConfig, create_device_manager, load_device_config
 
 
 class AppState(Enum):
@@ -67,6 +68,9 @@ class ComponentInfo:
 @dataclass
 class ApplicationConfig:
     """Application configuration."""
+    name: str = "SilentSteno"
+    version: str = "0.1.0"
+    environment: str = "development"
     startup_timeout: float = 30.0
     shutdown_timeout: float = 15.0
     health_check_interval: float = 30.0
@@ -75,6 +79,8 @@ class ApplicationConfig:
     enable_auto_recovery: bool = True
     log_level: str = "INFO"
     thread_pool_size: int = 4
+    device_management_enabled: bool = True
+    device_config_path: str = "config/device_config.json"
 
 
 class ComponentManager:
@@ -332,7 +338,11 @@ class ApplicationController:
     """
     
     def __init__(self, config: Dict[str, Any] = None):
-        self.config = ApplicationConfig(**(config or {}))
+        # Extract application config from nested structure
+        config_dict = config or {}
+        app_config = config_dict.get('application', {})
+        
+        self.config = ApplicationConfig(**app_config)
         self.state = AppState.UNINITIALIZED
         self.event_bus = create_event_bus()
         self.error_handler = ErrorHandler()
@@ -340,6 +350,7 @@ class ApplicationController:
         self.performance_monitor = None
         self.health_check_timer = None
         self.thread_pool = ThreadPoolExecutor(max_workers=self.config.thread_pool_size)
+        self.device_manager: Optional[DeviceManager] = None
         
         self.logger = logging.getLogger(__name__)
         self._state_lock = threading.RLock()
@@ -371,6 +382,10 @@ class ApplicationController:
                             self.performance_monitor,
                             startup_priority=10
                         )
+                
+                # Initialize device management if enabled
+                if self.config.device_management_enabled:
+                    self._initialize_device_management()
                 
                 # Initialize component registry integration
                 register_component("application_controller", self)
@@ -488,13 +503,19 @@ class ApplicationController:
     
     def get_status(self) -> Dict[str, Any]:
         """Get comprehensive application status."""
-        return {
+        status = {
             "application_state": self.state.value,
             "uptime": time.time() - getattr(self, '_start_time', time.time()),
             "components": self.component_manager.get_component_status(),
             "performance": getattr(self.performance_monitor, 'get_metrics', lambda: {})(),
             "configuration": self.config.__dict__
         }
+        
+        # Add device management status if enabled
+        if self.device_manager:
+            status["device_management"] = self.device_manager.get_management_summary()
+        
+        return status
     
     def _register_core_components(self):
         """Register core application components."""
@@ -602,6 +623,55 @@ class ApplicationController:
                         "error": str(e),
                         "timestamp": current_time
                     }))
+    
+    def _initialize_device_management(self):
+        """Initialize device management system."""
+        try:
+            # Load device configuration
+            config_path = Path(self.config.device_config_path)
+            if config_path.exists():
+                device_config = load_device_config(str(config_path))
+            else:
+                device_config = DeviceConfig()
+                self.logger.info("Using default device configuration")
+            
+            # Create device manager
+            self.device_manager = create_device_manager(device_config)
+            
+            # Register device manager as a component
+            self.component_manager.register_component(
+                "device_manager",
+                self.device_manager,
+                startup_priority=15,
+                health_check=lambda: self.device_manager.get_device_status().state.value != "critical"
+            )
+            
+            # Set up device event handlers
+            self.device_manager.add_event_callback("health_alert", self._handle_device_health_alert)
+            self.device_manager.add_event_callback("maintenance_start", self._handle_maintenance_mode)
+            self.device_manager.add_event_callback("maintenance_end", self._handle_maintenance_mode)
+            self.device_manager.add_event_callback("error", self._handle_device_error)
+            
+            self.logger.info("Device management system initialized")
+            
+        except Exception as e:
+            self.logger.error(f"Failed to initialize device management: {e}")
+            raise
+    
+    def _handle_device_health_alert(self, event_type: str, data: Dict[str, Any]):
+        """Handle device health alerts."""
+        self.logger.warning(f"Device health alert: {data}")
+        self.event_bus.publish(Event("device.health_alert", data))
+    
+    def _handle_maintenance_mode(self, event_type: str, data: Dict[str, Any]):
+        """Handle device maintenance mode changes."""
+        self.logger.info(f"Device maintenance mode: {event_type} - {data}")
+        self.event_bus.publish(Event(f"device.{event_type}", data))
+    
+    def _handle_device_error(self, event_type: str, data: Dict[str, Any]):
+        """Handle device management errors."""
+        self.logger.error(f"Device error: {data}")
+        self.event_bus.publish(Event("device.error", data))
 
 
 # Factory functions

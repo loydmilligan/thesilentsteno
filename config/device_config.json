@@ -1,0 +1,24 @@
+{
+  "device_name": "Silent Steno Device",
+  "device_id": "silentst-001",
+  "location": "Home Office",
+  "timezone": "UTC",
+  
+  "health_check_interval": 60,
+  "health_monitoring_enabled": true,
+  
+  "storage_cleanup_enabled": true,
+  "storage_cleanup_threshold": 85.0,
+  
+  "auto_update_enabled": true,
+  "update_channel": "stable",
+  
+  "remote_management_enabled": true,
+  "remote_management_port": 8443,
+  
+  "auto_diagnostics_enabled": true,
+  "diagnostics_schedule": "daily",
+  
+  "factory_reset_enabled": true,
+  "backup_before_reset": true
+}
