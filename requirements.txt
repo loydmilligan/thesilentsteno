@@ -1,0 +1,28 @@
+# The Silent Steno - Walking Skeleton Requirements
+# Python 3.8+
+
+# Core UI Framework
+kivy>=2.0.0
+
+# Audio Recording and Playback
+sounddevice>=0.4.6
+numpy>=1.19.0
+soundfile>=0.12.1
+
+# Speech Recognition
+openai-whisper>=20230314
+
+# AI Dependencies (for existing whisper_transcriber.py)
+torch>=2.0.0
+transformers>=4.30.0
+scipy>=1.10.0
+librosa>=0.10.0
+scikit-learn>=1.2.0
+psutil>=5.9.0
+
+# Standard library modules (already included with Python)
+# - wave
+# - json
+# - threading
+# - datetime
+# - subprocess

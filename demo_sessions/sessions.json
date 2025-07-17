@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "timestamp": "2025-07-16T15:32:05.482961",
+    "wav_file": "demo_sessions/recording_20250716_153205.wav",
+    "duration": 4.963990929705216,
+    "samples": 218912,
+    "transcript": "Dummy transcript (Whisper integration pending)"
+  },
+  {
+    "id": 2,
+    "timestamp": "2025-07-16T15:34:52.133848",
+    "wav_file": "demo_sessions/recording_20250716_153452.wav",
+    "duration": 4.198004535147392,
+    "samples": 185132,
+    "transcript": "Dummy transcript (Whisper integration pending)"
+  },
+  {
+    "id": 3,
+    "timestamp": "2025-07-16T15:35:04.960871",
+    "wav_file": "demo_sessions/recording_20250716_153504.wav",
+    "duration": 4.623990929705215,
+    "samples": 203918,
+    "transcript": "Dummy transcript (Whisper integration pending)"
+  },
+  {
+    "id": 4,
+    "timestamp": "2025-07-16T15:35:22.693515",
+    "wav_file": "demo_sessions/recording_20250716_153522.wav",
+    "duration": 4.310997732426304,
+    "samples": 190115,
+    "transcript": "Dummy transcript (Whisper integration pending)"
+  },
+  {
+    "id": 5,
+    "timestamp": "2025-07-16T23:55:18.770198",
+    "wav_file": "demo_sessions/recording_20250716_235518.wav",
+    "duration": 4.198004535147392,
+    "samples": 185132,
+    "transcript": "Dummy transcript (Whisper integration pending)"
+  },
+  {
+    "id": 6,
+    "timestamp": "2025-07-16T23:57:04.027135",
+    "wav_file": "demo_sessions/recording_20250716_235704.wav",
+    "duration": 5.642993197278911,
+    "samples": 248856,
+    "transcript": "Dummy transcript (Whisper integration pending)"
+  },
+  {
+    "id": 7,
+    "timestamp": "2025-07-16T23:58:29.967463",
+    "wav_file": "demo_sessions/recording_20250716_235829.wav",
+    "duration": 8.542993197278912,
+    "samples": 376746,
+    "transcript": ""
+  }
+]
