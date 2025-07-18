@@ -167,9 +167,14 @@ class SimpleRecordingUI(BoxLayout):
             font_size=dp(14),
             halign='left',
             valign='top',
-            text_size=(None, None)
+            markup=True  # Enable markup for formatting
         )
-        self.transcript_label.bind(size=self.transcript_label.setter('text_size'))
+        
+        # Bind text_size to widget size for proper text wrapping
+        def update_text_size(instance, value):
+            instance.text_size = (value[0], None)
+        
+        self.transcript_label.bind(size=update_text_size)
         self.add_widget(self.transcript_label)
         
         logger.info("UI components built successfully")

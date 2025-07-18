@@ -83,7 +83,7 @@ class SimpleAudioRecorder:
         
         # Initialize data integration adapter
         if DATA_INTEGRATION_AVAILABLE:
-            self.data_adapter = DataIntegrationAdapter(self.sessions_file, use_database=True)
+            self.data_adapter = DataIntegrationAdapter(self.sessions_file, use_database=False)
             logger.info("Data integration adapter initialized")
         else:
             self.data_adapter = None
@@ -237,7 +237,7 @@ class SimpleAudioRecorder:
                     logger.info(f"Recording completed: {duration:.2f} seconds, {len(self.audio_data)} samples")
                 else:
                     self.audio_data = None
-                    logger.warning("No audio data recorded")
+                    logger.warning("No audio data recorded - check microphone input")
                     
         except Exception as e:
             logger.error(f"Error during audio recording: {e}")

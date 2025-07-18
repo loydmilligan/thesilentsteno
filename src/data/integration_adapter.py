@@ -104,7 +104,7 @@ class DataIntegrationAdapter:
                     title=session_data.get('title', 'Recording Session'),
                     description=session_data.get('description', 'Audio recording session'),
                     start_time=datetime.fromisoformat(session_data.get('timestamp', datetime.now().isoformat())),
-                    status='active',  # Use string instead of enum
+                    status='completed',  # Use valid SessionStatus enum value
                     duration_seconds=session_data.get('duration', 0.0),
                     file_path=session_data.get('wav_file', ''),
                     sample_rate=session_data.get('sample_rate', 44100),

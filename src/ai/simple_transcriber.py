@@ -21,6 +21,8 @@ import logging
 from typing import Optional, Dict, Any, List
 from abc import ABC, abstractmethod
 import time
+import json
+import re
 
 # Import data integration adapter
 try:
@@ -199,6 +201,10 @@ class SimpleTranscriber:
         
         if self.data_adapter:
             logger.info("Data integration adapter connected to transcriber")
+        
+        # Simple AI analysis capabilities
+        self.enable_analysis = True
+        self.analysis_cache = {}
     
     def transcribe_audio(self, wav_file: str) -> str:
         """
@@ -295,6 +301,160 @@ class SimpleTranscriber:
         })
         
         return backends
+    
+    def analyze_transcript(self, transcript: str) -> Dict[str, Any]:
+        """
+        Perform simple AI analysis on transcript
+        
+        Args:
+            transcript: The transcript text to analyze
+            
+        Returns:
+            Dictionary containing analysis results
+        """
+        if not self.enable_analysis or not transcript:
+            return {}
+        
+        # Check cache first
+        transcript_hash = hash(transcript)
+        if transcript_hash in self.analysis_cache:
+            return self.analysis_cache[transcript_hash]
+        
+        logger.info("Performing simple AI analysis on transcript")
+        
+        # Simple analysis methods
+        analysis = {
+            'summary': self._generate_simple_summary(transcript),
+            'key_phrases': self._extract_key_phrases(transcript),
+            'word_count': len(transcript.split()),
+            'duration_estimate': self._estimate_duration(transcript),
+            'sentiment': self._analyze_sentiment(transcript),
+            'topics': self._identify_topics(transcript),
+            'action_items': self._extract_action_items(transcript),
+            'questions': self._extract_questions(transcript)
+        }
+        
+        # Cache the result
+        self.analysis_cache[transcript_hash] = analysis
+        
+        return analysis
+    
+    def _generate_simple_summary(self, transcript: str) -> str:
+        """Generate a simple summary of the transcript"""
+        sentences = transcript.split('.')
+        if len(sentences) <= 3:
+            return transcript
+        
+        # Take first and last sentences, plus any with key words
+        key_words = ['important', 'decision', 'action', 'next', 'follow', 'meeting', 'discuss']
+        
+        summary_sentences = []
+        summary_sentences.append(sentences[0])  # First sentence
+        
+        # Add sentences with key words
+        for sentence in sentences[1:-1]:
+            if any(word in sentence.lower() for word in key_words):
+                summary_sentences.append(sentence)
+                if len(summary_sentences) >= 3:
+                    break
+        
+        # Add last sentence if we have room
+        if len(summary_sentences) < 3:
+            summary_sentences.append(sentences[-1])
+        
+        return '. '.join(summary_sentences).strip()
+    
+    def _extract_key_phrases(self, transcript: str) -> List[str]:
+        """Extract key phrases from transcript"""
+        # Simple keyword extraction
+        words = transcript.lower().split()
+        
+        # Common important phrases in meetings
+        key_patterns = [
+            r'\b(?:action item|todo|follow up|next step)\b',
+            r'\b(?:important|critical|urgent|priority)\b',
+            r'\b(?:decision|agree|disagree|consensus)\b',
+            r'\b(?:schedule|deadline|timeline|date)\b',
+            r'\b(?:budget|cost|expense|price)\b',
+            r'\b(?:team|member|person|individual)\b'
+        ]
+        
+        phrases = []
+        for pattern in key_patterns:
+            matches = re.findall(pattern, transcript.lower())
+            phrases.extend(matches)
+        
+        return list(set(phrases))
+    
+    def _estimate_duration(self, transcript: str) -> float:
+        """Estimate duration based on word count (rough approximation)"""
+        word_count = len(transcript.split())
+        # Assume average speaking rate of 150 words per minute
+        return word_count / 150.0
+    
+    def _analyze_sentiment(self, transcript: str) -> str:
+        """Simple sentiment analysis"""
+        positive_words = ['good', 'great', 'excellent', 'success', 'agree', 'yes', 'positive', 'happy']
+        negative_words = ['bad', 'terrible', 'problem', 'issue', 'disagree', 'no', 'negative', 'concerned']
+        
+        words = transcript.lower().split()
+        positive_count = sum(1 for word in words if word in positive_words)
+        negative_count = sum(1 for word in words if word in negative_words)
+        
+        if positive_count > negative_count:
+            return "positive"
+        elif negative_count > positive_count:
+            return "negative"
+        else:
+            return "neutral"
+    
+    def _identify_topics(self, transcript: str) -> List[str]:
+        """Identify key topics discussed"""
+        # Simple topic identification using common meeting topics
+        topics = []
+        topic_keywords = {
+            'project': ['project', 'development', 'build', 'create'],
+            'meeting': ['meeting', 'discussion', 'talk', 'review'],
+            'budget': ['budget', 'money', 'cost', 'expense', 'financial'],
+            'timeline': ['timeline', 'schedule', 'deadline', 'date', 'time'],
+            'team': ['team', 'people', 'members', 'staff', 'colleague'],
+            'strategy': ['strategy', 'plan', 'approach', 'method']
+        }
+        
+        words = transcript.lower().split()
+        for topic, keywords in topic_keywords.items():
+            if any(keyword in words for keyword in keywords):
+                topics.append(topic)
+        
+        return topics
+    
+    def _extract_action_items(self, transcript: str) -> List[str]:
+        """Extract potential action items"""
+        # Look for action-oriented phrases
+        action_patterns = [
+            r'(?:need to|should|must|will|going to|have to)\s+([^.]+)',
+            r'(?:action item|todo|follow up):\s*([^.]+)',
+            r'(?:assign|responsible for|take care of)\s+([^.]+)'
+        ]
+        
+        action_items = []
+        for pattern in action_patterns:
+            matches = re.findall(pattern, transcript, re.IGNORECASE)
+            action_items.extend(matches)
+        
+        return [item.strip() for item in action_items if item.strip()]
+    
+    def _extract_questions(self, transcript: str) -> List[str]:
+        """Extract questions from transcript"""
+        # Find sentences ending with question marks
+        sentences = transcript.split('.')
+        questions = []
+        
+        for sentence in sentences:
+            if '?' in sentence:
+                questions.append(sentence.strip())
+        
+        return questions
 
 
 # Convenience function to create transcriber (matches minimal_demo.py usage)
