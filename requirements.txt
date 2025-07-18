@@ -24,6 +24,10 @@ psutil>=5.9.0
 sqlalchemy>=1.4.0
 alembic>=1.10.0
 
+# Web UI
+flask>=2.3.0
+flask-socketio>=5.3.0
+
 # Standard library modules (already included with Python)
 # - wave
 # - json
