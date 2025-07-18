@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Silent Steno Demo
+Comment=The Silent Steno - Refactored Walking Skeleton Demo
+Exec=/home/mmariani/projects/thesilentsteno/run_demo_local.sh
+Icon=/home/mmariani/projects/thesilentsteno/icon.png
+Terminal=false
+StartupNotify=true
+Categories=AudioVideo;Audio;
+Path=/home/mmariani/projects/thesilentsteno
+StartupWMClass=Silent Steno Demo

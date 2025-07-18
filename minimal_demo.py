@@ -33,29 +33,15 @@ import json
 import numpy as np
 from datetime import datetime
 
-# Audio recording
+# Check for audio availability (delegated to SimpleAudioRecorder)
 try:
     import sounddevice as sd
     AUDIO_AVAILABLE = True
 except ImportError:
     AUDIO_AVAILABLE = False
     print("sounddevice not installed. Run: pip install sounddevice")
-    
-# Audio file handling
-try:
-    import wave
-    WAVE_AVAILABLE = True
-except ImportError:
-    WAVE_AVAILABLE = False
-    print("wave module not available")
 
-# Speech recognition - use Whisper directly for the walking skeleton
-try:
-    import whisper
-    WHISPER_AVAILABLE = True
-except ImportError:
-    WHISPER_AVAILABLE = False
-    print("Whisper not installed. Run: pip install openai-whisper")
+# Speech recognition is now handled by the extracted transcriber module
 
 # Configure Kivy for Pi 5 touchscreen (1024x600)
 Config.set('graphics', 'width', '1024')
@@ -91,20 +77,20 @@ class MinimalDemo(App):
         super().__init__()
         self.title = "Silent Steno - Minimal Demo"
         
-        # Application state
-        self.recording_state = "idle"  # idle, recording, processing, ready
-        self.current_session = None
-        self.sessions_dir = "demo_sessions"
+        # Import the extracted modules
+        import sys
+        sys.path.append('/home/mmariani/projects/thesilentsteno/src')
+        from recording.simple_audio_recorder import SimpleAudioRecorder
+        from ai.simple_transcriber import SimpleTranscriber
         
-        # Audio recording settings
-        self.sample_rate = 44100  # Hz (44.1kHz standard rate)
-        self.channels = 1  # Mono recording
-        self.audio_data = None
-        self.recording_thread = None
-        self.is_recording = False
-        self.input_device = None
-        self.output_device = None
-        self.current_wav_file = None
+        # Initialize audio recorder (extracted from this file)
+        self.audio_recorder = SimpleAudioRecorder("demo_sessions")
+        
+        # Initialize transcriber (extracted from this file)
+        self.transcriber = SimpleTranscriber(backend="cpu", model_name="base")
+        
+        # Application state - simplified, delegate to audio_recorder
+        self.current_session = None
         
         # UI Components (will be created in build())
         self.start_button = None
@@ -113,114 +99,42 @@ class MinimalDemo(App):
         self.status_label = None
         self.transcript_label = None
         
-        # Ensure sessions directory exists
-        os.makedirs(self.sessions_dir, exist_ok=True)
-        
-        # Session persistence
-        self.sessions_file = os.path.join(self.sessions_dir, "sessions.json")
-        self.sessions = self.load_sessions()
-        
-        # Whisper model (loaded on first use)
-        self.whisper_model = None
-        self.model_name = "base"  # base model is ~140MB, good balance of speed/accuracy
-        
-        # Check audio availability
-        if not AUDIO_AVAILABLE:
-            logger.error("Audio recording not available - sounddevice not installed")
-        else:
-            logger.info("Audio recording available")
-            # List available audio devices and find CMTECK ZM350
-            try:
-                devices = sd.query_devices()
-                logger.info(f"Available audio devices: {len(devices)}")
-                for i, device in enumerate(devices):
-                    logger.info(f"Device {i}: {device['name']} - In: {device['max_input_channels']} Out: {device['max_output_channels']}")
-                    
-                    # Look for USB Audio Device for INPUT
-                    if "USB Audio Device" in device['name'] and device['max_input_channels'] > 0:
-                        self.input_device = i
-                        logger.info(f"Found USB Audio Device input: {i}")
-                    
-                    # Look for built-in speakers for OUTPUT (HDMI)
-                    if "vc4-hdmi" in device['name'] and device['max_output_channels'] > 0:
-                        self.output_device = i
-                        logger.info(f"Found HDMI audio output: {i} - {device['name']}")
-                    
-                    # Fallback to first available input/output
-                    if self.input_device is None and device['max_input_channels'] > 0:
-                        self.input_device = i
-                    if self.output_device is None and device['max_output_channels'] > 0:
-                        self.output_device = i
-                        
-                logger.info(f"Selected input device: {self.input_device}")
-                logger.info(f"Selected output device: {self.output_device}")
-                
-            except Exception as e:
-                logger.error(f"Error querying audio devices: {e}")
-        
-        logger.info("MinimalDemo initialized")
+        logger.info("MinimalDemo initialized with extracted recording module")
     
-    def load_sessions(self):
-        """Load sessions from JSON file"""
-        try:
-            if os.path.exists(self.sessions_file):
-                with open(self.sessions_file, 'r') as f:
-                    sessions = json.load(f)
-                logger.info(f"Loaded {len(sessions)} sessions")
-                return sessions
-            else:
-                logger.info("No existing sessions file, starting fresh")
-                return []
-        except Exception as e:
-            logger.error(f"Error loading sessions: {e}")
-            return []
+    def get_sessions(self):
+        """Get all sessions from audio recorder"""
+        return self.audio_recorder.get_all_sessions()
     
-    def save_sessions(self):
-        """Save sessions to JSON file"""
-        try:
-            with open(self.sessions_file, 'w') as f:
-                json.dump(self.sessions, f, indent=2)
-            logger.info(f"Saved {len(self.sessions)} sessions")
-        except Exception as e:
-            logger.error(f"Error saving sessions: {e}")
-    
-    def add_session(self, wav_file, duration, samples):
-        """Add a new session to the history"""
-        session = {
-            'id': len(self.sessions) + 1,
-            'timestamp': datetime.now().isoformat(),
-            'wav_file': wav_file,
-            'duration': duration,
-            'samples': samples,
-            'transcript': 'Dummy transcript (Whisper integration pending)'
-        }
-        self.sessions.append(session)
-        self.save_sessions()
-        logger.info(f"Added session {session['id']}: {wav_file}")
-        return session
+    def update_session_transcript(self, transcript):
+        """Update the last session with transcript"""
+        sessions = self.audio_recorder.get_all_sessions()
+        if sessions:
+            # Update the last session's transcript
+            sessions[-1]['transcript'] = transcript
+            # Save back to audio recorder
+            self.audio_recorder.sessions = sessions
+            self.audio_recorder._save_sessions()
+            logger.info("Session transcript updated")
     
     def transcribe_audio(self, wav_file):
-        """Transcribe audio using Whisper directly"""
-        if not WHISPER_AVAILABLE:
-            logger.warning("Whisper not available for transcription")
-            return "Whisper not installed - cannot transcribe"
+        """Transcribe audio using extracted transcriber module"""
+        if not self.transcriber.is_available():
+            logger.warning("Transcriber not available")
+            return "Transcription not available - check backend"
         
         try:
-            # Load model on first use
-            if self.whisper_model is None:
-                self.status_label.text = f"Loading Whisper {self.model_name} model (first time only)..."
-                logger.info(f"Loading Whisper model: {self.model_name}")
-                self.whisper_model = whisper.load_model(self.model_name)
-                logger.info("Whisper model loaded successfully")
-            
-            # Transcribe the audio
+            # Update status (transcriber handles model loading internally)
             self.status_label.text = "Transcribing audio..."
             logger.info(f"Transcribing: {wav_file}")
             
-            result = self.whisper_model.transcribe(wav_file)
-            transcript = result["text"].strip()
+            # Use the extracted transcriber
+            transcript = self.transcriber.transcribe_audio(wav_file)
             
-            logger.info(f"Transcription complete: {len(transcript)} characters")
+            if transcript and not transcript.startswith("Transcription error"):
+                logger.info(f"Transcription complete: {len(transcript)} characters")
+            else:
+                logger.warning(f"Transcription issue: {transcript}")
+            
             return transcript
             
         except Exception as e:
@@ -303,9 +217,10 @@ class MinimalDemo(App):
         main_layout.add_widget(transcript_title)
         
         # Show session history in transcript area
-        if self.sessions:
-            history_text = f"Previous sessions: {len(self.sessions)}\n"
-            history_text += f"Last session: {self.sessions[-1]['timestamp'][:19]}\n\n"
+        sessions = self.get_sessions()
+        if sessions:
+            history_text = f"Previous sessions: {len(sessions)}\n"
+            history_text += f"Last session: {sessions[-1]['timestamp'][:19]}\n\n"
             history_text += "Start recording to see transcription here."
         else:
             history_text = "No previous sessions.\nStart recording to see transcription here."
@@ -327,8 +242,9 @@ class MinimalDemo(App):
         """Start recording audio"""
         logger.info("Start recording button pressed")
         
-        if self.recording_state != "idle":
-            logger.warning(f"Cannot start recording, current state: {self.recording_state}")
+        recording_state = self.audio_recorder.get_recording_state()
+        if recording_state != "idle":
+            logger.warning(f"Cannot start recording, current state: {recording_state}")
             return
         
         if not AUDIO_AVAILABLE:
@@ -336,187 +252,85 @@ class MinimalDemo(App):
             logger.error("Cannot start recording - sounddevice not available")
             return
         
-        # Update UI state
-        self.recording_state = "recording"
-        self.start_button.disabled = True
-        self.stop_button.disabled = False
-        self.play_button.disabled = True
-        self.status_label.text = "Recording... Press Stop to finish"
+        # Generate session ID
+        import uuid
+        session_id = str(uuid.uuid4())[:8]
         
-        # Start recording in a separate thread
-        self.is_recording = True
-        self.recording_thread = threading.Thread(target=self._record_audio, daemon=True)
-        self.recording_thread.start()
-        
-        logger.info("Audio recording started")
-        
-    def _record_audio(self):
-        """Record audio in background thread"""
-        try:
-            # Initialize recording buffer
-            recording_buffer = []
+        # Start recording using extracted audio recorder
+        if self.audio_recorder.start_recording(session_id):
+            # Update UI state
+            self.current_session = session_id
+            self.start_button.disabled = True
+            self.stop_button.disabled = False
+            self.play_button.disabled = True
+            self.status_label.text = "Recording... Press Stop to finish"
             
-            def audio_callback(indata, frames, time, status):
-                """Callback for audio recording"""
-                if status:
-                    logger.warning(f"Audio callback status: {status}")
-                if self.is_recording:
-                    recording_buffer.append(indata.copy())
-            
-            # Start recording stream
-            with sd.InputStream(
-                callback=audio_callback,
-                channels=self.channels,
-                samplerate=self.sample_rate,
-                dtype=np.float32,
-                device=self.input_device
-            ):
-                logger.info(f"Recording stream started: {self.sample_rate}Hz, {self.channels} channels")
-                
-                # Keep recording until stopped
-                while self.is_recording:
-                    sd.sleep(100)  # Sleep for 100ms
-                
-                # Combine all recorded chunks
-                if recording_buffer:
-                    self.audio_data = np.concatenate(recording_buffer, axis=0)
-                    duration = len(self.audio_data) / self.sample_rate
-                    logger.info(f"Recording completed: {duration:.2f} seconds, {len(self.audio_data)} samples")
-                else:
-                    self.audio_data = None
-                    logger.warning("No audio data recorded")
-                    
-        except Exception as e:
-            logger.error(f"Error during audio recording: {e}")
-            self.audio_data = None
-            
-            # Update UI on main thread
-            error_msg = str(e)  # Capture the error message
-            Clock.schedule_once(lambda dt: self._recording_error(error_msg), 0)
+            logger.info(f"Audio recording started with session: {session_id}")
+        else:
+            self.status_label.text = "Failed to start recording"
+            logger.error("Failed to start recording")
         
     def stop_recording(self, instance):
         """Stop recording audio"""
         logger.info("Stop recording button pressed")
         
-        if self.recording_state != "recording":
-            logger.warning(f"Cannot stop recording, current state: {self.recording_state}")
+        recording_state = self.audio_recorder.get_recording_state()
+        if recording_state != "recording":
+            logger.warning(f"Cannot stop recording, current state: {recording_state}")
             return
         
-        # Stop the recording
-        self.is_recording = False
+        # Stop recording using extracted audio recorder
+        recording_info = self.audio_recorder.stop_recording()
         
-        # Update UI state
-        self.recording_state = "processing"
-        self.stop_button.disabled = True
-        self.status_label.text = "Processing recording..."
-        
-        # Wait for recording thread to finish, then process
-        Clock.schedule_once(self._check_recording_finished, 0.1)
-        
-        logger.info("Recording stop requested")
-        
-    def _check_recording_finished(self, dt):
-        """Check if recording thread has finished"""
-        if self.recording_thread and self.recording_thread.is_alive():
-            # Still recording, check again in 100ms
-            Clock.schedule_once(self._check_recording_finished, 0.1)
+        if recording_info:
+            # Update UI state
+            self.stop_button.disabled = True
+            self.status_label.text = f"Recording complete: {recording_info['duration']:.1f} seconds"
+            
+            # Process the recording
+            self._process_recording_result(recording_info)
+            
+            logger.info(f"Recording stopped successfully: {recording_info['wav_file']}")
         else:
-            # Recording finished, process the results
-            self._process_recording()
-            
-    def _process_recording(self):
-        """Process the completed recording"""
-        if self.audio_data is not None:
-            duration = len(self.audio_data) / self.sample_rate
-            logger.info(f"Processing recording: {duration:.2f} seconds")
-            
-            # Update status
-            self.status_label.text = f"Recording complete: {duration:.1f} seconds"
-            
-            # Simulate processing delay then show results
-            Clock.schedule_once(self.finish_processing, 1.0)
-        else:
-            logger.error("No audio data to process")
             self.status_label.text = "Recording failed - no audio data"
             self._reset_to_idle()
-            
-    def _recording_error(self, error_msg):
-        """Handle recording errors (called from main thread)"""
-        logger.error(f"Recording error: {error_msg}")
-        self.status_label.text = f"Recording error: {error_msg}"
-        self._reset_to_idle()
+            logger.error("Recording stop failed")
         
-    def _reset_to_idle(self):
-        """Reset UI to idle state"""
-        self.recording_state = "idle"
-        self.start_button.disabled = False
-        self.stop_button.disabled = True
-        self.play_button.disabled = True
-        self.is_recording = False
-        self.audio_data = None  # Clear previous recording
-        
-    def finish_processing(self, dt):
-        """Finish processing and show results"""
-        logger.info("Processing finished")
-        
-        # Update UI state
-        self.recording_state = "ready"
-        self.start_button.disabled = False
-        self.play_button.disabled = False
-        
-        if self.audio_data is not None:
-            duration = len(self.audio_data) / self.sample_rate
-            samples = len(self.audio_data)
-            
-            self.status_label.text = f"Recording ready: {duration:.1f}s, {samples} samples"
+    def _process_recording_result(self, recording_info):
+        """Process the recording result from audio recorder"""
+        try:
+            # Update UI with recording info
+            self.start_button.disabled = False
+            self.play_button.disabled = False
             
             # Show recording info in transcript area
             transcript_info = f"""[{datetime.now().strftime('%H:%M:%S')}] Recording completed successfully.
 
-Duration: {duration:.2f} seconds
-Samples: {samples:,}
-Sample Rate: {self.sample_rate:,} Hz
-Channels: {self.channels}
+Duration: {recording_info['duration']:.2f} seconds
+Samples: {recording_info['samples']:,}
+Sample Rate: {recording_info['sample_rate']:,} Hz
+Channels: {recording_info['channels']}
 
 Transcription: Loading..."""
             
             self.transcript_label.text = transcript_info
-            logger.info(f"Recording ready: {duration:.2f}s, {samples} samples")
-        else:
-            self.status_label.text = "No recording data available"
-            self.transcript_label.text = "No recording data to process."
             
-        # Save to WAV file
-        if self.audio_data is not None and WAVE_AVAILABLE:
-            try:
-                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                wav_filename = os.path.join(self.sessions_dir, f"recording_{timestamp}.wav")
-                
-                # Convert float32 to int16 for WAV file
-                audio_int16 = (self.audio_data * 32767).astype(np.int16)
-                
-                with wave.open(wav_filename, 'wb') as wav_file:
-                    wav_file.setnchannels(self.channels)
-                    wav_file.setsampwidth(2)  # 2 bytes for int16
-                    wav_file.setframerate(self.sample_rate)
-                    wav_file.writeframes(audio_int16.tobytes())
-                
-                self.current_wav_file = wav_filename
-                logger.info(f"Saved recording to: {wav_filename}")
-                
-                # Add to session history
-                duration = len(self.audio_data) / self.sample_rate
-                session = self.add_session(wav_filename, duration, len(self.audio_data))
-                
-                self.transcript_label.text += f"\n\nRecording saved to: {wav_filename}"
-                self.transcript_label.text += f"\nSession ID: {session['id']}"
-                
-                # Start transcription in background
-                threading.Thread(target=self._transcribe_in_background, 
-                               args=(wav_filename,), daemon=True).start()
-            except Exception as e:
-                logger.error(f"Error saving WAV file: {e}")
-                self.current_wav_file = None
+            # Start transcription in background
+            threading.Thread(target=self._transcribe_in_background, 
+                           args=(recording_info['wav_file'],), daemon=True).start()
+            
+            logger.info(f"Processing complete for: {recording_info['wav_file']}")
+            
+        except Exception as e:
+            logger.error(f"Error processing recording result: {e}")
+            self._reset_to_idle()
+            
+    def _reset_to_idle(self):
+        """Reset UI to idle state"""
+        self.audio_recorder.reset_to_idle()
+        self.start_button.disabled = False
+        self.stop_button.disabled = True
+        self.play_button.disabled = True
         
     def _transcribe_in_background(self, wav_filename):
         """Transcribe audio in background thread"""
@@ -525,14 +339,20 @@ Transcription: Loading..."""
             
             # Update UI on main thread
             def update_transcript(dt):
-                if "Transcription error" not in transcript:
+                logger.info(f"Updating transcript UI with: {transcript[:100]}...")
+                if "Transcription error" not in transcript and transcript:
                     self.transcript_label.text += f"\n\n--- TRANSCRIPT ---\n{transcript}"
-                    # Update session with real transcript
-                    if self.sessions:
-                        self.sessions[-1]['transcript'] = transcript
-                        self.save_sessions()
-                else:
+                    # Update session with real transcript using audio recorder
+                    self.update_session_transcript(transcript)
+                    # Update status to show completion
+                    self.status_label.text = "Transcription complete. Ready for next recording."
+                elif transcript:
                     self.transcript_label.text += f"\n\n{transcript}"
+                    self.status_label.text = "Transcription error. Ready for next recording."
+                else:
+                    self.transcript_label.text += "\n\n--- TRANSCRIPT ---\n[No speech detected or transcription was empty]"
+                    self.status_label.text = "No speech detected. Ready for next recording."
+                    logger.warning("Transcript was empty")
                     
             Clock.schedule_once(update_transcript, 0)
             
@@ -543,94 +363,42 @@ Transcription: Loading..."""
         """Play back recorded audio"""
         logger.info("Play audio button pressed")
         
-        if self.recording_state != "ready":
-            logger.warning(f"Cannot play audio, current state: {self.recording_state}")
+        recording_state = self.audio_recorder.get_recording_state()
+        if recording_state != "ready":
+            logger.warning(f"Cannot play audio, current state: {recording_state}")
             return
+        
+        # Use extracted audio recorder for playback
+        if self.audio_recorder.play_recording():
+            # Update UI
+            self.play_button.disabled = True
+            self.start_button.disabled = True
+            self.status_label.text = "Playing audio..."
             
-        if self.audio_data is None:
-            logger.warning("No audio data to play")
+            # Re-enable buttons after a short delay (playback is async)
+            Clock.schedule_once(self._finish_playback, 2.0)
+            
+            logger.info("Audio playback started")
+        else:
             self.status_label.text = "No audio data to play"
-            return
-            
-        if not AUDIO_AVAILABLE:
-            self.status_label.text = "Audio playback not available"
-            return
+            logger.warning("No audio available for playback")
         
-        # Update UI
-        self.play_button.disabled = True
-        self.start_button.disabled = True
-        self.status_label.text = "Playing audio..."
-        
-        # Play audio in background thread
-        playback_thread = threading.Thread(target=self._play_audio_thread, daemon=True)
-        playback_thread.start()
-        
-        logger.info("Audio playback started")
-        
-    def _play_audio_thread(self):
-        """Play audio in background thread"""
-        try:
-            # Use aplay to play the WAV file if available
-            if self.current_wav_file and os.path.exists(self.current_wav_file):
-                import subprocess
-                logger.info(f"Playing WAV file with aplay: {self.current_wav_file}")
-                
-                # Use aplay command - let it use default device (USB when connected)
-                result = subprocess.run(
-                    ['aplay', self.current_wav_file],
-                    capture_output=True,
-                    text=True
-                )
-                
-                if result.returncode != 0:
-                    logger.error(f"aplay failed: {result.stderr}")
-                    raise Exception(f"aplay failed: {result.stderr}")
-                else:
-                    logger.info("aplay playback completed successfully")
-            else:
-                # Fallback to sounddevice if no WAV file
-                logger.warning("No WAV file available, trying direct playback")
-                sd.play(self.audio_data, samplerate=self.sample_rate)
-                sd.wait()
-            
-            # Update UI on main thread
-            Clock.schedule_once(self.finish_playback, 0)
-            
-        except Exception as e:
-            logger.error(f"Error during audio playback: {e}")
-            error_msg = str(e)  # Capture the error message
-            Clock.schedule_once(lambda dt: self._playback_error(error_msg), 0)
-    
-    def _playback_error(self, error_msg):
-        """Handle playback errors (called from main thread)"""
-        logger.error(f"Playback error: {error_msg}")
-        self.status_label.text = f"Playback error: {error_msg}"
-        self.play_button.disabled = False
-        self.start_button.disabled = False
-        
-    def finish_playback(self, dt):
+    def _finish_playback(self, dt):
         """Finish playback and reset UI"""
         logger.info("Audio playback finished")
         self.status_label.text = "Playback complete. Ready for next recording."
         self.play_button.disabled = False
         self.start_button.disabled = False
-        # Reset to idle state for next recording
-        self.recording_state = "idle"
         
     def on_stop(self):
         """Cleanup when app stops"""
         logger.info("Application stopping...")
         
-        # Stop any active recording
-        if self.is_recording:
-            self.is_recording = False
+        # Stop any active recording using audio recorder
+        recording_state = self.audio_recorder.get_recording_state()
+        if recording_state == "recording":
             logger.info("Stopping active recording...")
-            
-            # Wait for recording thread to finish
-            if self.recording_thread and self.recording_thread.is_alive():
-                self.recording_thread.join(timeout=2.0)
-                if self.recording_thread.is_alive():
-                    logger.warning("Recording thread did not finish cleanly")
+            self.audio_recorder.stop_recording()
         
         return super().on_stop()
 
