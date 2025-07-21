@@ -29,7 +29,7 @@ Thumbs.db
 logs/
 
 # Audio files (if you want to exclude test recordings)
-# *.wav
+*.wav
 # *.flac
 
 # Temporary files

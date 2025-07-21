@@ -9,10 +9,24 @@
         "Unknown"
       ],
       "wav_file": "",
-      "transcript": [],
-      "summary": "Processing...",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "Good to see everyone. Today, I want to review our progress on enhancing the fleet management system, especially for our larger card lock clients. Brenda, can you kick us off? Absolutely, Alex. We've made significant headway. The new dashboard for fleet managers is getting positive feedback. It really streamlines their fuel consumption tracking and driver activity. Uh, we're seeing, you know, improved efficiency metrics across the board for the pilot group. That's great to hear. Charles, from your end, what are the key performance indicators showing in terms of, you know, how it impacts their bottom line? Well, Alex, based on the preliminary data, we're observing about a 7% reduction in operational overhead for fleets utilizing the full suite, primarily due to optimized rooting and reduced manual data entry. However, the onboarding process for new clients, particularly with legacy system integrations,"
+        }
+      ],
+      "summary": "Good to see everyone.  However, the onboarding process for new clients, particularly with legacy system integrations,",
       "action_items": [],
-      "key_moments": []
+      "key_moments": [],
+      "sentiment": "positive",
+      "topics": [
+        "meeting"
+      ],
+      "questions": [
+        "Brenda, can you kick us off? Absolutely, Alex",
+        "Charles, from your end, what are the key performance indicators showing in terms of, you know, how it impacts their bottom line? Well, Alex, based on the preliminary data, we're observing about a 7% reduction in operational overhead for fleets utilizing the full suite, primarily due to optimized rooting and reduced manual data entry"
+      ]
     }
   ]
 }
