@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Silent Steno (Web UI)
+Comment=Modern web-based interface for The Silent Steno AI Meeting Recorder
+Exec=lxterminal -e "bash -c 'cd /home/mmariani/projects/thesilentsteno && ./start_webui.sh; exec bash'"
+Icon=applications-multimedia
+Path=/home/mmariani/projects/thesilentsteno
+Terminal=false
+StartupNotify=true
+Categories=AudioVideo;Audio;Recorder;Office;
+MimeType=audio/wav;audio/x-wav;audio/flac;
+Keywords=audio;recording;transcription;AI;meeting;bluetooth;
+StartupWMClass=Silent Steno Web UI

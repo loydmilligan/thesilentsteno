@@ -2,7 +2,7 @@
 <html lang="en" class="h-full bg-slate-900">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Silent Steno - Meeting Recorder</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
@@ -41,6 +41,29 @@
             0% { transform: scale(1); opacity: 1; }
             80% { transform: scale(1.2); opacity: 0; }
             100% { transform: scale(1.2); opacity: 0; }
+        }
+        
+        /* Pi Touchscreen Optimizations (1024x600) */
+        @media (max-width: 1024px) and (max-height: 600px) {
+            .text-4xl { font-size: 2rem; }
+            .text-3xl { font-size: 1.75rem; }
+            .text-2xl { font-size: 1.5rem; }
+            .text-xl { font-size: 1.25rem; }
+            .p-8 { padding: 1rem; }
+            .p-6 { padding: 0.75rem; }
+            .p-4 { padding: 0.5rem; }
+            .mb-8 { margin-bottom: 1rem; }
+            .mb-6 { margin-bottom: 0.75rem; }
+            .space-y-6 > * + * { margin-top: 0.75rem; }
+            .h-64 { height: 12rem; }
+            .min-h-screen { min-height: 600px; }
+        }
+        
+        /* Touch-friendly buttons */
+        .touch-button {
+            min-height: 48px;
+            min-width: 48px;
+            touch-action: manipulation;
         }
     </style>
 </head>
@@ -86,7 +109,7 @@
                 </div>
                 <div class="relative">
                     <div class="absolute inset-0 bg-red-600 rounded-full pulse-ring"></div>
-                    <button id="stop-recording-button" class="relative bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all">
+                    <button id="stop-recording-button" class="touch-button relative bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all">
                         Stop Recording
                     </button>
                 </div>
@@ -159,7 +182,7 @@
 
         <!-- Floating Action Button -->
         <div id="fab-container" class="absolute bottom-6 right-6 z-20">
-            <button id="record-button" class="bg-violet-600 hover:bg-violet-700 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-all duration-200">
+            <button id="record-button" class="touch-button bg-violet-600 hover:bg-violet-700 active:bg-violet-800 text-white p-6 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-all duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
             </button>
         </div>
