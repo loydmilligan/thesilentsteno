@@ -309,8 +309,9 @@ class SimpleAudioRecorder:
                 self.sessions.append(session_record)
                 self._save_sessions()
                 
-                # Update state
-                self.recording_state = "ready"
+                # Update state - reset to idle for next recording
+                self.recording_state = "idle"
+                self.current_session = None
                 
                 logger.info(f"Recording saved: {wav_filename} ({duration:.2f}s)")
                 return session_record

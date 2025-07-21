@@ -1,147 +1,18 @@
-[
-  {
-    "id": 1,
-    "timestamp": "2025-07-16T15:32:05.482961",
-    "wav_file": "demo_sessions/recording_20250716_153205.wav",
-    "duration": 4.963990929705216,
-    "samples": 218912,
-    "transcript": "Dummy transcript (Whisper integration pending)"
-  },
-  {
-    "id": 2,
-    "timestamp": "2025-07-16T15:34:52.133848",
-    "wav_file": "demo_sessions/recording_20250716_153452.wav",
-    "duration": 4.198004535147392,
-    "samples": 185132,
-    "transcript": "Dummy transcript (Whisper integration pending)"
-  },
-  {
-    "id": 3,
-    "timestamp": "2025-07-16T15:35:04.960871",
-    "wav_file": "demo_sessions/recording_20250716_153504.wav",
-    "duration": 4.623990929705215,
-    "samples": 203918,
-    "transcript": "Dummy transcript (Whisper integration pending)"
-  },
-  {
-    "id": 4,
-    "timestamp": "2025-07-16T15:35:22.693515",
-    "wav_file": "demo_sessions/recording_20250716_153522.wav",
-    "duration": 4.310997732426304,
-    "samples": 190115,
-    "transcript": "Dummy transcript (Whisper integration pending)"
-  },
-  {
-    "id": 5,
-    "timestamp": "2025-07-16T23:55:18.770198",
-    "wav_file": "demo_sessions/recording_20250716_235518.wav",
-    "duration": 4.198004535147392,
-    "samples": 185132,
-    "transcript": "Dummy transcript (Whisper integration pending)"
-  },
-  {
-    "id": 6,
-    "timestamp": "2025-07-16T23:57:04.027135",
-    "wav_file": "demo_sessions/recording_20250716_235704.wav",
-    "duration": 5.642993197278911,
-    "samples": 248856,
-    "transcript": "Dummy transcript (Whisper integration pending)"
-  },
-  {
-    "id": 7,
-    "timestamp": "2025-07-16T23:58:29.967463",
-    "wav_file": "demo_sessions/recording_20250716_235829.wav",
-    "duration": 8.542993197278912,
-    "samples": 376746,
-    "transcript": ""
-  },
-  {
-    "id": 8,
-    "timestamp": "2025-07-17T00:26:45.037381",
-    "wav_file": "demo_sessions/recording_20250717_002645.wav",
-    "duration": 2.995986394557823,
-    "samples": 132123,
-    "transcript": "on the same day as Henler had opened Dachau."
-  },
-  {
-    "id": 9,
-    "session_id": "test-123",
-    "timestamp": "2025-07-17T11:55:22.009693",
-    "wav_file": "demo_sessions/recording_20250717_115522.wav",
-    "duration": 1.976984126984127,
-    "samples": 87185,
-    "sample_rate": 44100,
-    "channels": 1,
-    "transcript": null
-  },
-  {
-    "id": 10,
-    "session_id": "25722fa7",
-    "timestamp": "2025-07-17T13:03:13.037335",
-    "wav_file": "demo_sessions/recording_20250717_130313.wav",
-    "duration": 5.408004535147392,
-    "samples": 238493,
-    "sample_rate": 44100,
-    "channels": 1,
-    "transcript": "Tishimus"
-  },
-  {
-    "id": 11,
-    "session_id": "dcd25170",
-    "timestamp": "2025-07-17T13:28:44.463801",
-    "wav_file": "demo_sessions/recording_20250717_132844.wav",
-    "duration": 4.980997732426304,
-    "samples": 219662,
-    "sample_rate": 44100,
-    "channels": 1,
-    "transcript": "11 weeks later. Once you click."
-  },
-  {
-    "id": 12,
-    "session_id": "99e9d605",
-    "timestamp": "2025-07-17T13:29:14.971857",
-    "wav_file": "demo_sessions/recording_20250717_132914.wav",
-    "duration": 11.250997732426304,
-    "samples": 496169,
-    "sample_rate": 44100,
-    "channels": 1,
-    "transcript": "her empty stomach was familiar enough, from her days spent roaming America. Only the swaying of the scaffold beneath her feet proved she was not on the hard frozen earth of the high planes."
-  },
-  {
-    "id": 13,
-    "session_id": "a0b7322b",
-    "timestamp": "2025-07-17T13:30:33.953738",
-    "wav_file": "demo_sessions/recording_20250717_133033.wav",
-    "duration": 3.6839909297052156,
-    "samples": 162464,
-    "sample_rate": 44100,
-    "channels": 1,
-    "transcript": "steaming rows from them when there was a heat underway. And when the wind..."
-  },
-  {
-    "id": 14,
-    "session_id": "test-integration-1752785748.157515",
-    "timestamp": "2025-07-17T13:55:48.157526",
-    "title": "Data Integration Test Session",
-    "wav_file": "",
-    "duration": 5.0,
-    "samples": 0,
-    "sample_rate": 44100,
-    "channels": 1,
-    "transcript": "Updated transcript for integration test",
-    "metadata": {}
-  },
-  {
-    "id": 15,
-    "session_id": "test-integration-1752785921.489335",
-    "timestamp": "2025-07-17T13:58:41.489345",
-    "title": "Data Integration Test Session",
-    "wav_file": "",
-    "duration": 5.0,
-    "samples": 0,
-    "sample_rate": 44100,
-    "channels": 1,
-    "transcript": "Updated transcript for integration test",
-    "metadata": {}
-  }
-]
+{
+  "sessions": [
+    {
+      "session_id": "skeleton_1753134602",
+      "timestamp": "2025-07-21T14:51:05.574940",
+      "duration": 62.650997732426305,
+      "title": "Recording 2025-07-21 14:51",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "",
+      "transcript": [],
+      "summary": "Processing...",
+      "action_items": [],
+      "key_moments": []
+    }
+  ]
+}

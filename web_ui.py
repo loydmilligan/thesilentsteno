@@ -165,8 +165,31 @@ def stop_recording():
         if info:
             recording_state['is_recording'] = False
             
-            # Start transcription
+            # Create new session entry
             session_id = recording_state['current_session_id']
+            
+            # Reset current session ID for next recording
+            recording_state['current_session_id'] = None
+            sessions = load_sessions()
+            
+            # Create new session data
+            new_session = {
+                'session_id': session_id,
+                'timestamp': datetime.now().isoformat(),
+                'duration': info.get('duration', 0),
+                'title': f'Recording {datetime.now().strftime("%Y-%m-%d %H:%M")}',
+                'participants': ['Unknown'],
+                'wav_file': info.get('file_path', ''),
+                'transcript': [],
+                'summary': 'Processing...',
+                'action_items': [],
+                'key_moments': []
+            }
+            
+            sessions.append(new_session)
+            save_sessions(sessions)
+            
+            # Start transcription
             threading.Thread(target=transcribe_recording, args=(session_id,), daemon=True).start()
             
             socketio.emit('recording_stopped', {'session_id': session_id, 'info': info})
@@ -212,9 +235,18 @@ def transcribe_recording(session_id: str):
         socketio.emit('transcription_started', {'session_id': session_id})
         
         if adapter:
-            transcript = adapter.transcribe_recording()
-            if transcript:
-                # Update session with transcript
+            # Get transcription result which includes analysis
+            result = adapter.transcribe_recording()
+            if result:
+                # Extract transcript text and analysis
+                if isinstance(result, dict):
+                    transcript = result.get('transcript', '')
+                    analysis = result.get('analysis', {})
+                else:
+                    transcript = str(result)
+                    analysis = {}
+                
+                # Update session with transcript and analysis
                 sessions = load_sessions()
                 for session in sessions:
                     if session.get('session_id') == session_id:
@@ -225,20 +257,33 @@ def transcribe_recording(session_id: str):
                                 'text': transcript
                             }
                         ]
-                        session['summary'] = transcript[:200] + '...' if len(transcript) > 200 else transcript
+                        
+                        # Update with AI analysis
+                        session['summary'] = analysis.get('summary', transcript[:200] + '...' if len(transcript) > 200 else transcript)
+                        session['action_items'] = analysis.get('action_items', [])
+                        session['sentiment'] = analysis.get('sentiment', 'neutral')
+                        session['topics'] = analysis.get('topics', [])
+                        session['questions'] = analysis.get('questions', [])
+                        session['key_moments'] = [
+                            {'timestamp': '00:00:00', 'description': phrase} 
+                            for phrase in analysis.get('key_phrases', [])[:3]
+                        ]
                         break
                 
                 save_sessions(sessions)
                 socketio.emit('transcription_complete', {
                     'session_id': session_id,
-                    'transcript': transcript
+                    'transcript': transcript,
+                    'analysis': analysis
                 })
-                logger.info(f"Transcription completed for session {session_id}")
+                logger.info(f"Transcription and analysis completed for session {session_id}")
             else:
                 socketio.emit('transcription_error', {'session_id': session_id})
                 logger.error(f"Transcription failed for session {session_id}")
     except Exception as e:
         logger.error(f"Error transcribing session {session_id}: {e}")
+        logger.error(f"Exception type: {type(e).__name__}")
+        logger.error(f"Traceback: ", exc_info=True)
         socketio.emit('transcription_error', {'session_id': session_id, 'error': str(e)})
 
 # WebSocket events

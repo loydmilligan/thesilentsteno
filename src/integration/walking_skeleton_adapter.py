@@ -278,6 +278,8 @@ class WalkingSkeletonAdapter:
                     self._notify_state_change("stopped")
                     
                     logger.info(f"Stopped skeleton recording: {self.current_session_id}")
+                    # Reset current session ID for next recording
+                    self.current_session_id = None
                     return recording_info
                 else:
                     logger.error("Simple recorder returned None")
@@ -342,12 +344,14 @@ class WalkingSkeletonAdapter:
                         self._notify_transcription(enhanced_result)
                         logger.info(f"Skeleton transcription complete: {len(transcript)} chars")
                         logger.info(f"Analysis: {analysis.get('summary', 'No summary')[:100]}...")
-                        return transcript
+                        return enhanced_result
             
             return None
             
         except Exception as e:
             logger.error(f"Error transcribing recording: {e}")
+            logger.error(f"Exception type: {type(e).__name__}")
+            logger.error(f"Traceback: ", exc_info=True)
             return None
     
     def play_recording(self) -> bool:

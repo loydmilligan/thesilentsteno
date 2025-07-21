@@ -432,9 +432,10 @@ class SimpleTranscriber:
         """Extract potential action items"""
         # Look for action-oriented phrases
         action_patterns = [
-            r'(?:need to|should|must|will|going to|have to)\s+([^.]+)',
-            r'(?:action item|todo|follow up):\s*([^.]+)',
-            r'(?:assign|responsible for|take care of)\s+([^.]+)'
+            r'(?:need to|should|must|will|going to|have to|remember to)\s+([^.,?]+)',
+            r'(?:action item|todo|follow up|don\'t forget):\s*([^.,?]+)',
+            r'(?:assign|responsible for|take care of|make sure to)\s+([^.,?]+)',
+            r'(?:^|\s)(?:call|email|contact|send|schedule|book|prepare)\s+([^.,?]+)'
         ]
         
         action_items = []
@@ -442,7 +443,16 @@ class SimpleTranscriber:
             matches = re.findall(pattern, transcript, re.IGNORECASE)
             action_items.extend(matches)
         
-        return [item.strip() for item in action_items if item.strip()]
+        # Remove duplicates while preserving order
+        seen = set()
+        unique_items = []
+        for item in action_items:
+            item_clean = item.strip()
+            if item_clean and item_clean.lower() not in seen:
+                seen.add(item_clean.lower())
+                unique_items.append(item_clean)
+        
+        return unique_items
     
     def _extract_questions(self, transcript: str) -> List[str]:
         """Extract questions from transcript"""
