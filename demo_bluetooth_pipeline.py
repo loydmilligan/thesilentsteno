@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-The Silent Steno - Bluetooth Audio Pipeline Demo
+The Silent Steno - bluetooth Audio Pipeline Demo
 
 This demo shows how to set up the Pi as a Bluetooth audio proxy that:
 1. Receives audio from your phone (A2DP Sink)
