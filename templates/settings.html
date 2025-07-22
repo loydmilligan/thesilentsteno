@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-900">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Silent Steno - Settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Touch-friendly scrolling */
+        .touch-scrollable {
+            -webkit-overflow-scrolling: touch;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+        
+        /* Hide scrollbar on touch devices but keep functionality */
+        @media (pointer: coarse) {
+            .touch-scrollable::-webkit-scrollbar {
+                width: 0;
+                background: transparent;
+            }
+            .touch-scrollable {
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+        }
+        
+        /* Show thin scrollbar on desktop */
+        @media (pointer: fine) {
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #1e293b;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #475569;
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #64748b;
+            }
+        }
+
+        /* Large chunky UI elements for touch */
+        .chunky-toggle {
+            width: 80px;
+            height: 48px;
+            cursor: pointer;
+            user-select: none;
+            touch-action: manipulation;
+        }
+        
+        .chunky-toggle input {
+            display: none;
+        }
+        
+        .chunky-toggle .toggle-slider {
+            width: 100%;
+            height: 100%;
+            background: #475569;
+            border-radius: 24px;
+            position: relative;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .chunky-toggle .toggle-knob {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            left: 4px;
+            transition: left 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .chunky-toggle input:checked + .toggle-slider {
+            background: #3b82f6;
+        }
+        
+        .chunky-toggle input:checked + .toggle-slider .toggle-knob {
+            left: 36px;
+        }
+
+        /* Chunky dropdown styling */
+        .chunky-select {
+            height: 60px;
+            font-size: 18px;
+            font-weight: 600;
+            touch-action: manipulation;
+        }
+        
+        /* Chunky input styling */
+        .chunky-input {
+            height: 60px;
+            font-size: 18px;
+            touch-action: manipulation;
+        }
+        
+        /* Chunky slider styling */
+        .chunky-slider {
+            height: 12px;
+            -webkit-appearance: none;
+            background: #475569;
+            border-radius: 6px;
+            outline: none;
+            touch-action: manipulation;
+        }
+        
+        .chunky-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
+        }
+        
+        .chunky-slider::-moz-range-thumb {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Setting section headers */
+        .settings-section {
+            margin-bottom: 32px;
+        }
+        
+        .settings-section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 16px;
+            border: 2px solid #475569;
+        }
+
+        /* Setting rows */
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 20px;
+            background: #1e293b;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #374151;
+            touch-action: manipulation;
+        }
+        
+        .setting-row:hover {
+            background: #374151;
+        }
+
+        /* Message animations */
+        @keyframes slideIn {
+            0% { transform: translateX(100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOut {
+            0% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="h-full antialiased text-white bg-slate-900 touch-scrollable">
+    <div class="h-full w-full flex flex-col touch-scrollable">
+        
+        <!-- Header with Navigation -->
+        <div class="flex justify-between items-center py-4 px-6 bg-slate-800 border-b border-slate-700">
+            <div class="flex items-center gap-4">
+                <button onclick="goBack()" class="p-3 rounded-full hover:bg-slate-700 transition-colors" title="Go back">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                </button>
+                <h1 class="text-3xl font-bold text-white">Settings</h1>
+                <!-- Status indicator (recording timer if active) -->
+                <div id="header-recording-timer" class="hidden bg-red-600 hover:bg-red-700 text-white font-mono font-bold py-2 px-4 rounded-lg text-sm cursor-pointer transition-colors" onclick="stopRecordingFromHeader()" title="Click to stop recording">
+                    REC: <span id="header-timer-display">00:00:00</span>
+                    <svg class="inline-block w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18,18H6V6H18V18Z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="flex space-x-4">
+                <button onclick="goToControlsView()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg text-xl">
+                    Controls
+                </button>
+                <button onclick="window.location.href='/'" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-xl">
+                    Sessions
+                </button>
+                <button onclick="window.location.href='/dashboard'" class="bg-slate-700 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-lg text-xl">
+                    Dashboard
+                </button>
+            </div>
+        </div>
+        
+        <!-- Settings Content -->
+        <div class="flex-1 p-6 max-w-5xl mx-auto w-full touch-scrollable overflow-y-auto">
+            
+            <!-- Audio & Recording Settings -->
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <svg class="w-8 h-8 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M12,4A1,1 0 0,0 11,5V11A1,1 0 0,0 12,12A1,1 0 0,0 13,11V5A1,1 0 0,0 12,4M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
+                    </svg>
+                    <h2 class="text-2xl font-bold">Audio & Recording</h2>
+                </div>
+                
+                <!-- Microphone Source -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Microphone Source</label>
+                        <p class="text-slate-400 text-sm mt-1">Select audio input device</p>
+                    </div>
+                    <select id="microphone-source" class="chunky-select bg-slate-700 text-white border border-slate-600 rounded-lg px-4">
+                        <option value="default">Default Microphone</option>
+                        <option value="usb">USB Microphone</option>
+                        <option value="bluetooth">Bluetooth Headset</option>
+                        <option value="built-in">Built-in Microphone</option>
+                    </select>
+                </div>
+                
+                <!-- Input Gain -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Input Gain</label>
+                        <p class="text-slate-400 text-sm mt-1">Microphone recording volume</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-slate-400 text-sm">Low</span>
+                        <input type="range" id="input-gain" class="chunky-slider w-32" min="0" max="1" step="0.1" value="0.5">
+                        <span class="text-slate-400 text-sm">High</span>
+                        <span id="gain-value" class="text-white font-mono text-lg min-w-12">50%</span>
+                    </div>
+                </div>
+                
+                <!-- Noise Suppression -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Noise Suppression</label>
+                        <p class="text-slate-400 text-sm mt-1">Reduce background noise</p>
+                    </div>
+                    <select id="noise-suppression" class="chunky-select bg-slate-700 text-white border border-slate-600 rounded-lg px-4">
+                        <option value="off">Off</option>
+                        <option value="low" selected>Low</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                
+                <!-- Voice Activity Detection -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Voice Activity Detection</label>
+                        <p class="text-slate-400 text-sm mt-1">Auto-pause during silence</p>
+                    </div>
+                    <label class="chunky-toggle">
+                        <input type="checkbox" id="voice-activity-detection" checked>
+                        <div class="toggle-slider">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </label>
+                </div>
+                
+                <!-- Recording Format -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Recording Format</label>
+                        <p class="text-slate-400 text-sm mt-1">Audio quality and format</p>
+                    </div>
+                    <select id="recording-format" class="chunky-select bg-slate-700 text-white border border-slate-600 rounded-lg px-4">
+                        <option value="wav" selected>WAV - High Quality</option>
+                        <option value="mp3">MP3 - Compressed</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Transcription & AI Settings -->
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <svg class="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17,7H22V17H17V19A1,1 0 0,0 18,20H20V22H17.5C16.95,22 16,21.55 16,21C16,21.55 15.05,22 14.5,22H12V20H14A1,1 0 0,0 15,19V5A1,1 0 0,0 14,4H12V2H14.5C15.05,2 16,2.45 16,3C16,2.45 16.95,2 17.5,2H20V4H18A1,1 0 0,0 17,5V7M2,7H13V9H4V15H13V17H2V7M20,15V9H17V15H20Z"/>
+                    </svg>
+                    <h2 class="text-2xl font-bold">Transcription & AI</h2>
+                </div>
+                
+                <!-- Transcription Language -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Transcription Language</label>
+                        <p class="text-slate-400 text-sm mt-1">Primary spoken language</p>
+                    </div>
+                    <select id="transcription-language" class="chunky-select bg-slate-700 text-white border border-slate-600 rounded-lg px-4">
+                        <option value="en" selected>English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="it">Italian</option>
+                    </select>
+                </div>
+                
+                <!-- Whisper Model -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Whisper Model</label>
+                        <p class="text-slate-400 text-sm mt-1">Balance speed vs accuracy</p>
+                    </div>
+                    <select id="whisper-model" class="chunky-select bg-slate-700 text-white border border-slate-600 rounded-lg px-4">
+                        <option value="base" selected>Base - Fast</option>
+                        <option value="small">Small - Balanced</option>
+                        <option value="medium">Medium - Accurate</option>
+                        <option value="large">Large - Most Accurate</option>
+                    </select>
+                </div>
+                
+                <!-- Custom Vocabulary -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Custom Vocabulary</label>
+                        <p class="text-slate-400 text-sm mt-1">Comma-separated terms, acronyms</p>
+                    </div>
+                    <input type="text" id="custom-vocabulary" class="chunky-input bg-slate-700 text-white border border-slate-600 rounded-lg px-4 w-80" placeholder="API, ML, DevOps, ...">
+                </div>
+                
+                <!-- Automatic Punctuation -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Automatic Punctuation</label>
+                        <p class="text-slate-400 text-sm mt-1">AI-driven punctuation</p>
+                    </div>
+                    <label class="chunky-toggle">
+                        <input type="checkbox" id="automatic-punctuation" checked>
+                        <div class="toggle-slider">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </label>
+                </div>
+                
+                <!-- Post-Meeting Summaries -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Post-Meeting Summaries</label>
+                        <p class="text-slate-400 text-sm mt-1">Auto-generate after recording</p>
+                    </div>
+                    <label class="chunky-toggle">
+                        <input type="checkbox" id="post-meeting-summaries" checked>
+                        <div class="toggle-slider">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Interface Settings -->
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <svg class="w-8 h-8 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7.27C13.6,7.61 14,8.26 14,9A2,2 0 0,1 12,11A2,2 0 0,1 10,9A2,2 0 0,1 12,7A2,2 0 0,1 14,9A2,2 0 0,1 12,11A2,2 0 0,1 10,9C10,8.26 10.4,7.61 11,7.27V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M12,15A2,2 0 0,1 14,17A2,2 0 0,1 12,19A2,2 0 0,1 10,17A2,2 0 0,1 12,15M12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17A2,2 0 0,1 10,15A2,2 0 0,1 12,13Z"/>
+                    </svg>
+                    <h2 class="text-2xl font-bold">Interface</h2>
+                </div>
+                
+                <!-- Theme -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Theme</label>
+                        <p class="text-slate-400 text-sm mt-1">Display appearance</p>
+                    </div>
+                    <select id="theme" class="chunky-select bg-slate-700 text-white border border-slate-600 rounded-lg px-4">
+                        <option value="dark" selected>Dark Mode</option>
+                        <option value="light">Light Mode</option>
+                    </select>
+                </div>
+                
+                <!-- Font Size -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Font Size</label>
+                        <p class="text-slate-400 text-sm mt-1">Text size in transcript viewer</p>
+                    </div>
+                    <select id="font-size" class="chunky-select bg-slate-700 text-white border border-slate-600 rounded-lg px-4">
+                        <option value="small">Small</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+                
+                <!-- Auto-scroll Transcript -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Auto-scroll Transcript</label>
+                        <p class="text-slate-400 text-sm mt-1">Follow live transcription</p>
+                    </div>
+                    <label class="chunky-toggle">
+                        <input type="checkbox" id="auto-scroll-transcript" checked>
+                        <div class="toggle-slider">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex gap-6 pt-8 pb-4">
+                <button onclick="saveSettings()" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-xl text-xl transition-colors">
+                    Save Settings
+                </button>
+                <button onclick="resetToDefaults()" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-xl text-xl transition-colors">
+                    Reset to Defaults
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // WebSocket connection for real-time updates
+        const socket = io();
+        
+        // Settings state
+        let currentSettings = {};
+        
+        // Navigation functions
+        function goBack() {
+            window.history.back();
+        }
+        
+        function goToControlsView() {
+            window.location.href = '/?view=controls';
+        }
+        
+        // Load settings on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSettings();
+            setupEventListeners();
+        });
+        
+        function setupEventListeners() {
+            // Input gain slider
+            const gainSlider = document.getElementById('input-gain');
+            const gainValue = document.getElementById('gain-value');
+            
+            gainSlider.addEventListener('input', function() {
+                const value = Math.round(this.value * 100);
+                gainValue.textContent = value + '%';
+            });
+        }
+        
+        async function loadSettings() {
+            try {
+                const response = await fetch('/api/settings');
+                if (response.ok) {
+                    currentSettings = await response.json();
+                    populateSettingsForm(currentSettings);
+                } else {
+                    console.error('Failed to load settings');
+                }
+            } catch (error) {
+                console.error('Error loading settings:', error);
+            }
+        }
+        
+        function populateSettingsForm(settings) {
+            // Audio settings
+            if (settings.audio) {
+                document.getElementById('microphone-source').value = settings.audio.microphone_source || 'default';
+                document.getElementById('input-gain').value = settings.audio.input_gain || 0.5;
+                document.getElementById('gain-value').textContent = Math.round((settings.audio.input_gain || 0.5) * 100) + '%';
+                document.getElementById('noise-suppression').value = settings.audio.noise_suppression || 'low';
+                document.getElementById('voice-activity-detection').checked = settings.audio.voice_activity_detection !== false;
+                document.getElementById('recording-format').value = settings.audio.recording_format || 'wav';
+            }
+            
+            // Transcription settings
+            if (settings.transcription) {
+                document.getElementById('transcription-language').value = settings.transcription.transcription_language || 'en';
+                document.getElementById('whisper-model').value = settings.transcription.whisper_model || 'base';
+                document.getElementById('custom-vocabulary').value = settings.transcription.custom_vocabulary || '';
+                document.getElementById('automatic-punctuation').checked = settings.transcription.automatic_punctuation !== false;
+                document.getElementById('post-meeting-summaries').checked = settings.transcription.post_meeting_summaries !== false;
+            }
+            
+            // Interface settings
+            if (settings.interface) {
+                document.getElementById('theme').value = settings.interface.theme || 'dark';
+                document.getElementById('font-size').value = settings.interface.font_size || 'medium';
+                document.getElementById('auto-scroll-transcript').checked = settings.interface.auto_scroll_transcript !== false;
+            }
+        }
+        
+        function collectSettingsFromForm() {
+            return {
+                audio: {
+                    microphone_source: document.getElementById('microphone-source').value,
+                    input_gain: parseFloat(document.getElementById('input-gain').value),
+                    noise_suppression: document.getElementById('noise-suppression').value,
+                    voice_activity_detection: document.getElementById('voice-activity-detection').checked,
+                    recording_format: document.getElementById('recording-format').value
+                },
+                transcription: {
+                    transcription_language: document.getElementById('transcription-language').value,
+                    whisper_model: document.getElementById('whisper-model').value,
+                    custom_vocabulary: document.getElementById('custom-vocabulary').value,
+                    automatic_punctuation: document.getElementById('automatic-punctuation').checked,
+                    post_meeting_summaries: document.getElementById('post-meeting-summaries').checked
+                },
+                interface: {
+                    theme: document.getElementById('theme').value,
+                    font_size: document.getElementById('font-size').value,
+                    auto_scroll_transcript: document.getElementById('auto-scroll-transcript').checked
+                }
+            };
+        }
+        
+        async function saveSettings() {
+            try {
+                const settings = collectSettingsFromForm();
+                
+                const response = await fetch('/api/settings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(settings)
+                });
+                
+                if (response.ok) {
+                    showMessage('Settings saved successfully!', 'success');
+                    currentSettings = settings;
+                } else {
+                    showMessage('Failed to save settings', 'error');
+                }
+            } catch (error) {
+                console.error('Error saving settings:', error);
+                showMessage('Error saving settings', 'error');
+            }
+        }
+        
+        async function resetToDefaults() {
+            if (confirm('Are you sure you want to reset all settings to defaults? This cannot be undone.')) {
+                try {
+                    const response = await fetch('/api/settings/reset', {
+                        method: 'POST'
+                    });
+                    
+                    if (response.ok) {
+                        showMessage('Settings reset to defaults', 'success');
+                        loadSettings(); // Reload the form with defaults
+                    } else {
+                        showMessage('Failed to reset settings', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error resetting settings:', error);
+                    showMessage('Error resetting settings', 'error');
+                }
+            }
+        }
+        
+        // Show message to user
+        function showMessage(message, type) {
+            const messageEl = document.createElement('div');
+            messageEl.className = `message ${type}`;
+            messageEl.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 16px 24px;
+                border-radius: 12px;
+                color: white;
+                font-weight: bold;
+                z-index: 1000;
+                max-width: 400px;
+                animation: slideIn 0.3s ease-out;
+                font-size: 18px;
+            `;
+            
+            if (type === 'success') {
+                messageEl.style.backgroundColor = '#10B981';
+            } else if (type === 'error') {
+                messageEl.style.backgroundColor = '#EF4444'; 
+            } else {
+                messageEl.style.backgroundColor = '#6B7280';
+            }
+            
+            messageEl.textContent = message;
+            document.body.appendChild(messageEl);
+            
+            setTimeout(() => {
+                messageEl.style.animation = 'slideOut 0.3s ease-in forwards';
+                setTimeout(() => {
+                    if (messageEl.parentNode) {
+                        messageEl.parentNode.removeChild(messageEl);
+                    }
+                }, 300);
+            }, 4000);
+        }
+        
+        // Stop recording from header timer (if active)
+        async function stopRecordingFromHeader() {
+            try {
+                const response = await fetch('/api/recording/stop', { method: 'POST' });
+                if (response.ok) {
+                    showMessage('Recording stopped', 'success');
+                } else {
+                    showMessage('Failed to stop recording', 'error');
+                }
+            } catch (error) {
+                showMessage('Error stopping recording', 'error');
+                console.error('Error:', error);
+            }
+        }
+        
+        // WebSocket event handlers for recording status
+        socket.on('recording_started', (data) => {
+            const headerTimer = document.getElementById('header-recording-timer');
+            if (headerTimer) {
+                headerTimer.classList.remove('hidden');
+            }
+        });
+        
+        socket.on('recording_stopped', (data) => {
+            const headerTimer = document.getElementById('header-recording-timer');
+            if (headerTimer) {
+                headerTimer.classList.add('hidden');
+            }
+        });
+        
+        socket.on('recording_timer', (data) => {
+            const headerTimerDisplay = document.getElementById('header-timer-display');
+            if (headerTimerDisplay) {
+                const duration = data.duration;
+                const h = Math.floor(duration / 3600);
+                const m = Math.floor((duration % 3600) / 60);
+                const s = Math.floor(duration % 60);
+                headerTimerDisplay.textContent = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            }
+        });
+    </script>
+</body>
+</html>

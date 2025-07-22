@@ -20,6 +20,7 @@ sys.path.append('/home/mmariani/projects/thesilentsteno')
 
 # Import existing components
 from src.integration.walking_skeleton_adapter import create_walking_skeleton_adapter
+from src.config.settings_manager import get_settings_manager
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -107,6 +108,11 @@ def index():
 def dashboard():
     """Large icon status dashboard for 7" touchscreen"""
     return render_template('status_dashboard.html')
+
+@app.route('/settings')
+def settings():
+    """Settings configuration page"""
+    return render_template('settings.html')
 
 @app.route('/api/sessions')
 def get_sessions():
@@ -430,6 +436,70 @@ def play_session(session_id):
         return jsonify({'error': 'Audio file not found'}), 404
     except Exception as e:
         logger.error(f"Error playing session {session_id}: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/settings')
+def get_settings():
+    """Get current application settings"""
+    try:
+        settings_manager = get_settings_manager()
+        return jsonify(settings_manager.get_all_settings())
+    except Exception as e:
+        logger.error(f"Error getting settings: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/settings', methods=['POST'])
+def update_settings():
+    """Update application settings"""
+    try:
+        settings_manager = get_settings_manager()
+        data = request.get_json()
+        
+        if not data:
+            return jsonify({'error': 'No settings data provided'}), 400
+        
+        # Update each category
+        success = True
+        errors = []
+        
+        for category, settings in data.items():
+            if not settings_manager.update_settings(category, settings):
+                success = False
+                errors.append(f"Failed to update {category} settings")
+        
+        if success:
+            return jsonify({
+                'success': True,
+                'message': 'Settings updated successfully',
+                'settings': settings_manager.get_all_settings()
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'errors': errors
+            }), 500
+            
+    except Exception as e:
+        logger.error(f"Error updating settings: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/settings/reset', methods=['POST'])
+def reset_settings():
+    """Reset settings to defaults"""
+    try:
+        settings_manager = get_settings_manager()
+        
+        if settings_manager.reset_to_defaults():
+            return jsonify({
+                'success': True,
+                'message': 'Settings reset to defaults',
+                'settings': settings_manager.get_all_settings()
+            })
+        else:
+            return jsonify({'error': 'Failed to reset settings'}), 500
+            
+    except Exception as e:
+        logger.error(f"Error resetting settings: {e}")
         return jsonify({'error': str(e)}), 500
 
 def update_recording_timer():

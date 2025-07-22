@@ -32,10 +32,21 @@
         "Unknown"
       ],
       "wav_file": "demo_sessions/recording_20250721_180405.wav",
-      "transcript": [],
-      "summary": "Processing...",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "None of them gave chase. Unfortunately, this behavior was usual for collect. Maya grunted softly, watching him go. He's gotten a lot worse. Shalon started. You knew him? Let him a few times. Maya said."
+        }
+      ],
+      "summary": "None of them gave chase.",
       "action_items": [],
-      "key_moments": []
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": [
+        "You knew him? Let him a few times"
+      ]
     },
     {
       "session_id": "skeleton_1753147983",
@@ -46,10 +57,179 @@
         "Unknown"
       ],
       "wav_file": "demo_sessions/recording_20250721_183303.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "talking, not because of odium, but because of people who began to fear her, or to worship the storm instead. From nights of wind and truth, page four. Caledon sort up through the central column of your atheiruv, still beside him. In the atrium he still saw signs of the battle that had happened two days ago. That had not been entirely scrubbed away, broken banisters on balconies. That reminded him of another time he'd flown up this corridor, just after Teft's murder. Dark, poisoned rage building within. The feeling of eternal twin to the normal excitement of holding stormlock."
+        }
+      ],
+      "summary": "talking, not because of odium, but because of people who began to fear her, or to worship the storm instead.",
+      "action_items": [],
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [
+        "timeline",
+        "team"
+      ],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753161136",
+      "timestamp": "2025-07-21T22:12:41.290699",
+      "duration": 24.45301587301587,
+      "title": "Recording 2025-07-21 22:12",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250721_221216.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "It's six to control. Trump has no plan for the economy or prosperity, no investment in roads, trains, healthcare, systems, communications, nothing. His entire plan hinges on the false premise of trickle-down economics whereby deregulating industry and reducing the tax burden on big business will somehow create more jobs."
+        }
+      ],
+      "summary": "It's six to control.",
+      "action_items": [
+        "somehow create more jobs"
+      ],
+      "key_moments": [],
+      "sentiment": "negative",
+      "topics": [
+        "project",
+        "strategy"
+      ],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753163577",
+      "timestamp": "2025-07-21T22:58:10.985425",
+      "duration": 313.4340136054422,
+      "title": "Recording 2025-07-21 22:58",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250721_225257.wav",
       "transcript": [],
       "summary": "Processing...",
       "action_items": [],
       "key_moments": []
+    },
+    {
+      "session_id": "skeleton_1753165059",
+      "timestamp": "2025-07-21T23:18:50.377712",
+      "duration": 71.18102040816326,
+      "title": "Recording 2025-07-21 23:18",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250721_231739.wav",
+      "transcript": [],
+      "summary": "Processing...",
+      "action_items": [],
+      "key_moments": []
+    },
+    {
+      "session_id": "skeleton_1753165201",
+      "timestamp": "2025-07-21T23:21:00.045834",
+      "duration": 58.21201814058957,
+      "title": "Recording 2025-07-21 23:21",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250721_232001.wav",
+      "transcript": [],
+      "summary": "Processing...",
+      "action_items": [],
+      "key_moments": []
+    },
+    {
+      "session_id": "skeleton_1753167072",
+      "timestamp": "2025-07-21T23:53:12.370381",
+      "duration": 120.08700680272109,
+      "title": "Recording 2025-07-21 23:53",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250721_235112.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "So I want to start out this week's video with a little story about my formative years. So back when my brother and I were kids, we were the recipients of many pieces of advice and lectures from our father. And out of all those lectures, out of all the advice he gave, there are two main pieces of advice that stick out to me and that I've remembered more than any others. The first of them, which I am sharing here simply because it is the most prominent one in my head, is there are two ways to do something, right and again. And we would often hear this after being told that what we had just done was not good enough and that we did have to go do it again. So that's the one that sticks out the most to me. But only slightly less prominent in my memory was the common commands to always put things back exactly as you found out here. First and foremost, a system that you can trust is one that is not going to lose your data. This immediately rules out your brain because our brains forget things all the time, but it may also rule out a paper notebook if you don't keep that notebook backed up some other way, such as digitizing it. On the other hand, you've got systems that are designed with data retention in mind, apps like Evernote or OneNote or Google Drive or anything else that has redundant servers across the world. It's going to be very easy to find it and I'll know exactly what it's used for. Now this is just one example and there are probably other things in your life that you should be labeling besides just plastic bags. For example, if you have one of those physical hanging folder organizers, you probably want to use the labels that it comes with to write down what should be going in each one of those folders. Item number three. Organized people build would like to call a mindfulness loop, which constantly goes through the different dependencies in their lives and basically checks up on them. She got this regular mental notification to check up check up on that dependency to check up on that dependency. check up on that dependency. This is one of those mental patterns that take a lot of time and effort to build. You're not going to be able to flip it on like a switch. But has things that they depend on. For example, our little blob creature needs a watery environment to move around in and a food source. It doesn't have a whole lot of dependencies in its life, but there are still dependencies and without them it will die. And what is true for our blob is true for you as well, except for that you're much more calm-"
+        }
+      ],
+      "summary": "So I want to start out this week's video with a little story about my formative years.  And what is true for our blob is true for you as well, except for that you're much more calm-",
+      "action_items": [
+        "go do it again",
+        "lose your data",
+        "be very easy to find it and I'll know exactly what it's used for",
+        "be labeling besides just plastic bags",
+        "be going in each one of those folders",
+        "be able to flip it on like a switch",
+        "die",
+        "a mindfulness loop"
+      ],
+      "key_moments": [],
+      "sentiment": "positive",
+      "topics": [
+        "project",
+        "timeline",
+        "team"
+      ],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753167245",
+      "timestamp": "2025-07-21T23:54:26.660907",
+      "duration": 21.456009070294783,
+      "title": "Recording 2025-07-21 23:54",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250721_235405.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "Transcription error: cannot reshape tensor of 0 elements into shape [1, 0, 8, -1] because the unspecified dimension size -1 can be any value and is ambiguous"
+        }
+      ],
+      "summary": "Transcription error: cannot reshape tensor of 0 elements into shape [1, 0, 8, -1] because the unspecified dimension size -1 can be any value and is ambiguous",
+      "action_items": [],
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753167270",
+      "timestamp": "2025-07-22T00:27:54.001400",
+      "duration": 2002.8980498866213,
+      "title": "Recording 2025-07-22 00:27",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250721_235430.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "sit down and consciously list out your dependencies. Maybe even sit down and draw a mind map of all of your life's different dependencies. And with this application of conscious thought to all the different aspects of your life, over time it's going to sink into your unconscious and you're going to start building that loop. Item number four. Organized people lived by the mantra two is one, one is none. Essentially this translates to have a backup of anything that you use on a regular basis. Essentially if running out of that thing in the middle of your work would hamper the rest of your day or screw it up. For example, the camera that I'm filming this video on right now relies on a battery to run."
+        }
+      ],
+      "summary": "sit down and consciously list out your dependencies.",
+      "action_items": [
+        "sink into your unconscious and you're going to start building that loop"
+      ],
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [
+        "timeline",
+        "team"
+      ],
+      "questions": []
     }
   ]
 }
