@@ -14,7 +14,43 @@
             font-family: 'Inter', sans-serif;
         }
         
-        /* Large icon dashboard optimized for 7" touchscreen - 2x6 grid */
+        /* Touch-friendly scrolling */
+        .touch-scrollable {
+            -webkit-overflow-scrolling: touch;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+        
+        /* Hide scrollbar on touch devices but keep functionality */
+        @media (pointer: coarse) {
+            .touch-scrollable::-webkit-scrollbar {
+                width: 0;
+                background: transparent;
+            }
+            .touch-scrollable {
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+        }
+        
+        /* Show thin scrollbar on desktop */
+        @media (pointer: fine) {
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #1e293b;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #475569;
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #64748b;
+            }
+        }
+
+        /* Large icon dashboard optimized for 7" touchscreen - single row of 5 buttons */
         .status-card {
             min-height: 180px;
             transition: all 0.3s ease;
@@ -24,6 +60,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            touch-action: manipulation;
         }
         
         .status-card:hover {
@@ -74,6 +111,29 @@
             50% { transform: scaleY(1); }
         }
         
+        /* Message animations */
+        @keyframes slideIn {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
         /* Recording pulse */
         .recording-pulse {
             animation: recording-pulse 1s infinite;
@@ -85,18 +145,27 @@
         }
     </style>
 </head>
-<body class="h-full antialiased text-white bg-slate-900">
-    <div class="h-full w-full flex flex-col">
+<body class="h-full antialiased text-white bg-slate-900 touch-scrollable">
+    <div class="h-full w-full flex flex-col touch-scrollable">
         
         <!-- Header with Navigation -->
         <div class="flex justify-between items-center py-4 px-6">
-            <h1 class="text-3xl font-bold text-white">Status Dashboard</h1>
+            <div class="flex items-center gap-4">
+                <h1 class="text-3xl font-bold text-white">Status Dashboard</h1>
+                <!-- Recording Timer for Header (clickable to stop) -->
+                <div id="header-recording-timer" class="hidden bg-red-600 hover:bg-red-700 text-white font-mono font-bold py-2 px-4 rounded-lg text-sm cursor-pointer transition-colors" onclick="stopRecordingFromHeader()" title="Click to stop recording">
+                    REC: <span id="header-timer-display">00:00:00</span>
+                    <svg class="inline-block w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18,18H6V6H18V18Z"/>
+                    </svg>
+                </div>
+            </div>
             <div class="flex space-x-4">
-                <button onclick="window.location.href='/'" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-xl">
-                    Transcriptions
+                <button onclick="goToControlsView()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg text-xl">
+                    Controls
                 </button>
-                <button id="recording-nav-btn" onclick="goToRecordingScreen()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg text-xl">
-                    Recording
+                <button onclick="window.location.href='/'" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-xl">
+                    Sessions
                 </button>
                 <button onclick="window.location.href='/dashboard'" class="bg-slate-700 border-2 border-slate-500 text-white font-bold py-3 px-6 rounded-lg text-xl">
                     Dashboard
@@ -104,65 +173,60 @@
             </div>
         </div>
         
-        <!-- Status Grid - 2x6 layout -->
-        <div class="flex-1 p-4 max-w-7xl mx-auto w-full">
-            <div class="grid grid-cols-6 grid-rows-2 gap-4 h-full">
+        <!-- Status Grid - Single row of 5 buttons -->
+        <div class="flex-1 p-4 max-w-7xl mx-auto w-full touch-scrollable">
+            <div class="grid grid-cols-5 gap-6 h-full touch-scrollable">
                 
-                <!-- Row 1 -->
-                <!-- Source Connection -->
-                <div id="source-card" class="status-card bg-slate-800 rounded-2xl p-4 border-4 border-transparent">
+                <!-- Bluetooth Tunnel Active (combo source + output) -->
+                <div id="bluetooth-tunnel-card" class="status-card bg-slate-800 rounded-2xl p-4 border-4 border-transparent" onclick="toggleBluetoothTunnel()">
                     <div class="status-icon">
-                        <!-- Source Connected Icon -->
-                        <div id="source-connected" class="hidden">
-                            <div class="bg-red-500 rounded-xl p-4 border-2 border-red-400">
-                                <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H17V18H20V6H17V4M10.5,6A2.5,2.5 0 0,1 13,8.5A2.5,2.5 0 0,1 10.5,11A2.5,2.5 0 0,1 8,8.5A2.5,2.5 0 0,1 10.5,6M10.5,3C12,3 13.25,3.86 13.79,5.08L15.5,5A2,2 0 0,1 17.5,7V17A2,2 0 0,1 15.5,19L13.79,18.92C13.25,20.14 12,21 10.5,21C8.56,21 7,19.44 7,17.5V6.5C7,4.56 8.56,3 10.5,3Z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        
-                        <!-- Source Disconnected Icon -->
-                        <div id="source-disconnected">
-                            <div class="bg-slate-600 rounded-xl p-4 border-2 border-slate-500 relative">
-                                <svg class="w-12 h-12 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H17V18H20V6H17V4M10.5,6A2.5,2.5 0 0,1 13,8.5A2.5,2.5 0 0,1 10.5,11A2.5,2.5 0 0,1 8,8.5A2.5,2.5 0 0,1 10.5,6M10.5,3C12,3 13.25,3.86 13.79,5.08L15.5,5A2,2 0 0,1 17.5,7V17A2,2 0 0,1 15.5,19L13.79,18.92C13.25,20.14 12,21 10.5,21C8.56,21 7,19.44 7,17.5V6.5C7,4.56 8.56,3 10.5,3Z"/>
-                                </svg>
-                                <!-- Disconnected slash -->
-                                <div class="absolute top-2 left-2 w-12 h-12">
-                                    <div class="w-14 h-1 bg-red-500 absolute top-6 -left-1 transform rotate-45"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="source-text" class="status-text text-slate-400">SOURCE<br>DISCONNECTED</div>
-                </div>
-
-                <!-- Speaker/Output -->
-                <div id="output-card-top" class="status-card bg-slate-800 rounded-2xl p-4 border-4 border-transparent">
-                    <div class="status-icon">
-                        <!-- Output Active -->
-                        <div id="output-active-top" class="hidden">
+                        <!-- Tunnel Active -->
+                        <div id="tunnel-active" class="hidden">
                             <div class="bg-green-500 rounded-xl p-4 border-2 border-green-400">
                                 <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12,1C12,1 19,4 19,12C19,17 16.5,21 12,21C7.5,21 5,17 5,12C5,4 12,1 12,1M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z"/>
+                                    <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7.27C13.6,7.61 14,8.26 14,9A2,2 0 0,1 12,11A2,2 0 0,1 10,9A2,2 0 0,1 12,7A2,2 0 0,1 14,9A2,2 0 0,1 12,11A2,2 0 0,1 10,9C10,8.26 10.4,7.61 11,7.27V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M12,15A2,2 0 0,1 14,17A2,2 0 0,1 12,19A2,2 0 0,1 10,17A2,2 0 0,1 12,15M12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17A2,2 0 0,1 10,15A2,2 0 0,1 12,13Z"/>
                                 </svg>
                             </div>
                         </div>
                         
-                        <!-- Output Inactive -->
-                        <div id="output-inactive-top">
+                        <!-- Tunnel Inactive -->
+                        <div id="tunnel-inactive">
                             <div class="bg-slate-600 rounded-xl p-4 border-2 border-slate-500">
                                 <svg class="w-12 h-12 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12,1C12,1 19,4 19,12C19,17 16.5,21 12,21C7.5,21 5,17 5,12C5,4 12,1 12,1M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z"/>
+                                    <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7.27C13.6,7.61 14,8.26 14,9A2,2 0 0,1 12,11A2,2 0 0,1 10,9A2,2 0 0,1 12,7A2,2 0 0,1 14,9A2,2 0 0,1 12,11A2,2 0 0,1 10,9C10,8.26 10.4,7.61 11,7.27V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M12,15A2,2 0 0,1 14,17A2,2 0 0,1 12,19A2,2 0 0,1 10,17A2,2 0 0,1 12,15M12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17A2,2 0 0,1 10,15A2,2 0 0,1 12,13Z"/>
                                 </svg>
                             </div>
                         </div>
                     </div>
-                    <div id="output-text-top" class="status-text text-slate-400">SPEAKER<br>INACTIVE</div>
+                    <div id="tunnel-text" class="status-text text-slate-400">BLUETOOTH<br>TUNNEL</div>
                 </div>
 
-                <!-- Transcribing Status (spans 2 rows) -->
-                <div id="transcription-card" class="status-card bg-slate-800 rounded-2xl p-4 border-4 border-transparent row-span-2">
+                <!-- Highlight Audio (placeholder) -->
+                <div id="highlight-card" class="status-card bg-slate-800 rounded-2xl p-4 border-4 border-transparent">
+                    <div class="status-icon">
+                        <div class="bg-slate-600 rounded-xl p-4 border-2 border-slate-500">
+                            <svg class="w-12 h-12 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M12,4A1,1 0 0,0 11,5V11A1,1 0 0,0 12,12A1,1 0 0,0 13,11V5A1,1 0 0,0 12,4M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19M12,6H12.5V10H12V6Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="status-text text-slate-400">HIGHLIGHT<br>AUDIO</div>
+                </div>
+
+                <!-- Identify Speaker (placeholder) -->
+                <div id="speaker-card" class="status-card bg-slate-800 rounded-2xl p-4 border-4 border-transparent">
+                    <div class="status-icon">
+                        <div class="bg-slate-600 rounded-xl p-4 border-2 border-slate-500">
+                            <svg class="w-12 h-12 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="status-text text-slate-400">IDENTIFY<br>SPEAKER</div>
+                </div>
+
+                <!-- Transcription In Progress -->
+                <div id="transcription-card" class="status-card bg-slate-800 rounded-2xl p-4 border-4 border-transparent">
                     <div class="status-icon">
                         <!-- Transcription Active -->
                         <div id="transcription-active" class="hidden">
@@ -182,11 +246,11 @@
                             </div>
                         </div>
                     </div>
-                    <div id="transcription-text" class="status-text text-slate-400">TRANSCRIBING<br>IDLE</div>
+                    <div id="transcription-text" class="status-text text-slate-400">TRANSCRIPTION<br>IDLE</div>
                 </div>
 
                 <!-- Record Button -->
-                <div id="record-button-card" class="status-card bg-green-700 hover:bg-green-600 rounded-2xl p-4 border-4 border-green-500">
+                <div id="record-button-card" class="status-card bg-green-700 hover:bg-green-600 rounded-2xl p-4 border-4 border-green-500" onclick="toggleRecording()">
                     <div class="status-icon">
                         <!-- Recording Active -->
                         <div id="record-active" class="hidden">
@@ -194,7 +258,7 @@
                                 <div class="absolute inset-0 bg-red-500 rounded-xl pulse-ring"></div>
                                 <div class="bg-red-500 rounded-xl p-4 border-2 border-red-400 recording-pulse">
                                     <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 2A3 3 0 0 0 9 5V11A3 3 0 0 0 12 14A3 3 0 0 0 15 11V5A3 3 0 0 0 12 2M19 11C19 14.53 16.39 17.44 13 17.93V21H11V17.93C7.61 17.44 5 14.53 5 11H7A5 5 0 0 0 12 16A5 5 0 0 0 17 11H19Z"/>
+                                        <path d="M18,18H6V6H18V18Z"/>
                                     </svg>
                                 </div>
                             </div>
@@ -212,47 +276,6 @@
                     <div id="record-text" class="status-text text-green-200">RECORD</div>
                     <div id="record-timer" class="hidden text-center text-red-200 font-mono text-lg font-bold mt-2">00:00:00</div>
                 </div>
-            
-            <!-- Stop Button -->
-            <div id="stop-button-card" class="status-card bg-red-700 hover:bg-red-600 rounded-2xl p-4 border-4 border-red-500">
-                <div class="status-icon">
-                    <div class="bg-red-500 rounded-xl p-4 border-2 border-red-400">
-                        <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M18,18H6V6H18V18Z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="status-text text-red-200">STOP</div>
-            </div>
-
-            <!-- Row 2 -->
-            <!-- Empty/Controls space -->
-            <div class="status-card bg-slate-800 rounded-2xl p-4 border-4 border-transparent">
-                <div class="status-icon">
-                    <div class="bg-slate-600 rounded-xl p-4 border-2 border-slate-500">
-                        <svg class="w-12 h-12 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M13,12H16L12,8L8,12H11V16H13V12Z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="status-text text-slate-400">CONTROLS</div>
-            </div>
-
-            <!-- Highlight/Status space -->
-            <div class="status-card bg-slate-800 rounded-2xl p-4 border-4 border-transparent">
-                <div class="status-icon">
-                    <div class="bg-slate-600 rounded-xl p-4 border-2 border-slate-500">
-                        <svg class="w-12 h-12 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M7,10L12,15L17,10H7Z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="status-text text-slate-400">HIGHLIGHT</div>
-            </div>
-
-            <!-- Transcribing spans here (column 3, both rows) -->
-            <!-- Record button spans here (column 5, both rows) -->
-            <!-- Stop button spans here (column 6, both rows) -->
             
             </div>
         </div>
@@ -281,10 +304,67 @@
             sessionCount: 0
         };
         
-        // Navigation function
+        // Navigation functions
         function goToRecordingScreen() {
             // Navigate to the main app and trigger recording view
-            window.location.href = '/?view=recording';
+            window.location.href = '/?view=controls';
+        }
+        
+        function goToControlsView() {
+            // Navigate to the controls view
+            window.location.href = '/?view=controls';
+        }
+        
+        // Toggle Bluetooth tunnel
+        function toggleBluetoothTunnel() {
+            // For now, just trigger audio forwarding if not active
+            if (!systemState.sourceConnected || !systemState.outputActive) {
+                connectBluetoothSource();
+            } else {
+                showMessage('Bluetooth tunnel already active', 'info');
+            }
+        }
+        
+        // Stop recording from header timer (available on all screens)
+        async function stopRecordingFromHeader() {
+            try {
+                showMessage('Stopping recording...', 'info');
+                const response = await fetch('/api/recording/stop', { method: 'POST' });
+                if (response.ok) {
+                    showMessage('Recording stopped', 'success');
+                } else {
+                    showMessage('Failed to stop recording', 'error');
+                }
+            } catch (error) {
+                showMessage('Error stopping recording from header', 'error');
+                console.error('Error stopping recording from header:', error);
+            }
+        }
+
+        // Toggle recording (record/stop functionality)
+        async function toggleRecording() {
+            try {
+                if (systemState.recording) {
+                    // Stop recording
+                    const response = await fetch('/api/recording/stop', { method: 'POST' });
+                    if (response.ok) {
+                        showMessage('Recording stopped', 'success');
+                    } else {
+                        showMessage('Failed to stop recording', 'error');
+                    }
+                } else {
+                    // Start recording
+                    const response = await fetch('/api/recording/start', { method: 'POST' });
+                    if (response.ok) {
+                        showMessage('Recording started', 'success');
+                    } else {
+                        showMessage('Failed to start recording', 'error');
+                    }
+                }
+            } catch (error) {
+                showMessage('Error toggling recording', 'error');
+                console.error('Error:', error);
+            }
         }
         
         // Format time helper
@@ -295,9 +375,136 @@
             return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
         }
         
+        // Connect Bluetooth source
+        async function connectBluetoothSource() {
+            try {
+                showMessage('Connecting Bluetooth...', 'info');
+                const response = await fetch('/api/bluetooth/connect_source', { method: 'POST' });
+                if (response.ok) {
+                    showMessage('Bluetooth connected successfully', 'success');
+                    refreshSystemState(); // Refresh to get updated state
+                } else {
+                    const error = await response.json();
+                    showMessage(error.error || 'Failed to connect Bluetooth', 'error');
+                }
+            } catch (error) {
+                showMessage('Error connecting Bluetooth', 'error');
+                console.error('Error:', error);
+            }
+        }
+
+        // Refresh system state from server
+        async function refreshSystemState() {
+            try {
+                const response = await fetch('/api/status');
+                if (response.ok) {
+                    const status = await response.json();
+                    systemState.sourceConnected = status.bluetooth_source_connected;
+                    systemState.outputActive = status.bluetooth_sink_connected;
+                    systemState.recording = status.recording;
+                    updateUI();
+                }
+            } catch (error) {
+                console.error('Error refreshing system state:', error);
+            }
+        }
+        
+        // Show message to user  
+        function showMessage(message, type) {
+            // Create message element
+            const messageEl = document.createElement('div');
+            messageEl.className = `message ${type}`;
+            messageEl.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                border-radius: 8px;
+                color: white;
+                font-weight: bold;
+                z-index: 1000;
+                max-width: 300px;
+                animation: slideIn 0.3s ease-out;
+            `;
+            
+            // Set background color based on type
+            if (type === 'success') {
+                messageEl.style.backgroundColor = '#10B981';
+            } else if (type === 'error') {
+                messageEl.style.backgroundColor = '#EF4444'; 
+            } else if (type === 'info') {
+                messageEl.style.backgroundColor = '#3B82F6';
+            } else {
+                messageEl.style.backgroundColor = '#6B7280';
+            }
+            
+            messageEl.textContent = message;
+            document.body.appendChild(messageEl);
+            
+            // Auto-remove after 4 seconds
+            setTimeout(() => {
+                messageEl.style.animation = 'slideOut 0.3s ease-in forwards';
+                setTimeout(() => {
+                    if (messageEl.parentNode) {
+                        messageEl.parentNode.removeChild(messageEl);
+                    }
+                }, 300);
+            }, 4000);
+        }
+        
         // Update UI based on state
         function updateUI() {
-            // Record button state
+            // Bluetooth Tunnel button (combo of source + output)
+            const bluetoothTunnelCard = document.getElementById('bluetooth-tunnel-card');
+            const tunnelActive = document.getElementById('tunnel-active');
+            const tunnelInactive = document.getElementById('tunnel-inactive');
+            const tunnelText = document.getElementById('tunnel-text');
+            
+            const tunnelIsActive = systemState.sourceConnected && systemState.outputActive;
+            if (tunnelIsActive) {
+                tunnelActive.classList.remove('hidden');
+                tunnelInactive.classList.add('hidden');
+                bluetoothTunnelCard.classList.add('border-green-500');
+                bluetoothTunnelCard.classList.remove('border-transparent');
+                tunnelText.innerHTML = 'BLUETOOTH<br>ACTIVE';
+                tunnelText.classList.remove('text-slate-400');
+                tunnelText.classList.add('text-green-400');
+            } else {
+                tunnelActive.classList.add('hidden');
+                tunnelInactive.classList.remove('hidden');
+                bluetoothTunnelCard.classList.remove('border-green-500');
+                bluetoothTunnelCard.classList.add('border-transparent');
+                tunnelText.innerHTML = 'BLUETOOTH<br>TUNNEL';
+                tunnelText.classList.add('text-slate-400');
+                tunnelText.classList.remove('text-green-400');
+            }
+            
+            // Transcription In Progress button (active during recording OR transcribing)
+            const transcriptionCard = document.getElementById('transcription-card');
+            const transcriptionActive = document.getElementById('transcription-active');
+            const transcriptionIdle = document.getElementById('transcription-idle');
+            const transcriptionText = document.getElementById('transcription-text');
+            
+            const transcriptionInProgress = systemState.recording || systemState.transcribing;
+            if (transcriptionInProgress) {
+                transcriptionActive.classList.remove('hidden');
+                transcriptionIdle.classList.add('hidden');
+                transcriptionCard.classList.add('border-blue-500');
+                transcriptionCard.classList.remove('border-transparent');
+                transcriptionText.innerHTML = systemState.recording ? 'RECORDING<br>AUDIO' : 'TRANSCRIBING<br>AUDIO';
+                transcriptionText.classList.remove('text-slate-400');
+                transcriptionText.classList.add('text-blue-400');
+            } else {
+                transcriptionActive.classList.add('hidden');
+                transcriptionIdle.classList.remove('hidden');
+                transcriptionCard.classList.remove('border-blue-500');
+                transcriptionCard.classList.add('border-transparent');
+                transcriptionText.innerHTML = 'TRANSCRIPTION<br>IDLE';
+                transcriptionText.classList.add('text-slate-400');
+                transcriptionText.classList.remove('text-blue-400');
+            }
+            
+            // Record button toggle state
             const recordButtonCard = document.getElementById('record-button-card');
             const recordActive = document.getElementById('record-active');
             const recordIdle = document.getElementById('record-idle');
@@ -309,7 +516,7 @@
                 recordIdle.classList.add('hidden');
                 recordButtonCard.classList.remove('bg-green-700', 'border-green-500', 'hover:bg-green-600');
                 recordButtonCard.classList.add('bg-red-700', 'border-red-500', 'hover:bg-red-600');
-                recordText.textContent = 'RECORDING';
+                recordText.textContent = 'STOP';
                 recordText.classList.remove('text-green-200');
                 recordText.classList.add('text-red-200');
                 recordTimer.classList.remove('hidden');
@@ -324,145 +531,38 @@
                 recordTimer.classList.add('hidden');
             }
             
-            // Source connection
-            const sourceCard = document.getElementById('source-card');
-            const sourceConnected = document.getElementById('source-connected');
-            const sourceDisconnected = document.getElementById('source-disconnected');
-            const sourceText = document.getElementById('source-text');
+            // Update header recording timer
+            updateHeaderTimer();
             
-            if (systemState.sourceConnected) {
-                sourceConnected.classList.remove('hidden');
-                sourceDisconnected.classList.add('hidden');
-                sourceCard.classList.add('border-red-500');
-                sourceCard.classList.remove('border-transparent');
-                sourceText.textContent = 'SOURCE\nCONNECTED';
-                sourceText.classList.remove('text-slate-400');
-                sourceText.classList.add('text-red-400');
-            } else {
-                sourceConnected.classList.add('hidden');
-                sourceDisconnected.classList.remove('hidden');
-                sourceCard.classList.remove('border-red-500');
-                sourceCard.classList.add('border-transparent');
-                sourceText.textContent = 'SOURCE\nDISCONNECTED';
-                sourceText.classList.add('text-slate-400');
-                sourceText.classList.remove('text-red-400');
+            // Update session info in footer
+            updateSessionInfo();
+        }
+            
+        // Update header recording timer
+        function updateHeaderTimer() {
+            const headerTimer = document.getElementById('header-recording-timer');
+            if (headerTimer) {
+                if (systemState.recording) {
+                    headerTimer.classList.remove('hidden');
+                } else {
+                    headerTimer.classList.add('hidden');
+                }
             }
-            
-            // Recording status
-            const recordingCard = document.getElementById('recording-card');
-            const recordingActive = document.getElementById('recording-active');
-            const recordingIdle = document.getElementById('recording-idle');
-            const recordingText = document.getElementById('recording-text');
-            
-            if (systemState.recording) {
-                recordingActive.classList.remove('hidden');
-                recordingIdle.classList.add('hidden');
-                recordingCard.classList.add('border-red-500');
-                recordingCard.classList.remove('border-transparent');
-                recordingText.textContent = 'RECORDING';
-                recordingText.classList.remove('text-slate-400');
-                recordingText.classList.add('text-red-400');
-            } else {
-                recordingActive.classList.add('hidden');
-                recordingIdle.classList.remove('hidden');
-                recordingCard.classList.remove('border-red-500');
-                recordingCard.classList.add('border-transparent');
-                recordingText.textContent = 'IDLE';
-                recordingText.classList.add('text-slate-400');
-                recordingText.classList.remove('text-red-400');
-            }
-            
-            // Transcription status
-            const transcriptionCard = document.getElementById('transcription-card');
-            const transcriptionActive = document.getElementById('transcription-active');
-            const transcriptionIdle = document.getElementById('transcription-idle');
-            const transcriptionText = document.getElementById('transcription-text');
-            
-            if (systemState.transcribing) {
-                transcriptionActive.classList.remove('hidden');
-                transcriptionIdle.classList.add('hidden');
-                transcriptionCard.classList.add('border-blue-500');
-                transcriptionCard.classList.remove('border-transparent');
-                transcriptionText.textContent = 'TRANSCRIBING';
-                transcriptionText.classList.remove('text-slate-400');
-                transcriptionText.classList.add('text-blue-400');
-            } else {
-                transcriptionActive.classList.add('hidden');
-                transcriptionIdle.classList.remove('hidden');
-                transcriptionCard.classList.remove('border-blue-500');
-                transcriptionCard.classList.add('border-transparent');
-                transcriptionText.textContent = 'IDLE';
-                transcriptionText.classList.add('text-slate-400');
-                transcriptionText.classList.remove('text-blue-400');
-            }
-            
-            // Output status (new top position)
-            const outputCardTop = document.getElementById('output-card-top');
-            const outputActiveTop = document.getElementById('output-active-top');
-            const outputInactiveTop = document.getElementById('output-inactive-top');
-            const outputTextTop = document.getElementById('output-text-top');
-            
-            if (systemState.outputActive) {
-                outputActiveTop.classList.remove('hidden');
-                outputInactiveTop.classList.add('hidden');
-                outputCardTop.classList.add('border-green-500');
-                outputCardTop.classList.remove('border-transparent');
-                outputTextTop.textContent = 'OUTPUT';
-                outputTextTop.classList.remove('text-slate-400');
-                outputTextTop.classList.add('text-green-400');
-            } else {
-                outputActiveTop.classList.add('hidden');
-                outputInactiveTop.classList.remove('hidden');
-                outputCardTop.classList.remove('border-green-500');
-                outputCardTop.classList.add('border-transparent');
-                outputTextTop.textContent = 'OUTPUT';
-                outputTextTop.classList.add('text-slate-400');
-                outputTextTop.classList.remove('text-green-400');
-            }
-            
-            // Session info
-            document.getElementById('last-session').textContent = systemState.lastSession || 'None';
-            document.getElementById('session-count').textContent = systemState.sessionCount;
         }
         
-        // Click handlers for all interactive elements
-        document.getElementById('source-card').addEventListener('click', async () => {
-            try {
-                const response = await fetch('/api/bluetooth/connect_source', { method: 'POST' });
-                const result = await response.json();
-                if (response.ok) {
-                    systemState.sourceConnected = result.connected;
-                    updateUI();
-                } else {
-                    alert('Failed to connect source: ' + (result.error || 'Unknown error'));
-                }
-            } catch (error) {
-                alert('Error connecting source: ' + error.message);
+        // Update session info in footer
+        function updateSessionInfo() {
+            // Update session info
+            const lastSessionEl = document.getElementById('last-session');
+            const sessionCountEl = document.getElementById('session-count');
+            
+            if (lastSessionEl) {
+                lastSessionEl.textContent = systemState.lastSession || 'None';
             }
-        });
-        
-        document.getElementById('output-card-top').addEventListener('click', async () => {
-            try {
-                const response = await fetch('/api/bluetooth/connect_output', { method: 'POST' });
-                const result = await response.json();
-                if (response.ok) {
-                    systemState.outputActive = result.connected;
-                    updateUI();
-                } else {
-                    alert('Failed to connect output: ' + (result.error || 'Unknown error'));
-                }
-            } catch (error) {
-                alert('Error connecting output: ' + error.message);
+            if (sessionCountEl) {
+                sessionCountEl.textContent = systemState.sessionCount;
             }
-        });
-        
-        document.getElementById('recording-card').addEventListener('click', () => {
-            if (systemState.recording) {
-                fetch('/api/recording/stop', { method: 'POST' });
-            } else {
-                fetch('/api/recording/start', { method: 'POST' });
-            }
-        });
+        }
         
         // Record button
         document.getElementById('record-button-card').addEventListener('click', () => {
@@ -492,8 +592,13 @@
         socket.on('recording_timer', (data) => {
             if (systemState.recording) {
                 const timerEl = document.getElementById('record-timer');
+                const headerTimerEl = document.getElementById('header-timer-display');
+                
                 if (timerEl) {
                     timerEl.textContent = formatTime(data.duration);
+                }
+                if (headerTimerEl) {
+                    headerTimerEl.textContent = formatTime(data.duration);
                 }
             }
         });
@@ -515,26 +620,28 @@
             updateUI();
         });
         
-        // Check system status on load
-        async function checkSystemStatus() {
+        // Add stop forwarding functionality
+        window.stopAudioForwarding = async function() {
             try {
-                // Check Bluetooth connections
-                const response = await fetch('/api/status');
+                showMessage('Stopping audio forwarding...', 'info');
+                
+                const response = await fetch('/api/bluetooth/stop_forwarding', { method: 'POST' });
+                const result = await response.json();
+                
                 if (response.ok) {
-                    const status = await response.json();
-                    systemState.sourceConnected = status.bluetooth_source_connected;
-                    systemState.outputActive = status.bluetooth_sink_connected;
-                    updateUI();
+                    showMessage(result.message || 'Audio forwarding stopped', 'success');
+                    await refreshSystemState();
+                } else {
+                    showMessage('Failed to stop forwarding: ' + (result.error || 'Unknown error'), 'error');
                 }
             } catch (error) {
-                console.error('Error checking status:', error);
+                showMessage('Error stopping forwarding: ' + error.message, 'error');
             }
-        }
+        };
         
-        // Initialize
-        checkSystemStatus();
-        setInterval(checkSystemStatus, 5000); // Check every 5 seconds
-        updateUI();
+        // Initialize dashboard
+        refreshSystemState();
+        setInterval(refreshSystemState, 5000); // Check every 5 seconds
     </script>
 </body>
 </html>

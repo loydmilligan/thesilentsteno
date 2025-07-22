@@ -13,18 +13,41 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        ::-webkit-scrollbar {
-            width: 8px;
+        
+        /* Touch-friendly scrolling */
+        .touch-scrollable {
+            -webkit-overflow-scrolling: touch;
+            overflow-y: auto;
+            scroll-behavior: smooth;
         }
-        ::-webkit-scrollbar-track {
-            background: #1e293b;
+        
+        /* Hide scrollbar on touch devices but keep functionality */
+        @media (pointer: coarse) {
+            .touch-scrollable::-webkit-scrollbar {
+                width: 0;
+                background: transparent;
+            }
+            .touch-scrollable {
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
         }
-        ::-webkit-scrollbar-thumb {
-            background: #475569;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
+        
+        /* Show thin scrollbar on desktop */
+        @media (pointer: fine) {
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #1e293b;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #475569;
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #64748b;
+            }
         }
         .waveform-bar {
             animation: wave 1.5s infinite ease-in-out;
@@ -79,27 +102,30 @@
                 <h1 id="header-title" class="text-xl font-bold text-white">Sessions</h1>
             </div>
             <div id="header-right" class="flex items-center gap-4">
-                <button onclick="window.location.href='/'" class="bg-slate-700 border-2 border-slate-500 text-white font-bold py-2 px-4 rounded-lg text-sm">
-                    Transcriptions
+                <button id="controls-nav-btn" onclick="showControlsView()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg text-xl">
+                    Controls
                 </button>
-                <button id="recording-nav-btn-main" onclick="showRecordingView()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-sm">
-                    Recording
+                <button id="sessions-nav-btn" onclick="window.location.href='/'" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-xl">
+                    Sessions
                 </button>
-                <button onclick="window.location.href='/dashboard'" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-sm">
+                <button id="dashboard-nav-btn" onclick="window.location.href='/dashboard'" class="bg-slate-700 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-lg text-xl">
                     Dashboard
                 </button>
                 <div id="status-indicator" class="w-6 h-6 text-green-400">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg>
                 </div>
-                <!-- Recording Timer for Header -->
-                <div id="header-recording-timer" class="hidden bg-red-600 text-white font-mono font-bold py-2 px-4 rounded-lg text-sm">
+                <!-- Recording Timer for Header (clickable to stop) -->
+                <div id="header-recording-timer" class="hidden bg-red-600 hover:bg-red-700 text-white font-mono font-bold py-2 px-4 rounded-lg text-sm cursor-pointer transition-colors" onclick="stopRecordingFromHeader()" title="Click to stop recording">
                     REC: <span id="header-timer-display">00:00:00</span>
+                    <svg class="inline-block w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18,18H6V6H18V18Z"/>
+                    </svg>
                 </div>
             </div>
         </header>
 
         <!-- Main Content Area -->
-        <main class="flex-1 overflow-y-auto p-4 md:p-6 relative">
+        <main class="flex-1 overflow-y-auto p-4 md:p-6 relative touch-scrollable">
             
             <!-- View: Session List -->
             <div id="session-list-view">
@@ -110,21 +136,58 @@
                 </div>
             </div>
 
-            <!-- View: Live Recording -->
-            <div id="live-recording-view" class="hidden h-full flex flex-col items-center justify-center text-center">
-                <div class="mb-8">
-                    <p class="text-lg text-slate-400">Recording in Progress</p>
-                    <p id="recording-timer" class="text-6xl font-bold text-white font-mono">00:00:00</p>
-                </div>
-                <!-- Audio visualizer -->
-                <div id="waveform-container" class="w-full max-w-md h-32 flex items-end justify-center gap-1 mb-8">
-                    <!-- Bars generated by JS -->
-                </div>
-                <div class="relative">
-                    <div class="absolute inset-0 bg-red-600 rounded-full pulse-ring"></div>
-                    <button id="stop-recording-button" class="touch-button relative bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all">
-                        Stop Recording
-                    </button>
+            <!-- View: Controls (Recording & Playback) -->
+            <div id="live-recording-view" class="hidden h-full flex flex-col">
+                <div class="max-w-4xl mx-auto w-full flex flex-col h-full p-4">
+                    <!-- Now Playing/Recording Section -->
+                    <div class="bg-slate-800/50 backdrop-blur rounded-3xl p-6 mb-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-20 h-20 bg-slate-700 rounded-xl flex items-center justify-center">
+                                <div id="recording-icon" class="hidden">
+                                    <div class="w-16 h-16 bg-red-500 rounded-full animate-pulse flex items-center justify-center">
+                                        <div class="w-8 h-8 bg-red-700 rounded-full"></div>
+                                    </div>
+                                </div>
+                                <svg id="microphone-icon" class="w-10 h-10 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2A3 3 0 0 0 9 5V11A3 3 0 0 0 12 14A3 3 0 0 0 15 11V5A3 3 0 0 0 12 2M19 11C19 14.53 16.39 17.44 13 17.93V21H11V17.93C7.61 17.44 5 14.53 5 11H7A5 5 0 0 0 12 16A5 5 0 0 0 17 11H19Z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 id="control-title" class="text-xl font-semibold text-white">Ready to Record</h3>
+                                <p id="control-status" class="text-sm text-slate-400">Tap the microphone to start</p>
+                                <p id="recording-timer" class="text-2xl font-mono text-red-400 mt-1 hidden">00:00:00</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Audio Controls -->
+                    <div class="bg-slate-800/50 backdrop-blur rounded-3xl p-6 mb-4 flex-1 flex flex-col justify-center">
+                        <!-- Waveform Visualization (shown during recording) -->
+                        <div id="waveform-container" class="flex items-center justify-center space-x-1 h-24 mb-6">
+                            <!-- Waveform bars will be added dynamically -->
+                        </div>
+                        
+                        <!-- Control Buttons -->
+                        <div class="flex items-center justify-center space-x-6">
+                            <!-- Main Control Button -->
+                            <button id="main-control-btn" onclick="toggleRecording()" class="p-6 bg-red-600 rounded-full hover:bg-red-700 transition-all transform hover:scale-105 active:scale-95">
+                                <svg id="mic-icon" class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2A3 3 0 0 0 9 5V11A3 3 0 0 0 12 14A3 3 0 0 0 15 11V5A3 3 0 0 0 12 2M19 11C19 14.53 16.39 17.44 13 17.93V21H11V17.93C7.61 17.44 5 14.53 5 11H7A5 5 0 0 0 12 16A5 5 0 0 0 17 11H19Z"/>
+                                </svg>
+                                <svg id="stop-icon" class="w-12 h-12 text-white hidden" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18,18H6V6H18V18Z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Sessions (Touch Scrollable) -->
+                    <div class="bg-slate-800/50 backdrop-blur rounded-3xl p-4">
+                        <h3 class="text-lg font-semibold text-white mb-3">Recent Sessions</h3>
+                        <div id="recent-sessions-list" class="space-y-2 max-h-48 overflow-y-auto touch-scrollable">
+                            <!-- Recent sessions will be populated here -->
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -221,29 +284,34 @@
         let recordingInterval = null;
         
         // Navigation function
-        function showRecordingView() {
-            if (isRecording) {
-                showView('recording');
-            } else {
-                // Start recording and show recording view
-                startRecording();
-            }
+        function showControlsView() {
+            showView('controls');
+            updateControlsView();
+            loadRecentSessions();
         }
         
         // Update navigation buttons based on current view
         function updateNavigation(currentView) {
-            const transcriptionsBtn = document.querySelector('button[onclick="window.location.href=\'/\'"]');
-            const recordingBtn = document.getElementById('recording-nav-btn-main');
+            const sessionsBtn = document.getElementById('sessions-nav-btn');
+            const controlsBtn = document.getElementById('controls-nav-btn');
+            const dashboardBtn = document.getElementById('dashboard-nav-btn');
             
-            // Reset all buttons
-            transcriptionsBtn.className = 'bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-sm';
-            recordingBtn.className = 'bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-sm';
+            // Reset all buttons to inactive state
+            const controlsInactiveClass = 'bg-slate-700 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-lg text-xl';
+            const controlsActiveClass = 'bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg text-xl';
+            const sessionsInactiveClass = 'bg-slate-700 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-lg text-xl';
+            const sessionsActiveClass = 'bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-xl';
+            const dashboardClass = 'bg-slate-700 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-lg text-xl';
+            
+            controlsBtn.className = controlsInactiveClass;
+            sessionsBtn.className = sessionsInactiveClass;
+            dashboardBtn.className = dashboardClass;
             
             // Highlight current view
             if (currentView === 'list') {
-                transcriptionsBtn.className = 'bg-slate-700 border-2 border-slate-500 text-white font-bold py-2 px-4 rounded-lg text-sm';
-            } else if (currentView === 'recording') {
-                recordingBtn.className = 'bg-slate-700 border-2 border-slate-500 text-white font-bold py-2 px-4 rounded-lg text-sm';
+                sessionsBtn.className = sessionsActiveClass;
+            } else if (currentView === 'controls') {
+                controlsBtn.className = controlsActiveClass;
             }
         }
         
@@ -269,14 +337,13 @@
         // DOM elements
         const views = {
             list: document.getElementById('session-list-view'),
-            recording: document.getElementById('live-recording-view'),
+            controls: document.getElementById('live-recording-view'), // Now the controls view
             detail: document.getElementById('session-detail-view')
         };
         
         const headerTitle = document.getElementById('header-title');
         const backButton = document.getElementById('back-button');
         const recordButton = document.getElementById('record-button');
-        const stopRecordingButton = document.getElementById('stop-recording-button');
         const fabContainer = document.getElementById('fab-container');
         const sessionListContainer = document.getElementById('session-list');
         const toggleTranscriptButton = document.getElementById('toggle-transcript-button');
@@ -469,22 +536,7 @@
             });
         }
 
-        // Recording management
-        function renderRecordingView() {
-            showView('recording');
-            headerTitle.textContent = 'Live Recording';
-            
-            // Generate waveform bars
-            const waveformContainer = document.getElementById('waveform-container');
-            waveformContainer.innerHTML = '';
-            for (let i = 0; i < 40; i++) {
-                const bar = document.createElement('div');
-                bar.className = 'waveform-bar w-1 bg-violet-500 rounded-full';
-                bar.style.animationDelay = `${Math.random() * -1.5}s`;
-                bar.style.height = `${20 + Math.random() * 80}%`;
-                waveformContainer.appendChild(bar);
-            }
-        }
+        // Recording management (now handled by controls view)
 
         async function startRecording() {
             try {
@@ -493,7 +545,7 @@
                     const data = await response.json();
                     isRecording = true;
                     updateRecordingVisuals();
-                    renderRecordingView();
+                    updateControlsView();
                     showMessage('Recording started', 'success');
                 } else {
                     const error = await response.json();
@@ -504,6 +556,14 @@
                 console.error('Error starting recording:', error);
             }
         }
+        
+        function toggleRecording() {
+            if (isRecording) {
+                stopRecording();
+            } else {
+                startRecording();
+            }
+        }
 
         async function stopRecording() {
             try {
@@ -511,9 +571,10 @@
                 if (response.ok) {
                     isRecording = false;
                     updateRecordingVisuals();
-                    showView('list');
+                    updateControlsView();
                     showMessage('Recording stopped. Transcribing...', 'success');
                     loadSessions(); // Refresh session list
+                    loadRecentSessions(); // Refresh recent sessions in controls view
                 } else {
                     const error = await response.json();
                     showMessage(error.error || 'Failed to stop recording', 'error');
@@ -521,6 +582,17 @@
             } catch (error) {
                 showMessage('Error stopping recording', 'error');
                 console.error('Error stopping recording:', error);
+            }
+        }
+        
+        // Stop recording from header timer (available on all screens)
+        async function stopRecordingFromHeader() {
+            try {
+                showMessage('Stopping recording...', 'info');
+                await stopRecording();
+            } catch (error) {
+                showMessage('Error stopping recording from header', 'error');
+                console.error('Error stopping recording from header:', error);
             }
         }
 
@@ -561,17 +633,137 @@
         socket.on('recording_started', (data) => {
             isRecording = true;
             updateRecordingVisuals();
+            updateControlsView();
         });
         
         socket.on('recording_stopped', (data) => {
             isRecording = false;
             updateRecordingVisuals();
+            updateControlsView();
         });
+
+        // Update controls view based on recording state
+        function updateControlsView() {
+            const recordingIcon = document.getElementById('recording-icon');
+            const microphoneIcon = document.getElementById('microphone-icon');
+            const controlTitle = document.getElementById('control-title');
+            const controlStatus = document.getElementById('control-status');
+            const recordingTimer = document.getElementById('recording-timer');
+            const mainControlBtn = document.getElementById('main-control-btn');
+            const micIcon = document.getElementById('mic-icon');
+            const stopIcon = document.getElementById('stop-icon');
+            const waveformContainer = document.getElementById('waveform-container');
+            
+            if (isRecording) {
+                // Recording state
+                recordingIcon.classList.remove('hidden');
+                microphoneIcon.classList.add('hidden');
+                controlTitle.textContent = 'Recording Session';
+                controlStatus.textContent = 'Tap to stop recording';
+                recordingTimer.classList.remove('hidden');
+                mainControlBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
+                mainControlBtn.classList.add('bg-slate-700', 'hover:bg-slate-800');
+                micIcon.classList.add('hidden');
+                stopIcon.classList.remove('hidden');
+                
+                // Generate waveform bars
+                if (waveformContainer.children.length === 0) {
+                    for (let i = 0; i < 40; i++) {
+                        const bar = document.createElement('div');
+                        bar.className = 'waveform-bar w-1 bg-red-500 rounded-full';
+                        bar.style.animationDelay = `${Math.random() * -1.5}s`;
+                        bar.style.height = `${20 + Math.random() * 80}%`;
+                        waveformContainer.appendChild(bar);
+                    }
+                }
+            } else {
+                // Ready state
+                recordingIcon.classList.add('hidden');
+                microphoneIcon.classList.remove('hidden');
+                controlTitle.textContent = 'Ready to Record';
+                controlStatus.textContent = 'Tap the microphone to start';
+                recordingTimer.classList.add('hidden');
+                mainControlBtn.classList.add('bg-red-600', 'hover:bg-red-700');
+                mainControlBtn.classList.remove('bg-slate-700', 'hover:bg-slate-800');
+                micIcon.classList.remove('hidden');
+                stopIcon.classList.add('hidden');
+                
+                // Clear waveform
+                waveformContainer.innerHTML = '';
+            }
+        }
+        
+        // Load recent sessions for controls view
+        async function loadRecentSessions() {
+            try {
+                const response = await fetch('/api/sessions');
+                if (response.ok) {
+                    const allSessions = await response.json();
+                    const recentSessions = allSessions
+                        .sort((a, b) => new Date(b.start_time) - new Date(a.start_time))
+                        .slice(0, 5); // Show only 5 most recent
+                    
+                    const recentSessionsList = document.getElementById('recent-sessions-list');
+                    
+                    if (recentSessions.length === 0) {
+                        recentSessionsList.innerHTML = '<p class="text-slate-400 text-sm">No recent sessions</p>';
+                        return;
+                    }
+                    
+                    recentSessionsList.innerHTML = recentSessions.map(session => {
+                        const date = new Date(session.start_time);
+                        const timeAgo = getTimeAgo(date);
+                        const duration = Math.floor(session.duration / 60);
+                        
+                        return `
+                            <div class="bg-slate-700/50 p-3 rounded-xl cursor-pointer hover:bg-slate-700 transition-colors" 
+                                 onclick="renderSessionDetail('${session.session_id}')">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex-1">
+                                        <h4 class="text-white font-medium text-sm truncate">${session.title}</h4>
+                                        <p class="text-slate-400 text-xs">${timeAgo} • ${duration} min</p>
+                                    </div>
+                                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            } catch (error) {
+                console.error('Error loading recent sessions:', error);
+            }
+        }
+        
+        // Helper function to get relative time
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            
+            let interval = seconds / 31536000;
+            if (interval > 1) return Math.floor(interval) + " years ago";
+            
+            interval = seconds / 2592000;
+            if (interval > 1) return Math.floor(interval) + " months ago";
+            
+            interval = seconds / 86400;
+            if (interval > 1) return Math.floor(interval) + " days ago";
+            
+            interval = seconds / 3600;
+            if (interval > 1) return Math.floor(interval) + " hours ago";
+            
+            interval = seconds / 60;
+            if (interval > 1) return Math.floor(interval) + " minutes ago";
+            
+            return "Just now";
+        }
 
         // Event listeners
         backButton.addEventListener('click', () => showView('list'));
-        recordButton.addEventListener('click', startRecording);
-        stopRecordingButton.addEventListener('click', stopRecording);
+        recordButton.addEventListener('click', () => {
+            // Navigate to controls view when blue mic button is pressed
+            showControlsView();
+        });
         
         playButton.addEventListener('click', () => {
             if (audioPlayerElement.paused) {
@@ -590,13 +782,14 @@
 
         // Initialize the app
         loadSessions();
+        loadRecentSessions();
         
         // Check URL parameters for direct navigation
         const urlParams = new URLSearchParams(window.location.search);
         const viewParam = urlParams.get('view');
         
-        if (viewParam === 'recording') {
-            showView('recording');
+        if (viewParam === 'controls') {
+            showControlsView();
         } else {
             showView('list');
         }

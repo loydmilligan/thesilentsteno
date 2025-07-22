@@ -39,6 +39,14 @@ recording_state = {
     'duration': 0
 }
 
+# Background transcription processor state
+transcription_processor_state = {
+    'running': False,
+    'current_session': None,
+    'queue': [],
+    'last_check': 0
+}
+
 def initialize_adapter():
     """Initialize the walking skeleton adapter"""
     global adapter
@@ -216,38 +224,56 @@ def get_system_status():
     try:
         import subprocess
         
-        # Check for Bluetooth audio sources (phone)
+        # Known device configurations (from simple_audio_test.py)
+        known_devices = {
+            'source': {
+                'name': 'Pixel 9 Pro',
+                'mac': 'C0:1C:6A:AD:78:E6',
+                'pa_source': 'bluez_source.C0_1C_6A_AD_78_E6.a2dp_source'
+            },
+            'sink': {
+                'name': 'Galaxy Buds3 Pro',
+                'mac': 'BC:A0:80:EB:21:AA',
+                'pa_sink': 'bluez_sink.BC_A0_80_EB_21_AA.a2dp_sink'
+            }
+        }
+        
+        # Check for specific phone source
         source_connected = False
         try:
             result = subprocess.run(['pactl', 'list', 'sources', 'short'], 
                                   capture_output=True, text=True, timeout=5)
             if result.returncode == 0:
-                # Look for Bluetooth source in the output
-                for line in result.stdout.split('\n'):
-                    if 'bluetooth' in line.lower() and ('pixel' in line.lower() or 'phone' in line.lower() or 'a2dp_source' in line.lower()):
-                        source_connected = True
-                        break
+                source_connected = known_devices['source']['pa_source'] in result.stdout
         except Exception as e:
             logger.warning(f"Error checking Bluetooth sources: {e}")
         
-        # Check for Bluetooth audio sinks (earbuds)
+        # Check for specific earbuds sink
         sink_connected = False
         try:
             result = subprocess.run(['pactl', 'list', 'sinks', 'short'], 
                                   capture_output=True, text=True, timeout=5)
             if result.returncode == 0:
-                # Look for Bluetooth sink in the output
-                for line in result.stdout.split('\n'):
-                    if 'bluetooth' in line.lower() and ('galaxy' in line.lower() or 'buds' in line.lower() or 'a2dp_sink' in line.lower()):
-                        sink_connected = True
-                        break
+                sink_connected = known_devices['sink']['pa_sink'] in result.stdout
         except Exception as e:
             logger.warning(f"Error checking Bluetooth sinks: {e}")
+        
+        # Check if audio forwarding is active
+        audio_forwarding_active = False
+        try:
+            result = subprocess.run(['pactl', 'list', 'modules', 'short'], 
+                                  capture_output=True, text=True, timeout=5)
+            if result.returncode == 0:
+                audio_forwarding_active = 'module-loopback' in result.stdout
+        except Exception as e:
+            logger.warning(f"Error checking audio forwarding: {e}")
         
         return jsonify({
             'bluetooth_source_connected': source_connected,
             'bluetooth_sink_connected': sink_connected,
-            'recording': recording_state['is_recording']
+            'audio_forwarding_active': audio_forwarding_active,
+            'recording': recording_state['is_recording'],
+            'devices': known_devices
         })
     except Exception as e:
         logger.error(f"Error getting system status: {e}")
@@ -255,58 +281,140 @@ def get_system_status():
 
 @app.route('/api/bluetooth/connect_source', methods=['POST'])
 def connect_bluetooth_source():
-    """Connect to Bluetooth source (phone)"""
+    """Start audio forwarding from phone to earbuds"""
     try:
         import subprocess
         
-        # Try to connect to known phone devices
-        known_phones = ['Pixel_9_Pro']  # Add your phone's Bluetooth name
+        # Known device configurations
+        source_device = {
+            'name': 'Pixel 9 Pro',
+            'mac': 'C0:1C:6A:AD:78:E6',
+            'pa_source': 'bluez_source.C0_1C_6A_AD_78_E6.a2dp_source'
+        }
         
-        for phone in known_phones:
-            try:
-                # Check if device is paired
-                result = subprocess.run(['bluetoothctl', 'info', phone], 
-                                      capture_output=True, text=True, timeout=10)
-                if result.returncode == 0:
-                    # Try to connect
-                    connect_result = subprocess.run(['bluetoothctl', 'connect', phone], 
-                                                  capture_output=True, text=True, timeout=15)
-                    if connect_result.returncode == 0:
-                        return jsonify({'connected': True, 'device': phone})
-            except Exception as e:
-                logger.warning(f"Error connecting to {phone}: {e}")
+        sink_device = {
+            'name': 'Galaxy Buds3 Pro',
+            'mac': 'BC:A0:80:EB:21:AA',
+            'pa_sink': 'bluez_sink.BC_A0_80_EB_21_AA.a2dp_sink'
+        }
         
-        return jsonify({'connected': False, 'error': 'No compatible phone found or failed to connect'})
+        # Check if both devices are available
+        source_result = subprocess.run(['pactl', 'list', 'sources', 'short'], 
+                                     capture_output=True, text=True, timeout=5)
+        sink_result = subprocess.run(['pactl', 'list', 'sinks', 'short'], 
+                                   capture_output=True, text=True, timeout=5)
+        
+        if source_device['pa_source'] not in source_result.stdout:
+            return jsonify({'connected': False, 'error': f"{source_device['name']} not available as audio source"})
+            
+        if sink_device['pa_sink'] not in sink_result.stdout:
+            return jsonify({'connected': False, 'error': f"{sink_device['name']} not available as audio output"})
+        
+        # Stop any existing loopback modules
+        try:
+            modules_result = subprocess.run("pactl list modules short | grep module-loopback", 
+                                          shell=True, capture_output=True, text=True)
+            
+            for line in modules_result.stdout.strip().split('\n'):
+                if line.strip():
+                    module_id = line.split()[0]
+                    subprocess.run(f"pactl unload-module {module_id}", shell=True, check=False)
+                    logger.info(f"Stopped existing loopback module {module_id}")
+        except Exception as e:
+            logger.warning(f"Error stopping existing modules: {e}")
+        
+        # Create new loopback
+        cmd = f"pactl load-module module-loopback source={source_device['pa_source']} sink={sink_device['pa_sink']} latency_msec=40"
+        
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        
+        if result.returncode == 0:
+            logger.info(f"Started audio forwarding: {source_device['name']} -> {sink_device['name']}")
+            return jsonify({
+                'connected': True, 
+                'message': f"Audio forwarding active: {source_device['name']} → {sink_device['name']}",
+                'source': source_device['name'],
+                'sink': sink_device['name']
+            })
+        else:
+            error_msg = result.stderr.strip() or "Unknown error"
+            logger.error(f"Failed to start audio forwarding: {error_msg}")
+            return jsonify({'connected': False, 'error': f"Failed to start audio forwarding: {error_msg}"})
+            
     except Exception as e:
-        logger.error(f"Error connecting Bluetooth source: {e}")
+        logger.error(f"Error starting audio forwarding: {e}")
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/bluetooth/connect_output', methods=['POST'])
 def connect_bluetooth_output():
-    """Connect to Bluetooth output (earbuds)"""
+    """Check and ensure earbuds are connected and ready"""
     try:
         import subprocess
         
-        # Try to connect to known earbud devices
-        known_earbuds = ['Galaxy_Buds3_Pro']  # Add your earbuds' Bluetooth name
+        # Known earbuds configuration
+        sink_device = {
+            'name': 'Galaxy Buds3 Pro',
+            'mac': 'BC:A0:80:EB:21:AA',
+            'pa_sink': 'bluez_sink.BC_A0_80_EB_21_AA.a2dp_sink'
+        }
         
-        for earbuds in known_earbuds:
-            try:
-                # Check if device is paired
-                result = subprocess.run(['bluetoothctl', 'info', earbuds], 
-                                      capture_output=True, text=True, timeout=10)
-                if result.returncode == 0:
-                    # Try to connect
-                    connect_result = subprocess.run(['bluetoothctl', 'connect', earbuds], 
-                                                  capture_output=True, text=True, timeout=15)
-                    if connect_result.returncode == 0:
-                        return jsonify({'connected': True, 'device': earbuds})
-            except Exception as e:
-                logger.warning(f"Error connecting to {earbuds}: {e}")
+        # Check if earbuds are available as a sink
+        result = subprocess.run(['pactl', 'list', 'sinks', 'short'], 
+                              capture_output=True, text=True, timeout=5)
         
-        return jsonify({'connected': False, 'error': 'No compatible earbuds found or failed to connect'})
+        if sink_device['pa_sink'] in result.stdout:
+            # Test the connection with a brief test
+            test_cmd = f"timeout 1 paplay -d {sink_device['pa_sink']} /dev/null 2>/dev/null || true"
+            subprocess.run(test_cmd, shell=True)
+            
+            return jsonify({
+                'connected': True,
+                'message': f"{sink_device['name']} is connected and ready",
+                'device': sink_device['name']
+            })
+        else:
+            return jsonify({
+                'connected': False, 
+                'error': f"{sink_device['name']} not available as audio output"
+            })
+            
     except Exception as e:
-        logger.error(f"Error connecting Bluetooth output: {e}")
+        logger.error(f"Error checking output device: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/bluetooth/stop_forwarding', methods=['POST'])
+def stop_bluetooth_forwarding():
+    """Stop audio forwarding"""
+    try:
+        import subprocess
+        
+        # Stop all loopback modules
+        modules_result = subprocess.run("pactl list modules short | grep module-loopback", 
+                                      shell=True, capture_output=True, text=True)
+        
+        stopped_count = 0
+        for line in modules_result.stdout.strip().split('\n'):
+            if line.strip():
+                module_id = line.split()[0]
+                result = subprocess.run(f"pactl unload-module {module_id}", 
+                                      shell=True, check=False)
+                if result.returncode == 0:
+                    stopped_count += 1
+                    logger.info(f"Stopped loopback module {module_id}")
+        
+        if stopped_count > 0:
+            return jsonify({
+                'success': True,
+                'message': f"Stopped {stopped_count} audio forwarding module(s)"
+            })
+        else:
+            return jsonify({
+                'success': True,
+                'message': "No audio forwarding was active"
+            })
+            
+    except Exception as e:
+        logger.error(f"Error stopping audio forwarding: {e}")
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/play/<session_id>')
@@ -332,6 +440,174 @@ def update_recording_timer():
             socketio.emit('recording_timer', {'duration': recording_state['duration']})
         time.sleep(1)
 
+def get_untranscribed_sessions() -> List[Dict]:
+    """Get sessions that need transcription, sorted by newest first"""
+    sessions = load_sessions()
+    untranscribed = []
+    
+    for session in sessions:
+        # Check if session needs transcription
+        transcript = session.get('transcript', [])
+        summary = session.get('summary', '')
+        wav_file = session.get('wav_file', '')
+        
+        # Skip if no WAV file
+        if not wav_file or not os.path.exists(wav_file):
+            continue
+            
+        # Session needs transcription if:
+        # 1. Empty transcript array, OR
+        # 2. Summary is "Processing...", OR  
+        # 3. Transcript contains error messages
+        needs_transcription = (
+            len(transcript) == 0 or 
+            summary == "Processing..." or
+            (len(transcript) > 0 and 'error' in transcript[0].get('text', '').lower())
+        )
+        
+        if needs_transcription:
+            untranscribed.append(session)
+    
+    # Sort by timestamp (newest first)
+    untranscribed.sort(key=lambda x: x.get('timestamp', ''), reverse=True)
+    logger.info(f"Found {len(untranscribed)} sessions needing transcription")
+    
+    return untranscribed
+
+def background_transcription_processor():
+    """Background thread that continuously processes untranscribed sessions"""
+    global transcription_processor_state
+    
+    logger.info("Background transcription processor started")
+    transcription_processor_state['running'] = True
+    
+    while transcription_processor_state['running']:
+        try:
+            current_time = time.time()
+            
+            # Check for new untranscribed sessions every 30 seconds
+            if current_time - transcription_processor_state['last_check'] >= 30:
+                transcription_processor_state['last_check'] = current_time
+                
+                # Get sessions needing transcription
+                untranscribed = get_untranscribed_sessions()
+                
+                if untranscribed:
+                    logger.info(f"Background processor found {len(untranscribed)} sessions to process")
+                    
+                    for session in untranscribed:
+                        # Skip if currently recording (prioritize live session)
+                        if recording_state['is_recording']:
+                            logger.info("Recording in progress, skipping background transcription")
+                            break
+                            
+                        # Skip if already processing this session
+                        if transcription_processor_state['current_session'] == session['session_id']:
+                            continue
+                            
+                        # Process this session
+                        session_id = session['session_id']
+                        logger.info(f"Background processor starting transcription for session: {session_id}")
+                        
+                        transcription_processor_state['current_session'] = session_id
+                        
+                        # Transcribe in foreground (this thread will handle it)
+                        transcribe_recording_sync(session_id)
+                        
+                        transcription_processor_state['current_session'] = None
+                        
+                        # Small delay between sessions
+                        time.sleep(5)
+                        
+                        # Check if we should stop
+                        if not transcription_processor_state['running']:
+                            break
+            
+            # Sleep for 10 seconds before next check
+            time.sleep(10)
+            
+        except Exception as e:
+            logger.error(f"Error in background transcription processor: {e}")
+            time.sleep(30)  # Wait longer on error
+    
+    logger.info("Background transcription processor stopped")
+
+def transcribe_recording_sync(session_id: str):
+    """Synchronous version of transcribe_recording for background processing"""
+    try:
+        logger.info(f"Starting transcription for session {session_id}")
+        socketio.emit('transcription_started', {'session_id': session_id})
+        
+        if adapter:
+            # Get WAV file path from session data
+            sessions = load_sessions()
+            wav_file = None
+            for session in sessions:
+                if session.get('session_id') == session_id:
+                    wav_file = session.get('wav_file')
+                    break
+            
+            if not wav_file:
+                logger.error(f"No WAV file found for session {session_id}")
+                socketio.emit('transcription_error', {'session_id': session_id})
+                return
+            
+            if not os.path.exists(wav_file):
+                logger.error(f"WAV file not found: {wav_file}")
+                socketio.emit('transcription_error', {'session_id': session_id})
+                return
+            
+            logger.info(f"Transcribing file: {wav_file}")
+            
+            # Get transcription result which includes analysis
+            result = adapter.transcribe_recording(wav_file)
+            if result:
+                # Extract transcript text and analysis
+                if isinstance(result, dict):
+                    transcript = result.get('transcript', '')
+                    analysis = result.get('analysis', {})
+                else:
+                    transcript = str(result)
+                    analysis = {}
+                
+                # Update session with transcript and analysis
+                sessions = load_sessions()
+                for session in sessions:
+                    if session.get('session_id') == session_id:
+                        session['transcript'] = [
+                            {
+                                'speaker': 'Unknown',
+                                'timestamp': '00:00:00',
+                                'text': transcript
+                            }
+                        ]
+                        
+                        # Update with AI analysis
+                        session['summary'] = analysis.get('summary', transcript[:200] + '...' if len(transcript) > 200 else transcript)
+                        session['action_items'] = analysis.get('action_items', [])
+                        session['sentiment'] = analysis.get('sentiment', 'neutral')
+                        session['topics'] = analysis.get('topics', [])
+                        session['questions'] = analysis.get('questions', [])
+                        session['key_moments'] = [
+                            {'timestamp': '00:00:00', 'description': phrase} 
+                            for phrase in analysis.get('key_phrases', [])[:3]
+                        ]
+                        break
+                
+                save_sessions(sessions)
+                socketio.emit('transcription_complete', {
+                    'session_id': session_id,
+                    'transcript': transcript,
+                    'analysis': analysis
+                })
+                logger.info(f"Background transcription completed for session {session_id}")
+            else:
+                socketio.emit('transcription_error', {'session_id': session_id})
+                logger.error(f"Transcription failed for session {session_id}")
+    except Exception as e:
+        logger.error(f"Error transcribing session {session_id}: {e}")
+        socketio.emit('transcription_error', {'session_id': session_id})
+
 def transcribe_recording(session_id: str):
     """Transcribe recording in background"""
     try:
@@ -339,8 +615,21 @@ def transcribe_recording(session_id: str):
         socketio.emit('transcription_started', {'session_id': session_id})
         
         if adapter:
+            # Get WAV file path from session data
+            sessions = load_sessions()
+            wav_file = None
+            for session in sessions:
+                if session.get('session_id') == session_id:
+                    wav_file = session.get('wav_file')
+                    break
+            
+            if not wav_file:
+                logger.error(f"No WAV file found for session {session_id}")
+                socketio.emit('transcription_error', {'session_id': session_id})
+                return
+            
             # Get transcription result which includes analysis
-            result = adapter.transcribe_recording()
+            result = adapter.transcribe_recording(wav_file)
             if result:
                 # Extract transcript text and analysis
                 if isinstance(result, dict):
@@ -411,7 +700,27 @@ if __name__ == '__main__':
     # Create templates directory if it doesn't exist
     os.makedirs('templates', exist_ok=True)
     
+    # Start background transcription processor
+    logger.info("Starting background transcription processor...")
+    transcription_thread = threading.Thread(target=background_transcription_processor, daemon=True)
+    transcription_thread.start()
+    
+    # Setup graceful shutdown
+    import signal
+    def signal_handler(sig, frame):
+        logger.info("Shutting down gracefully...")
+        transcription_processor_state['running'] = False
+        sys.exit(0)
+    
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGTERM, signal_handler)
+    
     # Run the Flask app
     logger.info("Starting Silent Steno Web UI server...")
     logger.info("Access the app at: http://localhost:5000")
-    socketio.run(app, host='0.0.0.0', port=5000, debug=False, allow_unsafe_werkzeug=True)
+    
+    try:
+        socketio.run(app, host='0.0.0.0', port=5000, debug=False, allow_unsafe_werkzeug=True)
+    except KeyboardInterrupt:
+        logger.info("Received interrupt signal")
+        transcription_processor_state['running'] = False
