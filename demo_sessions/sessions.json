@@ -1,10 +1,10 @@
 {
   "sessions": [
     {
-      "session_id": "skeleton_1753134602",
-      "timestamp": "2025-07-21T14:51:05.574940",
-      "duration": 62.650997732426305,
-      "title": "Recording 2025-07-21 14:51",
+      "session_id": "skeleton_1753145522",
+      "timestamp": "2025-07-21T17:52:42.876138",
+      "duration": 40.19374149659864,
+      "title": "Recording 2025-07-21 17:52",
       "participants": [
         "Unknown"
       ],
@@ -13,20 +13,43 @@
         {
           "speaker": "Unknown",
           "timestamp": "00:00:00",
-          "text": "Good to see everyone. Today, I want to review our progress on enhancing the fleet management system, especially for our larger card lock clients. Brenda, can you kick us off? Absolutely, Alex. We've made significant headway. The new dashboard for fleet managers is getting positive feedback. It really streamlines their fuel consumption tracking and driver activity. Uh, we're seeing, you know, improved efficiency metrics across the board for the pilot group. That's great to hear. Charles, from your end, what are the key performance indicators showing in terms of, you know, how it impacts their bottom line? Well, Alex, based on the preliminary data, we're observing about a 7% reduction in operational overhead for fleets utilizing the full suite, primarily due to optimized rooting and reduced manual data entry. However, the onboarding process for new clients, particularly with legacy system integrations,"
+          "text": "you you"
         }
       ],
-      "summary": "Good to see everyone.  However, the onboarding process for new clients, particularly with legacy system integrations,",
+      "summary": "you you",
       "action_items": [],
       "key_moments": [],
-      "sentiment": "positive",
-      "topics": [
-        "meeting"
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753146245",
+      "timestamp": "2025-07-21T18:04:28.265718",
+      "duration": 22.30201814058957,
+      "title": "Recording 2025-07-21 18:04",
+      "participants": [
+        "Unknown"
       ],
-      "questions": [
-        "Brenda, can you kick us off? Absolutely, Alex",
-        "Charles, from your end, what are the key performance indicators showing in terms of, you know, how it impacts their bottom line? Well, Alex, based on the preliminary data, we're observing about a 7% reduction in operational overhead for fleets utilizing the full suite, primarily due to optimized rooting and reduced manual data entry"
-      ]
+      "wav_file": "demo_sessions/recording_20250721_180405.wav",
+      "transcript": [],
+      "summary": "Processing...",
+      "action_items": [],
+      "key_moments": []
+    },
+    {
+      "session_id": "skeleton_1753147983",
+      "timestamp": "2025-07-21T18:33:47.897401",
+      "duration": 44.73,
+      "title": "Recording 2025-07-21 18:33",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250721_183303.wav",
+      "transcript": [],
+      "summary": "Processing...",
+      "action_items": [],
+      "key_moments": []
     }
   ]
 }

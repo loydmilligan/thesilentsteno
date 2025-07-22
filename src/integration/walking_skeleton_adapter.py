@@ -170,10 +170,19 @@ class WalkingSkeletonAdapter:
             use_database=False
         )
         
-        # Initialize simple recorder
-        self.simple_recorder = SimpleAudioRecorder(
-            storage_root=self.config.get('storage_root', 'demo_sessions')
-        )
+        # Initialize Bluetooth-capable recorder
+        try:
+            from src.recording.bluetooth_audio_recorder_module import BluetoothAudioRecorder
+            self.simple_recorder = BluetoothAudioRecorder(
+                storage_root=self.config.get('storage_root', 'demo_sessions')
+            )
+            logger.info("Using Bluetooth audio recorder")
+        except ImportError:
+            # Fallback to regular recorder
+            self.simple_recorder = SimpleAudioRecorder(
+                storage_root=self.config.get('storage_root', 'demo_sessions')
+            )
+            logger.info("Using USB audio recorder (fallback)")
         
         # Initialize simple transcriber
         self.simple_transcriber = SimpleTranscriber(

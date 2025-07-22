@@ -78,9 +78,22 @@
                 </button>
                 <h1 id="header-title" class="text-xl font-bold text-white">Sessions</h1>
             </div>
-            <div id="header-right">
+            <div id="header-right" class="flex items-center gap-4">
+                <button onclick="window.location.href='/'" class="bg-slate-700 border-2 border-slate-500 text-white font-bold py-2 px-4 rounded-lg text-sm">
+                    Transcriptions
+                </button>
+                <button id="recording-nav-btn-main" onclick="showRecordingView()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-sm">
+                    Recording
+                </button>
+                <button onclick="window.location.href='/dashboard'" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-sm">
+                    Dashboard
+                </button>
                 <div id="status-indicator" class="w-6 h-6 text-green-400">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg>
+                </div>
+                <!-- Recording Timer for Header -->
+                <div id="header-recording-timer" class="hidden bg-red-600 text-white font-mono font-bold py-2 px-4 rounded-lg text-sm">
+                    REC: <span id="header-timer-display">00:00:00</span>
                 </div>
             </div>
         </header>
@@ -182,9 +195,12 @@
 
         <!-- Floating Action Button -->
         <div id="fab-container" class="absolute bottom-6 right-6 z-20">
-            <button id="record-button" class="touch-button bg-violet-600 hover:bg-violet-700 active:bg-violet-800 text-white p-6 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-all duration-200">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
-            </button>
+            <div class="relative">
+                <div id="fab-pulse-ring" class="absolute inset-0 bg-red-600 rounded-full pulse-ring hidden"></div>
+                <button id="record-button" class="touch-button bg-violet-600 hover:bg-violet-700 active:bg-violet-800 text-white p-6 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-all duration-200 relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                </button>
+            </div>
         </div>
 
         <!-- Status Messages -->
@@ -203,6 +219,52 @@
         let isRecording = false;
         let audioPlayer = null;
         let recordingInterval = null;
+        
+        // Navigation function
+        function showRecordingView() {
+            if (isRecording) {
+                showView('recording');
+            } else {
+                // Start recording and show recording view
+                startRecording();
+            }
+        }
+        
+        // Update navigation buttons based on current view
+        function updateNavigation(currentView) {
+            const transcriptionsBtn = document.querySelector('button[onclick="window.location.href=\'/\'"]');
+            const recordingBtn = document.getElementById('recording-nav-btn-main');
+            
+            // Reset all buttons
+            transcriptionsBtn.className = 'bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-sm';
+            recordingBtn.className = 'bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-sm';
+            
+            // Highlight current view
+            if (currentView === 'list') {
+                transcriptionsBtn.className = 'bg-slate-700 border-2 border-slate-500 text-white font-bold py-2 px-4 rounded-lg text-sm';
+            } else if (currentView === 'recording') {
+                recordingBtn.className = 'bg-slate-700 border-2 border-slate-500 text-white font-bold py-2 px-4 rounded-lg text-sm';
+            }
+        }
+        
+        // Update recording visuals
+        function updateRecordingVisuals() {
+            const recordButton = document.getElementById('record-button');
+            const fabPulseRing = document.getElementById('fab-pulse-ring');
+            const headerTimer = document.getElementById('header-recording-timer');
+            
+            if (isRecording) {
+                recordButton.classList.remove('bg-violet-600', 'hover:bg-violet-700');
+                recordButton.classList.add('bg-red-600', 'hover:bg-red-700');
+                fabPulseRing.classList.remove('hidden');
+                headerTimer.classList.remove('hidden');
+            } else {
+                recordButton.classList.add('bg-violet-600', 'hover:bg-violet-700');
+                recordButton.classList.remove('bg-red-600', 'hover:bg-red-700');
+                fabPulseRing.classList.add('hidden');
+                headerTimer.classList.add('hidden');
+            }
+        }
 
         // DOM elements
         const views = {
@@ -271,6 +333,9 @@
             backButton.classList.toggle('hidden', viewName === 'list');
             fabContainer.classList.toggle('hidden', viewName !== 'list');
             headerTitle.textContent = viewName === 'list' ? 'Sessions' : '';
+            
+            // Update navigation buttons
+            updateNavigation(viewName);
         }
 
         // Session management
@@ -427,6 +492,7 @@
                 if (response.ok) {
                     const data = await response.json();
                     isRecording = true;
+                    updateRecordingVisuals();
                     renderRecordingView();
                     showMessage('Recording started', 'success');
                 } else {
@@ -444,6 +510,7 @@
                 const response = await fetch('/api/recording/stop', { method: 'POST' });
                 if (response.ok) {
                     isRecording = false;
+                    updateRecordingVisuals();
                     showView('list');
                     showMessage('Recording stopped. Transcribing...', 'success');
                     loadSessions(); // Refresh session list
@@ -471,7 +538,14 @@
         socket.on('recording_timer', (data) => {
             if (isRecording) {
                 const timerEl = document.getElementById('recording-timer');
-                timerEl.textContent = formatTime(data.duration);
+                const headerTimerEl = document.getElementById('header-timer-display');
+                
+                if (timerEl) {
+                    timerEl.textContent = formatTime(data.duration);
+                }
+                if (headerTimerEl) {
+                    headerTimerEl.textContent = formatTime(data.duration);
+                }
             }
         });
 
@@ -482,6 +556,16 @@
 
         socket.on('transcription_error', (data) => {
             showMessage('Transcription failed', 'error');
+        });
+        
+        socket.on('recording_started', (data) => {
+            isRecording = true;
+            updateRecordingVisuals();
+        });
+        
+        socket.on('recording_stopped', (data) => {
+            isRecording = false;
+            updateRecordingVisuals();
         });
 
         // Event listeners
@@ -506,7 +590,16 @@
 
         // Initialize the app
         loadSessions();
-        showView('list');
+        
+        // Check URL parameters for direct navigation
+        const urlParams = new URLSearchParams(window.location.search);
+        const viewParam = urlParams.get('view');
+        
+        if (viewParam === 'recording') {
+            showView('recording');
+        } else {
+            showView('list');
+        }
     </script>
 </body>
 </html>

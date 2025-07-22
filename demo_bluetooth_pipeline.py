@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
-The Silent Steno - bluetooth Audio Pipeline Demo
+The Silent Steno - Enhanced Bluetooth Audio Pipeline Demo with Multi-Source Support
 
 This demo shows how to set up the Pi as a Bluetooth audio proxy that:
-1. Receives audio from your phone (A2DP Sink)
-2. Forwards audio to your headphones (A2DP Source)
-3. Records and transcribes the audio in real-time
-
-Current setup uses USB audio input as a placeholder until Bluetooth is configured.
+1. Receives audio from multiple sources (phone, PC, tablet, etc.)
+2. Allows switching between audio sources
+3. Forwards audio to your headphones (A2DP Source)
+4. Records and transcribes the audio in real-time
 """
 
 import sys
@@ -15,13 +14,14 @@ import os
 import time
 import logging
 import threading
-from typing import Optional, Dict, Any
+import subprocess
+from typing import Optional, Dict, Any, List
 
 # Add project root to path
 sys.path.append('/home/mmariani/projects/thesilentsteno')
 
 # Import our components
-from src.bluetooth.bluez_manager import BlueZManager, BluetoothState
+from src.bluetooth.bluez_manager import BlueZManager
 from src.bluetooth.connection_manager import ConnectionManager, DeviceRole, ConnectionState
 from src.audio.audio_pipeline import AudioPipeline, AudioConfig, PipelineState
 from src.integration.walking_skeleton_adapter import WalkingSkeletonAdapter
@@ -34,8 +34,146 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-class BluetoothAudioDemo:
-    """Demo class for Bluetooth audio pipeline"""
+class AudioSourceManager:
+    """Manages multiple audio source devices (phone, PC, tablet, etc.)"""
+    
+    def __init__(self):
+        self.paired_sources = {}  # MAC -> device info
+        self.active_source = None
+        self.current_loopback_module = None
+        self.headphone_address = None
+        
+    def add_source_device(self, mac_address: str, device_name: str, device_type: str):
+        """Add a device as potential audio source"""
+        self.paired_sources[mac_address] = {
+            'name': device_name,
+            'type': device_type,  # 'phone', 'pc', 'tablet', 'laptop'
+            'connected': False,
+            'mac': mac_address
+        }
+        logger.info(f"Added audio source: {device_name} ({device_type}) - {mac_address}")
+    
+    def set_headphone_address(self, mac_address: str):
+        """Set the target headphone device"""
+        self.headphone_address = mac_address
+        logger.info(f"Set headphone target: {mac_address}")
+    
+    def switch_to_source(self, mac_address: str) -> bool:
+        """Switch audio input to specified device"""
+        if mac_address not in self.paired_sources:
+            logger.error(f"Unknown source device: {mac_address}")
+            return False
+            
+        if not self.headphone_address:
+            logger.error("No headphone address set")
+            return False
+        
+        try:
+            # Remove existing loopback
+            if self.current_loopback_module:
+                logger.info(f"Removing existing loopback module: {self.current_loopback_module}")
+                subprocess.run(f"pactl unload-module {self.current_loopback_module}", 
+                             shell=True, check=False)
+                self.current_loopback_module = None
+            
+            # Create new loopback
+            source = f"bluez_source.{mac_address.replace(':', '_')}.a2dp_source"
+            sink = f"bluez_sink.{self.headphone_address.replace(':', '_')}.a2dp_sink"
+            
+            logger.info(f"Creating loopback: {source} -> {sink}")
+            
+            result = subprocess.run(
+                f"pactl load-module module-loopback source={source} sink={sink} latency_msec=40",
+                shell=True, capture_output=True, text=True, check=True
+            )
+            
+            self.current_loopback_module = result.stdout.strip()
+            self.active_source = mac_address
+            
+            device_info = self.paired_sources[mac_address]
+            logger.info(f"✅ Switched to audio source: {device_info['name']} ({device_info['type']})")
+            return True
+            
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Failed to create loopback: {e}")
+            return False
+    
+    def stop_audio_forwarding(self) -> bool:
+        """Stop current audio forwarding"""
+        if self.current_loopback_module:
+            try:
+                subprocess.run(f"pactl unload-module {self.current_loopback_module}", 
+                             shell=True, check=True)
+                logger.info("Audio forwarding stopped")
+                self.current_loopback_module = None
+                self.active_source = None
+                return True
+            except subprocess.CalledProcessError as e:
+                logger.error(f"Failed to stop audio forwarding: {e}")
+                return False
+        return True
+    
+    def get_available_sources(self) -> List[Dict]:
+        """Get list of connected devices that can be audio sources"""
+        available = []
+        
+        # Check which sources are actually available in PulseAudio
+        try:
+            result = subprocess.run("pactl list sources short", 
+                                  shell=True, capture_output=True, text=True)
+            available_sources = result.stdout
+            
+            for mac, info in self.paired_sources.items():
+                source_name = f"bluez_source.{mac.replace(':', '_')}.a2dp_source"
+                if source_name in available_sources:
+                    available.append({
+                        'mac': mac,
+                        'name': info['name'],
+                        'type': info['type'],
+                        'active': mac == self.active_source,
+                        'connected': True
+                    })
+                else:
+                    available.append({
+                        'mac': mac,
+                        'name': info['name'],
+                        'type': info['type'],
+                        'active': False,
+                        'connected': False
+                    })
+                    
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Failed to get available sources: {e}")
+            
+        return available
+    
+    def auto_detect_active_source(self) -> Optional[str]:
+        """Automatically detect which device is sending audio"""
+        try:
+            result = subprocess.run("pactl list source-outputs short", 
+                                  shell=True, capture_output=True, text=True)
+            
+            for line in result.stdout.split('\n'):
+                if 'bluez_source' in line and len(line.strip()) > 0:
+                    # Extract MAC from source name
+                    parts = line.split()
+                    if len(parts) >= 2:
+                        source_name = parts[1]
+                        # Extract MAC from bluez_source.XX_XX_XX_XX_XX_XX.a2dp_source
+                        if 'bluez_source.' in source_name:
+                            mac_part = source_name.split('.')[1]
+                            mac = mac_part.replace('_', ':')
+                            if mac in self.paired_sources:
+                                return mac
+                                
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Failed to auto-detect active source: {e}")
+            
+        return None
+
+
+class EnhancedBluetoothAudioDemo:
+    """Enhanced demo class with multi-source support"""
     
     def __init__(self):
         """Initialize demo components"""
@@ -43,34 +181,29 @@ class BluetoothAudioDemo:
         self.connection_manager = None
         self.audio_pipeline = None
         self.adapter = None
+        self.source_manager = AudioSourceManager()
         self.is_running = False
-        
-        # Device addresses (will be populated during setup)
-        self.phone_address = None
-        self.headphone_address = None
         
     def initialize_bluetooth(self) -> bool:
         """Initialize Bluetooth components"""
         try:
             logger.info("Initializing Bluetooth components...")
-            
+        
             # Initialize BlueZ manager
             self.bluez_manager = BlueZManager()
-            
+        
             # Start Bluetooth service
             if not self.bluez_manager.start_bluetooth():
                 logger.error("Failed to start Bluetooth service")
                 return False
-            
+        
             # Initialize connection manager
             self.connection_manager = ConnectionManager()
-            
-            # Check Bluetooth status
-            status = self.bluez_manager.get_service_status()
-            logger.info(f"Bluetooth status: {status}")
-            
-            return status == BluetoothState.RUNNING
-            
+        
+            # Simple success check - if we got this far, Bluetooth is working
+            logger.info("Bluetooth service appears to be running")
+            return True
+        
         except Exception as e:
             logger.error(f"Failed to initialize Bluetooth: {e}")
             return False
@@ -101,8 +234,8 @@ class BluetoothAudioDemo:
             config = AudioConfig(
                 sample_rate=44100,
                 channels=2,
-                buffer_size=128,
-                target_latency_ms=40.0,
+                buffer_size=256,  # Increased from 128 for stability
+                target_latency_ms=50.0,  # More realistic target
                 enable_monitoring=True,
                 enable_forwarding=True
             )
@@ -120,72 +253,48 @@ class BluetoothAudioDemo:
             logger.error(f"Failed to setup audio pipeline: {e}")
             return False
     
-    def connect_phone(self, address: str) -> bool:
-        """Connect to phone as A2DP Sink"""
-        logger.info(f"Connecting to phone: {address}")
-        
+    def add_audio_source(self, address: str, name: str, device_type: str) -> bool:
+        """Add a device as audio source"""
         try:
             # Pair if needed
             if not self.connection_manager.is_paired(address):
-                logger.info("Device not paired, initiating pairing...")
-                if not self.connection_manager.pair_device(address, "Phone", DeviceRole.SOURCE):
-                    logger.error("Failed to pair with phone")
+                logger.info(f"Pairing with {name}...")
+                if not self.connection_manager.pair_device(address, name, DeviceRole.SOURCE):
+                    logger.error(f"Failed to pair with {name}")
                     return False
             
-            # Connect as A2DP Sink
+            # Connect the device
             if self.connection_manager.connect_device(address):
-                self.phone_address = address
-                logger.info("Successfully connected to phone")
+                self.source_manager.add_source_device(address, name, device_type)
+                logger.info(f"✅ Added audio source: {name}")
                 return True
             
             return False
             
         except Exception as e:
-            logger.error(f"Failed to connect to phone: {e}")
+            logger.error(f"Failed to add audio source: {e}")
             return False
     
-    def connect_headphones(self, address: str) -> bool:
-        """Connect to headphones as A2DP Source"""
-        logger.info(f"Connecting to headphones: {address}")
-        
+    def set_headphones(self, address: str, name: str) -> bool:
+        """Set headphones as audio output"""
         try:
             # Pair if needed
             if not self.connection_manager.is_paired(address):
-                logger.info("Device not paired, initiating pairing...")
-                if not self.connection_manager.pair_device(address, "Headphones", DeviceRole.SINK):
-                    logger.error("Failed to pair with headphones")
+                logger.info(f"Pairing with {name}...")
+                if not self.connection_manager.pair_device(address, name, DeviceRole.SINK):
+                    logger.error(f"Failed to pair with {name}")
                     return False
             
-            # Connect as A2DP Source
+            # Connect the device
             if self.connection_manager.connect_device(address):
-                self.headphone_address = address
-                logger.info("Successfully connected to headphones")
+                self.source_manager.set_headphone_address(address)
+                logger.info(f"✅ Set headphones: {name}")
                 return True
             
             return False
             
         except Exception as e:
-            logger.error(f"Failed to connect to headphones: {e}")
-            return False
-    
-    def start_audio_forwarding(self) -> bool:
-        """Start forwarding audio from phone to headphones"""
-        try:
-            logger.info("Starting audio forwarding...")
-            
-            # For now, use USB input until Bluetooth audio is configured
-            logger.warning("Using USB audio input (Bluetooth audio setup pending)")
-            
-            # Start the audio pipeline
-            if self.audio_pipeline:
-                self.audio_pipeline.start()
-                logger.info("Audio pipeline started")
-                return True
-            
-            return False
-            
-        except Exception as e:
-            logger.error(f"Failed to start audio forwarding: {e}")
+            logger.error(f"Failed to set headphones: {e}")
             return False
     
     def start_recording(self) -> Optional[str]:
@@ -233,13 +342,12 @@ class BluetoothAudioDemo:
             'bluetooth': {
                 'initialized': self.bluez_manager is not None,
                 'service_state': self.bluez_manager.get_service_status() if self.bluez_manager else None,
-                'phone_connected': self.phone_address is not None,
-                'headphones_connected': self.headphone_address is not None
             },
             'audio': {
                 'pipeline_initialized': self.audio_pipeline is not None,
                 'pipeline_state': self.audio_pipeline.state if self.audio_pipeline else None,
-                'metrics': self.audio_pipeline.metrics if self.audio_pipeline else None
+                'current_source': self.source_manager.active_source,
+                'available_sources': self.source_manager.get_available_sources()
             },
             'recording': {
                 'adapter_initialized': self.adapter is not None,
@@ -250,10 +358,10 @@ class BluetoothAudioDemo:
         return status
     
     def run_interactive_demo(self):
-        """Run interactive demo"""
-        print("\n" + "="*60)
-        print("The Silent Steno - Bluetooth Audio Pipeline Demo")
-        print("="*60 + "\n")
+        """Run enhanced interactive demo with multi-source support"""
+        print("\n" + "="*70)
+        print("The Silent Steno - Enhanced Multi-Source Audio Pipeline Demo")
+        print("="*70 + "\n")
         
         # Initialize Bluetooth
         print("1. Initializing Bluetooth...")
@@ -269,70 +377,124 @@ class BluetoothAudioDemo:
             return
         print("✅ Audio pipeline ready")
         
-        # Scan for devices
-        print("\n3. Scanning for Bluetooth devices...")
-        devices = self.scan_devices()
-        
-        if not devices:
-            print("❌ No devices found")
-            print("\nPlease ensure your devices are in pairing mode and try again.")
-            return
-        
         # Main menu loop
         while True:
-            print("\n" + "-"*40)
+            print("\n" + "-"*50)
             print("Main Menu:")
-            print("1. Connect to phone (A2DP Sink)")
-            print("2. Connect to headphones (A2DP Source)")
-            print("3. Start audio forwarding")
-            print("4. Start recording")
-            print("5. Stop recording and transcribe")
-            print("6. Show status")
-            print("7. Exit")
-            print("-"*40)
+            print("1. Scan for devices")
+            print("2. Add audio source (phone/PC/tablet)")
+            print("3. Set headphones")
+            print("4. Switch audio source")
+            print("5. Show available sources")
+            print("6. Start recording")
+            print("7. Stop recording and transcribe")
+            print("8. Show status")
+            print("9. Stop audio forwarding")
+            print("0. Exit")
+            print("-"*50)
             
-            choice = input("\nEnter your choice (1-7): ").strip()
+            choice = input("\nEnter your choice (0-9): ").strip()
             
             if choice == '1':
-                # Connect to phone
-                print("\nAvailable devices:")
-                for i, device in enumerate(devices):
-                    print(f"{i+1}. {device['name']} ({device['address']})")
-                
-                idx = input("Select phone device number: ").strip()
-                try:
-                    device = devices[int(idx)-1]
-                    if self.connect_phone(device['address']):
-                        print("✅ Connected to phone")
-                    else:
-                        print("❌ Failed to connect to phone")
-                except:
-                    print("❌ Invalid selection")
+                # Scan for devices
+                print("\nScanning for devices...")
+                devices = self.scan_devices()
+                if devices:
+                    print("\nFound devices:")
+                    for i, device in enumerate(devices):
+                        print(f"{i+1}. {device['name']} ({device['address']})")
+                else:
+                    print("No devices found")
             
             elif choice == '2':
-                # Connect to headphones
-                print("\nAvailable devices:")
-                for i, device in enumerate(devices):
-                    print(f"{i+1}. {device['name']} ({device['address']})")
-                
-                idx = input("Select headphone device number: ").strip()
-                try:
-                    device = devices[int(idx)-1]
-                    if self.connect_headphones(device['address']):
-                        print("✅ Connected to headphones")
-                    else:
-                        print("❌ Failed to connect to headphones")
-                except:
-                    print("❌ Invalid selection")
+                # Add audio source
+                devices = self.scan_devices()
+                if devices:
+                    print("\nAvailable devices:")
+                    for i, device in enumerate(devices):
+                        print(f"{i+1}. {device['name']} ({device['address']})")
+                    
+                    try:
+                        idx = int(input("Select device number: ")) - 1
+                        device = devices[idx]
+                        
+                        print("\nDevice type:")
+                        print("1. Phone")
+                        print("2. PC/Computer")
+                        print("3. Laptop")
+                        print("4. Tablet")
+                        print("5. Other")
+                        
+                        type_choice = input("Select type (1-5): ").strip()
+                        type_map = {'1': 'phone', '2': 'pc', '3': 'laptop', '4': 'tablet', '5': 'other'}
+                        device_type = type_map.get(type_choice, 'other')
+                        
+                        if self.add_audio_source(device['address'], device['name'], device_type):
+                            print(f"✅ Added {device['name']} as audio source")
+                        else:
+                            print(f"❌ Failed to add {device['name']}")
+                    except:
+                        print("❌ Invalid selection")
+                else:
+                    print("❌ No devices available")
             
             elif choice == '3':
-                # Start audio forwarding
-                if self.start_audio_forwarding():
-                    print("✅ Audio forwarding started")
+                # Set headphones
+                devices = self.scan_devices()
+                if devices:
+                    print("\nAvailable devices:")
+                    for i, device in enumerate(devices):
+                        print(f"{i+1}. {device['name']} ({device['address']})")
+                    
+                    try:
+                        idx = int(input("Select headphone device number: ")) - 1
+                        device = devices[idx]
+                        
+                        if self.set_headphones(device['address'], device['name']):
+                            print(f"✅ Set {device['name']} as headphones")
+                        else:
+                            print(f"❌ Failed to set {device['name']}")
+                    except:
+                        print("❌ Invalid selection")
                 else:
-                    print("❌ Failed to start audio forwarding")
+                    print("❌ No devices available")
             
             elif choice == '4':
+                # Switch audio source
+                sources = self.source_manager.get_available_sources()
+                connected_sources = [s for s in sources if s['connected']]
+                
+                if connected_sources:
+                    print("\nAvailable audio sources:")
+                    for i, source in enumerate(connected_sources):
+                        status = "🔊 ACTIVE" if source['active'] else "⚪ Available"
+                        print(f"{i+1}. {source['name']} ({source['type']}) - {status}")
+                    
+                    try:
+                        idx = int(input("Select source number: ")) - 1
+                        source = connected_sources[idx]
+                        
+                        if self.source_manager.switch_to_source(source['mac']):
+                            print(f"✅ Switched to {source['name']}")
+                        else:
+                            print(f"❌ Failed to switch to {source['name']}")
+                    except:
+                        print("❌ Invalid selection")
+                else:
+                    print("❌ No connected audio sources available")
+            
+            elif choice == '5':
+                # Show available sources
+                sources = self.source_manager.get_available_sources()
+                if sources:
+                    print("\nConfigured audio sources:")
+                    for source in sources:
+                        status = "🔊 ACTIVE" if source['active'] else ("✅ Connected" if source['connected'] else "❌ Disconnected")
+                        print(f"  - {source['name']} ({source['type']}) - {status}")
+                else:
+                    print("❌ No audio sources configured")
+            
+            elif choice == '6':
                 # Start recording
                 session_id = self.start_recording()
                 if session_id:
@@ -340,7 +502,7 @@ class BluetoothAudioDemo:
                 else:
                     print("❌ Failed to start recording")
             
-            elif choice == '5':
+            elif choice == '7':
                 # Stop recording and transcribe
                 result = self.stop_recording()
                 if result:
@@ -357,19 +519,27 @@ class BluetoothAudioDemo:
                 else:
                     print("❌ Failed to stop recording")
             
-            elif choice == '6':
+            elif choice == '8':
                 # Show status
                 status = self.get_status()
                 print("\nSystem Status:")
                 print(f"  Bluetooth: {'✅' if status['bluetooth']['initialized'] else '❌'}")
-                print(f"  Phone: {'✅' if status['bluetooth']['phone_connected'] else '❌'}")
-                print(f"  Headphones: {'✅' if status['bluetooth']['headphones_connected'] else '❌'}")
                 print(f"  Audio Pipeline: {'✅' if status['audio']['pipeline_initialized'] else '❌'}")
+                print(f"  Active Source: {status['audio']['current_source'] or 'None'}")
+                print(f"  Available Sources: {len(status['audio']['available_sources'])}")
                 print(f"  Recording: {status['recording']['recording_state'] or 'idle'}")
             
-            elif choice == '7':
+            elif choice == '9':
+                # Stop audio forwarding
+                if self.source_manager.stop_audio_forwarding():
+                    print("✅ Audio forwarding stopped")
+                else:
+                    print("❌ Failed to stop audio forwarding")
+            
+            elif choice == '0':
                 # Exit
                 print("\nShutting down...")
+                self.source_manager.stop_audio_forwarding()
                 if self.audio_pipeline:
                     self.audio_pipeline.stop()
                 break
@@ -382,7 +552,7 @@ class BluetoothAudioDemo:
 
 def main():
     """Main entry point"""
-    demo = BluetoothAudioDemo()
+    demo = EnhancedBluetoothAudioDemo()
     
     try:
         demo.run_interactive_demo()

@@ -95,6 +95,11 @@ def index():
     """Main application page"""
     return render_template('index.html')
 
+@app.route('/dashboard')
+def dashboard():
+    """Large icon status dashboard for 7" touchscreen"""
+    return render_template('status_dashboard.html')
+
 @app.route('/api/sessions')
 def get_sessions():
     """Get all sessions"""
@@ -204,6 +209,105 @@ def stop_recording():
 def get_recording_status():
     """Get current recording status"""
     return jsonify(recording_state)
+
+@app.route('/api/status')
+def get_system_status():
+    """Get system status including Bluetooth connections"""
+    try:
+        import subprocess
+        
+        # Check for Bluetooth audio sources (phone)
+        source_connected = False
+        try:
+            result = subprocess.run(['pactl', 'list', 'sources', 'short'], 
+                                  capture_output=True, text=True, timeout=5)
+            if result.returncode == 0:
+                # Look for Bluetooth source in the output
+                for line in result.stdout.split('\n'):
+                    if 'bluetooth' in line.lower() and ('pixel' in line.lower() or 'phone' in line.lower() or 'a2dp_source' in line.lower()):
+                        source_connected = True
+                        break
+        except Exception as e:
+            logger.warning(f"Error checking Bluetooth sources: {e}")
+        
+        # Check for Bluetooth audio sinks (earbuds)
+        sink_connected = False
+        try:
+            result = subprocess.run(['pactl', 'list', 'sinks', 'short'], 
+                                  capture_output=True, text=True, timeout=5)
+            if result.returncode == 0:
+                # Look for Bluetooth sink in the output
+                for line in result.stdout.split('\n'):
+                    if 'bluetooth' in line.lower() and ('galaxy' in line.lower() or 'buds' in line.lower() or 'a2dp_sink' in line.lower()):
+                        sink_connected = True
+                        break
+        except Exception as e:
+            logger.warning(f"Error checking Bluetooth sinks: {e}")
+        
+        return jsonify({
+            'bluetooth_source_connected': source_connected,
+            'bluetooth_sink_connected': sink_connected,
+            'recording': recording_state['is_recording']
+        })
+    except Exception as e:
+        logger.error(f"Error getting system status: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/bluetooth/connect_source', methods=['POST'])
+def connect_bluetooth_source():
+    """Connect to Bluetooth source (phone)"""
+    try:
+        import subprocess
+        
+        # Try to connect to known phone devices
+        known_phones = ['Pixel_9_Pro']  # Add your phone's Bluetooth name
+        
+        for phone in known_phones:
+            try:
+                # Check if device is paired
+                result = subprocess.run(['bluetoothctl', 'info', phone], 
+                                      capture_output=True, text=True, timeout=10)
+                if result.returncode == 0:
+                    # Try to connect
+                    connect_result = subprocess.run(['bluetoothctl', 'connect', phone], 
+                                                  capture_output=True, text=True, timeout=15)
+                    if connect_result.returncode == 0:
+                        return jsonify({'connected': True, 'device': phone})
+            except Exception as e:
+                logger.warning(f"Error connecting to {phone}: {e}")
+        
+        return jsonify({'connected': False, 'error': 'No compatible phone found or failed to connect'})
+    except Exception as e:
+        logger.error(f"Error connecting Bluetooth source: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/bluetooth/connect_output', methods=['POST'])
+def connect_bluetooth_output():
+    """Connect to Bluetooth output (earbuds)"""
+    try:
+        import subprocess
+        
+        # Try to connect to known earbud devices
+        known_earbuds = ['Galaxy_Buds3_Pro']  # Add your earbuds' Bluetooth name
+        
+        for earbuds in known_earbuds:
+            try:
+                # Check if device is paired
+                result = subprocess.run(['bluetoothctl', 'info', earbuds], 
+                                      capture_output=True, text=True, timeout=10)
+                if result.returncode == 0:
+                    # Try to connect
+                    connect_result = subprocess.run(['bluetoothctl', 'connect', earbuds], 
+                                                  capture_output=True, text=True, timeout=15)
+                    if connect_result.returncode == 0:
+                        return jsonify({'connected': True, 'device': earbuds})
+            except Exception as e:
+                logger.warning(f"Error connecting to {earbuds}: {e}")
+        
+        return jsonify({'connected': False, 'error': 'No compatible earbuds found or failed to connect'})
+    except Exception as e:
+        logger.error(f"Error connecting Bluetooth output: {e}")
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/api/play/<session_id>')
 def play_session(session_id):
