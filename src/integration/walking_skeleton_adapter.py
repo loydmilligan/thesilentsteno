@@ -184,11 +184,16 @@ class WalkingSkeletonAdapter:
             )
             logger.info("Using USB audio recorder (fallback)")
         
-        # Initialize simple transcriber
+        # Initialize simple transcriber with optional Gemini enhancement
+        use_gemini = self.config.get('use_gemini_enhancement', False)
+        gemini_api_key = self.config.get('gemini_api_key') or os.getenv('GEMINI_API_KEY')
+        
         self.simple_transcriber = SimpleTranscriber(
             backend="cpu",
             model_name=self.config.get('whisper_model', 'base'),
-            data_adapter=self.data_adapter
+            data_adapter=self.data_adapter,
+            use_gemini=use_gemini,
+            gemini_api_key=gemini_api_key
         )
         
         logger.info("Skeleton components initialized successfully")

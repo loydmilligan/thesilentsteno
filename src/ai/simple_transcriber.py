@@ -33,6 +33,15 @@ except ImportError:
     DataIntegrationAdapter = None
     logging.warning("Data integration adapter not available")
 
+# Import Gemini analyzer
+try:
+    from src.ai.gemini_analyzer import get_gemini_analyzer
+    GEMINI_AVAILABLE = True
+except ImportError:
+    GEMINI_AVAILABLE = False
+    get_gemini_analyzer = None
+    logging.warning("Gemini analyzer not available")
+
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -96,6 +105,19 @@ class WhisperCPUBackend(TranscriptionBackend):
         
         if not os.path.exists(audio_file):
             return f"Transcription error: Audio file not found: {audio_file}"
+        
+        # Check file size - must be larger than just a WAV header (44 bytes)
+        file_size = os.path.getsize(audio_file)
+        if file_size <= 44:
+            return "Transcription error: Audio file is empty or corrupted (too small)"
+        
+        # Check for minimum reasonable audio file size (1KB for very short audio)
+        if file_size < 1000:
+            logger.warning(f"Very small audio file: {audio_file} ({file_size} bytes)")
+            return "Transcription error: Audio file too short for transcription"
+        
+        # Brief wait to ensure file is completely written (helps with race conditions)
+        time.sleep(0.1)
         
         try:
             # Ensure model is loaded
@@ -175,7 +197,8 @@ class SimpleTranscriber:
     """
     
     def __init__(self, backend: str = "cpu", model_name: str = "base", 
-                 data_adapter: Optional[Any] = None):
+                 data_adapter: Optional[Any] = None, 
+                 use_gemini: bool = False, gemini_api_key: Optional[str] = None):
         """
         Initialize transcriber with specified backend
         
@@ -183,10 +206,21 @@ class SimpleTranscriber:
             backend: Backend to use ("cpu" or "hailo")
             model_name: Model name to use (e.g., "base", "small", "medium")
             data_adapter: Optional data adapter for storing transcription results
+            use_gemini: Whether to use Gemini for enhanced analysis
+            gemini_api_key: API key for Gemini (or use GEMINI_API_KEY env var)
         """
         self.backend_name = backend
         self.model_name = model_name
         self.data_adapter = data_adapter
+        
+        # Gemini enhancement settings
+        self.use_gemini = use_gemini and GEMINI_AVAILABLE
+        self.gemini_analyzer = None
+        if self.use_gemini:
+            self.gemini_analyzer = get_gemini_analyzer(gemini_api_key)
+            if not self.gemini_analyzer.is_available():
+                logger.warning("Gemini API not available, disabling enhanced analysis")
+                self.use_gemini = False
         
         # Initialize the appropriate backend
         if backend == "cpu":
@@ -201,6 +235,11 @@ class SimpleTranscriber:
         
         if self.data_adapter:
             logger.info("Data integration adapter connected to transcriber")
+            
+        if self.use_gemini:
+            logger.info("Gemini AI enhancement enabled")
+        else:
+            logger.info("Using local analysis only")
         
         # Simple AI analysis capabilities
         self.enable_analysis = True
@@ -257,7 +296,14 @@ class SimpleTranscriber:
     
     def get_backend_info(self) -> Dict[str, Any]:
         """Get information about the current backend"""
-        return self.backend.get_info()
+        info = self.backend.get_info()
+        
+        # Add Gemini status
+        info['gemini_enhanced'] = self.use_gemini
+        if self.use_gemini and self.gemini_analyzer:
+            info['gemini_status'] = self.gemini_analyzer.get_usage_stats()
+        
+        return info
     
     def switch_backend(self, backend: str):
         """
@@ -320,10 +366,10 @@ class SimpleTranscriber:
         if transcript_hash in self.analysis_cache:
             return self.analysis_cache[transcript_hash]
         
-        logger.info("Performing simple AI analysis on transcript")
+        logger.info("Performing AI analysis on transcript")
         
-        # Simple analysis methods
-        analysis = {
+        # Start with simple local analysis
+        local_analysis = {
             'summary': self._generate_simple_summary(transcript),
             'key_phrases': self._extract_key_phrases(transcript),
             'word_count': len(transcript.split()),
@@ -333,6 +379,13 @@ class SimpleTranscriber:
             'action_items': self._extract_action_items(transcript),
             'questions': self._extract_questions(transcript)
         }
+        
+        # Enhance with Gemini if available and enabled
+        if self.use_gemini and self.gemini_analyzer:
+            logger.info("Enhancing analysis with Gemini AI")
+            analysis = self.gemini_analyzer.enhance_local_analysis(transcript, local_analysis)
+        else:
+            analysis = local_analysis
         
         # Cache the result
         self.analysis_cache[transcript_hash] = analysis
@@ -468,9 +521,10 @@ class SimpleTranscriber:
 
 
 # Convenience function to create transcriber (matches minimal_demo.py usage)
-def create_simple_transcriber(backend: str = "cpu", model_name: str = "base") -> SimpleTranscriber:
+def create_simple_transcriber(backend: str = "cpu", model_name: str = "base", 
+                             use_gemini: bool = False, gemini_api_key: Optional[str] = None) -> SimpleTranscriber:
     """Create a simple transcriber instance"""
-    return SimpleTranscriber(backend, model_name)
+    return SimpleTranscriber(backend, model_name, use_gemini=use_gemini, gemini_api_key=gemini_api_key)
 
 
 if __name__ == "__main__":
