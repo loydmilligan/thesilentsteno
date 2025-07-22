@@ -50,6 +50,29 @@
       "summary": "Processing...",
       "action_items": [],
       "key_moments": []
+    },
+    {
+      "session_id": "skeleton_1753172507",
+      "timestamp": "2025-07-22T01:22:54.683522",
+      "duration": 67.10401360544218,
+      "title": "Recording 2025-07-22 01:22",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_012147.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "is not exactly Donald Trump's thing. And so Donald Trump has more than one way of expressing how, say, terrified he is. He might fly into obsessive, relentless social media postings about the thing he's terrified about. Sometimes you'll do it about the thing he's terrified about. And sometimes not. Sometimes about, like, anything else, which is kind of what he's been doing. And the other way Donald Trump communicates his fear is silence, which is also what he's been doing. That's how Donald Trump treats the things he's most afraid of in my observation. And so judging by his silence, Donald Trump is living in abject terror tonight of the Epstein files. Donald Trump spent the day in silence today about the Epstein files, the man who loves to have the cameras aimed at him while he plays with questions from reporters without ever actually answering them. Didn't dare allow reporters."
+        }
+      ],
+      "summary": "is not exactly Donald Trump's thing.",
+      "action_items": [],
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": []
     }
   ]
 }
