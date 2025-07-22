@@ -32,10 +32,21 @@
         "Unknown"
       ],
       "wav_file": "demo_sessions/recording_20250721_180405.wav",
-      "transcript": [],
-      "summary": "Processing...",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "None of them gave chase. Unfortunately, this behavior was usual for collect. Maya grunted softly, watching him go. He's gotten a lot worse. Shalon started. You knew him? Let him a few times. Maya said."
+        }
+      ],
+      "summary": "None of them gave chase.",
       "action_items": [],
-      "key_moments": []
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": [
+        "You knew him? Let him a few times"
+      ]
     },
     {
       "session_id": "skeleton_1753147983",
@@ -46,10 +57,22 @@
         "Unknown"
       ],
       "wav_file": "demo_sessions/recording_20250721_183303.wav",
-      "transcript": [],
-      "summary": "Processing...",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "talking, not because of odium, but because of people who began to fear her, or to worship the storm instead. From nights of wind and truth, page four. Caledon sort up through the central column of your atheiruv, still beside him. In the atrium he still saw signs of the battle that had happened two days ago. That had not been entirely scrubbed away, broken banisters on balconies. That reminded him of another time he'd flown up this corridor, just after Teft's murder. Dark, poisoned rage building within. The feeling of eternal twin to the normal excitement of holding stormlock."
+        }
+      ],
+      "summary": "talking, not because of odium, but because of people who began to fear her, or to worship the storm instead.",
       "action_items": [],
-      "key_moments": []
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [
+        "timeline",
+        "team"
+      ],
+      "questions": []
     },
     {
       "session_id": "skeleton_1753172507",
@@ -68,6 +91,29 @@
         }
       ],
       "summary": "is not exactly Donald Trump's thing.",
+      "action_items": [],
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753172633",
+      "timestamp": "2025-07-22T01:25:17.676630",
+      "duration": 83.71800453514739,
+      "title": "Recording 2025-07-22 01:25",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_012353.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "I guess is Marjorie Taylor Greene, according to Donald Trump's description's description, the description. Not just the Grand Jury transcripts, which would be the least informative description. She's always been called a radical a radical lunatic."
+        }
+      ],
+      "summary": "I guess is Marjorie Taylor Greene, according to Donald Trump's description's description, the description.",
       "action_items": [],
       "key_moments": [],
       "sentiment": "neutral",

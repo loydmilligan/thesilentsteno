@@ -106,6 +106,19 @@ class WhisperCPUBackend(TranscriptionBackend):
         if not os.path.exists(audio_file):
             return f"Transcription error: Audio file not found: {audio_file}"
         
+        # Check file size - must be larger than just a WAV header (44 bytes)
+        file_size = os.path.getsize(audio_file)
+        if file_size <= 44:
+            return "Transcription error: Audio file is empty or corrupted (too small)"
+        
+        # Check for minimum reasonable audio file size (1KB for very short audio)
+        if file_size < 1000:
+            logger.warning(f"Very small audio file: {audio_file} ({file_size} bytes)")
+            return "Transcription error: Audio file too short for transcription"
+        
+        # Brief wait to ensure file is completely written (helps with race conditions)
+        time.sleep(0.1)
+        
         try:
             # Ensure model is loaded
             self._ensure_model_loaded()
