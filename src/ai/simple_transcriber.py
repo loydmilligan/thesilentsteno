@@ -258,7 +258,24 @@ class SimpleTranscriber:
         if not self.backend.is_available():
             return f"Transcription error: {self.backend_name} backend not available"
         
-        return self.backend.transcribe(wav_file)
+        try:
+            logger.info(f"Starting transcription: {wav_file}")
+            result = self.backend.transcribe(wav_file)
+            
+            if not result:
+                logger.error(f"Transcription returned empty result for {wav_file}")
+                return "Transcription error: Empty result"
+            
+            if result.startswith("Transcription error"):
+                logger.error(f"Transcription failed for {wav_file}: {result}")
+                return result
+            
+            logger.info(f"Transcription successful: {len(result)} chars")
+            return result
+            
+        except Exception as e:
+            logger.error(f"Error in transcribe_audio for {wav_file}: {e}")
+            return f"Transcription error: {str(e)}"
     
     def transcribe_and_update_session(self, wav_file: str, session_id: str) -> str:
         """
@@ -274,21 +291,37 @@ class SimpleTranscriber:
         if not self.backend.is_available():
             return f"Transcription error: {self.backend_name} backend not available"
         
-        # Perform transcription
-        transcript = self.backend.transcribe(wav_file)
-        
-        # Update session data if data adapter is available
-        if self.data_adapter and transcript and not transcript.startswith("Transcription error"):
-            try:
-                success = self.data_adapter.update_session(session_id, {'transcript': transcript})
-                if success:
-                    logger.info(f"Updated session {session_id} with transcript")
-                else:
-                    logger.warning(f"Failed to update session {session_id} with transcript")
-            except Exception as e:
-                logger.error(f"Error updating session {session_id}: {e}")
-        
-        return transcript
+        try:
+            # Perform transcription
+            logger.info(f"Starting transcription for session {session_id}: {wav_file}")
+            transcript = self.backend.transcribe(wav_file)
+            
+            if not transcript:
+                logger.error(f"Transcription returned empty result for session {session_id}")
+                return "Transcription error: Empty result"
+            
+            if transcript.startswith("Transcription error"):
+                logger.error(f"Transcription failed for session {session_id}: {transcript}")
+                return transcript
+            
+            logger.info(f"Transcription successful for session {session_id}: {len(transcript)} chars")
+            
+            # Update session data if data adapter is available
+            if self.data_adapter:
+                try:
+                    success = self.data_adapter.update_session(session_id, {'transcript': transcript})
+                    if success:
+                        logger.info(f"Updated session {session_id} with transcript")
+                    else:
+                        logger.warning(f"Failed to update session {session_id} with transcript")
+                except Exception as e:
+                    logger.error(f"Error updating session {session_id}: {e}")
+            
+            return transcript
+            
+        except Exception as e:
+            logger.error(f"Error in transcribe_and_update_session for {session_id}: {e}")
+            return f"Transcription error: {str(e)}"
     
     def is_available(self) -> bool:
         """Check if transcription is available"""
@@ -382,8 +415,12 @@ class SimpleTranscriber:
         
         # Enhance with Gemini if available and enabled
         if self.use_gemini and self.gemini_analyzer:
-            logger.info("Enhancing analysis with Gemini AI")
-            analysis = self.gemini_analyzer.enhance_local_analysis(transcript, local_analysis)
+            try:
+                logger.info("Enhancing analysis with Gemini AI")
+                analysis = self.gemini_analyzer.enhance_local_analysis(transcript, local_analysis)
+            except Exception as e:
+                logger.warning(f"Gemini enhancement failed, using local analysis only: {e}")
+                analysis = local_analysis
         else:
             analysis = local_analysis
         

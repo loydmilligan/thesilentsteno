@@ -15,6 +15,7 @@ Key features:
 - Maintains simple API for UI compatibility
 """
 
+import os
 import logging
 import threading
 import time
@@ -304,12 +305,13 @@ class WalkingSkeletonAdapter:
             logger.error(f"Error stopping recording: {e}")
             return None
     
-    def transcribe_recording(self, wav_file: str = None) -> Optional[str]:
+    def transcribe_recording(self, wav_file: str = None, session_id: str = None) -> Optional[str]:
         """
         Transcribe the current or specified recording
         
         Args:
             wav_file: Optional WAV file path (uses current recording if not provided)
+            session_id: Optional session ID for background processing
             
         Returns:
             Transcription text if successful, None otherwise
@@ -338,9 +340,12 @@ class WalkingSkeletonAdapter:
                     wav_file = recording_info['wav_file'] if recording_info else None
                 
                 if wav_file and self.simple_transcriber:
-                    if self.current_session_id:
+                    # Use provided session_id or fall back to current_session_id
+                    target_session_id = session_id or self.current_session_id
+                    
+                    if target_session_id:
                         transcript = self.simple_transcriber.transcribe_and_update_session(
-                            wav_file, self.current_session_id
+                            wav_file, target_session_id
                         )
                     else:
                         transcript = self.simple_transcriber.transcribe_audio(wav_file)

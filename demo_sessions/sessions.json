@@ -1,54 +1,6 @@
 {
   "sessions": [
     {
-      "session_id": "skeleton_1753145522",
-      "timestamp": "2025-07-21T17:52:42.876138",
-      "duration": 40.19374149659864,
-      "title": "Recording 2025-07-21 17:52",
-      "participants": [
-        "Unknown"
-      ],
-      "wav_file": "",
-      "transcript": [
-        {
-          "speaker": "Unknown",
-          "timestamp": "00:00:00",
-          "text": "you you"
-        }
-      ],
-      "summary": "you you",
-      "action_items": [],
-      "key_moments": [],
-      "sentiment": "neutral",
-      "topics": [],
-      "questions": []
-    },
-    {
-      "session_id": "skeleton_1753146245",
-      "timestamp": "2025-07-21T18:04:28.265718",
-      "duration": 22.30201814058957,
-      "title": "Recording 2025-07-21 18:04",
-      "participants": [
-        "Unknown"
-      ],
-      "wav_file": "demo_sessions/recording_20250721_180405.wav",
-      "transcript": [
-        {
-          "speaker": "Unknown",
-          "timestamp": "00:00:00",
-          "text": "None of them gave chase. Unfortunately, this behavior was usual for collect. Maya grunted softly, watching him go. He's gotten a lot worse. Shalon started. You knew him? Let him a few times. Maya said."
-        }
-      ],
-      "summary": "None of them gave chase.",
-      "action_items": [],
-      "key_moments": [],
-      "sentiment": "neutral",
-      "topics": [],
-      "questions": [
-        "You knew him? Let him a few times"
-      ]
-    },
-    {
       "session_id": "skeleton_1753147983",
       "timestamp": "2025-07-21T18:33:47.897401",
       "duration": 44.73,
@@ -111,10 +63,39 @@
         "Unknown"
       ],
       "wav_file": "demo_sessions/recording_20250721_225257.wav",
-      "transcript": [],
-      "summary": "Processing...",
-      "action_items": [],
-      "key_moments": []
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "It is easier, but for those sticking around, it's time to stand up to all of this with your voice, with your protest, and with your vote. I'm Anthony Davis. You can find me on the five minute news, YouTube channel and everybody Tim Miller from the Bullwark here. I just got off with the call Wallace was there the whole hour. We had a cold just hanging out a lot these days. We covered a lot of stuff. We covered the pickle that Mike Johnson is in over the Epstein files and how it's getting even more complicated. We covered the New York Times reporting about the 1996 FBI report and what might be getting covered up when it comes to the Epstein files. We covered the freedom of Andrea Hernandez Romero and the changing poll numbers on immigration. I appreciate it Nicole bringing back a flashback video of my interview up in Zichazalowski far from our live fundraiser and not and not playing the video where I'm wearing little shorty skirt. But I went into before we got to all that I wanted to get to one question. I didn't get to answer Nicole was asking one of the other guests, which was about the other New York Times report about this party, this calendar girl party. I think it's a this is an insane story. I kind of mentioned Bill Crystal today for folks who watch that interview, but I just want to put a finer point on it. According to the New York Times report, there was a guy Marlago member who said that he was going to host a calendar girl party for Trump at Marlago and that there were going to be a bunch of VIPs there. But instead of inviting VIPs. Trump only invited Epstein and two women there, including a 22 year old, quite a young woman, both testified that Trump harass them. One said that he groaked her. And then the 22 year old said he got into bed with her unwanted unasked for. Yeah, by the way. And I mean, so I look all these stories of Trump being a creep and a pervert and committing sexual harassment or as all this time now, it's why the whole thing about why the right wing wanted Epstein files crazy when I Trump has a huge track record of disgusting behavior to young women. But I like it's the party that really gets me. Assuming this story is true, I don't know any and you're reasonably that's not like Trump hosted a party at Marlago with a bunch of young beautiful women. And the only person he invites is Epstein. It's just Epstein and Trump and all the young women running around Marlago at the pool deck. Like, how fucking weird is that? I mean, putting it even obviously it's very, it would be the order to criminal it's very it's very inconvenient in a investigation of Trump and potential involvement Epstein. But I even just putting aside all that I need to put aside but just like for a second just step outside of like the heinous disgusting crimes and Epstein committed. What is this party? I imagine you're throwing a party at your house and you find all these young younger girls and then they all come and they show up and they're like where are the guys and it's like well now I only invited this one creeper over here who's standing on the corner being weird. Like that is one of the weirdest, strangest parties in history. I mean these guys, I like what what are the odds that you had a creeper party of the only person you invited is the most notorious sex criminal in the country child predator. Doesn't look great Donald. Great. Well, that came from stick around with me and Nicole Wallace next subscribe to this feed we're getting our ass kicked by this douchebag Benny Johnson. There's this big article on today about the YouTube subscriptions and and it's been how Benny Johnson this right winger who is who is a plagiarist. He's also has a personal peccabillos that I you know don't need to get into but it's just who sucks who's a phony like his numbers are skyrocketing. He's passing us don't let that happen subscribe to the feed tell your friends we got to subscribe to the feed let's do it. Don't let Benny Johnson and his drivel run circles around us. All right stick around for Nicole to Miller Mike and Tim because they are careful and responsible people have very specifically articulated and actually between the two of them fine tune on this is visual for us right an investigation is a funnel it takes in lots of stuff and out the bottom comes corroborated things that they you know take to the bank that prove. They're not guilty of the deal they hope in a jury of criminality the problem for Donald Trump is that cashmarts help."
+        }
+      ],
+      "summary": "It is easier, but for those sticking around, it's time to stand up to all of this with your voice, with your protest, and with your vote.  Well, that came from stick around with me and Nicole Wallace next subscribe to this feed we're getting our ass kicked by this douchebag Benny Johnson.",
+      "action_items": [
+        "host a calendar girl party for Trump at Marlago and that there were going to be a bunch of VIPs there",
+        "put aside but just like for a second just step outside of like the heinous disgusting crimes and Epstein committed",
+        "get into but it's just who sucks who's a phony like his numbers are skyrocketing",
+        "Wallace was there the whole hour"
+      ],
+      "key_moments": [
+        {
+          "timestamp": "00:00:00",
+          "description": "person"
+        },
+        {
+          "timestamp": "00:00:00",
+          "description": "member"
+        }
+      ],
+      "sentiment": "neutral",
+      "topics": [
+        "timeline",
+        "team"
+      ],
+      "questions": [
+        "Like, how fucking weird is that? I mean, putting it even obviously it's very, it would be the order to criminal it's very it's very inconvenient in a investigation of Trump and potential involvement Epstein",
+        "What is this party? I imagine you're throwing a party at your house and you find all these young younger girls and then they all come and they show up and they're like where are the guys and it's like well now I only invited this one creeper over here who's standing on the corner being weird"
+      ]
     },
     {
       "session_id": "skeleton_1753165059",
@@ -125,10 +106,165 @@
         "Unknown"
       ],
       "wav_file": "demo_sessions/recording_20250721_231739.wav",
-      "transcript": [],
-      "summary": "Processing...",
-      "action_items": [],
-      "key_moments": []
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "separate ways to contact Donald Trump. I mean, when I drop my kid off at camp, I give two emergency contact numbers. And one of them is fake, because I don't need the house, all right? And these guys didn't just party together. Epstein was a part of some major milestones in Trump's life. Jeffrey Epstein introduced Melania to Donald Trump. Trump was a frequent passenger on Epstein's plane, known as the Lolita Express. An Epstein told author Michael Wolfe the first time he slept with Melania was on my plane. And that is how I met your mother, Baron. Great question. I'll tell you, next time you're on a flight with a crying baby, just think about how much worse it could be. All right, so right now you might be thinking fine. They were friends. They hung out. It doesn't mean Trump knew about what Epstein was doing. And you know what, maybe not. But he clearly had some idea. In a 2002 interview with New York magazine, Trump showered praise on Epstein, calling him a quote, terrific guy, and saying, it is even said he likes beautiful women as much as I do. And many of them are on the younger side. Do you know how creepy with women you have to be for Donald Trump to pick up on it? I mean, that's a real your drunk friend taking the car keys from you moments. And you could still say, so what? They were close friends. They were mile high club pals. That still doesn't mean that Trump is in the files. And maybe. But after Jeffrey Epstein died in prison, the only person left who knew all his secrets was Galane Maxwell. And when she got charged with sex trafficking, Trump's response was surprisingly sympathetic. I haven't really been following it too much. I just wish her well, frankly. I've met her numerous times over the years, especially since I lived in Palm Beach. And I guess they lived in Palm Beach. But I wish her well, whatever it is. You wish her well? Is that the right response? I think there's a reason they don't have that section in the hallmark store. I mean, it's not there. It's not. Let's be clear. Law and order SPU doesn't start like, in the criminal justice system, sexually based offenses are considered especially heinous. And we wish the perpetrators well. Duh-duh. Okay, you know what? You know what? You want to take another shot at it. Maybe even more flailing and desperate? Yeah, I wish you well. I'd wish you well. I'd wish a lot of people well. And I do wish you well. I'm not looking for anything bad for her. I'm not looking bad for anybody. What are you talking about? You wish bad things on everybody. Suddenly, you're wishing Glein well. You were harder on Kristen Stewart for cheating on Robert Pattinson. Okay. All right. So, so, so, to sum up, to all the manga people who are so confused about why Trump doesn't want to release any of these files, maybe the answer has something to do with Occam's giant f***ing machete. But... Bravo, Jordan. What is that? I know that sarcastic clap. Is that Michael Costa? Yes, Michael Costa. Apparently, on Marlago, everyone. That's right. I'm Michael Costa. And you must think you're Inspector Gadget, the way you're putting all the clues together, huh? But the fact is, you're just talking out of your go-go gadget ass. I don't think that's fair, Michael. I've laid on a pretty good trail of Trump and Epstein's decades-long friendship. Sorry, I barely recognize you in your tinfoil hat. Hey, Clepper, you're just like all the other conspiracy theorists. String and red yarn between random facts. You think you're Sherlock Holmes, but really, you're just talking out of your go-go gadget ass. Okay, okay. Alright, alright. Smarty pants. Why do you think Trump was just so close to Epstein? It's so obvious, Jordan. Once you take off your go-go gadget blinders, you'll realize that the reason Trump was friends with Epstein was so he could investigate him. He knew from the very beginning that Epstein was trouble that Trump f**ked Mulani on his plane. You know, lay in love. Okay, okay. But if Donald Trump was working to expose Epstein, why doesn't he just say it? Because he's a humble man, Jordan. If the world found out he was the one who exposed the world's most notorious sex trafficker, he would get so much praise, love, and attention. And that's the last thing Donald J. Trump would want. Okay. Alright. But... I'd say he didn't expose anything. Epstein killed himself in prison. Yeah, well, and you could think Donald Trump for that. Who do you think talk Epstein into it? My man, Donnie T., went into his cell and said, listen up, yagley, mud the gang's up, see? We got your dead to right, so do yourself a favor. Punch your own ticket before we put you in the chair and give you that juicy. Okay. Alright, so let me get this straight. Your theory is that Trump spent the past 30 years undercover in Epstein's pedophile cabal, which he was not actually part of to get evidence to convict Jeffrey Epstein who Trump convinced to kill himself, but he can't release the files because people would be too grateful for him. Well, well, well. Yeah. Look, Lou, finally connected all the clues, Mr. Detective Colombo. Looks like Mr. Murder She Road finally pulled his Nancy Drew head out of his go-go gadget ass. Michael Calc, everybody. We're going to dive straight in with our main story tonight, which concerns a piece of legislation dear to President Trump's heart. The One Big Beautiful Bill is among the most important pieces of legislation in our country's history. I don't think there's ever been anything bigger. And I said, let's make it one big, beautiful bill. We're voting essentially on the big, beautiful, that gorgeous, big, beautiful bill. And we're going to have to do this. We're going to have to do this. We're going to have to do this. We're going to have to do this. We're going to have to do this. We're going to have to do this over that gorgeous, big, beautiful bill. Stop it. Stop it right now. That's the One Big Beautiful Bill. It sounds either like a lump of jack with an only fan's page or a comb power tab for people who come to two cans, but it is truly massive. And it's currently moving through congress off the passing the house by the narrowest of margins. With cheers of USA House Republicans pass their sweeping version of the president's agenda, night sessions. In the end, Speaker Johnson eaked out his biggest victory yet, winning by a single vote, though the dark of night cost him one member who would have voted yes, over-slept and missed it. It's true. It passed by a single vote, even though one representative Andrew Garberino slept through it, which is a little surprising, given his official portraits, seems less sleepy and more high on expired cough medicine. The bill's currently in the Senate, and Trump is pushing them to pass their version as soon as possible, posting to my friends in the Senate, lock yourself in a room if you must. Don't go home, pass it immediately. No one goes on vacation until it's done. This whole process has been rushed to the point that some House members who voted for the bill later had to admit that they hadn't read all of it. Marjorie Taylor Green, arguably one of the worst things to come out of Georgia since the trial of tears, was upset when she learned the House version included a provision prohibiting states from restricting AI for the next 10 years. This past week, I have come out in full transparency and said, when I voted for the one big beautiful bill, I didn't know about this clause. Yeah, that's not great, although to be fair, who among us hasn't approved things that we haven't read properly. It's why none of you noticed Apple's new terms and conditions technically give them rights to your first born child. It is true. Tim Cook is pulling a rumple still skin right now, and he's coming for them as soon as they can hold a tiny little screwdriver. But a lot of people don't know what's in this bill. About two-thirds of the public say they've heard little or nothing about it, but when they do, they don't like it. As Paul show, those who've heard a great deal or good amount about it oppose it by roughly two to one margin. Even some Senate Republicans will admit that not all their colleagues are thrilled about the bill's contents. We could spend four weeks, we could spend four years, and when we're done, not every Republican Senator is going to want French kiss this final brother, it's just not going to happen. There is such a weird way to phrase that. Why would you force us all to imagine more makers tunging a stack of paper? But as regular viewers know, Kennedy loves gratuitous sex talk from inserting the phrase, I like omelets better than sex, into discussion about, and this is true USAID cuts to this memorable moment. I can't wait to have your cock in my mouth. It's always, always good. And it is important to remember that in the records of Congress, there isn't answers to the question, what if Focon Leghorn was a power bottom? And look, as of typing, the bill still needs to clear the Senate and then go back to the House and things are still coming in and out of it, but the broad contours are clear. It is a massive redistribution of wealth upward, accompanied by gigantic cuts to critical programs for the most vulnerable. So given that tonight, let's talk about the one big beautiful bill. What it contains and what it will actually do. And let's start with the fact, when Trump talks about this bill, the main thing he emphasises is that it will extend the tax cuts Republicans passed in 2017 and add some more, which he claims will be good for everyone. The White House recently said it will deliver a blue collar boom or caps, which sounds like a new special eye hop toy to the Smurfs movie that will make you immediately shit yourself. But that is more than a little misleading because while the bill does contain tax cuts for basically everyone, their benefits are massively concentrated among the wealthiest Americans. In fact, 60% of the tax cuts would go to the top 20% of households. And you should know just about every independent analysis agrees. This bill would add trillions to the national debt. And to the extent that bills, tax cuts are going to be paid for at all, it will be through slashing programs that benefit the poor. And I want to talk about two key areas there targeting health care and food assistance. When it comes to health care, there are lots of cuts both big and small. For instance, the bill fails to extend tax credits for health care premiums under the ACA. While adding burdensome paperwork, they're going to make it hard for people to remain on the plans they already have. And I know that might not sound like much to you, but it's estimated those tweaks alone will lead to 4.2 million people becoming uninsured, which makes them pretty consequential tweaks. It'd be like changing RuPaul's drag race to Rand Paul's drag race. You can call it just a tweak, but it's about to make everything way worse. But the big target here is Medicaid. The public insurance programme providing health coverage among others, people with low incomes and disabilities, though, this bill's defenders will insist Medicaid is safe. I'm going to say this very clearly. Our legislation preserves Medicaid, strengthens Medicaid for the people who actually needed and deserve it. Look, we're going to do everything we can to strengthen Medicaid to preserve it for those who need it the most. Medicare Medicaid, none of that stuff is going to be tight. Nothing. I wanted to have to. Okay, but there's a few problems there. Starting with the fact, following through on a promise not to touch something has never exactly been one of Trump's strong suits. Also, the Masters don't support those craves. As one analysis puts it, major Medicaid cuts are the only way to meet House budget resolution. Hey, what is up guys? So I want to start out this week's video with a little story about my formative years. So back when my brother and I were kids, we were the recipients of many pieces of advice and lectures from our father. And out of all those lectures, out of all the advice he gave, there are two main pieces of advice that stick out to me and that I've remembered more than any others. The first of them, which I am sharing here simply because it is the most prominent one in my head, is there are two ways to do something. Right and again. And we would often hear this after being told that what we had just done was not good enough and that we did have to go do it again. So that's the one that sticks out the most to me. But only slightly less prominent in my memory was the common commands to always put things back exactly as you found out here. First and foremost, a system that you can trust is one that is not going to lose your data. This immediately rules out to brain because our brains forget things all the time, but it may also rule out a paper notebook if you don't keep that notebook backed up some other way, such as digitizing it. On the other hand, you've got systems that are designed with data retention in mind, apps like Evernote or OneNote or Google Drive or anything else that has redundant servers across the world. It's going to be very easy to find it and I'll know exactly what it's used for. Now this is just one example and there are probably other things in your life that you should be labeling besides just plastic bags. For example, if you have one of those physical hanging folder organizers, you probably want to use the labels that it comes with to write down what should be going in each one of those folders. Item number three, organized people build what I like to call a mindfulness loop, which constantly goes through the different dependencies in their lives and basically checks up on them. What exactly is dependency? Well, it's pretty much what it sounds like. I'm going to give you a really simple example here. So every single organism in existence down to the most simple single cell prokaryotic blob has things that they depend on. For example, our little blob creature needs a watery environment to move around in and a food source. It doesn't have a whole lot of dependencies in its life, but there are still dependencies and without them, it will die. And what is true for our blob is true for you as well, except for that you're a much more complicated organism and you have a much more complicated life with many different facets. You've got a lot more dependencies. You have your food, your shelter, your academic goals, your relationships. There are so many things to keep track of. And here is where one of the biggest differences between organized people and disorganized people can be found, because the disorganized people are constantly being caught off guard by one of their dependencies needing maintenance, needing action from them. And on the other hand, organized people are constantly looking ahead and figuring out what those dependencies are going to need in the future. They have this mindfulness loop constantly going on in the back of their mind. My absolute favorite example of a mindfulness loop in action actually comes from my mom. This was a story back from when I was probably 14 or 15 years old. I think I was up in my room and the computer is doing something that a 15-year-old does on a computer. And I heard her shout out to me, have you brushed your teeth today? And this was like at 2pm the afternoon. She was doing something completely unrelated to teeth brushing and yet she thought to ask me, why? Well, the health and well-being of her children were one of her main dependencies. And because my mom is an organized person, she got this regular mental notification to check up on that dependency. Now, admittedly, this is one of those mental patterns that does take a lot of time and effort to build. You're not going to be able to flip it on like a switch. But I think the first step to building this mental pattern, which is incredibly useful, is to sit down and consciously list out your dependencies. Maybe even sit down and draw a mind-map of all of your life's different dependencies. And with this application of conscious thought to all the different aspects of your life, over time, it's going to sink into your unconscious and you're going to start building that loop. Item number four. Organized people live by the mantra, two is one, one is none. Essentially, this translates to have a backup of anything that you use on a regular basis, especially if running out of that thing in the middle of your work would hamper the rest of your day or screw it up. For example, the camera that I'm filming this video on right now relies on a battery to run. And if that battery... Number one. Number two. Ever run out of what you need? Introducing simple inventory and drugstore stock. Two powerful home assistant integrations with a sleek companion cards, two tracker groceries, household supplies, and medicine right from your dashboard. See quantities, expiration dates, and get notified before you run out. Take control of your inventory and make your smarter home even smarter. All with just a few clicks. We'll be starting in a couple of seconds. If you're managing your stock for the zombie apocalypse, this integration today will help you a lot. Today we'll be looking at a simple inventory card and also simple inventory integration, component plus companion card that can help you track the inventory of your freezer, fridge, or wherever you're keeping a stock of food or something else. So how does it work? It looks like this. First off, you need to install both integration and the cart, companion cards. Then when you edit to home assistant, you can create specific inventories. For example, in this example, I have two bar inventory and a pantry inventory. In the bar, I'm keeping track of the drinks that are still present by some miracle, because I haven't drunk them. We have beer, sparkling water, and vodka. And then you can either add when you buy new beer or subtract if you of course had a beer or two or three or four. The integration also is capable to track the minimum value in your inventory. So for example, if beers fall to number two or below, it will automatically add beer to the monthly gross list. Or in the case of the sparkling water, if it falls to one, it will be adding to the normal shopping list. Then I also have a pantry inventory. This one I'm tracking, for example, beans and flour. And I have four bags of flour, one kilogram each, and also four cans of beans. You can track the expiry date for each of the items. And if item is expiring soon or has already expired, I will get a visual notification. For example, this one says that one item is expiring soon. It's not just this. We have an integration and we have a companion custom card. But since the data is exposed to the sensors and through the attributes, if you wish, and if you need, you can also create automations that will warn you if something is expiring. So consistency is not exactly Donald Trump's thing. And so Donald Trump has more than one way of expressing how say, terrified he is. He might fly into obsessive, relentless social media postings about the thing he's terrified about. Sometimes you'll do it about the thing he's terrified about. And sometimes not. Sometimes about like anything else, which is kind of what he's been doing. And the other way Donald Trump communicates his fear is silence, which is also what he's been doing. That's how Donald Trump treats the things he's most afraid of in my observation. And so judging by his silence, Donald Trump is living in abject terror tonight of the Epstein files. Donald Trump spent the day in silence today about the Epstein files, the man who loves to have the cameras aimed at him while he plays with questions from reporters without ever actually answering them didn't dare allow reporters to get anywhere near him today at the White House. Donald Trump said nothing on social media today about the Epstein files. Nothing about the person who for 15 years Donald Trump called a terrific guy while the person Donald Trump thought was a terrific guy was raping children. The last time Donald Trump said anything about his now dead friend, Jeffrey Epstein was on Saturday at 9.13 a.m. when he said nothing will be good enough. Donald Trump said I have asked the Justice Department to release all grand jury testimony with respect to Jeffrey Epstein subject only to court approval with that being said and even if the court gave its full and unwavering approval nothing will be good enough. For the troublemakers and radical left lunatics making the request it will always be more and more and more. One of those radical left lunatics I guess is Marjorie Taylor Greene according to Donald Trump's description. She's always been called a radical lunatic but she is a Republican member of Congress who's always supported Donald Trump and built her short political career on supporting Donald Trump. Today, Marjorie Taylor Greene tweeted if you tell the base of people who support you of deep state treasonous crimes election interference blackmail and rich powerful elite evil cabals then you must take down every enemy of the people if not the base will turn and there's no going back. Dangling bits of red meat no longer satisfies they want the whole steak dinner and we'll accept nothing else. Marjorie Taylor Greene is making it very clear what would be good enough for her. She wants the entirety of the Epstein files released not just the grand jury transcripts which would be the least informative part of the Trump Justice Department's criminal investigative file on Jeffrey Epstein. While some Trump supporters who were complaining about Donald Trump's refusal to release the Epstein files last week are now going quiet Marjorie Taylor Greene hasn't given up yet. She said this tonight at 706 p.m. I believe in transparency and I believe the American people this is this is a serious issue. I can tell you for the past gosh more than a week the highest volume of calls into my office have been about Epstein. People want the information they don't want things covered up especially when it comes to the most well-known convicted pedophile in modern day history. It's important to them and they they really want the information out. But Donald Trump says Marjorie Taylor Greene is a radical left lunatic and everyone she claims is calling her Georgia office all of them radical left lunatics and that nothing will be good enough for those Republican radical left lunatics. Donald Trump's silence about Jeffrey Epstein now extends as it always does. Through his complete silence about Jeffrey Epstein's victims one of them was a high school girl who felt very lucky when she got a job working for Donald Trump at Marlago and that was the worst lucky moment she ever had because when she was working in the spa as an assistant at Marlago she met Donald Trump's friend Galein Maxwell who then lured her to Jeffrey Epstein's floor at home where she was raped by Jeffrey Epstein and Galein Maxwell at the same time the very first time that she was there. Donald Trump has never spoken a word of sympathy for that girl who used to work for him. Donald Trump has never spoken a word of sympathy for that girl whose life was ruined when Jeffrey Epstein's criminal co-conspirator recruiter walked into Donald Trump's spa that day. Galein Maxwell is serving a 20 year prison sentence right now for among other things recruiting that girl, sex trafficking that girl. Donald Trump has twice said in interviews after Galein Maxwell was convicted as Jeffrey Epstein's co-conspirator in sex trafficking that he wishes her well. Quote, I just wish her well. Donald Trump has said that repeatedly about her. Donald Trump can't think of a negative thing to say about the woman who is in prison tonight because she lured those girls into Jeffrey Epstein's home onto Jeffrey Epstein's plane to Jeffrey Epstein's island. Galein Maxwell did not testify in her own defense of her trial. She did not speak a word. Galein Maxwell is appealing her conviction as every criminal defendant with money always does but very few of those appeals ever succeed. But if her appeal does not succeed her only hope of getting out of prison as a pardon from Donald Trump. And Donald Trump has abused the pardon power beyond the wildest dreams of any other president and certainly beyond the wildest nightmares of the authors of the constitutional power to pardon granted in absolute terms to the president by those framers of the constitution who would be horrified to see the Donald Trump used that power to pardon every single person who participated in an insurrection at the Capitol on January 6th to try to overturn the results of a presidential election for Donald Trump. Galein Maxwell has been absolutely silent about what she knows about Donald Trump's relationship with Jeffrey Epstein. Jeffrey Epstein killed himself, that Jeffrey Epstein himself before he killed himself. And before he was in prison, Jeffrey Epstein in 2017 in a tape recorded interview said, I was Donald's closest friend for 10 years. Surely, Jeffrey Epstein discussed Donald Trump with his criminal co-conspirator, but she has never said a word about what she knows about Donald Trump. The Epstein files might have reports from FBI agents who interviewed other people who might have heard Galein Maxwell tell them something about Donald Trump and Jeffrey Epstein. That's the kind of thing that could be in the Epstein files. It might not be admissible in court, but it could be in the investigative files. We know that the only person in the world who Donald Trump actually feels protective of is Donald Trump. And so the only person in the world he would be willing to extend himself to protect in the Epstein files would presumably be himself Donald Trump. Galein Trump's place in the Epstein files might be completely innocent. It's possible. It might simply include press clippings that FBI agents probably have in their files of Donald Trump praising Jeffrey Epstein. The Epstein files surely somewhere there has a copy of the 2002 New York magazine profile of Jeffrey Epstein in which Donald Trump says, I've known Jeffrey 15 years, terrific guy. He's a lot of fun to be with. It has even said that he likes beautiful women as much as I do and many of them are on the younger side. No doubt about it. Jeffrey enjoys his social life. That's kind of thing that appears in FBI investigative files. Donald Trump's public dating history does not include underage girls, but truly, weirdly and perversely in 2006. The year Jeffrey Epstein was first charged with sex trafficking. Donald Trump said something very, very strange when he was asked on Howard Stern's radio show about the ages of women. Do you think you could now be banging 24-year-olds? Oh, absolutely. Would you do it? I have no problem. Yeah, do you have an age limit or would you? If I have no age, I mean, I have an age, I don't want to be like a child. The upper bracket, yeah. Donald Trump was 60 years old. 60 years old. No problem with 24-year-olds. He was 60 years old when you just heard him say he would not want to be involved with a 12-year-old. And of course, Donald Trump is the only president of the United States in history who has publicly discussed anything like that. One count in Donald Trump's lawsuit, new lawsuit against the Wall Street Journal, claims specific defamation because the Wall Street Journal article described Donald Trump as being a friend of Jeffrey Epstein. The article also described a birthday letter that bears Donald Trump's name to Jeffrey Epstein on Jeffrey Epstein's 50th birthday. And the lawsuit, the Donald Trump filed the very next day, which he is very unlikely to ever pursue beyond just that filing because it would force him to testify under oath about Jeffrey Epstein. That lawsuit of Donald Trump's claims that it is defamatory to say that Donald Trump was a friend of Jeffrey Epstein's. That's what that lawsuit said on Friday and the very next day, Saturday, the New York Times published a massive article under the headline. Inside the long friendship between Trump and Epstein, that's how absurd the Donald Trump lawsuit is against the Wall Street Journal. Donald Trump is not suing the New York Times for saying he had a long friendship with Jeffrey Epstein. And the Trump lawsuit against the Wall Street Journal says it's defamatory to say that he was friends with Jeffrey Epstein. That New York Times headline proves to you how absurd the Trump lawsuit against the Wall Street Journal is and the Trump lawsuit will go nowhere because Donald Trump will not dare to pursue that lawsuit. Donald Trump will not force himself to go under oath, testifying about his friendship with Jeffrey Epstein because that's what the Donald Trump lawsuit would force Donald Trump to do. Rupert Murdoch, who Donald Trump is suing, can force Donald Trump to give a videotape deposition under oath with unlimited questioning about Donald Trump and Jeffrey Epstein. That's never going to happen. The Trump lawsuit was a one-day stunt, one-day stunt, just to try to trick the news media and to trick a lot of the news media and trick Donald Trump's followers into thinking that Donald Trump was actually taking some kind of action against the Wall Street Journal. Senator Dick Durbin, the top Democrat on the Senate Judiciary Committee with jurisdiction over the Justice Department's central letter to the Justice Department saying, according to information my office received, you pressured the FBI to put a product, really, a thousand personnel and its information management division, including the record information dissemination section, which handles all requests submitted by the public under the Freedom of Information Act and Privacy Act on 24-hour shifts. To review approximately 100,000 Epstein-related records in order to produce more documents that could then be released on an arbitrary short deadline. This effort, which reportedly took place from March 14th through the end of March, was haphazardly supplemented by hundreds of FBI, New York, field office personnel, many of whom lacked the expertise to identify, statutorily protected information regarding child victims and child witnesses or properly handle FOIA requests. My office was told that these personnel were instructed to flag any records in which President Trump was mentioned. The letter asks, Attorney General Pambondi, several questions, including, have you personally reviewed all files in DOJ's possession related to Jeffrey Epstein and who made the decision to assign hundreds of New York field office personnel to this March review of Epstein-related records? Donald Trump went silent today all day about the scandal he is now drowning in because of his relationship with a child rapist, a rich child rapist, rapper of children, who was found dead in his cell in a federal prison in Manhattan. Another sleepless night for Ukrainians, the country's leader says that Russia launched 400 drones and a missile in overnight attacks. Now the president is defending his decision to give Russia 50 days to make peace or face tariffs in secondary sanctions. Russian officials say they aren't worried about that threat though. 50 days, it used to be 24 hours, it used to be 100 days we've been through all of this. It's Ken Harbaugh with the Midas Touch Network. I am embarrassed to say this as an American and as a veteran, but I think that Russia's foreign minister understands Donald Trump better than most Americans do, certainly better than most of our media organizations do. In the last few weeks, Russia has unleashed a massive wave of attacks against Ukraine targeting civilians. I was there during one of the largest of these attacks. The drones are aimed at schools, hospitals, apartment complexes. I visited one of those targeted neighborhoods and spoke to residents who just hours earlier had been the victims of one of Putin's terror attacks. And while I prefer the Trump administration's recent skepticism towards Putin, I've observed Donald Trump long enough to know that his word about imposing sanctions in 50 days is about as good as Putin's word, and the Russian foreign minister knows that. Besides, why give Vladimir Putin another 50 days while he continues to slaughter innocent civilians? I talked to America's former ambassador to Ukraine, Bridgett Brink, about what is happening right now. This is an incredibly illuminated conversation, and I've split it into two parts. The second one is out tomorrow. And I'm headed back to Ukraine soon, reporting for this network. If you want to support that mission, subscribe to my sub-stack page. I'll be posting regular updates there as well. The link is below. Here's part one of my conversation with Ambassador Bridgett Brink. Welcome to the Ken Harboshom. My guest today is Ambassador Bridgett Brink, who served in Ukraine, was there during the opening phases of Putin's unprovoked aggression against that country. Help build the coalition that kept Ukraine in the fight and help provide the weapons that pushed back the second largest army in the world. I now think they're being described as the second most powerful army in Ukraine because Ukraine is winning this fight. And you know that as well as anyone. I've been to Ukraine many times and have seen it up close. Bridgett is also running for Congress in Michigan's seventh congressional district. We'll get to that as well. But give us the snapshot of the current state of affairs in Ukraine because it seems like almost every night we're hearing about another massive wave of drone and missile attacks that are targeting cities. They're targeting hospitals and power plants and daycare centers. This is something that always touches American audiences, but they just hit a stable in Odessa and killed horses. I know that payles in comparison to the toll on the human population, but we have to paint that picture for Americans about what Putin is doing to Ukraine. Thanks Ken. Thanks so much for having me on. Well, this is exactly why I stood up to the Trump administration and quit my job as U.S. Ambassador in Ukraine because I believed that what we were doing in terms of showing or not showing peace through strength was a problem for us. I could not stand by what we would appease Putin, but what's happening there in Ukraine as you describe is just truly horrific. It is violence on a scale that we have not seen since World War II. And that's violence to children just recently as you described. The drone attacks have increased exponentially against Ukraine and continue to do so even after the last call between President Trump and Putin last week. And it hit and killed a young toddler in the backyard, a family backyard. I saw this over and over again where children, civilians, women, people, minding their own business, sleeping in their beds, living their lives, are being killed in this wanton aggression that Putin is waging against Ukraine. And I just want to say that, you know, as three years as the head diplomat, coordinating all of our policy in Ukraine on the ground, we enabled the Ukraineians to accomplish a lot. And that's because they have an incredible fighting spirit and capability. And what we were able to do essentially was to help keep Ukraine free, as you said, against the second largest army in the world after ours. Also, Dutur, Russia, from and Putin from doing more and send the right signal to China. And that's what we need to continue to do. My strong advice is that we continue to arm Ukraine. And that will also benefit the United States because what we've seen from this war is that our defense industrial base is truly lacking. And we need to add more and do more to build it up and to show our strength and to be the strong power we must be in the world. But also to get at the $300 billion in Russian-Sapar assets that's sitting in Europe that can also be used to buy US weapons, create US jobs, also to support the industrial base in Europe and in Ukraine itself. And finally, we need to really put the sanctions on. And this is where the bill that sits in Congress, the one that is being driven by Senators Graham and Blumenthal is actually exactly the right move we need to make. But it should be strong and should be clear. We need to show Putin that we the United States, together with our partners in the world, are not going to allow him to take a country of 40 million people by force, pure and simple, because it is in our interest to do so. I do not think his goals end at Ukraine. I think they're much broader. And I think the consequences of him and Putin prevailing are absolutely devastating for Europe and for the United States. Hey, it's Ken Harbock. Quick break to say thank you to everyone who's been following and supporting this show and this channel. None of it happens without you. And if you haven't yet subscribed to my sub-stack page, I'd really appreciate the follow. It's a great way to make sure you never miss an episode. It's free to sign up. And if you're able to pitch in a few bucks, every dollar goes back into the show. Just search for the Ken Harbock show on sub-stack or click the link below. Thanks. Well, let's talk about those broader implications. You referenced sending a signal to China. The stakes in Ukraine go beyond. Obviously, Ukraine, they even go beyond the Baltics and the other countries that might fall if Putin has his way with Ukraine. It extends to the other side of the world to to Taiwan. Explain to us why Ukraine's fight is the fight for democracy globally. Well, it's simple. I think Russia and Putin and his partners around the world are seeking to show that a different model of governance is more powerful than democracy. And that's why he's teamed up with Iran. These drones that are coming to Ukraine at this exponentially increasing level are a lot of the Masha heads from Iran, as well as China. A lot of the materials that are going into the defense industrial base in Russia are coming also from China. And finally, North Korea, which has provided not only ballistic missiles. Those missiles are very hard to defend against with the exception of using up Patriot battery missiles, as well as people. And this is an alliance that is not in our interest. And we must show that this is one together with the Europeans that cannot determine the borders of Europe by force. We have seen this before. We have seen this in World War II. It is not something that should be repeated. And I also believe that Putin is trying to show that the values that came out of World War II fighting for freedom, fighting for democracy are ones that he is is trying to destroy. And our job is to show and explain that the alliances and the values that came out of World War II are the ones that have made us strong. That is what has helped America be and remain the strongest power in the world. And so it's very important for us to continue to fight for it at home and abroad. How do you explain the hesitation of the Trump administration? And maybe it's just functionaries in the Pentagon, the Elbridge Colby's of the world, to send defensive weapons, Patriot batteries and replacement missiles to Ukraine as the ballistic missiles are raining down on Ukrainian cities. I can't explain it. I think there's a simple answer to a situation where we find ourselves that we, if it's true, don't have enough Patriot missiles to be able to send to Ukraine or use anywhere else around the world. It's we better regenerate our own defense industrial base. I saw that personally when I was the ambassador to Ukraine that we were running low in certain areas. And I believe we should use all of our power to also rejuvenate that base internally. It would also be very good for the U.S. economy and U.S. jobs. And in addition to being very important to ensuring our own strengths and power at home and around the world. Well, I also don't buy the argument that we don't have enough in the sense that Patriot missiles are designed to shoot down Russian ballistic missiles. And I would much rather than be shooting down Russian ballistic missiles over Ukraine than over an American city or an American base overseas. I mean, that is the front lines of this new, what I think is a global war. I mean, it's kinetic in Ukraine, but you have alluded in some of your writings and talks about Russia's non-Canetic attacks around the world. There are attacks on our elections. I mean, they have actually killed the dissidents in allied countries in the capitals of allied countries. Can you talk about the very real threat that Russia poses right now to U.S. interests beyond the borders of Ukraine? Well, you're 100 percent exactly right. So the kinetic war, the land war is happening in Ukraine. It's also happening in some other countries on Russia's periphery, but the primary land war right now that Putin is waging is against Ukraine. But this war is multi-dimensional. There's an information war that has been going on now for decades. And since I spent almost 30 years in this part of the world, I saw this firsthand where part of Putin's plan and effort is to make people lose confidence in democracy, lose confidence in their government. People in Russia don't trust the government because the government lies. That's a real problem. That's a real problem for democracy. That's happening in Europe. That's happening to try to manipulate elections there in Europe. And we also know that happened here at home in America. In addition to an information war, there's also a war that's going on against, well, in the cyber world. So cyber activity is at an all-time high. That is a huge danger, of course, to all of us with the way in which most of our most of our world now is done in some technological basis. And that's happening in Russia is a key state sponsor of cyber war, both in Ukraine and in different parts around the world. And so it's happening on that level as well. There's the hybrid warfare or different kinds of warfare that's going around killing dissidents or people who disagree in even in Europe. We saw that happen in England and other parts of Europe that is being carried out by Putin and his special services. This is terrifying that this is happening. That was part one of my conversation with Ambassador Bridget Brink. Part two is out tomorrow. See you then. I picked up a couple of potential Easter eggs buried within the filing by Donald Trump against Rupert Murdoch, the Wall Street Journal, and its reporters for purported defamation, because they reported on a 2003 scrapbook birthday, 50th birthday party card thing that had a ex-rated card entry by Donald Trump in it right around the same period of time that Donald Trump was very good friends with Jeffrey Epstein. Buried in there are a couple of things that I think I've discovered. One is why did Donald Trump file the lawsuit in Miami and why did he avoid filing it where he could have got Judge Aileen Cannon again? I don't think it was an error. I don't think it was a careless mistake. I think it was done on purpose to avoid Aileen Cannon. I'm going to tell you why on this hot tick. And secondly, now that it's clear that Rupert Murdoch relishes this fight, wants this fight, wants to make good on something he said three and a half years ago, which is he wanted to make Donald Trump a non person who is the corroborator who corroborated for journalistic ethics standpoint, the 2003 scrapbook and its existence who gave it to the reporters. They mentioned the FBI. Is it possible that the US attorney's office and the lawyer's prosecuting Jelaine Maxwell, the co-conspirator with Epstein in the pedophile girl raping ring was also a corroborator. And on the heels of that, we've got Maureen Comey. James Comey, the former FBI director for Donald Trump's daughter who prosecuted Maxwell being fired. I'll tie it all together. The only way I know how without blowing smoke or sunshine here on the Midas Touch Network in legal AF, I'm Michael Popak. All right, let me put on my, well, it's easy to put on them. I'm a practicing lawyer in in Florida. Let's talk about Southern District of Florida practice and why I think Aileen Cannon was stood to it studiously avoided by Donald Trump because under normal circumstances, if he didn't have potential openings at the Department of Justice coming up, I'm looking at you, Pam Bondi attorney general and potential openings at the United States Supreme Court, he would love to have Aileen Cannon in order to get Aileen Cannon who did him a solid and helped him out in Mar-a-Laga during the search warrant criminal prosecution, espionage act obstruction of justice case against Donald Trump because she found for the first time in 200 years that a Department of Justice attorney general can't appoint a special counsel who doesn't obtain senate confirmation, finding Jack Smith to be invalid, even though by the way, side note, the Trump administration is using is using that very same statute to appoint special attorneys without senate confirmation. So he loves Aileen Cannon. In fact, she was on the reported short list during the president-elect transition period put there by Boris Epstein to be the attorney general of the United States. She didn't get the job. As we know now, Pam Bondi got the job. Pam Bondi's not doing well is she? Maga universe, magaverse has turned on Pam Bondi led by Laura Looney Lumer, the social media right wing influencer that is like some sort puts Donald Trump in some sort of trance, some sort of I love you trance because they love each other and she's she wants Bondi gone. So there's going to be an opening off the Epstein cover-up pedophile cover-up like Donald Trump scandal. That's a mouthful soon. Yeah. So follow me. They file the case. They check the box on the civil cover sheet, which of course I have a copy of that says Miami is the proper venue for this case of defamation against the Wall Street Journal because they reported on what they saw with their own eyes given to them by somebody, asterisk somebody in the US attorney's office in New York. And they run the story because Rupert Murdoch is taking on Donald Trump. He doesn't care about the Wall Street Journal. He cares about Fox News and Fox News is owned and controlled by Rupert Murdoch and the Lockland Murdoch's in the world. And so you have they check the box for Miami, not just because they're lawyer Alejandro Brito is located in Miami-Dade County, but because they want to avoid checking the box for where where Mar-a-Lago is located, which is Palm Beach, because if they check the box for the West Palm Beach division of the Southern District of Florida, they got a one in two chance of getting Aline Cannon. Because there's only three judges that sit up there regularly, a senior judge, middle Brooks, Judge Rosenberg, judge Cannon. That's how she got the case last time. Click they they checked for Pierce or they checked West Palm Beach. She sits kind of a part time in West Palm full time in Fort Pierce. And they got her, but they don't want her again. Because think about the awkward scenario. If in the next 30 days, 60 days, 90 days, Donald Trump has to have sent Pam Bondi a thank you for your thanks and you know, hope is in prayers. You know, please and thank you. Your services will no longer be needed. Go spend time more because spend more time with your family letter. If that opening happens, think of the awkward situation of the case assigned for defamation for billions of dollars, sitting in the presiding judge being Aline Cannon that he now wants to flip over to be the head of the Department of Justice. Or if there is an opening during the course of this case, which could last a year, especially if Rupert Murdoch isn't going to settle the case or takes a year or two to settle, then if there's an opening on the United States Supreme Court that he wants to stick, I know, by the way, I'm not promoting this. I don't want this to happen. But I am not going to blow smoke or sunshine either. If there is an opening on the US Supreme Court, Alito and Thomas both over, you know, pushing mid-70s, would he slide Aline Cannon in there or another appellate court opening there hasn't been many appellate court openings yet? In fact, we're six months into this administration. Donald Trump does not have a US attorney confirmed yet. And he doesn't have a judge position or an appellate judge position confirmed yet. Amal Bovy may change that in the next month or so. But he's not doing good on that front on the federal judge front. You know, what they say first impressions matter, whether I'm in court on camera or just heading out to meet friends looking sharp is an optional. It's essential and staying well groomed. That takes tools you can trust for me. That's aries. I've been using harries for a while now, whether to clean up around my beard or when I'm clean, shaving and I'm hooked. The trial said I got came with a sleek weighted handle that feels like it belongs in a high end barber shop, a five-blade razor, their signature foaming shave gel and a travel cover all delivered straight to my door. The packaging is clean and modern and yeah, it looks pretty good sitting on my bathroom counter. I keep a short beard and I like a clean shave on the neck and cheeks. Harries gives me a close smooth result around my beard or when I shave it all off every time. Without the irritation. The last couple of days we talked about a few things, right? We talked about a few things, right? We talked about trusting God. We talked about grinding, right? The last thing I'm going to leave you with today before I go is we have to take our attitude and align them with our goals. Would you agree? Everybody in here have goals? What do some of your goals throw them out to me? Somebody want to make a lot of money? Does that go? Somebody want to sell them on the cars? Somebody want to have a grit? Am I the only one who won't awaken here? Yeah, somebody want to make a lot of money? That's me. Somebody want to sell a lot of cars? Somebody want to elevate their career? Absolutely. Guess what I found out? Here's what I learned. I learned that you have to in order to accomplish those goals, you have to align your attitude with your goals. Meaning this, you cannot sell 30 cars a month and have a take card like that to. Would you agree? You cannot make a hundred thousand dollars a year for the 30 thousand dollar of your attitude. Would you agree? If you want to make a lot of money, then we must have the same attitude as those who make a lot of money. Would you agree? If we want to sell a lot of cars, then we must take on the same demeanor as someone who sells a lot of cars. We must do the same things that they do, right? They laid out a book prick for us, so we're not inventing anything new. We just have to do the same things that they do with your rig. So, I'm going to ask you, I'm going to ask you today and this week, that we knock it out the park by not only grinding, but not only pushing, but I'm only building value and making our customers love our product. But I'm going to ask you to let's take it to the next level and let's adjust our attitude to those that make a lot of money and that sell a lot of cars. Who's winning this one? Who's winning this one? I'm winning this one. Who's winning this one? Who's winning this one? It's down to cars. Yes! One, two, three. Yes! One, two, three. Yes!"
+        }
+      ],
+      "summary": "separate ways to contact Donald Trump.  I'll tell you, next time you're on a flight with a crying baby, just think about how much worse it could be.  I haven't really been following it too much",
+      "action_items": [
+        "be for Donald Trump to pick up on it",
+        "think you're Inspector Gadget",
+        "dive straight in with our main story tonight",
+        "have to do this",
+        "have to do this over that gorgeous",
+        "admit that not all their colleagues are thrilled about the bill's contents",
+        "want French kiss this final brother",
+        "happen",
+        "actually do",
+        "extend the tax cuts Republicans passed in 2017 and add some more",
+        "be good for everyone",
+        "deliver a blue collar boom or caps",
+        "make you immediately shit yourself",
+        "know just about every independent analysis agrees",
+        "be paid for at all",
+        "be through slashing programs that benefit the poor",
+        "make it hard for people to remain on the plans they already have",
+        "lead to 4",
+        "insist Medicaid is safe",
+        "say this very clearly",
+        "do everything we can to strengthen Medicaid to preserve it for those who need it the most",
+        "be tight",
+        "go do it again",
+        "lose your data",
+        "be very easy to find it and I'll know exactly what it's used for",
+        "be labeling besides just plastic bags",
+        "be going in each one of those folders",
+        "give you a really simple example here",
+        "die",
+        "need in the future",
+        "be able to flip it on like a switch",
+        "sink into your unconscious and you're going to start building that loop",
+        "help you a lot",
+        "install both integration and the cart",
+        "automatically add beer to the monthly gross list",
+        "be adding to the normal shopping list",
+        "get a visual notification",
+        "warn you if something is expiring",
+        "be good enough",
+        "always be more and more and more",
+        "take down every enemy of the people if not the base will turn and there's no going back",
+        "be good enough for those Republican radical left lunatics",
+        "go nowhere because Donald Trump will not dare to pursue that lawsuit",
+        "not force himself to go under oath",
+        "paint that picture for Americans about what Putin is doing to Ukraine",
+        "continue to do",
+        "also benefit the United States because what we've seen from this war is that our defense industrial base is truly lacking",
+        "add more and do more to build it up and to show our strength and to be the strong power we must be in the world",
+        "really put the sanctions on",
+        "make",
+        "be strong and should be clear",
+        "show Putin that we the United States",
+        "allow him to take a country of 40 million people by force",
+        "show that this is one together with the Europeans that cannot determine the borders of Europe by force",
+        "be repeated",
+        "use all of our power to also rejuvenate that base internally",
+        "tell you why on this hot tick",
+        "be an opening off the Epstein cover-up pedophile cover-up like Donald Trump scandal",
+        "no longer be needed",
+        "settle the case or takes a year or two to settle",
+        "blow smoke or sunshine either",
+        "leave you with today before I go is we have to take our attitude and align them with our goals",
+        "in order to accomplish those goals",
+        "align your attitude with your goals",
+        "have the same attitude as those who make a lot of money",
+        "take on the same demeanor as someone who sells a lot of cars",
+        "do the same things that they do",
+        "do the same things that they do with your rig",
+        "ask you",
+        "ask you today and this week",
+        "ask you to let's take it to the next level and let's adjust our attitude to those that make a lot of money and that sell a lot of cars",
+        "hundreds of New York field office personnel to this March review of Epstein-related records",
+        "Donald Trump",
+        "numbers",
+        "it just a tweak",
+        "a mindfulness loop",
+        "between President Trump and Putin last week",
+        "the right signal to China",
+        "defensive weapons",
+        "to Ukraine or use anywhere else around the world",
+        "prick for us"
+      ],
+      "key_moments": [
+        {
+          "timestamp": "00:00:00",
+          "description": "cost"
+        },
+        {
+          "timestamp": "00:00:00",
+          "description": "member"
+        },
+        {
+          "timestamp": "00:00:00",
+          "description": "critical"
+        }
+      ],
+      "sentiment": "positive",
+      "topics": [
+        "project",
+        "meeting",
+        "budget",
+        "timeline",
+        "team",
+        "strategy"
+      ],
+      "questions": [
+        "And one of them is fake, because I don't need the house, all right? And these guys didn't just party together",
+        "Do you know how creepy with women you have to be for Donald Trump to pick up on it? I mean, that's a real your drunk friend taking the car keys from you moments",
+        "And you could still say, so what? They were close friends",
+        "You wish her well? Is that the right response? I think there's a reason they don't have that section in the hallmark store",
+        "Okay, you know what? You know what? You want to take another shot at it",
+        "Maybe even more flailing and desperate? Yeah, I wish you well",
+        "What are you talking about? You wish bad things on everybody",
+        "What is that? I know that sarcastic clap",
+        "Is that Michael Costa? Yes, Michael Costa",
+        "And you must think you're Inspector Gadget, the way you're putting all the clues together, huh? But the fact is, you're just talking out of your go-go gadget ass",
+        "Why do you think Trump was just so close to Epstein? It's so obvious, Jordan",
+        "But if Donald Trump was working to expose Epstein, why doesn't he just say it? Because he's a humble man, Jordan",
+        "Who do you think talk Epstein into it? My man, Donnie T",
+        ", went into his cell and said, listen up, yagley, mud the gang's up, see? We got your dead to right, so do yourself a favor",
+        "Why would you force us all to imagine more makers tunging a stack of paper? But as regular viewers know, Kennedy loves gratuitous sex talk from inserting the phrase, I like omelets better than sex, into discussion about, and this is true USAID cuts to this memorable moment",
+        "And it is important to remember that in the records of Congress, there isn't answers to the question, what if Focon Leghorn was a power bottom? And look, as of typing, the bill still needs to clear the Senate and then go back to the House and things are still coming in and out of it, but the broad contours are clear",
+        "Hey, what is up guys? So I want to start out this week's video with a little story about my formative years",
+        "What exactly is dependency? Well, it's pretty much what it sounds like",
+        "And I heard her shout out to me, have you brushed your teeth today? And this was like at 2pm the afternoon",
+        "She was doing something completely unrelated to teeth brushing and yet she thought to ask me, why? Well, the health and well-being of her children were one of her main dependencies",
+        "Ever run out of what you need? Introducing simple inventory and drugstore stock",
+        "So how does it work? It looks like this",
+        "Do you think you could now be banging 24-year-olds? Oh, absolutely",
+        "Would you do it? I have no problem",
+        "Yeah, do you have an age limit or would you? If I have no age, I mean, I have an age, I don't want to be like a child",
+        "The letter asks, Attorney General Pambondi, several questions, including, have you personally reviewed all files in DOJ's possession related to Jeffrey Epstein and who made the decision to assign hundreds of New York field office personnel to this March review of Epstein-related records? Donald Trump went silent today all day about the scandal he is now drowning in because of his relationship with a child rapist, a rich child rapist, rapper of children, who was found dead in his cell in a federal prison in Manhattan",
+        "Besides, why give Vladimir Putin another 50 days while he continues to slaughter innocent civilians? I talked to America's former ambassador to Ukraine, Bridgett Brink, about what is happening right now",
+        "How do you explain the hesitation of the Trump administration? And maybe it's just functionaries in the Pentagon, the Elbridge Colby's of the world, to send defensive weapons, Patriot batteries and replacement missiles to Ukraine as the ballistic missiles are raining down on Ukrainian cities",
+        "interests beyond the borders of Ukraine? Well, you're 100 percent exactly right",
+        "One is why did Donald Trump file the lawsuit in Miami and why did he avoid filing it where he could have got Judge Aileen Cannon again? I don't think it was an error",
+        "Pam Bondi's not doing well is she? Maga universe, magaverse has turned on Pam Bondi led by Laura Looney Lumer, the social media right wing influencer that is like some sort puts Donald Trump in some sort of trance, some sort of I love you trance because they love each other and she's she wants Bondi gone",
+        "If there is an opening on the US Supreme Court, Alito and Thomas both over, you know, pushing mid-70s, would he slide Aline Cannon in there or another appellate court opening there hasn't been many appellate court openings yet? In fact, we're six months into this administration",
+        "The last couple of days we talked about a few things, right? We talked about a few things, right? We talked about trusting God",
+        "We talked about grinding, right? The last thing I'm going to leave you with today before I go is we have to take our attitude and align them with our goals",
+        "Would you agree? Everybody in here have goals? What do some of your goals throw them out to me? Somebody want to make a lot of money? Does that go? Somebody want to sell them on the cars? Somebody want to have a grit? Am I the only one who won't awaken here? Yeah, somebody want to make a lot of money? That's me",
+        "Somebody want to sell a lot of cars? Somebody want to elevate their career? Absolutely",
+        "Guess what I found out? Here's what I learned",
+        "Would you agree? You cannot make a hundred thousand dollars a year for the 30 thousand dollar of your attitude",
+        "Would you agree? If you want to make a lot of money, then we must have the same attitude as those who make a lot of money",
+        "Would you agree? If we want to sell a lot of cars, then we must take on the same demeanor as someone who sells a lot of cars",
+        "We must do the same things that they do, right? They laid out a book prick for us, so we're not inventing anything new",
+        "Who's winning this one? Who's winning this one? I'm winning this one",
+        "Who's winning this one? Who's winning this one? It's down to cars"
+      ]
     },
     {
       "session_id": "skeleton_1753165201",
@@ -139,10 +275,24 @@
         "Unknown"
       ],
       "wav_file": "demo_sessions/recording_20250721_232001.wav",
-      "transcript": [],
-      "summary": "Processing...",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "It's not there. It's not. It's not. Let's be clear. Law at Order SBU doesn't start, like, in the criminal justice system, sexually-based offenses are considered especially heinous, and we wish the perpetrators well. Duh-duh. Okay, you know what? You know what? You want to take another shot at it? Maybe even more flailing and desperate? Yeah, I wish you well. I'd wish you well. I'd wish a lot of people well. And I'd do wish you well. I'm not looking for anything bad for her. I'm not looking bad for anybody. What are you talking about? You wish bad things on everybody. Suddenly, you're wishing Glein well. You were harder on Kristen Stewart for cheating on Robert Pattinson. Okay. All right. All right. So."
+        }
+      ],
+      "summary": "It's not there.",
       "action_items": [],
-      "key_moments": []
+      "key_moments": [],
+      "sentiment": "negative",
+      "topics": [
+        "team"
+      ],
+      "questions": [
+        "Okay, you know what? You know what? You want to take another shot at it? Maybe even more flailing and desperate? Yeah, I wish you well",
+        "What are you talking about? You wish bad things on everybody"
+      ]
     },
     {
       "session_id": "skeleton_1753167072",
@@ -193,15 +343,28 @@
         {
           "speaker": "Unknown",
           "timestamp": "00:00:00",
-          "text": "Transcription error: cannot reshape tensor of 0 elements into shape [1, 0, 8, -1] because the unspecified dimension size -1 can be any value and is ambiguous"
+          "text": "to teeth brushing and yet she thought to ask me. Why? Well, the health and well-being of her children were one of her main dependencies and because my mom is an organized person, she got this regular mental notification to check up on that dependency. Now, admittedly, this is one of those mental patterns that does take a lot of time and effort to build. You're not going to be able to flip it on like a switch. But I think the first step to building this mental pattern, which is incredibly useful, is to sit down and consciously list out your dependencies. Maybe even sit down and draw a mind map of all of your life's different dependencies. And with this application of conscious thought to all the different aspects of your life, over time, it's going to sink into your unconscious and you're going to start building that loop. Item number four. Organized people live by the mantra two is one. One is none. Essentially, this translates to have a backup of anything that you use on a regular basis, especially if running out of that thing in the middle of your work would hamper the rest of your day or screw it up. For example, the camera that I'm filming this video on right now relies on a battery to run. And if that battery..."
         }
       ],
-      "summary": "Transcription error: cannot reshape tensor of 0 elements into shape [1, 0, 8, -1] because the unspecified dimension size -1 can be any value and is ambiguous",
-      "action_items": [],
-      "key_moments": [],
+      "summary": "to teeth brushing and yet she thought to ask me.",
+      "action_items": [
+        "be able to flip it on like a switch",
+        "sink into your unconscious and you're going to start building that loop"
+      ],
+      "key_moments": [
+        {
+          "timestamp": "00:00:00",
+          "description": "person"
+        }
+      ],
       "sentiment": "neutral",
-      "topics": [],
-      "questions": []
+      "topics": [
+        "timeline",
+        "team"
+      ],
+      "questions": [
+        "Why? Well, the health and well-being of her children were one of her main dependencies and because my mom is an organized person, she got this regular mental notification to check up on that dependency"
+      ]
     },
     {
       "session_id": "skeleton_1753167270",
@@ -244,15 +407,53 @@
         {
           "speaker": "Unknown",
           "timestamp": "00:00:00",
-          "text": "is not exactly Donald Trump's thing. And so Donald Trump has more than one way of expressing how, say, terrified he is. He might fly into obsessive, relentless social media postings about the thing he's terrified about. Sometimes you'll do it about the thing he's terrified about. And sometimes not. Sometimes about, like, anything else, which is kind of what he's been doing. And the other way Donald Trump communicates his fear is silence, which is also what he's been doing. That's how Donald Trump treats the things he's most afraid of in my observation. And so judging by his silence, Donald Trump is living in abject terror tonight of the Epstein files. Donald Trump spent the day in silence today about the Epstein files, the man who loves to have the cameras aimed at him while he plays with questions from reporters without ever actually answering them. Didn't dare allow reporters."
+          "text": "is not exactly Donald Trump's thing. And so Donald Trump has more than one way of expressing how, say, terrified he is. He might fly into obsessive, relentless social media postings about the thing he's terrified about. Sometimes you'll do it about the thing he's terrified about. And sometimes not. Sometimes about, like, anything else, which is kind of what he's been doing. And the other way Donald Trump communicates his fear is silence, which is also what he's been doing. That's how Donald Trump treats the things he's most afraid of in my observation. And so judging by his silence, Donald Trump is living in abject terror tonight of the Epstein files. Donald Trump spent the day in silence today about the Epstein files, the man who loves to have the cameras aimed at him while he plays with questions from reporters, without ever actually answering them, didn't dare allow reporters to get anywhere near him today at the White House. Donald Trump said nothing on social media today about the Epstein files. Nothing about the person who, for 15 years, Donald Trump called a terrific guy while the person Donald Trump thought was a terrific guy was raping children. The last time Donald Trump said anything about his now dead friend, Jeffrey Epstein, was on Saturday at 9.13 AM when he said nothing will be good enough. Donald Trump said, I have asked the Justice Department to release all grand jury testimony with respect to Jeffrey Epstein, subject only to court approval with that being said. And even if the court gave its full and unwavering approval, nothing will be good enough. For the troublemakers and radical left lunatics making the request, it will always be more and more and more. One of those radical left lunatics, I guess, is Marjorie Terrellard Green, according to Donald Trump's description. The description. She's always been called a radical lunatic, but she is a Republican member of Congress who's always supported Donald Trump and built her short political career on supporting Donald Trump. Today, Marjorie Terrell Green tweeted, if you tell the base of people who support you of deep state treasonous crimes, election interference, blackmail, and rich, powerful elite evil kabals, then you must take down every enemy of the people. If not, the base will turn and there's no going back. Dangling bits of red meat no longer satisfies. They want the whole steak dinner and will accept nothing else. Marjorie Terrell Green is making it very clear what would be good enough for her. She wants the entirety of the Epstein files released, not just the grand jury transcripts, which would be the least informative part of the Trump Justice Department's criminal investigative file on Jeffrey Epstein. While some Trump supporters who were complaining about Donald Trump's refusal to release the Epstein files last week are now going quiet. Marjorie Terrell Green hasn't given up yet. She said this tonight at 706 PM. I believe in transparency and I believe the American people. This is a serious issue. I can tell you for the past gosh more than a week, the highest volume of calls into my office have been about Epstein. People want the information. They don't want things covered up, especially when it comes to the most well-known convicted pedophile in modern day history. It's important to them and they really want the information out. But Donald Trump says Marjorie Terrell Green is a radical left lunatic and everyone she claims is calling her Georgia office, all of them, radical left lunatics, and that nothing will be good enough for those Republican, radical left lunatics. Donald Trump's silence about Jeffrey Epstein now extends as it always does. To his complete silence about Jeffrey Epstein's victims, one of them was a high school girl who felt very lucky when she got a job working for Donald Trump at Marlago. And that was the worst lucky moment she ever had. Because when she was working in the spa as an assistant at Marlago, she met Donald Trump's friend, Gillain Maxwell, who then lured her to Jeffrey Epstein's floor at home, where she was raped by Jeffrey Epstein and Gillain Maxwell at the same time, the very first time that she was there. Donald Trump has never spoken a word of sympathy for that girl who used to work for him. Donald Trump has never spoken a word of sympathy for that girl whose life was ruined when Jeffrey Epstein's criminal co-conspirator recruiter walked into Donald Trump's spa that day. Gillain Maxwell is serving a 20-year prison sentence right now for among other things recruiting that girl, sex trafficking that girl. Donald Trump has twice said in interviews. After Gillain Maxwell was convicted as Jeffrey Epstein's co-conspirator in sex trafficking, that he wishes her well. Quote, I just wish her well. Donald Trump has said that repeatedly about her. Donald Trump can't think of a negative thing to say about the woman who is in prison tonight because she lured those girls into Jeffrey Epstein's home, onto Jeffrey Epstein's plane, to Jeffrey Epstein's island. Gillain Maxwell did not testify in her own defense of her trial. She did not speak a word. Gillain Maxwell is appealing her conviction as every criminal defendant with money always does, but very few of those appeals ever succeed. But if her appeal does not succeed, her only hope of getting out of prison is a pardon from Donald Trump. And Donald Trump has abused the pardon power beyond the wildest dreams of any other president and certainly beyond the wildest nightmares of the authors of the constitutional power to pardon granted in absolute terms to the president by those framers of the Constitution who would be horrified to see the Donald Trump used that power to pardon every single person who participated in an insurrection at the Capitol on January 6th to try to overturn the results of a presidential election for Donald Trump. Gillain Maxwell has been absolutely silent about what she knows, about Donald Trump's relationship with Jeffrey Epstein. Jeffrey Epstein killed himself. That Jeffrey Epstein himself before he killed himself. And before he was in prison, Jeffrey Epstein in 2017 in a tape recorded interview said, I was Donald's closest friend for 10 years. Surely Jeffrey Epstein discussed Donald Trump with his criminal co-conspirator, but she has never said a word about what she knows about Donald Trump. The Epstein files might have reports from FBI agents who interviewed other people who might have heard Gillain Maxwell tell them something about Donald Trump and Jeffrey Epstein. That's the kind of thing that could be in the Epstein files. Might not be admissible in court, but it could be in the investigative files. We know that the only person in the world who Donald Trump actually feels protective of is Donald Trump. And so the only person in the world he would be willing to extend himself to protect in the Epstein files would presumably be himself Donald Trump. Donald Trump's place in the Epstein files might be completely innocent. It's possible. It might simply include press clippings that FBI agents probably have in their files of Donald Trump praising Jeffrey Epstein. The Epstein files surely somewhere there has a copy of the 2002 New York magazine profile of Jeffrey Epstein in which Donald Trump says, I've known Jeffrey 15 years, terrific guy. He's a lot of fun to be with. It has even said that he likes beautiful women as much as I do and many of them are on the younger side. No doubt about it. Jeffrey enjoys his social life. That's the kind of thing that appears in FBI investigative files. Donald Trump's public dating history does not include underage girls, but truly weirdly and perversely in 2006. The year Jeffrey Epstein was first charged with sex trafficking. Donald Trump said something very, very strange when he was asked on Howard Stern's radio show. About the ages of women. Do you think you could now be banging 24-year-olds? Oh, absolutely. Would you do it? I have no problem. Yeah, do you have an age limit or would you? If I had no age, I mean, I have an age, I don't want to be like that. The upper bracket, yeah. Only within a 12-year-old. Donald Trump was 60 years old. 60 years old. No problem with 24-year-olds. He was 60 years old when you just heard him say, he would not want to be involved with a 12-year-old. And of course, Donald Trump is the only president of the United States in history who has publicly discussed anything like that. One count in Donald Trump's lawsuit, New Lawsuit against the Wall Street Journal, claims specific defamation because the Wall Street Journal article described Donald Trump as being a friend of Jeffrey Epstein. The article also described a birthday letter that bears Donald Trump's name to Jeffrey Epstein on Jeffrey Epstein's 50th birthday. And the lawsuit that Donald Trump filed the very next day, which he is very unlikely to ever pursue beyond just that filing, because it would force him to testify under oath about Jeffrey Epstein. That lawsuit of Donald Trump's claims that it is defamatory to say that Donald Trump was a friend of Jeffrey Epstein's. That's what that lawsuit said on Friday and the very next day, Saturday, the New York Times published a massive article under the headline, inside the long friendship between Trump and Epstein. That's how absurd the Donald Trump lawsuit is against the Wall Street Journal. Donald Trump is not suing the New York Times for saying he had a long friendship with Jeffrey Epstein. And the Trump lawsuit against the Wall Street Journal says it's defamatory to say that he was friends with Jeffrey Epstein. That New York Times headline proves to you how absurd the Trump lawsuit against the Wall Street Journal is, and the Trump lawsuit will go nowhere, because Donald Trump will not dare to pursue that lawsuit. Donald Trump will not force himself to go under oath, testifying about his friendship with Jeffrey Epstein, because that's what the Donald Trump lawsuit would force Donald Trump to do. Rupert Murdock, Donald Trump is suing, forced Donald Trump to give a videotape deposition under oath with unlimited questioning about Donald Trump and Jeffrey Epstein. That's never going to happen. The Trump lawsuit was a one-day stunt, one-day stunt, just to try to trick the news media and trick a lot of the news media and trick Donald Trump's followers into thinking that Donald Trump was actually taking some kind of action against the Wall Street Journal. Senator Dick Durbin, the top Democrat on the Senate Judiciary Committee with jurisdiction over the Justice Department's central letter to the Justice Department saying, according to information my office received, you pressured the FBI to put a product really a thousand personnel and its information management division, including the record information dissemination section, which handles all requests submitted by the public under the Freedom of the Mace Act and Privacy Act on 24-hour shifts. To review approximately 100,000 Epstein-related records in order to produce more documents that could then be released on an arbitrary short deadline. This effort, which reportedly took place from March 14th through the end of March, was haphazardly supplemented by hundreds of FBI New York field office personnel, many of whom lacked the expertise to identify, statutorily protected information regarding child victims and child witnesses or properly handle FOIA requests. My office was told that these personnel were instructed to flag any records in which President Trump was mentioned. The letter asks, Attorney General Pambondi, several questions, including, have you personally reviewed all files in DOJ's possession, related to Jeffrey Epstein, and who made the decision to assign hundreds of New York field office personnel to this March review of Epstein-related records? Donald Trump went silent today all day about the scandal he is now drowning in because of his relationship with a child rapist, a rich child rapist, rapper of children, who was found dead in his cell in a federal prison in Manhattan. Another sleepless night for Ukrainians, the country's leader says that Russia launched 400 drones and a missile in overnight attacks. Now the president is defending his decision to give Russia 50 days to make peace or face tariffs and secondary sanctions. Russian officials say they aren't worried about that threat though. 50 days, it used to be 24 hours, it used to be 100 days, we've been through all of this. It's Ken Harbaugh with the Midas Touch Network. I am embarrassed to say this as an American and as a veteran, but I think that Russia's foreign minister understands Donald Trump better than most Americans do, certainly better than most of our media organizations do. In the last few weeks, Russia has unleashed a massive wave of attacks against Ukraine targeting civilians. I was there during one of the largest of these attacks. The drones are aimed at schools, hospitals, apartment complexes. I visited one of those targeted neighborhoods and spoke to residents who just hours earlier had been the victims of one of Putin's terror attacks. And while I prefer the Trump administration's recent skepticism towards Putin, I've observed Donald Trump long enough to know that his word about imposing sanctions in 50 days is about as good as Putin's word, and the Russian foreign minister knows that. Besides, why give Vladimir Putin another 50 days while he continues to slaughter innocent civilians? I talked to America's former ambassador to Ukraine, Bridgett Brink, about what is happening right now. This is an incredibly illuminated conversation and I've split it into two parts, the second one is out tomorrow. And I'm headed back to Ukraine soon reporting for this network. If you want to support that mission, subscribe to my sub-stack page. I'll be posting regular updates there as well. The link is below. Here's part one of my conversation with Ambassador Bridgett Brink. Welcome to the Ken Harboshom. My guest today is Ambassador Bridgett Brink, who served in Ukraine, was there during the opening phases of Putin's unprovoked aggression against that country. Help build the coalition that kept Ukraine in the fight and help provide the weapons that pushed back the second largest army in the world. I now think they're being described as the second most powerful army in Ukraine because Ukraine is winning this fight. And you know that as well as anyone. I've been to Ukraine many times and have seen it up close. Bridgett is also running for Congress in Michigan's 17th congressional district. We'll get to that as well. But give us the snapshot of the current state of affairs in Ukraine because it seems like almost every night we're hearing about another massive wave of drone and missile attacks that are targeting cities, they're targeting hospitals and power plants and daycare centers. This is something that always touches American audiences, but they just hit a stable in Odessa and killed horses. I know that Pales and Comparison to the toll on the human population, but we have to paint that picture for Americans about what Putin is doing to Ukraine. Thanks Ken. Thanks so much for having me on. Well this is exactly why I stood up to the Trump administration and quit my job as US Ambassador in Ukraine because I believed that what we were doing in terms of showing or not showing peace through strength was a problem for us. I could not stand by what we would appease Putin. But what's happening there in Ukraine as you describe is just truly horrific. It is violence on a scale that we have not seen since World War 2. And that's violence too."
         }
       ],
-      "summary": "is not exactly Donald Trump's thing.",
-      "action_items": [],
-      "key_moments": [],
-      "sentiment": "neutral",
-      "topics": [],
-      "questions": []
+      "summary": "is not exactly Donald Trump's thing.  It's important to them and they really want the information out.  Surely Jeffrey Epstein discussed Donald Trump with his criminal co-conspirator, but she has never said a word about what she knows about Donald Trump",
+      "action_items": [
+        "be good enough",
+        "always be more and more and more",
+        "take down every enemy of the people",
+        "turn and there's no going back",
+        "accept nothing else",
+        "be good enough for those Republican",
+        "go nowhere",
+        "not dare to pursue that lawsuit",
+        "not force himself to go under oath",
+        "happen",
+        "paint that picture for Americans about what Putin is doing to Ukraine",
+        "hundreds of New York field office personnel to this March review of Epstein-related records"
+      ],
+      "key_moments": [
+        {
+          "timestamp": "00:00:00",
+          "description": "member"
+        },
+        {
+          "timestamp": "00:00:00",
+          "description": "deadline"
+        },
+        {
+          "timestamp": "00:00:00",
+          "description": "person"
+        }
+      ],
+      "sentiment": "negative",
+      "topics": [
+        "project",
+        "meeting",
+        "budget",
+        "timeline",
+        "team"
+      ],
+      "questions": [
+        "Do you think you could now be banging 24-year-olds? Oh, absolutely",
+        "Would you do it? I have no problem",
+        "Yeah, do you have an age limit or would you? If I had no age, I mean, I have an age, I don't want to be like that",
+        "The letter asks, Attorney General Pambondi, several questions, including, have you personally reviewed all files in DOJ's possession, related to Jeffrey Epstein, and who made the decision to assign hundreds of New York field office personnel to this March review of Epstein-related records? Donald Trump went silent today all day about the scandal he is now drowning in because of his relationship with a child rapist, a rich child rapist, rapper of children, who was found dead in his cell in a federal prison in Manhattan",
+        "Besides, why give Vladimir Putin another 50 days while he continues to slaughter innocent civilians? I talked to America's former ambassador to Ukraine, Bridgett Brink, about what is happening right now"
+      ]
     },
     {
       "session_id": "skeleton_1753172633",
@@ -276,6 +477,410 @@
       "sentiment": "neutral",
       "topics": [],
       "questions": []
+    },
+    {
+      "session_id": "skeleton_1753175386",
+      "timestamp": "2025-07-22T02:11:41.951430",
+      "duration": 115.31700680272108,
+      "title": "Recording 2025-07-22 02:11",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_020946.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "I'll ask you a couple of days, because we talked about a few things, right? You talked about it. We talked about a few things, right? We talked about trust in the God. We talked about grinding, right? The last thing I'm gonna leave you with today before I go is we have to take our attitude and align them with our goals. Would you agree? Everybody in here have goals? Where do some of your goals still amount to me? Somebody wanna make a lot of money? Is that a goal? Somebody wanna sell them on the cards? Somebody wanna have a grip? Am I the only one awake in here? Yes, somebody wanna make a lot of money? That's me. Somebody wanna sell a lot of cards? Yes. Somebody wanna elevate their career? Absolutely. Just what I found out. Here's what I learned. I learned that you have to, in order to accomplish those goals, you have to align your attitude with your goals. Meaning this, you cannot sell 30 cards a month and have a 10 card on your attitude. Would you agree? You cannot make $100,000 here, or the $30,000 in your attitude. Would you agree? If you want to make a lot of money, then we must have the same attitude as those who make a lot of money. Would you agree? If we want to sell a lot of cards, then we must take on the same demeanor as someone who sells a lot of cards. We must do the same things that they do, right? They laid out the book trick for us, so we're not inventing anything new. We just have to do the same things that they do with your work. So, I'm gonna ask you, I'm gonna ask you today, and this week, that we knock it out the part by not only grinding, but not only pushing, but I'm only building value and making our customers love our product. But I'm gonna ask you to let's take it to the next level, and let's adjust our attitude to those that make a lot of money, and that sell a lot of cards. Who's with me this morning? Who's with me this morning? Who's with me this morning? Who's with me this morning? Let's sell some cards. Yes! One, two, three. Yes! One, two, three. Yes! Go for it! Kill the end! Oh man. Cause your mind has been.. But this game is pretty cool, I guess because of it. The idea is, okay then. This is a man, but the idea's not... Is this, you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you"
+        }
+      ],
+      "summary": "I'll ask you a couple of days, because we talked about a few things, right? You talked about it.  But I'm gonna ask you to let's take it to the next level, and let's adjust our attitude to those that make a lot of money, and that sell a lot of cards.  Is this, you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you",
+      "action_items": [
+        "take our attitude and align them with our goals",
+        "align your attitude with your goals",
+        "have the same attitude as those who make a lot of money",
+        "take on the same demeanor as someone who sells a lot of cards",
+        "do the same things that they do",
+        "do the same things that they do with your work",
+        "trick for us"
+      ],
+      "key_moments": [
+        {
+          "timestamp": "00:00:00",
+          "description": "agree"
+        }
+      ],
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": [
+        "I'll ask you a couple of days, because we talked about a few things, right? You talked about it",
+        "We talked about a few things, right? We talked about trust in the God",
+        "We talked about grinding, right? The last thing I'm gonna leave you with today before I go is we have to take our attitude and align them with our goals",
+        "Would you agree? Everybody in here have goals? Where do some of your goals still amount to me? Somebody wanna make a lot of money? Is that a goal? Somebody wanna sell them on the cards? Somebody wanna have a grip? Am I the only one awake in here? Yes, somebody wanna make a lot of money? That's me",
+        "Somebody wanna sell a lot of cards? Yes",
+        "Somebody wanna elevate their career? Absolutely",
+        "Would you agree? You cannot make $100,000 here, or the $30,000 in your attitude",
+        "Would you agree? If you want to make a lot of money, then we must have the same attitude as those who make a lot of money",
+        "Would you agree? If we want to sell a lot of cards, then we must take on the same demeanor as someone who sells a lot of cards",
+        "We must do the same things that they do, right? They laid out the book trick for us, so we're not inventing anything new",
+        "Who's with me this morning? Who's with me this morning? Who's with me this morning? Who's with me this morning? Let's sell some cards"
+      ]
+    },
+    {
+      "session_id": "skeleton_1753180684",
+      "timestamp": "2025-07-22T03:40:02.201600",
+      "duration": 117.9901814058957,
+      "title": "Recording 2025-07-22 03:40",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_033804.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "a weekly team meeting. A lot of people don't do it and there's a lot of confusion about what in the world do I cover. Well today I'm going to give you the five items that you need to go over in every weekly team meeting. Hey guys Greg Winnereg here, Matterhorn CEO. Hit that subscribe button, hit the bell, be sure you get all of our awesome content. We're turning out three videos for you every week. I'm going to jump right into this. Let me tell you a team is lost if they're not getting communication from the owner and the manager. If there are five things that you have to go over at every weekly team meeting. All right. Number one, statistics. Every staff member, every team member needs to have a statistic that reflects a particular area, a team whether that team is even one or three or five people that manager has certain objectives that have been handed down from senior management, the owner as to what's supposed to happen in that area this week. So if it's marketing, okay. So this week in this marketing area, we are going to have to get out the redesigned web page, a new flyer customers. There's going to be things that go wrong in production. All right. It's going to happen. These things are going to have difficulties during the span of a week. There's going to be disagreements amongst the team. There's going to be upset customers. There's going to be things that go wrong in production. All right. It's going to happen. These things need to be addressed in the weekly team meeting. This could be where you announce birthdays. You can even I don't know, bring in a group birthday cake for everybody who's got a birthday in the month of June. So general announcements that may not get disseminated to the entire group, maybe to only specific individual areas. The company Christmas party is this or that. So then this one number four keeps everybody informed of what's going on everywhere in the company. Number five is actually the most fun. We actually required everyone to bring to the meeting a particular win, a success, a testimonial from a client or a customer. And it's great to end off the team meeting on a high. So you can, if there's a lot of people in the room, you can ask for a show of hands. The person running can just point and say, yeah, what's your win this week? What's your win this week? But it's really an awesome way to end off the team meeting, letting everyone feel like, yes, I'm important. I contributed to the overall company purpose. This place is awesome. We're really helping a lot of people. If you don't relay these successes and these wins from the customers back, it's real easy to think that your job, the team members have a weekly team meeting. The quickest way from a billion points of data to a point of view. Zasvaya. In an exhaustive round of personal interviews."
+        }
+      ],
+      "summary": "a weekly team meeting.  Well today I'm going to give you the five items that you need to go over in every weekly team meeting.  If there are five things that you have to go over at every weekly team meeting",
+      "action_items": [
+        "give you the five items that you need to go over in every weekly team meeting",
+        "jump right into this",
+        "go over at every weekly team meeting",
+        "have to get out the redesigned web page",
+        "be things that go wrong in production",
+        "happen",
+        "have difficulties during the span of a week",
+        "be disagreements amongst the team",
+        "be upset customers",
+        "be addressed in the weekly team meeting"
+      ],
+      "key_moments": [
+        {
+          "timestamp": "00:00:00",
+          "description": "individual"
+        },
+        {
+          "timestamp": "00:00:00",
+          "description": "important"
+        },
+        {
+          "timestamp": "00:00:00",
+          "description": "member"
+        }
+      ],
+      "sentiment": "positive",
+      "topics": [
+        "meeting",
+        "team"
+      ],
+      "questions": [
+        "The person running can just point and say, yeah, what's your win this week? What's your win this week? But it's really an awesome way to end off the team meeting, letting everyone feel like, yes, I'm important"
+      ]
+    },
+    {
+      "session_id": "skeleton_1753201734",
+      "timestamp": "2025-07-22T09:31:58.702475",
+      "duration": 0.00024943310657596373,
+      "title": "Recording 2025-07-22 09:31",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_092854.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "Transcription error: Audio file is empty or corrupted (too small)"
+        }
+      ],
+      "summary": "Transcription error: Audio file is empty or corrupted (too small)",
+      "action_items": [],
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753214307",
+      "timestamp": "2025-07-22T13:31:19.169143",
+      "duration": 1879.1649886621315,
+      "title": "Recording 2025-07-22 13:31",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_125827.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "Dance! Yes. Recording in progress. I can. Hi. How are you? Hello? Can you hear me? Hello, hello? Hello? Hello? Hello? Hello? Hello? Hello? Hello? Hello? Hello? Yes. Yes. I can hear you. Can you hear me? I can hear both of you. Great. I don't think Matt can hear us just yet. Hello? This is Vicki. Hi, Vicki. How are you today? Good. Good. I think Matt is having some sense of success. you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you"
+        }
+      ],
+      "summary": "Dance! Yes.  you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you",
+      "action_items": [],
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": [
+        "How are you? Hello? Can you hear me? Hello, hello? Hello? Hello? Hello? Hello? Hello? Hello? Hello? Hello? Hello? Yes",
+        "Can you hear me? I can hear both of you",
+        "Hello? This is Vicki",
+        "How are you today? Good"
+      ]
+    },
+    {
+      "session_id": "skeleton_1753217773",
+      "timestamp": "2025-07-22T13:57:53.558899",
+      "duration": 100.17548752834468,
+      "title": "Recording 2025-07-22 13:57",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_135613.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "what is too late for us to stand up another way to funnel donations into Democratic candidates. If redistricting gets pulled off in a way where we just have a much narrower path to a majority if red states do that, but Democratic states decide to stick to norms and wait for four years to draw districts again. We could be in a world of down-and-trop approval ratings are 39% and we don't win the House and we don't win the Senate. And Republicans smell blood in the water because they got away with the contraction of Democratic space enough to be able to withstand what should have been a blood bath for them in the midterms and they just crank the dial even firmer. Now that's not inevitable. We have the ability to make sure that many of those things don't happen but it takes collective action out there in the American public and they're looking for us, the most significant and vocal and visible Democratic leaders to show some fight. Yeah, so there are two things in there that I want to pick at. The first is I think that money in politics is a little less important than people think these days. I can 2025, I just think that the nature of how our elections are run like the value of the TV ad compared to what it used to be isn't the same. All that said, there's no value to money in politics and you said something that is kind of interesting. Do you feel like, and you're out there more than me trying to raise money, talking to donors, talking to big Democratic interest groups, are people being intimidated and to not participating and to not donating at this point? Like, do you think that that is?"
+        }
+      ],
+      "summary": "what is too late for us to stand up another way to funnel donations into Democratic candidates.  And Republicans smell blood in the water because they got away with the contraction of Democratic space enough to be able to withstand what should have been a blood bath for them in the midterms and they just crank the dial even firmer.  We have the ability to make sure that many of those things don't happen but it takes collective action out there in the American public and they're looking for us, the most significant and vocal and visible Democratic leaders to show some fight",
+      "action_items": [
+        "have been a blood bath for them in the midterms and they just crank the dial even firmer"
+      ],
+      "key_moments": [
+        {
+          "timestamp": "00:00:00",
+          "description": "important"
+        }
+      ],
+      "sentiment": "negative",
+      "topics": [
+        "budget",
+        "team"
+      ],
+      "questions": [
+        "Do you feel like, and you're out there more than me trying to raise money, talking to donors, talking to big Democratic interest groups, are people being intimidated and to not participating and to not donating at this point? Like, do you think that that is?"
+      ]
+    },
+    {
+      "session_id": "skeleton_1753218975",
+      "timestamp": "2025-07-22T14:16:38.203487",
+      "duration": 22.23263038548753,
+      "title": "Recording 2025-07-22 14:16",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_141615.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "So that could certainly be something where here's what the other side of that fight though if you have that fight Then the Republicans will be like look at the Democrats They only care about the gangsters and they only care about the Guatemalans that are you know who came here Allegedly and didn't come the right way and that you know They care about the people that the rapists that we have in these prisons. They care about them more than they care about you"
+        }
+      ],
+      "summary": "So that could certainly be something where here's what the other side of that fight though if you have that fight Then the Republicans will be like look at the Democrats They only care about the gangsters and they only care about the Guatemalans that are you know who came here Allegedly and didn't come the right way and that you know They care about the people that the rapists that we have in these prisons. They care about them more than they care about you",
+      "action_items": [
+        "be like look at the Democrats They only care about the gangsters and they only care about the Guatemalans that are you know who came here Allegedly and didn't come the right way and that you know They care about the people that the rapists that we have in these prisons"
+      ],
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [
+        "team"
+      ],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753219890",
+      "timestamp": "2025-07-22T14:33:57.773057",
+      "duration": 146.91843537414965,
+      "title": "Recording 2025-07-22 14:33",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_143130.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "Gold Boatwork for 20% off your first purchase. Once again, that's Fair Harbor, H-A-R-B-O-R, clothing.com. Backslash. Bullwhip. All right. I've got one other thing I got to get off my chest. I don't know if many of you saw that Hunter Biden reemerged yesterday to three-hour interview with some green point Brooklyn-looking guy in a mustache where he vented all of his grievances about the 2024 election. He also did an interview with Jamie Harrison, former DNC chair, unclear why he decided that this was kind of the moment for him to reemerge. But the crux of his anger that he got out on these interviews was an extended rant about how awful James Carville and David Axelrod and the Podsative America guys and Nancy Pelosi and George Clooney were for pushing his dad out of the race. And how his dad had no agency and how his dad was treated so poorly, et cetera, et cetera. And how he would have won if he had stayed in and clear how somebody that couldn't talk could win. But I think a lot of times we look at this through the political lens. And I mean, everybody here knows my view. I do not think every single piece of data that we have indicates to me that Joe Biden was not going to win. But even if you granted Hunter's argument that this was all a mistake and that Joe Biden stayed in, he would have had a miraculous comeback in the next debate or the people wouldn't have cared about his performance. And they would have voted for him because there was this ground swell of support that didn't show up in any polls or focus groups or anecdotal conversations. You had those people at the ballpark. OK, even if that was true, here's my issue with all this. And here's why I feel like it is needed to be addressed. James Carville, David Axelrod, George Clooney, Five Guys, Pelosi, everybody, all those people were trying to advocate for what they thought was best for the country in a very fraught fucking moment. They were making a good faith argument that they thought that the risk was too high to have"
+        }
+      ],
+      "summary": "Gold Boatwork for 20% off your first purchase.  But even if you granted Hunter's argument that this was all a mistake and that Joe Biden stayed in, he would have had a miraculous comeback in the next debate or the people wouldn't have cared about his performance.  They were making a good faith argument that they thought that the risk was too high to have",
+      "action_items": [
+        "win"
+      ],
+      "key_moments": [],
+      "sentiment": "negative",
+      "topics": [
+        "meeting",
+        "team"
+      ],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753228869",
+      "timestamp": "2025-07-22T17:01:31.030134",
+      "duration": 21.68780045351474,
+      "title": "Recording 2025-07-22 17:01",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_170109.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "formed out of storm-light beside Shalon. She turned her gaze upward, then raised a massive shard bow, and, in a single fluid motion, loose an arrow almost as thick as a spear. Then another, the fused above them scattered. Shalon sat and breathed deeply."
+        }
+      ],
+      "summary": "formed out of storm-light beside Shalon.",
+      "action_items": [],
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753232761",
+      "timestamp": "2025-07-22T18:09:15.484925",
+      "duration": 0.00024943310657596373,
+      "title": "Recording 2025-07-22 18:09",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_180601.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "Transcription error: Audio file is empty or corrupted (too small)"
+        }
+      ],
+      "summary": "Transcription error: Audio file is empty or corrupted (too small)",
+      "action_items": [],
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753232986",
+      "timestamp": "2025-07-22T18:09:57.503925",
+      "duration": 0.00024943310657596373,
+      "title": "Recording 2025-07-22 18:09",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_180946.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "Transcription error: Audio file is empty or corrupted (too small)"
+        }
+      ],
+      "summary": "Transcription error: Audio file is empty or corrupted (too small)",
+      "action_items": [],
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753251486",
+      "timestamp": "2025-07-22T23:22:30.917115",
+      "duration": 251.79979591836735,
+      "title": "Recording 2025-07-22 23:22",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250722_231806.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "We start with escalating developments in the Ep Ep I don't know anything about it. They're going to what meter they're going to there's your deputy attorney general is reached out to go in Maxwell's attorney asking for a new interview. Yeah, I don't know I think it's something that would be sounds appropriate to do you have any concern that your deputy attorney general is your former attorney Would be conducting the interview given no Relationship prediction. He's a very talented person. He's very smart. I didn't know that they were going to do it I don't really follow that too much Trump then launched into an eight-minute-long debunked conspiracy-laced tie-rate about Barack Obama an apparent effort to distract but it is not working as for Trump's DOJ interviewing Glein Maxwell She is currently facing 20 years behind bars for child sex trafficking and other crimes She along with Epstein were both investigated and charged during the first Trump administration Analysts point out she had the opportunity to provide more information than at trial as political reports It also raises the question of whether Maxwell may try to leverage the meeting for reduced prison sentence by telling the Justice Department What it wants to hear also today two federal judges demanding more information from Trump's DOJ on its request to unseal grand jury transcripts meantime House Republicans are running from the Epstein scandal GOP leaders starting the five-week five-week recess early to avoid votes on releasing the Epstein files the move Generating headlines like these House fleas Washington amid turmoil over Epstein fallout house largely grines to a halt over Epstein files Johnson cuts short house session to avoid vote on releasing Epstein files Democrats now hammering Republicans This is a cover-up of equip proportions where you've got the majority party literally Having us leave Congress early isn't it interesting that it takes a conspiracy And theories on that conspiracy to shut down the US House of Representatives Uh, it shows you how deep this administration is in these conspiracy theories They're all skips over these Epstein files and they're afraid they'll be more votes and we will have more votes So that is where we start House Republicans literally escaping DC and avoiding work on multiple pieces of legislation to avoid those questions about Epstein Well, Donald Trump desperately tries and fails to change the subject Maya, I'll start with you We have the Republicans, I guess trying to get out of Dodge get out of DC as fast as possible right now What does that signal to you? Well look, I mean this is a new cycle that is not very helpful to Republicans in general And also folks want to get back to their districts Let's be honest because everybody's thinking about how they have to explain how much pain the Reconciliation the big ugly bill package that they passed how unpopular it's in their own districts But Epstein was a part of some major milestones in Trump's in Trump's in Trump's life Jeffrey Epstein introduced Melania to Donald Trump You know in the conversations that we were having on the hill We're about the people's business. This is Primarily what most legislators are preoccupied with Epstein is what most legislators are preoccupied with I'm curious basil on that Do you think voters are going to notice that basically what's happening right now? What we're hearing from Johnson is that They are Kind of seeing we start with start with escalating developments in the Epstein case as Donald Trump's Between the voters and what the voters have said through polling consistently they want which is the release"
+        }
+      ],
+      "summary": "We start with escalating developments in the Ep Ep I don't know anything about it.  I didn't know that they were going to do it I don't really follow that too much Trump then launched into an eight-minute-long debunked conspiracy-laced tie-rate about Barack Obama an apparent effort to distract but it is not working as for Trump's DOJ interviewing Glein Maxwell She is currently facing 20 years behind bars for child sex trafficking and other crimes She along with Epstein were both investigated and charged during the first Trump administration Analysts point out she had the opportunity to provide more information than at trial as political reports It also raises the question of whether Maxwell may try to leverage the meeting for reduced prison sentence by telling the Justice Department What it wants to hear also today two federal judges demanding more information from Trump's DOJ on its request to unseal grand jury transcripts meantime House Republicans are running from the Epstein scandal GOP leaders starting the five-week five-week recess early to avoid votes on releasing the Epstein files the move Generating headlines like these House fleas Washington amid turmoil over Epstein fallout house largely grines to a halt over Epstein files Johnson cuts short house session to avoid vote on releasing Epstein files Democrats now hammering Republicans This is a cover-up of equip proportions where you've got the majority party literally Having us leave Congress early isn't it interesting that it takes a conspiracy And theories on that conspiracy to shut down the US House of Representatives Uh, it shows you how deep this administration is in these conspiracy theories They're all skips over these Epstein files and they're afraid they'll be more votes and we will have more votes So that is where we start House Republicans literally escaping DC and avoiding work on multiple pieces of legislation to avoid those questions about Epstein Well, Donald Trump desperately tries and fails to change the subject Maya, I'll start with you We have the Republicans, I guess trying to get out of Dodge get out of DC as fast as possible right now What does that signal to you? Well look, I mean this is a new cycle that is not very helpful to Republicans in general And also folks want to get back to their districts Let's be honest because everybody's thinking about how they have to explain how much pain the Reconciliation the big ugly bill package that they passed how unpopular it's in their own districts But Epstein was a part of some major milestones in Trump's in Trump's in Trump's life Jeffrey Epstein introduced Melania to Donald Trump You know in the conversations that we were having on the hill We're about the people's business.  This is Primarily what most legislators are preoccupied with Epstein is what most legislators are preoccupied with I'm curious basil on that Do you think voters are going to notice that basically what's happening right now? What we're hearing from Johnson is that They are Kind of seeing we start with start with escalating developments in the Epstein case as Donald Trump's Between the voters and what the voters have said through polling consistently they want which is the release",
+      "action_items": [
+        "what meter they're going to there's your deputy attorney general is reached out to go in Maxwell's attorney asking for a new interview",
+        "do it I don't really follow that too much Trump then launched into an eight-minute-long debunked conspiracy-laced tie-rate about Barack Obama an apparent effort to distract but it is not working as for Trump's DOJ interviewing Glein Maxwell She is currently facing 20 years behind bars for child sex trafficking and other crimes She along with Epstein were both investigated and charged during the first Trump administration Analysts point out she had the opportunity to provide more information than at trial as political reports It also raises the question of whether Maxwell may try to leverage the meeting for reduced prison sentence by telling the Justice Department What it wants to hear also today two federal judges demanding more information from Trump's DOJ on its request to unseal grand jury transcripts meantime House Republicans are running from the Epstein scandal GOP leaders starting the five-week five-week recess early to avoid votes on releasing the Epstein files the move Generating headlines like these House fleas Washington amid turmoil over Epstein fallout house largely grines to a halt over Epstein files Johnson cuts short house session to avoid vote on releasing Epstein files Democrats now hammering Republicans This is a cover-up of equip proportions where you've got the majority party literally Having us leave Congress early isn't it interesting that it takes a conspiracy And theories on that conspiracy to shut down the US House of Representatives Uh",
+        "have more votes So that is where we start House Republicans literally escaping DC and avoiding work on multiple pieces of legislation to avoid those questions about Epstein Well",
+        "explain how much pain the Reconciliation the big ugly bill package that they passed how unpopular it's in their own districts But Epstein was a part of some major milestones in Trump's in Trump's in Trump's life Jeffrey Epstein introduced Melania to Donald Trump You know in the conversations that we were having on the hill We're about the people's business",
+        "notice that basically what's happening right now"
+      ],
+      "key_moments": [
+        {
+          "timestamp": "00:00:00",
+          "description": "person"
+        }
+      ],
+      "sentiment": "negative",
+      "topics": [
+        "meeting"
+      ],
+      "questions": [
+        "I didn't know that they were going to do it I don't really follow that too much Trump then launched into an eight-minute-long debunked conspiracy-laced tie-rate about Barack Obama an apparent effort to distract but it is not working as for Trump's DOJ interviewing Glein Maxwell She is currently facing 20 years behind bars for child sex trafficking and other crimes She along with Epstein were both investigated and charged during the first Trump administration Analysts point out she had the opportunity to provide more information than at trial as political reports It also raises the question of whether Maxwell may try to leverage the meeting for reduced prison sentence by telling the Justice Department What it wants to hear also today two federal judges demanding more information from Trump's DOJ on its request to unseal grand jury transcripts meantime House Republicans are running from the Epstein scandal GOP leaders starting the five-week five-week recess early to avoid votes on releasing the Epstein files the move Generating headlines like these House fleas Washington amid turmoil over Epstein fallout house largely grines to a halt over Epstein files Johnson cuts short house session to avoid vote on releasing Epstein files Democrats now hammering Republicans This is a cover-up of equip proportions where you've got the majority party literally Having us leave Congress early isn't it interesting that it takes a conspiracy And theories on that conspiracy to shut down the US House of Representatives Uh, it shows you how deep this administration is in these conspiracy theories They're all skips over these Epstein files and they're afraid they'll be more votes and we will have more votes So that is where we start House Republicans literally escaping DC and avoiding work on multiple pieces of legislation to avoid those questions about Epstein Well, Donald Trump desperately tries and fails to change the subject Maya, I'll start with you We have the Republicans, I guess trying to get out of Dodge get out of DC as fast as possible right now What does that signal to you? Well look, I mean this is a new cycle that is not very helpful to Republicans in general And also folks want to get back to their districts Let's be honest because everybody's thinking about how they have to explain how much pain the Reconciliation the big ugly bill package that they passed how unpopular it's in their own districts But Epstein was a part of some major milestones in Trump's in Trump's in Trump's life Jeffrey Epstein introduced Melania to Donald Trump You know in the conversations that we were having on the hill We're about the people's business",
+        "This is Primarily what most legislators are preoccupied with Epstein is what most legislators are preoccupied with I'm curious basil on that Do you think voters are going to notice that basically what's happening right now? What we're hearing from Johnson is that They are Kind of seeing we start with start with escalating developments in the Epstein case as Donald Trump's Between the voters and what the voters have said through polling consistently they want which is the release"
+      ]
+    },
+    {
+      "session_id": "skeleton_1753262088",
+      "timestamp": "2025-07-23T02:16:02.676932",
+      "duration": 0.00024943310657596373,
+      "title": "Recording 2025-07-23 02:16",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250723_021448.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "Transcription error: Audio file is empty or corrupted (too small)"
+        }
+      ],
+      "summary": "Transcription error: Audio file is empty or corrupted (too small)",
+      "action_items": [],
+      "key_moments": [],
+      "sentiment": "neutral",
+      "topics": [],
+      "questions": []
+    },
+    {
+      "session_id": "skeleton_1753291291",
+      "timestamp": "2025-07-23T10:22:22.017036",
+      "duration": 50.51215419501134,
+      "title": "Recording 2025-07-23 10:22",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250723_102131.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "All right team, thanks for hopping on. Let's dive right into our quarterly review for the Fuel Solutions platform. Any initial thoughts on how we're tracking overall? Good morning, Alex. Well, overall, client satisfaction remains high, particularly with our core cardlock payment processing module. However, we're seeing increasing demand for more advanced fleet management system features. That aligns with the data. Our recent survey indicates that nearly 60% of new inquiries specifically mention interest in robust telematics integration beyond basic fuel tracking. The current system provides adequate, but not leading, fleet insights."
+        }
+      ],
+      "summary": "All right team, thanks for hopping on.  Well, overall, client satisfaction remains high, particularly with our core cardlock payment processing module.",
+      "action_items": [],
+      "key_moments": [
+        {
+          "timestamp": "00:00:00",
+          "description": "team"
+        }
+      ],
+      "sentiment": "positive",
+      "topics": [
+        "meeting"
+      ],
+      "questions": [
+        "Any initial thoughts on how we're tracking overall? Good morning, Alex"
+      ]
     }
   ]
 }
