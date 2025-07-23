@@ -45,7 +45,9 @@ transcription_processor_state = {
     'running': False,
     'current_session': None,
     'queue': [],
-    'last_check': 0
+    'last_check': 0,
+    'last_dir_check': 0,
+    'sessions_dir_mtime': 0
 }
 
 def initialize_adapter():
@@ -423,6 +425,212 @@ def stop_bluetooth_forwarding():
         logger.error(f"Error stopping audio forwarding: {e}")
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/bluetooth/devices')
+def get_bluetooth_devices():
+    """Get list of all paired Bluetooth devices with their status"""
+    try:
+        import subprocess
+        
+        devices = {
+            'sources': [],
+            'outputs': []
+        }
+        
+        # Get paired devices from bluetoothctl
+        paired_result = subprocess.run(['bluetoothctl', 'devices'], 
+                                     capture_output=True, text=True, timeout=5)
+        
+        if paired_result.returncode != 0:
+            logger.error(f"Failed to get paired devices: {paired_result.stderr}")
+            return jsonify({'error': 'Failed to get Bluetooth devices'}), 500
+        
+        # Get connected devices
+        connected_result = subprocess.run(['bluetoothctl', 'devices', 'Connected'], 
+                                        capture_output=True, text=True, timeout=5)
+        connected_macs = []
+        if connected_result.returncode == 0:
+            for line in connected_result.stdout.strip().split('\n'):
+                if line.strip():
+                    parts = line.split(' ', 2)
+                    if len(parts) >= 2:
+                        connected_macs.append(parts[1])
+        
+        # Get PulseAudio sources and sinks
+        sources_result = subprocess.run(['pactl', 'list', 'sources', 'short'], 
+                                      capture_output=True, text=True, timeout=5)
+        sinks_result = subprocess.run(['pactl', 'list', 'sinks', 'short'], 
+                                    capture_output=True, text=True, timeout=5)
+        
+        pa_sources = sources_result.stdout if sources_result.returncode == 0 else ""
+        pa_sinks = sinks_result.stdout if sinks_result.returncode == 0 else ""
+        
+        # Parse paired devices
+        for line in paired_result.stdout.strip().split('\n'):
+            if line.strip():
+                parts = line.split(' ', 2)
+                if len(parts) >= 3:
+                    device_type = parts[0]  # "Device"
+                    mac_address = parts[1]
+                    device_name = parts[2]
+                    
+                    # Clean MAC address format for PulseAudio
+                    pa_mac = mac_address.replace(':', '_')
+                    
+                    # Check if it's a source or sink
+                    is_source = f"bluez_source.{pa_mac}" in pa_sources
+                    is_sink = f"bluez_sink.{pa_mac}" in pa_sinks
+                    is_connected = mac_address in connected_macs
+                    
+                    device_info = {
+                        'name': device_name,
+                        'mac': mac_address,
+                        'connected': is_connected,
+                        'active': False  # Will be set if audio is actively playing
+                    }
+                    
+                    # Determine device type based on name and capabilities
+                    if is_sink or 'buds' in device_name.lower() or 'headphone' in device_name.lower() or 'speaker' in device_name.lower():
+                        if is_sink:
+                            device_info['pa_sink'] = f"bluez_sink.{pa_mac}.a2dp_sink"
+                            device_info['active'] = is_connected  # Simplified for now
+                        device_info['type'] = 'headphones'  # Could be headphones, speaker
+                        devices['outputs'].append(device_info)
+                    elif is_source or 'phone' in device_name.lower() or 'pixel' in device_name.lower():
+                        if is_source:
+                            device_info['pa_source'] = f"bluez_source.{pa_mac}.a2dp_source"
+                            device_info['active'] = is_connected  # Simplified for now
+                        device_info['type'] = 'phone'  # Could be phone, tablet, laptop
+                        devices['sources'].append(device_info)
+        
+        # Add hardcoded known devices if not already present
+        known_source = {
+            'name': 'Pixel 9 Pro',
+            'mac': 'C0:1C:6A:AD:78:E6',
+            'pa_source': 'bluez_source.C0_1C_6A_AD_78_E6.a2dp_source'
+        }
+        known_sink = {
+            'name': 'Galaxy Buds3 Pro',
+            'mac': 'BC:A0:80:EB:21:AA',
+            'pa_sink': 'bluez_sink.BC_A0_80_EB_21_AA.a2dp_sink'
+        }
+        
+        # Check if known devices are already in lists
+        source_macs = [d['mac'] for d in devices['sources']]
+        if known_source['mac'] not in source_macs and known_source['pa_source'] in pa_sources:
+            devices['sources'].append({
+                'name': known_source['name'],
+                'mac': known_source['mac'],
+                'connected': known_source['mac'] in connected_macs,
+                'active': known_source['pa_source'] in pa_sources,
+                'pa_source': known_source['pa_source'],
+                'type': 'phone'
+            })
+        
+        sink_macs = [d['mac'] for d in devices['outputs']]
+        if known_sink['mac'] not in sink_macs and known_sink['pa_sink'] in pa_sinks:
+            devices['outputs'].append({
+                'name': known_sink['name'],
+                'mac': known_sink['mac'],
+                'connected': known_sink['mac'] in connected_macs,
+                'active': known_sink['pa_sink'] in pa_sinks,
+                'pa_sink': known_sink['pa_sink'],
+                'type': 'headphones'
+            })
+        
+        return jsonify(devices)
+        
+    except Exception as e:
+        logger.error(f"Error getting Bluetooth devices: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/bluetooth/connect', methods=['POST'])
+def connect_bluetooth_device():
+    """Connect to a specific Bluetooth device"""
+    try:
+        import subprocess
+        
+        data = request.json
+        mac_address = data.get('mac')
+        device_type = data.get('type')  # 'source' or 'output'
+        
+        if not mac_address:
+            return jsonify({'error': 'MAC address required'}), 400
+        
+        # Try to connect via bluetoothctl
+        connect_result = subprocess.run(['bluetoothctl', 'connect', mac_address], 
+                                      capture_output=True, text=True, timeout=20)
+        
+        if connect_result.returncode == 0 or 'Connected: yes' in connect_result.stdout:
+            # Wait a moment for audio profile to establish
+            time.sleep(2)
+            
+            # Check if audio profile is available
+            if device_type == 'source':
+                check_result = subprocess.run(['pactl', 'list', 'sources', 'short'], 
+                                            capture_output=True, text=True, timeout=5)
+                pa_mac = mac_address.replace(':', '_')
+                if f"bluez_source.{pa_mac}" in check_result.stdout:
+                    return jsonify({
+                        'success': True,
+                        'message': f"Connected to audio source {mac_address}"
+                    })
+            elif device_type == 'output':
+                check_result = subprocess.run(['pactl', 'list', 'sinks', 'short'], 
+                                            capture_output=True, text=True, timeout=5)
+                pa_mac = mac_address.replace(':', '_')
+                if f"bluez_sink.{pa_mac}" in check_result.stdout:
+                    return jsonify({
+                        'success': True,
+                        'message': f"Connected to audio output {mac_address}"
+                    })
+            
+            return jsonify({
+                'success': True,
+                'message': f"Connected to {mac_address}"
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'Failed to connect to device',
+                'details': connect_result.stderr
+            }), 400
+            
+    except Exception as e:
+        logger.error(f"Error connecting to Bluetooth device: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/bluetooth/disconnect', methods=['POST'])
+def disconnect_bluetooth_device():
+    """Disconnect from a specific Bluetooth device"""
+    try:
+        import subprocess
+        
+        data = request.json
+        mac_address = data.get('mac')
+        
+        if not mac_address:
+            return jsonify({'error': 'MAC address required'}), 400
+        
+        # Disconnect via bluetoothctl
+        disconnect_result = subprocess.run(['bluetoothctl', 'disconnect', mac_address], 
+                                         capture_output=True, text=True, timeout=10)
+        
+        if disconnect_result.returncode == 0 or 'Successful disconnected' in disconnect_result.stdout:
+            return jsonify({
+                'success': True,
+                'message': f"Disconnected from {mac_address}"
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'Failed to disconnect from device',
+                'details': disconnect_result.stderr
+            }), 400
+            
+    except Exception as e:
+        logger.error(f"Error disconnecting from Bluetooth device: {e}")
+        return jsonify({'error': str(e)}), 500
+
 @app.route('/api/play/<session_id>')
 def play_session(session_id):
     """Play a session's audio file"""
@@ -436,6 +644,44 @@ def play_session(session_id):
         return jsonify({'error': 'Audio file not found'}), 404
     except Exception as e:
         logger.error(f"Error playing session {session_id}: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/sessions/<session_id>', methods=['DELETE'])
+def delete_session(session_id):
+    """Delete a specific session and its associated files"""
+    try:
+        sessions = load_sessions()
+        session_to_delete = None
+        session_index = None
+        
+        # Find the session
+        for i, session in enumerate(sessions):
+            if session.get('session_id') == session_id:
+                session_to_delete = session
+                session_index = i
+                break
+        
+        if not session_to_delete:
+            return jsonify({'error': 'Session not found'}), 404
+        
+        # Delete the WAV file if it exists
+        wav_file = session_to_delete.get('wav_file')
+        if wav_file and os.path.exists(wav_file):
+            try:
+                os.remove(wav_file)
+                logger.info(f"Deleted audio file: {wav_file}")
+            except OSError as e:
+                logger.warning(f"Could not delete audio file {wav_file}: {e}")
+        
+        # Remove from sessions list
+        sessions.pop(session_index)
+        save_sessions(sessions)
+        
+        logger.info(f"Deleted session: {session_id}")
+        return jsonify({'success': True, 'message': f'Session {session_id} deleted successfully'})
+        
+    except Exception as e:
+        logger.error(f"Error deleting session {session_id}: {e}")
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/settings')
@@ -502,6 +748,56 @@ def reset_settings():
         logger.error(f"Error resetting settings: {e}")
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/restart', methods=['POST'])
+def restart_app():
+    """Restart the application"""
+    import os
+    import sys
+    import subprocess
+    
+    try:
+        logger.info("App restart requested via API")
+        
+        def restart_server():
+            # Give Flask time to send response
+            import time
+            time.sleep(1)
+            
+            # Use the dedicated restart script
+            try:
+                # Get the project directory
+                project_dir = os.path.dirname(os.path.abspath(__file__))
+                restart_script = os.path.join(project_dir, 'restart_webui.sh')
+                
+                # Execute the restart script in background
+                logger.info(f"Executing restart script: {restart_script}")
+                subprocess.Popen(['/bin/bash', restart_script], 
+                                stdout=subprocess.DEVNULL, 
+                                stderr=subprocess.DEVNULL,
+                                start_new_session=True)
+                
+                # Give it a moment to ensure the subprocess starts
+                time.sleep(0.5)
+                
+                # Exit this process
+                logger.info("Exiting current process...")
+                os._exit(0)
+            except Exception as e:
+                logger.error(f"Error during restart: {e}")
+                # Fallback - just exit
+                os._exit(0)
+        
+        # Start restart in background
+        import threading
+        restart_thread = threading.Thread(target=restart_server, daemon=True)
+        restart_thread.start()
+        
+        return jsonify({'success': True, 'message': 'App restarting...'})
+        
+    except Exception as e:
+        logger.error(f"Error restarting app: {e}")
+        return jsonify({'error': str(e)}), 500
+
 def update_recording_timer():
     """Update recording timer via WebSocket"""
     while recording_state['is_recording']:
@@ -555,8 +851,35 @@ def background_transcription_processor():
         try:
             current_time = time.time()
             
-            # Check for new untranscribed sessions every 30 seconds
-            if current_time - transcription_processor_state['last_check'] >= 30:
+            # Check directory modification time every 30 seconds to avoid unnecessary work
+            if current_time - transcription_processor_state['last_dir_check'] >= 30:
+                transcription_processor_state['last_dir_check'] = current_time
+                
+                # Check if demo_sessions directory or sessions.json has been modified
+                sessions_file = "demo_sessions/sessions.json"
+                demo_dir = "demo_sessions"
+                
+                try:
+                    # Check for new WAV files or sessions.json changes
+                    dir_mtime = os.path.getmtime(demo_dir) if os.path.exists(demo_dir) else 0
+                    file_mtime = os.path.getmtime(sessions_file) if os.path.exists(sessions_file) else 0
+                    max_mtime = max(dir_mtime, file_mtime)
+                    
+                    # If nothing changed, skip processing
+                    if max_mtime <= transcription_processor_state['sessions_dir_mtime']:
+                        logger.debug("No changes in demo_sessions directory, skipping transcription check")
+                        time.sleep(30)  # Wait longer if no changes
+                        continue
+                    
+                    transcription_processor_state['sessions_dir_mtime'] = max_mtime
+                    logger.info("Changes detected in demo_sessions directory, checking for transcription work")
+                    
+                except OSError as e:
+                    logger.warning(f"Error checking directory modification time: {e}")
+            
+            # Check for new untranscribed sessions only if directory changed or forced check
+            if (current_time - transcription_processor_state['last_check'] >= 120 or  # Force check every 2 minutes
+                current_time - transcription_processor_state['last_dir_check'] <= 1):  # Or just detected changes
                 transcription_processor_state['last_check'] = current_time
                 
                 # Get sessions needing transcription
@@ -630,7 +953,7 @@ def transcribe_recording_sync(session_id: str):
             logger.info(f"Transcribing file: {wav_file}")
             
             # Get transcription result which includes analysis
-            result = adapter.transcribe_recording(wav_file)
+            result = adapter.transcribe_recording(wav_file, session_id)
             if result:
                 # Extract transcript text and analysis
                 if isinstance(result, dict):
@@ -699,7 +1022,7 @@ def transcribe_recording(session_id: str):
                 return
             
             # Get transcription result which includes analysis
-            result = adapter.transcribe_recording(wav_file)
+            result = adapter.transcribe_recording(wav_file, session_id)
             if result:
                 # Extract transcript text and analysis
                 if isinstance(result, dict):
