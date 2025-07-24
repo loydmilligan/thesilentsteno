@@ -1,0 +1,1130 @@
+{
+  "version": "1.0",
+  "generated": "2025-01-23T18:43:00Z",
+  "analysis_scope": {
+    "target_directory": "./src/ai/",
+    "analysis_depth": 1,
+    "directories_scanned": ["./src/ai/"],
+    "total_files_analyzed": 15,
+    "file_extensions_found": [".py"]
+  },
+  "directory_info": {
+    "name": "ai",
+    "relative_path": "./src/ai/",
+    "absolute_path": "/home/mmariani/projects/thesilentsteno/src/ai/",
+    "primary_language": "Python",
+    "tech_stack": ["Python 3", "OpenAI Whisper", "PyTorch", "Transformers", "NumPy", "SoundFile", "Google Gemini API"],
+    "file_count_by_type": {
+      "source_files": 14,
+      "config_files": 1,
+      "other_files": 1
+    }
+  },
+  "files": {
+    "__init__.py": {
+      "purpose": "Main AI module entry point and comprehensive transcription system orchestration",
+      "file_type": "source",
+      "language": "Python",
+      "size_lines": "705",
+      "exports": {
+        "classes": [
+          {
+            "name": "AITranscriptionSystem",
+            "description": "Complete AI transcription system integrating all components with pipeline management",
+            "constructor": "AITranscriptionSystem(transcription_config, pipeline_config, diarization_config, formatting_config, optimization_config)",
+            "methods": [
+              {
+                "name": "initialize",
+                "signature": "initialize() -> bool",
+                "description": "Initialize the complete AI system with all components",
+                "parameters": {},
+                "returns": "Success status of initialization"
+              },
+              {
+                "name": "transcribe_audio",
+                "signature": "transcribe_audio(audio_data, start_time: float = 0.0) -> Optional[PipelineResult]",
+                "description": "Transcribe audio with full pipeline processing",
+                "parameters": {
+                  "audio_data": "Audio data as numpy array or file path",
+                  "start_time": "Start time offset for transcription"
+                },
+                "returns": "Pipeline result with transcription data"
+              },
+              {
+                "name": "transcribe_with_diarization",
+                "signature": "transcribe_with_diarization(audio_data, start_time: float = 0.0) -> Optional[Dict[str, Any]]",
+                "description": "Transcribe audio with speaker diarization",
+                "parameters": {
+                  "audio_data": "Audio data as numpy array or file path",
+                  "start_time": "Start time offset for transcription"
+                },
+                "returns": "Combined transcription and diarization results"
+              },
+              {
+                "name": "format_transcript",
+                "signature": "format_transcript(transcription_result, output_format) -> Optional[FormattedTranscript]",
+                "description": "Format transcription result with specified output format",
+                "parameters": {
+                  "transcription_result": "PipelineResult or dict with transcription data",
+                  "output_format": "Desired output format enum"
+                },
+                "returns": "Formatted transcript object"
+              },
+              {
+                "name": "get_stats",
+                "signature": "get_stats() -> Dict[str, Any]",
+                "description": "Get comprehensive system statistics from all components",
+                "parameters": {},
+                "returns": "Dictionary with detailed system stats"
+              },
+              {
+                "name": "shutdown",
+                "signature": "shutdown()",
+                "description": "Shutdown the AI system and all components",
+                "parameters": {},
+                "returns": "None"
+              }
+            ],
+            "properties": [
+              {
+                "name": "is_initialized",
+                "type": "bool",
+                "description": "Whether the system has been initialized"
+              },
+              {
+                "name": "is_running",
+                "type": "bool",
+                "description": "Whether the system is currently running"
+              },
+              {
+                "name": "stats",
+                "type": "Dict[str, Any]",
+                "description": "System statistics including transcription counts and performance metrics"
+              }
+            ]
+          }
+        ],
+        "functions": [
+          {
+            "name": "create_meeting_ai_system",
+            "signature": "create_meeting_ai_system(max_speakers: int = 6, output_format: OutputFormat = OutputFormat.TEXT) -> AITranscriptionSystem",
+            "description": "Create AI system optimized for multi-speaker meetings",
+            "parameters": {
+              "max_speakers": "Maximum number of speakers to detect",
+              "output_format": "Desired output format for transcripts"
+            },
+            "returns": "Configured AI transcription system for meetings"
+          },
+          {
+            "name": "create_interview_ai_system",
+            "signature": "create_interview_ai_system(output_format: OutputFormat = OutputFormat.TEXT) -> AITranscriptionSystem",
+            "description": "Create AI system optimized for two-person interviews",
+            "parameters": {
+              "output_format": "Desired output format for transcripts"
+            },
+            "returns": "Configured AI transcription system for interviews"
+          },
+          {
+            "name": "create_lecture_ai_system",
+            "signature": "create_lecture_ai_system(output_format: OutputFormat = OutputFormat.TEXT) -> AITranscriptionSystem",
+            "description": "Create AI system optimized for single-speaker lectures",
+            "parameters": {
+              "output_format": "Desired output format for transcripts"
+            },
+            "returns": "Configured AI transcription system for lectures"
+          }
+        ],
+        "constants": [
+          {
+            "name": "__version__",
+            "type": "str",
+            "value": "1.0.0",
+            "description": "Module version number"
+          },
+          {
+            "name": "__author__",
+            "type": "str",
+            "value": "Claude AI Assistant",
+            "description": "Module author information"
+          }
+        ],
+        "interfaces_types": []
+      },
+      "imports": ["os", "sys", "logging", "typing", "whisper_transcriber", "transcription_pipeline", "audio_chunker", "speaker_diarizer", "transcript_formatter", "performance_optimizer"],
+      "sideEffects": ["reads-files", "writes-files", "network-calls", "creates-ui"]
+    },
+    "simple_transcriber.py": {
+      "purpose": "Simplified transcription bridge with backend-agnostic architecture for CPU and future Hailo Whisper",
+      "file_type": "source",
+      "language": "Python",
+      "size_lines": "592",
+      "exports": {
+        "classes": [
+          {
+            "name": "TranscriptionBackend",
+            "description": "Abstract base class for transcription backends",
+            "constructor": "TranscriptionBackend()",
+            "methods": [
+              {
+                "name": "transcribe",
+                "signature": "transcribe(audio_file: str) -> str",
+                "description": "Transcribe an audio file and return the text",
+                "parameters": {
+                  "audio_file": "Path to audio file to transcribe"
+                },
+                "returns": "Transcribed text string"
+              },
+              {
+                "name": "is_available",
+                "signature": "is_available() -> bool",
+                "description": "Check if this backend is available",
+                "parameters": {},
+                "returns": "True if backend is available and functional"
+              },
+              {
+                "name": "get_info",
+                "signature": "get_info() -> Dict[str, Any]",
+                "description": "Get backend information and capabilities",
+                "parameters": {},
+                "returns": "Dictionary with backend details"
+              }
+            ]
+          },
+          {
+            "name": "WhisperCPUBackend",
+            "description": "CPU-based Whisper transcription backend implementation",
+            "constructor": "WhisperCPUBackend(model_name: str = 'base')",
+            "methods": [
+              {
+                "name": "transcribe",
+                "signature": "transcribe(audio_file: str) -> str",
+                "description": "Transcribe audio file using CPU Whisper model",
+                "parameters": {
+                  "audio_file": "Path to audio file for transcription"
+                },
+                "returns": "Transcribed text from audio"
+              }
+            ]
+          },
+          {
+            "name": "SimpleTranscriber",
+            "description": "Main transcriber class with data integration and analysis capabilities",
+            "constructor": "SimpleTranscriber(backend_preference: str = 'auto', model_name: str = 'base')",
+            "methods": [
+              {
+                "name": "transcribe_session",
+                "signature": "transcribe_session(session_id: str, audio_file: str) -> Dict[str, Any]",
+                "description": "Transcribe audio session with analysis and data integration",
+                "parameters": {
+                  "session_id": "Unique identifier for the session",
+                  "audio_file": "Path to audio file to transcribe"
+                },
+                "returns": "Complete transcription result with analysis"
+              },
+              {
+                "name": "get_backend_info",
+                "signature": "get_backend_info() -> Dict[str, Any]",
+                "description": "Get information about current transcription backend",
+                "parameters": {},
+                "returns": "Backend information and capabilities"
+              }
+            ]
+          }
+        ],
+        "functions": [],
+        "constants": [
+          {
+            "name": "DATA_INTEGRATION_AVAILABLE",
+            "type": "bool",
+            "value": "True/False",
+            "description": "Whether data integration adapter is available"
+          },
+          {
+            "name": "GEMINI_AVAILABLE",
+            "type": "bool", 
+            "value": "True/False",
+            "description": "Whether Gemini analyzer is available"
+          }
+        ]
+      },
+      "imports": ["os", "logging", "typing", "abc", "time", "json", "re", "src.data.integration_adapter", "src.ai.gemini_analyzer"],
+      "sideEffects": ["reads-files", "writes-database", "network-calls"]
+    },
+    "whisper_transcriber.py": {
+      "purpose": "Local Whisper Base model integration with Pi 5 optimization for real-time speech-to-text",
+      "file_type": "source", 
+      "language": "Python",
+      "size_lines": "698",
+      "exports": {
+        "classes": [
+          {
+            "name": "ModelSize",
+            "description": "Enumeration of available Whisper model sizes",
+            "constructor": "ModelSize enum",
+            "methods": []
+          },
+          {
+            "name": "WhisperModel",
+            "description": "Enumeration of Whisper model types and configurations",
+            "constructor": "WhisperModel enum",
+            "methods": []
+          },
+          {
+            "name": "TranscriptionConfig",
+            "description": "Configuration dataclass for Whisper transcription settings",
+            "constructor": "TranscriptionConfig with various audio and model parameters",
+            "methods": []
+          },
+          {
+            "name": "TranscriptionResult",
+            "description": "Result dataclass containing transcription output and metadata",
+            "constructor": "TranscriptionResult with text, confidence, timing data",
+            "methods": []
+          },
+          {
+            "name": "WhisperTranscriber",
+            "description": "Main Whisper transcriber class with real-time capabilities",
+            "constructor": "WhisperTranscriber(config: TranscriptionConfig)",
+            "methods": [
+              {
+                "name": "initialize",
+                "signature": "initialize() -> bool",  
+                "description": "Initialize Whisper model and load dependencies",
+                "parameters": {},
+                "returns": "Success status of initialization"
+              },
+              {
+                "name": "transcribe",
+                "signature": "transcribe(audio_data, start_time: float = 0.0) -> TranscriptionResult",
+                "description": "Transcribe audio data with comprehensive result",
+                "parameters": {
+                  "audio_data": "Audio data as numpy array or file path",
+                  "start_time": "Start time offset for transcription"
+                },
+                "returns": "Detailed transcription result with confidence and timing"
+              },
+              {
+                "name": "transcribe_file",
+                "signature": "transcribe_file(file_path: str) -> TranscriptionResult",
+                "description": "Transcribe audio file with full processing",
+                "parameters": {
+                  "file_path": "Path to audio file for transcription"
+                },
+                "returns": "Complete transcription result"
+              }
+            ]
+          }
+        ],
+        "functions": [
+          {
+            "name": "create_base_transcriber",
+            "signature": "create_base_transcriber(device: str = 'cpu') -> WhisperTranscriber",
+            "description": "Create basic Whisper transcriber with default settings",
+            "parameters": {
+              "device": "Processing device (cpu/cuda)"
+            },
+            "returns": "Configured Whisper transcriber instance"
+          },
+          {
+            "name": "create_optimized_transcriber", 
+            "signature": "create_optimized_transcriber(device: str = 'cpu') -> WhisperTranscriber",
+            "description": "Create performance-optimized Whisper transcriber",
+            "parameters": {
+              "device": "Processing device (cpu/cuda)"
+            },
+            "returns": "Optimized Whisper transcriber instance"
+          }
+        ]
+      },
+      "imports": ["os", "sys", "logging", "threading", "time", "tempfile", "typing", "dataclasses", "enum", "pathlib", "json", "uuid", "warnings", "numpy", "torch", "whisper", "soundfile", "transformers"],
+      "sideEffects": ["reads-files", "writes-files", "network-calls"]
+    },
+    "transcription_pipeline.py": {
+      "purpose": "Real-time transcription pipeline with chunking, threading, and quality optimization",
+      "file_type": "source",
+      "language": "Python", 
+      "size_lines": "755",
+      "exports": {
+        "classes": [
+          {
+            "name": "ProcessingMode",
+            "description": "Enumeration of transcription processing modes",
+            "constructor": "ProcessingMode enum",
+            "methods": []
+          },
+          {
+            "name": "QualitySettings",
+            "description": "Enumeration of transcription quality settings",
+            "constructor": "QualitySettings enum", 
+            "methods": []
+          },
+          {
+            "name": "PipelineConfig",
+            "description": "Configuration for transcription pipeline parameters",
+            "constructor": "PipelineConfig with processing and quality settings",
+            "methods": []
+          },
+          {
+            "name": "PipelineResult",
+            "description": "Result from pipeline processing with performance metrics",
+            "constructor": "PipelineResult with chunks, timing, and quality data",
+            "methods": []
+          },
+          {
+            "name": "TranscriptionPipeline",
+            "description": "Main pipeline class for real-time transcription processing",
+            "constructor": "TranscriptionPipeline(config: PipelineConfig)",
+            "methods": [
+              {
+                "name": "initialize",
+                "signature": "initialize() -> bool",
+                "description": "Initialize pipeline components and threading",
+                "parameters": {},
+                "returns": "Success status of pipeline initialization"
+              },
+              {
+                "name": "process_audio",
+                "signature": "process_audio(audio_data: np.ndarray)",
+                "description": "Process real-time audio data through pipeline",
+                "parameters": {
+                  "audio_data": "Audio data as numpy array for processing"
+                },
+                "returns": "None (results via callbacks)"
+              },
+              {
+                "name": "process_audio_file",
+                "signature": "process_audio_file(file_path: str) -> PipelineResult",
+                "description": "Process complete audio file through pipeline",
+                "parameters": {
+                  "file_path": "Path to audio file for batch processing"
+                },
+                "returns": "Complete pipeline result with all chunks"
+              }
+            ]
+          }
+        ],
+        "functions": [
+          {
+            "name": "create_realtime_pipeline",
+            "signature": "create_realtime_pipeline() -> TranscriptionPipeline",
+            "description": "Create pipeline optimized for real-time processing",
+            "parameters": {},
+            "returns": "Real-time optimized transcription pipeline"
+          },
+          {
+            "name": "create_batch_pipeline", 
+            "signature": "create_batch_pipeline() -> TranscriptionPipeline",
+            "description": "Create pipeline optimized for batch file processing",
+            "parameters": {},
+            "returns": "Batch processing optimized transcription pipeline"
+          }
+        ]
+      },
+      "imports": ["os", "logging", "threading", "time", "queue", "typing", "dataclasses", "enum", "numpy", "concurrent.futures"],
+      "sideEffects": ["reads-files", "writes-files", "creates-ui"]
+    },
+    "audio_chunker.py": {
+      "purpose": "Intelligent audio chunking with voice activity detection and optimal segment creation",
+      "file_type": "source",
+      "language": "Python",
+      "size_lines": "1048",
+      "exports": {
+        "classes": [
+          {
+            "name": "ChunkType",
+            "description": "Enumeration of different audio chunk types",
+            "constructor": "ChunkType enum",
+            "methods": []
+          },
+          {
+            "name": "ChunkQuality",
+            "description": "Enumeration of audio chunk quality levels",
+            "constructor": "ChunkQuality enum",
+            "methods": []
+          },
+          {
+            "name": "TranscriptionChunkConfig",
+            "description": "Configuration for audio chunking parameters",
+            "constructor": "TranscriptionChunkConfig with timing and quality settings",
+            "methods": []
+          },
+          {
+            "name": "OptimalChunk",
+            "description": "Optimized audio chunk with metadata and quality metrics",
+            "constructor": "OptimalChunk with audio data, timing, and quality information",
+            "methods": []
+          },
+          {
+            "name": "AIAudioChunker",
+            "description": "Main audio chunker with voice activity detection and optimization",
+            "constructor": "AIAudioChunker(config: TranscriptionChunkConfig)",
+            "methods": [
+              {
+                "name": "initialize",
+                "signature": "initialize() -> bool",
+                "description": "Initialize chunker components and voice activity detection",
+                "parameters": {},
+                "returns": "Success status of chunker initialization"
+              },
+              {
+                "name": "create_chunks",
+                "signature": "create_chunks(audio_data: np.ndarray, start_time: float = 0.0) -> List[OptimalChunk]",
+                "description": "Create optimal audio chunks from audio data",
+                "parameters": {
+                  "audio_data": "Input audio data as numpy array",
+                  "start_time": "Start time offset for chunk timing"
+                },
+                "returns": "List of optimized audio chunks"
+              },
+              {
+                "name": "process_realtime_chunk",
+                "signature": "process_realtime_chunk(audio_data: np.ndarray) -> Optional[OptimalChunk]",
+                "description": "Process real-time audio chunk with streaming optimization",
+                "parameters": {
+                  "audio_data": "Real-time audio data chunk"
+                },
+                "returns": "Processed chunk if ready, None if buffering"
+              }
+            ]
+          }
+        ],
+        "functions": [
+          {
+            "name": "create_default_chunker",
+            "signature": "create_default_chunker() -> AIAudioChunker",
+            "description": "Create chunker with balanced default settings",
+            "parameters": {},
+            "returns": "Default configured audio chunker"
+          },
+          {
+            "name": "create_realtime_chunker",
+            "signature": "create_realtime_chunker() -> AIAudioChunker", 
+            "description": "Create chunker optimized for real-time processing",
+            "parameters": {},
+            "returns": "Real-time optimized audio chunker"
+          },
+          {
+            "name": "create_quality_chunker",
+            "signature": "create_quality_chunker() -> AIAudioChunker",
+            "description": "Create chunker optimized for highest transcription quality",
+            "parameters": {},
+            "returns": "Quality optimized audio chunker"
+          }
+        ]
+      },
+      "imports": ["os", "logging", "time", "typing", "dataclasses", "enum", "numpy", "scipy", "librosa"],
+      "sideEffects": ["reads-files"]
+    },
+    "speaker_diarizer.py": {
+      "purpose": "Speaker diarization system with clustering and voice identification for multi-speaker scenarios",
+      "file_type": "source",
+      "language": "Python",
+      "size_lines": "928",
+      "exports": {
+        "classes": [
+          {
+            "name": "SpeakerLabel",
+            "description": "Enumeration of speaker identification labels",
+            "constructor": "SpeakerLabel enum",
+            "methods": []
+          },
+          {
+            "name": "DiarizationConfig",
+            "description": "Configuration for speaker diarization parameters",
+            "constructor": "DiarizationConfig with clustering and identification settings",
+            "methods": []
+          },
+          {
+            "name": "SpeakerSegment",
+            "description": "Individual speaker segment with timing and identification",
+            "constructor": "SpeakerSegment with speaker ID, timing, and confidence data",
+            "methods": []
+          },
+          {
+            "name": "DiarizationResult",
+            "description": "Complete diarization result with all speaker segments",
+            "constructor": "DiarizationResult with segments list and speaker mapping",
+            "methods": []
+          },
+          {
+            "name": "SpeakerDiarizer",
+            "description": "Main diarization class with clustering and speaker identification",
+            "constructor": "SpeakerDiarizer(config: DiarizationConfig)",
+            "methods": [
+              {
+                "name": "initialize",
+                "signature": "initialize() -> bool",
+                "description": "Initialize diarization models and clustering algorithms",
+                "parameters": {},
+                "returns": "Success status of diarizer initialization"
+              },
+              {
+                "name": "diarize_segments",
+                "signature": "diarize_segments(audio_data: np.ndarray, start_time: float = 0.0) -> DiarizationResult",
+                "description": "Perform speaker diarization on audio segments",
+                "parameters": {
+                  "audio_data": "Audio data for speaker identification",
+                  "start_time": "Start time offset for segment timing"
+                },
+                "returns": "Complete diarization result with speaker segments"
+              },
+              {
+                "name": "identify_speakers",
+                "signature": "identify_speakers(segments: List[SpeakerSegment]) -> Dict[int, str]",
+                "description": "Identify and label individual speakers from segments",
+                "parameters": {
+                  "segments": "List of speaker segments to identify"
+                },
+                "returns": "Mapping of speaker IDs to labels"
+              }
+            ]
+          }
+        ],
+        "functions": [
+          {
+            "name": "create_meeting_diarizer",
+            "signature": "create_meeting_diarizer() -> SpeakerDiarizer",
+            "description": "Create diarizer optimized for meeting scenarios",
+            "parameters": {},
+            "returns": "Meeting optimized speaker diarizer"
+          },
+          {
+            "name": "create_interview_diarizer",
+            "signature": "create_interview_diarizer() -> SpeakerDiarizer",
+            "description": "Create diarizer optimized for interview scenarios",
+            "parameters": {},
+            "returns": "Interview optimized speaker diarizer"
+          }
+        ]
+      },
+      "imports": ["os", "logging", "time", "typing", "dataclasses", "enum", "numpy", "scipy", "sklearn", "librosa"],
+      "sideEffects": ["reads-files"]
+    },
+    "transcript_formatter.py": {
+      "purpose": "Transcript formatting system with multiple output formats and speaker attribution",
+      "file_type": "source",
+      "language": "Python",
+      "size_lines": "1060",
+      "exports": {
+        "classes": [
+          {
+            "name": "OutputFormat",
+            "description": "Enumeration of available transcript output formats", 
+            "constructor": "OutputFormat enum",
+            "methods": []
+          },
+          {
+            "name": "TimestampFormat",
+            "description": "Enumeration of timestamp formatting options",
+            "constructor": "TimestampFormat enum",
+            "methods": []
+          },
+          {
+            "name": "FormattingConfig",
+            "description": "Configuration for transcript formatting parameters",
+            "constructor": "FormattingConfig with format and styling options",
+            "methods": []
+          },
+          {
+            "name": "TranscriptSegment",
+            "description": "Individual transcript segment with speaker and timing data",
+            "constructor": "TranscriptSegment with text, speaker, timing, and confidence",
+            "methods": []
+          },
+          {
+            "name": "FormattedTranscript",
+            "description": "Complete formatted transcript with metadata",
+            "constructor": "FormattedTranscript with content, format, and statistics",
+            "methods": []
+          },
+          {
+            "name": "TranscriptFormatter",
+            "description": "Main formatter class for transcript output generation",
+            "constructor": "TranscriptFormatter(config: FormattingConfig)",
+            "methods": [
+              {
+                "name": "initialize",
+                "signature": "initialize() -> bool",
+                "description": "Initialize formatter components and templates",
+                "parameters": {},
+                "returns": "Success status of formatter initialization"
+              },
+              {
+                "name": "format_transcript",
+                "signature": "format_transcript(segments: List[TranscriptSegment]) -> FormattedTranscript",
+                "description": "Format transcript segments into specified output format",
+                "parameters": {
+                  "segments": "List of transcript segments to format"
+                },
+                "returns": "Complete formatted transcript"
+              },
+              {
+                "name": "export_to_file",
+                "signature": "export_to_file(transcript: FormattedTranscript, file_path: str) -> bool",
+                "description": "Export formatted transcript to file",
+                "parameters": {
+                  "transcript": "Formatted transcript to export",
+                  "file_path": "Output file path for export"
+                },
+                "returns": "Success status of file export"
+              }
+            ]
+          }
+        ],
+        "functions": [
+          {
+            "name": "create_text_formatter",
+            "signature": "create_text_formatter() -> TranscriptFormatter",
+            "description": "Create formatter for plain text output",
+            "parameters": {},
+            "returns": "Text format transcript formatter"
+          },
+          {
+            "name": "create_subtitle_formatter",
+            "signature": "create_subtitle_formatter() -> TranscriptFormatter",
+            "description": "Create formatter for subtitle/SRT output",
+            "parameters": {},
+            "returns": "Subtitle format transcript formatter"
+          },
+          {
+            "name": "create_meeting_formatter",
+            "signature": "create_meeting_formatter() -> TranscriptFormatter",
+            "description": "Create formatter optimized for meeting transcripts",
+            "parameters": {},
+            "returns": "Meeting optimized transcript formatter"
+          }
+        ]
+      },
+      "imports": ["os", "logging", "time", "typing", "dataclasses", "enum", "json", "pathlib"],
+      "sideEffects": ["writes-files"]
+    },
+    "performance_optimizer.py": {
+      "purpose": "Performance optimization system for CPU scaling, memory management, and real-time processing",
+      "file_type": "source", 
+      "language": "Python",
+      "size_lines": "1000",
+      "exports": {
+        "classes": [
+          {
+            "name": "OptimizationLevel",
+            "description": "Enumeration of system optimization levels",
+            "constructor": "OptimizationLevel enum",
+            "methods": []
+          },
+          {
+            "name": "PerformanceMode",
+            "description": "Enumeration of performance optimization modes",
+            "constructor": "PerformanceMode enum",
+            "methods": []
+          },
+          {
+            "name": "OptimizationConfig",
+            "description": "Configuration for performance optimization parameters",
+            "constructor": "OptimizationConfig with CPU, memory, and performance settings",
+            "methods": []
+          },
+          {
+            "name": "SystemMetrics",
+            "description": "System performance metrics and monitoring data",
+            "constructor": "SystemMetrics with CPU, memory, and performance measurements",
+            "methods": []
+          },
+          {
+            "name": "OptimizationResult", 
+            "description": "Result from optimization operations with actions taken",
+            "constructor": "OptimizationResult with success status and optimization actions",
+            "methods": []
+          },
+          {
+            "name": "PerformanceOptimizer",
+            "description": "Main optimization class for system performance management",
+            "constructor": "PerformanceOptimizer(config: OptimizationConfig)",
+            "methods": [
+              {
+                "name": "initialize",
+                "signature": "initialize() -> bool",
+                "description": "Initialize performance monitoring and optimization systems",
+                "parameters": {},
+                "returns": "Success status of optimizer initialization"
+              },
+              {
+                "name": "optimize_for_workload",
+                "signature": "optimize_for_workload(workload_type: str, metrics: Dict[str, Any]) -> OptimizationResult",
+                "description": "Optimize system performance for specific workload type",
+                "parameters": {
+                  "workload_type": "Type of workload (transcription, analysis, etc.)",
+                  "metrics": "Current workload metrics for optimization"
+                },
+                "returns": "Result of optimization operations"
+              },
+              {
+                "name": "get_system_metrics",
+                "signature": "get_system_metrics() -> SystemMetrics",
+                "description": "Get current system performance metrics",
+                "parameters": {},
+                "returns": "Current system performance measurements"
+              }
+            ]
+          }
+        ],
+        "functions": [
+          {
+            "name": "create_realtime_optimizer",
+            "signature": "create_realtime_optimizer() -> PerformanceOptimizer",
+            "description": "Create optimizer configured for real-time processing",
+            "parameters": {},
+            "returns": "Real-time optimized performance optimizer"
+          },
+          {
+            "name": "create_power_efficient_optimizer",
+            "signature": "create_power_efficient_optimizer() -> PerformanceOptimizer",
+            "description": "Create optimizer configured for power efficiency",
+            "parameters": {},
+            "returns": "Power efficient performance optimizer"
+          },
+          {
+            "name": "create_balanced_optimizer",
+            "signature": "create_balanced_optimizer() -> PerformanceOptimizer",
+            "description": "Create optimizer with balanced performance and efficiency",
+            "parameters": {},
+            "returns": "Balanced performance optimizer"
+          }
+        ]
+      },
+      "imports": ["os", "logging", "time", "typing", "dataclasses", "enum", "threading", "psutil", "concurrent.futures"],
+      "sideEffects": ["reads-files", "modifies-dom"]
+    },
+    "gemini_analyzer.py": {
+      "purpose": "Google Gemini API integration for advanced AI analysis of transcribed content",
+      "file_type": "source",
+      "language": "Python",
+      "size_lines": "375",
+      "exports": {
+        "classes": [
+          {
+            "name": "GeminiAnalyzer",
+            "description": "Google Gemini API client for advanced transcript analysis",
+            "constructor": "GeminiAnalyzer(api_key: str)",
+            "methods": [
+              {
+                "name": "analyze_transcript",
+                "signature": "analyze_transcript(transcript: str, analysis_type: str = 'meeting') -> Dict[str, Any]",
+                "description": "Analyze transcript using Gemini AI for insights and summaries",
+                "parameters": {
+                  "transcript": "Transcript text to analyze",
+                  "analysis_type": "Type of analysis (meeting, interview, lecture)"
+                },
+                "returns": "Analysis results with insights, summary, and action items"
+              },
+              {
+                "name": "extract_action_items",
+                "signature": "extract_action_items(transcript: str) -> List[Dict[str, Any]]",
+                "description": "Extract action items and tasks from transcript",
+                "parameters": {
+                  "transcript": "Transcript text to analyze for action items"
+                },
+                "returns": "List of extracted action items with assignees and deadlines"
+              }
+            ]
+          }
+        ],
+        "functions": [
+          {
+            "name": "get_gemini_analyzer",
+            "signature": "get_gemini_analyzer() -> Optional[GeminiAnalyzer]",
+            "description": "Get configured Gemini analyzer instance",
+            "parameters": {},
+            "returns": "Gemini analyzer instance or None if not available"
+          }
+        ]
+      },
+      "imports": ["os", "logging", "typing", "json", "requests"],
+      "sideEffects": ["network-calls", "reads-files"]
+    },
+    "meeting_analyzer.py": {
+      "purpose": "Meeting-specific analysis system with participant tracking and agenda extraction",
+      "file_type": "source",
+      "language": "Python", 
+      "size_lines": "989",
+      "exports": {
+        "classes": [
+          {
+            "name": "MeetingAnalyzer",
+            "description": "Specialized analyzer for meeting transcripts and participant interactions",
+            "constructor": "MeetingAnalyzer(config: Dict[str, Any])",
+            "methods": [
+              {
+                "name": "analyze_meeting",
+                "signature": "analyze_meeting(transcript: str, participants: List[str]) -> Dict[str, Any]",
+                "description": "Perform comprehensive meeting analysis with participant insights",
+                "parameters": {
+                  "transcript": "Meeting transcript text",
+                  "participants": "List of meeting participants"
+                },
+                "returns": "Detailed meeting analysis with insights and metrics"
+              },
+              {
+                "name": "extract_agenda_items",
+                "signature": "extract_agenda_items(transcript: str) -> List[Dict[str, Any]]",
+                "description": "Extract discussed agenda items and topics from meeting",
+                "parameters": {
+                  "transcript": "Meeting transcript to analyze"
+                },
+                "returns": "List of agenda items with discussion summaries"
+              }
+            ]
+          }
+        ]
+      },
+      "imports": ["os", "logging", "typing", "json", "re", "collections"],
+      "sideEffects": ["reads-files"]
+    },
+    "participant_analyzer.py": {
+      "purpose": "Participant behavior analysis with speaking patterns and engagement metrics",
+      "file_type": "source",
+      "language": "Python",
+      "size_lines": "1029",
+      "exports": {
+        "classes": [
+          {
+            "name": "ParticipantAnalyzer",
+            "description": "Analyzer for individual participant behavior and engagement patterns",
+            "constructor": "ParticipantAnalyzer(config: Dict[str, Any])",
+            "methods": [
+              {
+                "name": "analyze_participation",
+                "signature": "analyze_participation(transcript_segments: List[Dict]) -> Dict[str, Any]",
+                "description": "Analyze individual participant behavior and speaking patterns",
+                "parameters": {
+                  "transcript_segments": "List of transcript segments with speaker attribution"
+                },
+                "returns": "Participation analysis with speaking time, patterns, and engagement"
+              },
+              {
+                "name": "calculate_engagement_metrics",
+                "signature": "calculate_engagement_metrics(participant_data: Dict) -> Dict[str, float]",
+                "description": "Calculate engagement metrics for meeting participants",
+                "parameters": {
+                  "participant_data": "Participant speaking and interaction data"
+                },
+                "returns": "Engagement metrics including speaking time and interaction frequency"
+              }
+            ]
+          }
+        ]
+      },
+      "imports": ["os", "logging", "typing", "json", "statistics", "collections"],
+      "sideEffects": ["reads-files"]
+    },
+    "analysis_pipeline.py": {
+      "purpose": "Complete analysis pipeline combining transcription, diarization, and content analysis",
+      "file_type": "source", 
+      "language": "Python",
+      "size_lines": "860",
+      "exports": {
+        "classes": [
+          {
+            "name": "AnalysisPipeline",
+            "description": "Comprehensive analysis pipeline for complete transcript processing",
+            "constructor": "AnalysisPipeline(config: Dict[str, Any])",
+            "methods": [
+              {
+                "name": "process_session",
+                "signature": "process_session(audio_file: str, session_metadata: Dict) -> Dict[str, Any]",
+                "description": "Process complete session through analysis pipeline",
+                "parameters": {
+                  "audio_file": "Audio file path for processing",
+                  "session_metadata": "Session metadata and configuration"
+                },
+                "returns": "Complete analysis results with transcription, diarization, and insights"
+              },
+              {
+                "name": "generate_summary",
+                "signature": "generate_summary(analysis_results: Dict) -> Dict[str, Any]",
+                "description": "Generate comprehensive summary from analysis results",
+                "parameters": {
+                  "analysis_results": "Complete analysis results from pipeline"
+                },
+                "returns": "Generated summary with key insights and action items"
+              }
+            ]
+          }
+        ]
+      },
+      "imports": ["os", "logging", "typing", "json", "time", "threading"],
+      "sideEffects": ["reads-files", "writes-files", "network-calls"]
+    },
+    "status_tracker.py": {
+      "purpose": "System status monitoring and health tracking for AI components",
+      "file_type": "source",
+      "language": "Python",
+      "size_lines": "983",
+      "exports": {
+        "classes": [
+          {
+            "name": "StatusTracker",
+            "description": "System status monitoring and health tracking for AI pipeline components",
+            "constructor": "StatusTracker(config: Dict[str, Any])",
+            "methods": [
+              {
+                "name": "track_component_status",
+                "signature": "track_component_status(component_name: str, status_data: Dict) -> bool",
+                "description": "Track status and health of individual AI components",
+                "parameters": {
+                  "component_name": "Name of component to track",
+                  "status_data": "Status and performance data"
+                },
+                "returns": "Success status of tracking operation"
+              },
+              {
+                "name": "get_system_health",
+                "signature": "get_system_health() -> Dict[str, Any]",
+                "description": "Get comprehensive system health and status report",
+                "parameters": {},
+                "returns": "System health report with component statuses"
+              }
+            ]
+          }
+        ]
+      },
+      "imports": ["os", "logging", "typing", "json", "time", "threading", "psutil"],
+      "sideEffects": ["reads-files", "writes-files"]
+    },
+    "confidence_scorer.py": {
+      "purpose": "Confidence scoring system for transcription quality assessment and validation",
+      "file_type": "source",
+      "language": "Python",
+      "size_lines": "1436",
+      "exports": {
+        "classes": [
+          {
+            "name": "ConfidenceScorer",
+            "description": "Confidence scoring system for transcription quality and reliability assessment",
+            "constructor": "ConfidenceScorer(config: Dict[str, Any])",
+            "methods": [
+              {
+                "name": "score_transcription",
+                "signature": "score_transcription(transcription_result: Dict) -> Dict[str, float]",
+                "description": "Score transcription quality and confidence levels",
+                "parameters": {
+                  "transcription_result": "Transcription result with text and metadata"
+                },
+                "returns": "Confidence scores for various quality metrics"
+              },
+              {
+                "name": "validate_quality",
+                "signature": "validate_quality(transcript: str, audio_features: Dict) -> bool",
+                "description": "Validate transcription quality against audio features",
+                "parameters": {
+                  "transcript": "Transcribed text to validate",
+                  "audio_features": "Audio features and quality metrics"
+                },
+                "returns": "Whether transcription meets quality thresholds"
+              }
+            ]
+          }
+        ]
+      },
+      "imports": ["os", "logging", "typing", "json", "numpy", "scipy", "sklearn"],
+      "sideEffects": ["reads-files"]
+    },
+    "transcription_config.py": {
+      "purpose": "Central configuration management for all AI transcription components",
+      "file_type": "config",
+      "language": "Python",
+      "size_lines": "164",
+      "exports": {
+        "classes": [
+          {
+            "name": "AIConfig",
+            "description": "Central configuration class for AI transcription system",
+            "constructor": "AIConfig with comprehensive settings for all components",
+            "methods": [
+              {
+                "name": "load_from_file",
+                "signature": "load_from_file(config_path: str) -> bool",
+                "description": "Load configuration from JSON file",
+                "parameters": {
+                  "config_path": "Path to configuration file"
+                },
+                "returns": "Success status of configuration loading"
+              },
+              {
+                "name": "save_to_file",
+                "signature": "save_to_file(config_path: str) -> bool",
+                "description": "Save configuration to JSON file",
+                "parameters": {
+                  "config_path": "Path to save configuration file"
+                },
+                "returns": "Success status of configuration saving"
+              }
+            ]
+          }
+        ],
+        "constants": [
+          {
+            "name": "DEFAULT_MODEL_SIZE",
+            "type": "str",
+            "value": "base",
+            "description": "Default Whisper model size for transcription"
+          },
+          {
+            "name": "DEFAULT_CHUNK_SIZE",
+            "type": "float",
+            "value": "10.0",
+            "description": "Default audio chunk size in seconds"
+          }
+        ]
+      },
+      "imports": ["os", "json", "typing", "dataclasses"],
+      "sideEffects": ["reads-files", "writes-files"]
+    },
+    "confidence_scorer.py.bak": {
+      "purpose": "Backup copy of confidence scorer implementation",
+      "file_type": "other",
+      "language": "Python",
+      "size_lines": "unknown",
+      "exports": {
+        "classes": [],
+        "functions": [],
+        "constants": []
+      },
+      "imports": [],
+      "sideEffects": []
+    }
+  },
+  "dependencies": {
+    "external_packages": {
+      "whisper": "OpenAI Whisper for speech-to-text transcription",
+      "torch": "PyTorch for deep learning and neural network operations",
+      "transformers": "Hugging Face transformers for NLP models",
+      "numpy": "Numerical computing and array operations",
+      "scipy": "Scientific computing and signal processing",
+      "soundfile": "Audio file reading and writing",
+      "librosa": "Audio analysis and feature extraction",
+      "sklearn": "Machine learning algorithms and clustering",
+      "psutil": "System process and performance monitoring",
+      "requests": "HTTP requests for API communication"
+    },
+    "internal_dependencies": {
+      "src.data.integration_adapter": ["simple_transcriber.py"],
+      "src.ai.gemini_analyzer": ["simple_transcriber.py"],
+      "__init__.py": ["whisper_transcriber.py", "transcription_pipeline.py", "audio_chunker.py", "speaker_diarizer.py", "transcript_formatter.py", "performance_optimizer.py"]
+    },
+    "dependency_graph": {
+      "__init__.py": ["whisper_transcriber.py", "transcription_pipeline.py", "audio_chunker.py", "speaker_diarizer.py", "transcript_formatter.py", "performance_optimizer.py"],
+      "simple_transcriber.py": ["src.data.integration_adapter", "src.ai.gemini_analyzer"],
+      "transcription_pipeline.py": ["whisper_transcriber.py", "audio_chunker.py"],
+      "analysis_pipeline.py": ["whisper_transcriber.py", "speaker_diarizer.py", "meeting_analyzer.py"],
+      "meeting_analyzer.py": ["participant_analyzer.py"],
+      "status_tracker.py": []
+    }
+  },
+  "directory_architecture": {
+    "organization_pattern": "feature-based with component separation",
+    "entry_points": ["__init__.py", "simple_transcriber.py"],
+    "utility_modules": ["transcription_config.py", "status_tracker.py", "confidence_scorer.py"],
+    "configuration_files": ["transcription_config.py"],
+    "subdirectory_purposes": {}
+  }
+}

@@ -1,0 +1,540 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Quarterly Budget Review - Resource Allocation Dispute",
+      "duration_minutes": 12,
+      "context": {
+        "setting": "Conference room meeting via video call",
+        "background": "Department heads reviewing budget cuts and resource reallocation for next quarter",
+        "tension_point": "Disagreement over cutting training budget versus technology upgrades",
+        "expected_outcome": "Final budget allocation with clear justifications documented"
+      },
+      "participants": [
+        {
+          "name": "Marcus Chen",
+          "voice": "M",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks in bullet points, uses numbers frequently",
+            "under_pressure": "Interrupts more, speaks faster",
+            "verbal_tics": "Says 'bottom line' repeatedly, clicks pen",
+            "emotional_tells": "Clears throat when about to deliver bad news"
+          },
+          "sample_dialogue": [
+            "Bottom line - we're looking at a 15% reduction across all departments.",
+            "Let me be crystal clear about our priorities here...",
+            "The numbers don't lie, folks. We need to make tough decisions."
+          ]
+        },
+        {
+          "name": "Sarah Rodriguez",
+          "voice": "F",
+          "role": "senior",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses 'we' frequently, asks clarifying questions",
+            "under_pressure": "Becomes more methodical, references data",
+            "verbal_tics": "Says 'if I may' before disagreeing, adjusts glasses",
+            "emotional_tells": "Voice gets higher when frustrated"
+          },
+          "sample_dialogue": [
+            "If I may, I think we need to consider the long-term impact here.",
+            "Can we walk through the methodology behind these projections?",
+            "I understand the constraints, but we're missing something critical."
+          ]
+        },
+        {
+          "name": "David Park",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks deliberately, pauses to think",
+            "under_pressure": "Becomes quieter, references past examples",
+            "verbal_tics": "Says 'historically speaking', drums fingers",
+            "emotional_tells": "Long pauses before disagreeing"
+          },
+          "sample_dialogue": [
+            "Historically speaking, when we've cut training, productivity drops by about 8%.",
+            "I need a moment to process this... are we accounting for the ripple effects?",
+            "The data from 2019 suggests a different approach might be more effective."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Marcus presents budget constraints, Sarah asks for clarification on methodology",
+          "emotional_tone": "neutral",
+          "key_points": ["15% budget reduction required", "Priority setting needed", "Timeline is tight"]
+        },
+        {
+          "phase": "development",
+          "description": "Heated debate over training vs. technology cuts, David presents historical data",
+          "emotional_tone": "escalating",
+          "key_points": ["Training budget targeted for 30% cut", "Technology upgrades deemed essential", "Past performance data contradicts proposal"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Compromise reached on hybrid approach with documented rationale",
+          "emotional_tone": "resolved",
+          "key_points": ["20% training reduction with performance metrics", "Phased technology rollout", "Monthly review meetings scheduled"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Sarah Rodriguez",
+          "task": "Document performance metrics for training impact assessment",
+          "deadline": "Next Wednesday by 2 PM",
+          "context": "Need baseline measurements to justify revised training budget"
+        },
+        {
+          "assignee": "David Park",
+          "task": "Compile historical data analysis report",
+          "deadline": "Friday end of day",
+          "context": "Support decision rationale with 3-year trend analysis"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Budget implementation review",
+          "date_time": "First Monday of next month at 9 AM",
+          "attendees": ["Marcus Chen", "Sarah Rodriguez", "David Park"],
+          "purpose": "Assess initial impact of budget changes and adjust if necessary"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Project Timeline Crisis - Deadline Conflict",
+      "duration_minutes": 8,
+      "context": {
+        "setting": "Emergency team meeting in small conference room",
+        "background": "Critical project component is behind schedule due to vendor delays",
+        "tension_point": "Team lead wants to maintain quality while CEO demands original deadline",
+        "expected_outcome": "Revised timeline with risk mitigation strategy"
+      },
+      "participants": [
+        {
+          "name": "Jennifer Walsh",
+          "voice": "F",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Short, clipped sentences when stressed",
+            "under_pressure": "Speaks louder, uses definitive language",
+            "verbal_tics": "Says 'absolutely not' frequently, crosses arms",
+            "emotional_tells": "Jaw clenches when hearing unrealistic demands"
+          },
+          "sample_dialogue": [
+            "Absolutely not. We cannot compromise quality for an arbitrary deadline.",
+            "This is exactly what I was worried about when we first discussed this timeline.",
+            "I need everyone to understand the technical reality we're facing here."
+          ]
+        },
+        {
+          "name": "Alex Thompson",
+          "voice": "M",
+          "role": "junior",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Uses lots of 'maybe' and 'what if', speaks quickly",
+            "under_pressure": "Offers multiple solutions rapidly",
+            "verbal_tics": "Says 'you know what' frequently, fidgets with phone",
+            "emotional_tells": "Voice gets higher when excited about solutions"
+          },
+          "sample_dialogue": [
+            "You know what, maybe we could parallel process some of these components?",
+            "What if we brought in the backup vendor we evaluated last month?",
+            "I'm thinking we could potentially work overtime this weekend to catch up."
+          ]
+        },
+        {
+          "name": "Robert Kim",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Methodical explanation of problems and solutions",
+            "under_pressure": "Becomes more detailed in explanations",
+            "verbal_tics": "Says 'let me think about this', strokes chin",
+            "emotional_tells": "Speaks slower when delivering bad news"
+          },
+          "sample_dialogue": [
+            "Let me think about this... the vendor delay affects three critical path items.",
+            "Based on my calculations, we're looking at a minimum two-week extension.",
+            "The risk assessment shows 73% probability of quality issues if we rush."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Jennifer explains vendor delay impact, Alex suggests quick fixes",
+          "emotional_tone": "tense",
+          "key_points": ["Vendor 3 weeks behind", "CEO demanding original deadline", "Quality concerns mounting"]
+        },
+        {
+          "phase": "development",
+          "description": "Heated discussion of alternatives, Robert provides detailed risk analysis",
+          "emotional_tone": "escalating",
+          "key_points": ["Multiple solution attempts discussed", "Risk vs. reward debate", "Resource constraints identified"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Compromise on modified timeline with clear risk documentation",
+          "emotional_tone": "hopeful",
+          "key_points": ["10-day extension approved", "Quality checkpoints added", "CEO presentation scheduled"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Robert Kim",
+          "task": "Create detailed risk mitigation plan with quality checkpoints",
+          "deadline": "Tomorrow by 11 AM",
+          "context": "Need comprehensive documentation for CEO presentation"
+        },
+        {
+          "assignee": "Alex Thompson",
+          "task": "Contact backup vendor for emergency support pricing",
+          "deadline": "End of day today",
+          "context": "Explore parallel processing options to minimize delays"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "CEO project status presentation",
+          "date_time": "Thursday at 3 PM",
+          "attendees": ["Jennifer Walsh", "Robert Kim", "CEO"],
+          "purpose": "Present revised timeline and risk mitigation strategy for approval"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Team Performance Review - Difficult Conversation",
+      "duration_minutes": 15,
+      "context": {
+        "setting": "Manager's office, quarterly performance review",
+        "background": "Underperforming team member needs direct feedback about recent mistakes",
+        "tension_point": "Employee defensive about criticism, manager must balance support with accountability", 
+        "expected_outcome": "Clear improvement plan with measurable goals and support structure"
+      },
+      "participants": [
+        {
+          "name": "Linda Martinez",
+          "voice": "F",
+          "role": "senior",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses supportive language, asks open-ended questions",
+            "under_pressure": "Maintains calm tone, references specific examples",
+            "verbal_tics": "Says 'I want to understand' frequently, leans forward",
+            "emotional_tells": "Pauses longer when delivering difficult feedback"
+          },
+          "sample_dialogue": [
+            "I want to understand what's been happening with the Henderson account.",
+            "Help me see this from your perspective - what challenges are you facing?",
+            "Let's work together to create a plan that sets you up for success."
+          ]
+        },
+        {
+          "name": "Michael Torres",
+          "voice": "M",
+          "role": "junior",
+          "style": "Direct",
+          "engagement": "Distracted",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Defensive responses, makes excuses quickly",
+            "under_pressure": "Interrupts, speaks over others",
+            "verbal_tics": "Says 'but' frequently, shifts in chair",
+            "emotional_tells": "Voice gets sharper when criticized"
+          },
+          "sample_dialogue": [
+            "But that wasn't entirely my fault - the client kept changing requirements.",
+            "I've been dealing with a lot of other priorities lately, you know?",
+            "Look, I understand there were some issues, but let me explain what really happened."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Linda opens with general performance discussion, Michael immediately defensive",
+          "emotional_tone": "tense",
+          "key_points": ["Three accounts with significant issues", "Client complaints received", "Pattern of missed deadlines"]
+        },
+        {
+          "phase": "development",
+          "description": "Specific examples discussed, Michael makes excuses, Linda probes deeper",
+          "emotional_tone": "escalating",
+          "key_points": ["Henderson account details examined", "Communication breakdowns identified", "Workload and priority conflicts revealed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Mutual agreement on improvement plan with regular check-ins",
+          "emotional_tone": "hopeful",
+          "key_points": ["30-day improvement plan created", "Weekly one-on-ones scheduled", "Training resources identified"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Michael Torres",
+          "task": "Complete project management certification course",
+          "deadline": "Within 3 weeks",
+          "context": "Improve organizational skills and deadline management"
+        },
+        {
+          "assignee": "Linda Martinez", 
+          "task": "Arrange mentorship pairing with senior team member",
+          "deadline": "By next Friday",
+          "context": "Provide additional support and guidance during improvement period"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Weekly one-on-one check-ins",
+          "date_time": "Every Tuesday at 2 PM for next 6 weeks",
+          "attendees": ["Linda Martinez", "Michael Torres"],
+          "purpose": "Monitor progress on improvement plan and provide ongoing support"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Strategic Planning Session - Vision Alignment Challenge",
+      "duration_minutes": 18,
+      "context": {
+        "setting": "Corporate retreat, strategic planning workshop",
+        "background": "Leadership team defining 3-year vision with conflicting departmental priorities",
+        "tension_point": "Sales wants aggressive growth while Operations emphasizes sustainable scaling",
+        "expected_outcome": "Unified strategic direction with clear priorities and resource allocation"
+      },
+      "participants": [
+        {
+          "name": "Catherine Wong",
+          "voice": "F",
+          "role": "exec",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Data-driven arguments, references market research",
+            "under_pressure": "Cites more statistics, speaks more formally",
+            "verbal_tics": "Says 'the data shows' frequently, adjusts glasses",
+            "emotional_tells": "Slower speech when uncertain about conclusions"
+          },
+          "sample_dialogue": [
+            "The data shows we can achieve 40% growth if we expand into three new markets.",
+            "Based on competitive analysis, we're leaving significant revenue on the table.",
+            "I need to see the operational capacity models before committing to these targets."
+          ]
+        },
+        {
+          "name": "James Patterson",
+          "voice": "M",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Methodical, references past implementations",
+            "under_pressure": "Becomes more detailed about risks",
+            "verbal_tics": "Says 'in my experience' frequently, drums table",
+            "emotional_tells": "Long pauses before disagreeing with aggressive plans"
+          },
+          "sample_dialogue": [
+            "In my experience, rapid expansion without infrastructure leads to service failures.",
+            "We need to be realistic about our operational constraints here.",
+            "Let me walk you through what happened when we tried this approach in 2018."
+          ]
+        },
+        {
+          "name": "Rachel Green",
+          "voice": "F",
+          "role": "senior",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Forward-looking language, uses action words",
+            "under_pressure": "Speaks faster, uses more superlatives",
+            "verbal_tics": "Says 'imagine if' frequently, gestures widely",
+            "emotional_tells": "Voice rises when excited about possibilities"
+          },
+          "sample_dialogue": [
+            "Imagine if we could capture even 15% of that emerging market segment!",
+            "This is exactly the kind of bold move that separates leaders from followers.",
+            "We have an incredible opportunity window that won't stay open forever."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Catherine presents growth analysis, Rachel builds excitement, James raises concerns",
+          "emotional_tone": "excited",
+          "key_points": ["Market opportunity identified", "Growth targets proposed", "Initial resistance from operations"]
+        },
+        {
+          "phase": "development",
+          "description": "Detailed debate over growth pace, resource requirements, and risk tolerance",
+          "emotional_tone": "analytical",
+          "key_points": ["Historical performance examined", "Resource gap analysis", "Risk vs. opportunity debate intensifies"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Phased approach agreed upon with clear milestones and review points",
+          "emotional_tone": "resolved",
+          "key_points": ["Three-phase growth plan approved", "Infrastructure investment prioritized", "Quarterly review gates established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Catherine Wong",
+          "task": "Develop detailed market entry strategy for Phase 1",
+          "deadline": "Three weeks from today",
+          "context": "Focus on highest-probability market with existing operational capacity"
+        },
+        {
+          "assignee": "James Patterson",
+          "task": "Create infrastructure scaling plan with timeline and costs",
+          "deadline": "Three weeks from today",
+          "context": "Ensure operational readiness matches growth ambitions"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Strategic plan review and approval meeting",
+          "date_time": "First Monday of next month at 10 AM",
+          "attendees": ["Catherine Wong", "James Patterson", "Rachel Green", "Board Representatives"],
+          "purpose": "Present finalized strategic plan to board for formal approval and resource allocation"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Crisis Management - Data Security Incident",
+      "duration_minutes": 10,
+      "context": {
+        "setting": "Emergency conference call from various locations",
+        "background": "Potential data breach detected, team mobilizing incident response",
+        "tension_point": "Disagreement over communication strategy while investigating scope",
+        "expected_outcome": "Clear incident response plan with communication protocol"
+      },
+      "participants": [
+        {
+          "name": "Steven Clarke",
+          "voice": "M", 
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Urgent, commanding tone with clear directives",
+            "under_pressure": "Becomes more authoritative, speaks louder",
+            "verbal_tics": "Says 'immediately' frequently, types while talking",
+            "emotional_tells": "Voice becomes strained when discussing legal implications"
+          },
+          "sample_dialogue": [
+            "We need to assess the scope immediately - every minute counts here.",
+            "I want hourly updates until we know exactly what we're dealing with.",
+            "Legal needs to be looped in right now, not after we figure this out."
+          ]
+        },
+        {
+          "name": "Diana Foster",
+          "voice": "F",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Technical explanations with precise terminology",
+            "under_pressure": "Becomes more methodical, references protocols",
+            "verbal_tics": "Says 'according to the logs' frequently, types constantly",
+            "emotional_tells": "Speaks faster when finding critical evidence"
+          },
+          "sample_dialogue": [
+            "According to the logs, the intrusion attempt started at 3:47 AM Eastern.",
+            "I'm seeing unusual traffic patterns from three different IP ranges.",
+            "The firewall blocked most attempts, but there's one concerning pathway."
+          ]
+        },
+        {
+          "name": "Kevin Murphy",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Asks clarifying questions, coordinates between teams",
+            "under_pressure": "Focuses on process and coordination",
+            "verbal_tics": "Says 'just to clarify' frequently, takes detailed notes",
+            "emotional_tells": "Voice gets higher when trying to de-escalate tension"
+          },
+          "sample_dialogue": [
+            "Just to clarify - are we activating the full incident response team?",
+            "Should I coordinate with customer service on potential client communications?",
+            "What's our protocol if media starts asking questions before we have answers?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Steven calls emergency meeting, Diana reports initial findings",
+          "emotional_tone": "urgent",
+          "key_points": ["Potential breach detected", "Investigation underway", "Scope unknown"]
+        },
+        {
+          "phase": "development",
+          "description": "Technical details discussed, communication strategy debated",
+          "emotional_tone": "tense",
+          "key_points": ["Attack vector identified", "Data access uncertain", "Legal implications discussed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Incident response activated with clear roles and communication plan",
+          "emotional_tone": "focused",
+          "key_points": ["Response team activated", "Communication protocols established", "Investigation timeline set"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Diana Foster",
+          "task": "Complete forensic analysis and impact assessment",
+          "deadline": "Every 2 hours with updates",
+          "context": "Determine exact scope of potential data access and system compromise"
+        },
+        {
+          "assignee": "Kevin Murphy",
+          "task": "Coordinate with legal and PR teams on communication strategy",
+          "deadline": "Within 30 minutes",
+          "context": "Prepare for potential client and regulatory notifications"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Incident response update calls",
+          "date_time": "Every 2 hours starting immediately",
+          "attendees": ["Steven Clarke", "Diana Foster", "Kevin Murphy", "Legal Team"],
+          "purpose": "Monitor investigation progress and coordinate response activities"
+        }
+      ]
+    }
+  ]
+}

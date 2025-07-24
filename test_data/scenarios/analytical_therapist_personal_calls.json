@@ -1,0 +1,464 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Family Wedding Planning Conflict",
+      "duration_minutes": 12,
+      "context": {
+        "setting": "Phone call between family members, wedding planning discussion",
+        "background": "Sister and brother planning their parents' 30th anniversary celebration, disagreeing on budget and venue choices",
+        "tension_point": "Financial priorities clash with emotional desires, underlying sibling rivalry about who contributes more to family",
+        "expected_outcome": "Reach compromise on celebration plans while addressing deeper family dynamics"
+      },
+      "participants": [
+        {
+          "name": "Rebecca Martinez",
+          "voice": "F",
+          "role": "family",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Uses emotional appeals and family memories, speaks rapidly when excited",
+            "under_pressure": "Becomes more emotional, references family sacrifices and love",
+            "verbal_tics": "Says 'you know how much' frequently, brings up childhood memories",
+            "emotional_tells": "Voice gets louder when feeling unheard"
+          },
+          "sample_dialogue": [
+            "You know how much this means to Mom - she's been talking about having a real celebration for years.",
+            "David, they sacrificed so much for us growing up, this is our chance to do something special.",
+            "I don't understand why you're being so practical about something this important to the family."
+          ]
+        },
+        {
+          "name": "David Martinez",
+          "voice": "M",
+          "role": "family",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Focuses on practical concerns and budget realities, speaks deliberately",
+            "under_pressure": "Becomes more rigid about finances, cites specific costs",
+            "verbal_tics": "Says 'we need to be realistic' frequently, mentions exact dollar amounts",
+            "emotional_tells": "Voice becomes flatter when feeling pressured emotionally"
+          },
+          "sample_dialogue": [
+            "We need to be realistic, Rebecca - that venue costs $3,000 just for the rental.",
+            "I want to celebrate them too, but we have to consider what we can actually afford.",
+            "Maybe we could do something meaningful at home instead of going into debt for one night."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Rebecca enthusiastically presents elaborate celebration ideas, David immediately raises budget concerns",
+          "emotional_tone": "excited anticipation meeting practical resistance",
+          "key_points": ["Elaborate celebration vision shared", "Budget reality check introduced", "Initial tension about priorities revealed"]
+        },
+        {
+          "phase": "development",
+          "description": "Rebecca appeals to emotions and family obligation, David holds firm on financial boundaries, frustration escalates",
+          "emotional_tone": "escalating frustration with emotional manipulation",
+          "key_points": ["Emotional appeals about family love and sacrifice", "Firm financial boundaries maintained", "Underlying sibling dynamics about family contribution surface"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Both acknowledge love for parents, find middle ground with scaled celebration that balances emotion and budget",
+          "emotional_tone": "reluctant compromise with mutual respect",
+          "key_points": ["Shared love for parents acknowledged", "Scaled celebration concept agreed upon", "Contribution responsibilities divided fairly"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Rebecca Martinez",
+          "task": "Research three mid-range venue options with pricing",
+          "deadline": "This weekend",
+          "context": "To find celebration options that balance special atmosphere with budget constraints"
+        },
+        {
+          "assignee": "David Martinez",
+          "task": "Create detailed budget breakdown showing what family can afford",
+          "deadline": "Sunday evening",
+          "context": "To establish realistic financial parameters for anniversary celebration planning"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Family planning meeting with parents",
+          "date_time": "Next Sunday dinner",
+          "attendees": ["Rebecca Martinez", "David Martinez", "parents"],
+          "purpose": "Present celebration options and get parents' input on preferences"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Childhood Friend Career Jealousy",
+      "duration_minutes": 18,
+      "context": {
+        "setting": "Video call between longtime friends, casual catch-up conversation",
+        "background": "Two friends from college reconnecting after 6 months, one recently got promoted while other is struggling with job search",
+        "tension_point": "Underlying jealousy and feelings of being left behind create awkwardness in celebrating friend's success",
+        "expected_outcome": "Navigate jealousy while maintaining friendship and providing mutual support"
+      },
+      "participants": [
+        {
+          "name": "Jessica Chen",
+          "voice": "F",
+          "role": "friend",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Tries to be supportive while managing own insecurity, careful with word choices",
+            "under_pressure": "Becomes overly enthusiastic to hide jealousy, asks more questions to deflect",
+            "verbal_tics": "Says 'that's amazing' repeatedly, deflects to asking about details",
+            "emotional_tells": "Voice becomes artificially bright when struggling with envy"
+          },
+          "sample_dialogue": [
+            "That's amazing, Mike! I'm so happy for you - you totally deserve this promotion.",
+            "Wow, director level already - that's such incredible progress in just two years.",
+            "I bet the new team is lucky to have someone with your leadership skills."
+          ]
+        },
+        {
+          "name": "Mike Thompson",
+          "voice": "M",
+          "role": "friend",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Excited about success but sensing friend's discomfort, tries to downplay achievements",
+            "under_pressure": "Becomes more modest about success, shifts conversation to friend's situation",
+            "verbal_tics": "Says 'it's not that big a deal' when sensing jealousy, asks about friend's life",
+            "emotional_tells": "Speaks more quickly when feeling guilty about success"
+          },
+          "sample_dialogue": [
+            "Thanks, Jess - honestly, it's not that big a deal, just more responsibility really.",
+            "I've been lucky with timing and had great mentors - how's your job search going?",
+            "You know, the stress level is actually pretty intense - I miss having more free time."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Mike shares promotion news excitedly, Jessica responds with enthusiastic congratulations that feel slightly forced",
+          "emotional_tone": "excited sharing meeting forced enthusiasm",
+          "key_points": ["Promotion news shared with enthusiasm", "Congratulations offered with hidden struggle", "Underlying tension about different life trajectories"]
+        },
+        {
+          "phase": "development",
+          "description": "Mike senses Jessica's discomfort and tries to downplay success, Jessica overcompensates with questions, awkwardness increases",
+          "emotional_tone": "growing awkwardness with mutual awareness",
+          "key_points": ["Success downplayed to protect friend's feelings", "Overcompensation through detailed questioning", "Both friends aware of the uncomfortable dynamic"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Both acknowledge the awkwardness honestly, Jessica admits struggle with comparison, Mike offers genuine support",
+          "emotional_tone": "honest vulnerability leading to reconnection",
+          "key_points": ["Awkwardness acknowledged directly", "Jealousy admitted and discussed openly", "Mutual support and friendship reaffirmed"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Mike Thompson",
+          "task": "Connect Jessica with recruiter contact from his network",
+          "deadline": "By Wednesday",
+          "context": "To provide concrete help with Jessica's job search and demonstrate friendship support"
+        },
+        {
+          "assignee": "Jessica Chen",
+          "task": "Send Mike information about industry networking event she learned about",
+          "deadline": "This weekend",
+          "context": "To contribute value to the friendship and feel more balanced in the relationship"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Monthly friend check-in call",
+          "date_time": "Same time next month",
+          "attendees": ["Jessica Chen", "Mike Thompson"],
+          "purpose": "Maintain regular contact and continue supporting each other's career journeys"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Parent-Adult Child Boundary Setting",
+      "duration_minutes": 14,
+      "context": {
+        "setting": "Phone call from parent's home, weekly check-in conversation",
+        "background": "Adult daughter trying to establish boundaries with well-meaning but intrusive mother who offers constant advice",
+        "tension_point": "Mother's anxiety about daughter's life choices manifests as controlling behavior, daughter struggling to be independent while maintaining relationship",
+        "expected_outcome": "Set healthy boundaries while preserving loving relationship and addressing mother's underlying anxiety"
+      },
+      "participants": [
+        {
+          "name": "Linda Rodriguez",
+          "voice": "F",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Gives rapid-fire advice and suggestions, uses worry-based language",
+            "under_pressure": "Becomes more controlling, lists more potential problems",
+            "verbal_tics": "Says 'you should' and 'what if' frequently, mentions other people's children",
+            "emotional_tells": "Voice gets higher when feeling shut out"
+          },
+          "sample_dialogue": [
+            "You should really consider that job with better benefits - what if something happens?",
+            "I was talking to Maria's mother, and her daughter has such a stable position at the bank.",
+            "I just worry about you living in that neighborhood - couldn't you find somewhere safer?"
+          ]
+        },
+        {
+          "name": "Carmen Rodriguez",
+          "voice": "F",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Tries to be diplomatic while setting boundaries, speaks carefully to avoid hurting feelings",
+            "under_pressure": "Becomes more firm but still loving, uses 'I' statements",
+            "verbal_tics": "Says 'I appreciate your concern' frequently, emphasizes her own decision-making",
+            "emotional_tells": "Voice becomes more measured when setting boundaries"
+          },
+          "sample_dialogue": [
+            "Mom, I appreciate your concern, but I need to make my own decisions about my career.",
+            "I understand you're worried, but I'm 28 years old and I can handle my own life choices.",
+            "Your advice comes from love, but sometimes I need space to figure things out myself."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Linda immediately starts giving advice about various aspects of Carmen's life, Carmen tries to redirect politely",
+          "emotional_tone": "anxious advice-giving meeting patient resistance",
+          "key_points": ["Multiple life areas addressed with unsolicited advice", "Polite attempts to redirect conversation", "Mother's anxiety about daughter's independence evident"]
+        },
+        {
+          "phase": "development",
+          "description": "Carmen more directly asks for space, Linda becomes defensive about being loving and helpful, tension escalates",
+          "emotional_tone": "escalating tension between love and control",
+          "key_points": ["Boundaries stated more directly", "Mother's defensive response about good intentions", "Conflict between independence and family closeness"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Carmen acknowledges mother's love while firmly maintaining boundaries, Linda reluctantly agrees to respect daughter's autonomy",
+          "emotional_tone": "loving but firm boundary establishment",
+          "key_points": ["Love and care acknowledged on both sides", "Boundaries respected reluctantly", "New communication patterns agreed upon"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Carmen Rodriguez",
+          "task": "Call mother with positive news to share, not problems to solve",
+          "deadline": "This Thursday",
+          "context": "To shift dynamic toward sharing good news rather than seeking advice/creating worry"
+        },
+        {
+          "assignee": "Linda Rodriguez",
+          "task": "Ask Carmen about her interests and hobbies rather than life decisions",
+          "deadline": "Next call",
+          "context": "To practice connecting through interest rather than advice-giving"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Weekly mother-daughter call",
+          "date_time": "Every Sunday at 3 PM",
+          "attendees": ["Linda Rodriguez", "Carmen Rodriguez"],
+          "purpose": "Maintain regular contact while practicing new communication boundaries"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Romantic Relationship Future Planning",
+      "duration_minutes": 20,
+      "context": {
+        "setting": "Living room at home, evening relationship discussion",
+        "background": "Couple of 2 years discussing future commitment and timeline differences for major life decisions",
+        "tension_point": "Different timelines for engagement and marriage causing anxiety about relationship compatibility and future",
+        "expected_outcome": "Align expectations and timeline for relationship progression while addressing underlying fears"
+      },
+      "participants": [
+        {
+          "name": "Ashley Kim",
+          "voice": "F",
+          "role": "family",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses logical reasoning about relationship progression, speaks thoughtfully",
+            "under_pressure": "Becomes more detailed about fears and concerns, seeks concrete plans",
+            "verbal_tics": "Says 'I need to understand' frequently, asks for specific timelines",
+            "emotional_tells": "Voice becomes quieter when expressing vulnerability"
+          },
+          "sample_dialogue": [
+            "I need to understand where you see this relationship going, Tom.",
+            "We've been together two years - I think it's fair to talk about our future timeline.",
+            "I'm not trying to pressure you, but I need to know if we're on the same page."
+          ]
+        },
+        {
+          "name": "Tom Foster",
+          "voice": "M",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks cautiously about commitment, tries to be reassuring while buying time",
+            "under_pressure": "Becomes more hesitant, uses more qualifying language",
+            "verbal_tics": "Says 'I love you but' frequently, mentions needing more time",
+            "emotional_tells": "Long pauses when discussing commitment timeline"
+          },
+          "sample_dialogue": [
+            "I love you, Ashley, but I think we should take our time with these big decisions.",
+            "I want a future with you - I'm just not sure about the specific timeline you're thinking.",
+            "Can we focus on being happy together without pressure about engagement right now?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Ashley initiates conversation about relationship future, Tom responds with general reassurance but avoids specifics",
+          "emotional_tone": "hopeful inquiry meeting cautious avoidance",
+          "key_points": ["Future relationship discussion initiated", "General commitment expressed but specifics avoided", "Different comfort levels with timeline planning evident"]
+        },
+        {
+          "phase": "development",
+          "description": "Ashley presses for specific timeline, Tom becomes more uncomfortable and evasive, both express underlying fears",
+          "emotional_tone": "increasing anxiety and emotional vulnerability",
+          "key_points": ["Specific timeline requests met with resistance", "Underlying fears about commitment and timing revealed", "Both partners' insecurities about relationship future surface"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Both acknowledge their fears honestly, agree on gradual progression with check-in points rather than rigid timeline",
+          "emotional_tone": "vulnerable honesty leading to compromise",
+          "key_points": ["Honest discussion of commitment fears", "Compromise on gradual progression approach", "Regular relationship check-ins agreed upon"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Ashley Kim",
+          "task": "Reflect on what specific relationship security she needs vs. wants",
+          "deadline": "Before next discussion",
+          "context": "To distinguish between essential needs and timeline preferences in relationship planning"
+        },
+        {
+          "assignee": "Tom Foster",
+          "task": "Consider and articulate what timeline feels comfortable for major relationship steps",
+          "deadline": "Before next discussion",
+          "context": "To provide Ashley with honest assessment of his comfort timeline rather than avoiding the topic"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Relationship check-in conversation",
+          "date_time": "First Sunday of every month",
+          "attendees": ["Ashley Kim", "Tom Foster"],
+          "purpose": "Regular discussion of relationship satisfaction and future planning without pressure"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Friend Group Drama Mediation",
+      "duration_minutes": 16,
+      "context": {
+        "setting": "Coffee shop phone call, friend attempting to mediate group conflict",
+        "background": "Close friend group of 4 people experiencing tension after one member made insensitive comments at group gathering",
+        "tension_point": "Friend trying to maintain group harmony while addressing legitimate hurt feelings and accountability",
+        "expected_outcome": "Navigate between loyalty to different friends while encouraging resolution and accountability"
+      },
+      "participants": [
+        {
+          "name": "Maria Santos",
+          "voice": "F",
+          "role": "friend",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Tries to see all perspectives, uses mediating language carefully",
+            "under_pressure": "Becomes more diplomatic, tries to avoid taking sides",
+            "verbal_tics": "Says 'I can see both sides' frequently, asks for understanding",
+            "emotional_tells": "Voice becomes more careful when dealing with conflict"
+          },
+          "sample_dialogue": [
+            "I can see both sides of this situation, and I think there's been some real hurt feelings.",
+            "Jake, I know you didn't mean to upset anyone, but I think we need to talk about what happened.",
+            "Everyone is feeling pretty raw about this - maybe we can find a way to move forward together."
+          ]
+        },
+        {
+          "name": "Jake Wilson",
+          "voice": "M",
+          "role": "friend",
+          "style": "Direct",
+          "engagement": "Distracted",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Defensive about intentions, speaks quickly when justifying actions",
+            "under_pressure": "Becomes more dismissive of others' hurt, focuses on his good intentions",
+            "verbal_tics": "Says 'it was just a joke' frequently, minimizes impact on others",
+            "emotional_tells": "Voice gets defensive when criticized"
+          },
+          "sample_dialogue": [
+            "It was just a joke, Maria - I can't believe everyone is making such a big deal about this.",
+            "I've been friends with everyone for years - they know I'm not actually like that.",
+            "Why is everyone being so sensitive all of a sudden?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Maria carefully approaches Jake about group tension, Jake immediately becomes defensive about his comments",
+          "emotional_tone": "careful diplomacy meeting defensive resistance",
+          "key_points": ["Group tension addressed diplomatically", "Immediate defensiveness and minimization", "Different perspectives on severity of situation"]
+        },
+        {
+          "phase": "development",
+          "description": "Maria explains the hurt caused while trying to maintain friendship, Jake resists accountability and dismisses concerns",
+          "emotional_tone": "escalating frustration with maintaining friendship loyalty",
+          "key_points": ["Specific hurt and impact explained", "Resistance to taking responsibility", "Mediator struggling between friendship and accountability"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Maria firmly but lovingly explains consequences for friend group, Jake reluctantly agrees to apologize and reflect",
+          "emotional_tone": "firm love with reluctant acceptance",
+          "key_points": ["Consequences for group dynamics explained", "Reluctant agreement to apologize and reflect", "Group healing process begun"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Jake Wilson",
+          "task": "Reach out individually to friends who were hurt with genuine apologies",
+          "deadline": "This week",
+          "context": "To take responsibility for impact and begin rebuilding trust with friend group"
+        },
+        {
+          "assignee": "Maria Santos",
+          "task": "Check in with other friends about their feelings and healing process",
+          "deadline": "Weekend",
+          "context": "To support friends who were hurt and assess readiness for group reconciliation"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Friend group reconciliation gathering",
+          "date_time": "Following weekend (if everyone is ready)",
+          "attendees": ["Maria Santos", "Jake Wilson", "other friend group members"],
+          "purpose": "Attempt group healing and rebuilding of friend group dynamics after conflict resolution"
+        }
+      ]
+    }
+  ]
+}

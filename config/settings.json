@@ -5,7 +5,7 @@
     "noise_suppression": "low",
     "voice_activity_detection": true,
     "vad_sensitivity": 0.5,
-    "recording_format": "wav",
+    "recording_format": "mp3",
     "recording_quality": "high"
   },
   "transcription": {
@@ -16,7 +16,7 @@
     "automatic_punctuation": true,
     "profanity_filter": false,
     "post_meeting_summaries": true,
-    "use_gemini_enhancement": false,
+    "use_gemini_enhancement": true,
     "gemini_api_key": "AIzaSyC9VN-FdjazQvKu2jVuDGrLsUIUNw-I8BE"
   },
   "data": {

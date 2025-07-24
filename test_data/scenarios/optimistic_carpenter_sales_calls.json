@@ -1,0 +1,472 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Home Renovation Consultation Sales Call",
+      "duration_minutes": 15,
+      "context": {
+        "setting": "Phone call from contractor's truck to potential client at their home",
+        "background": "Homeowner contacted three contractors for kitchen renovation quotes after seeing social media posts",
+        "tension_point": "Client has limited budget but wants premium finishes, competitor quoted significantly lower",
+        "expected_outcome": "Secure contract by demonstrating value and building trust in craftsmanship"
+      },
+      "participants": [
+        {
+          "name": "Jake Martinez",
+          "voice": "M",
+          "role": "senior",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses construction metaphors naturally, emphasizes quality and craftsmanship",
+            "under_pressure": "Becomes more detailed about process and materials",
+            "verbal_tics": "Says 'build it right' and 'solid investment'",
+            "emotional_tells": "Voice becomes more animated when discussing craftsmanship"
+          },
+          "sample_dialogue": [
+            "Mrs. Patterson, I want to build you something that'll still look amazing in twenty years.",
+            "You're absolutely right to compare quotes - this is a solid investment in your home's future.",
+            "Let me walk you through why we frame things differently than what you might have seen before."
+          ]
+        },
+        {
+          "name": "Linda Patterson",
+          "voice": "F",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Asks detailed questions about process and timeline, budget-conscious",
+            "under_pressure": "Becomes more focused on cost comparisons",
+            "verbal_tics": "Says 'help me understand' and 'the other contractor said'",
+            "emotional_tells": "Long pauses when considering expensive options"
+          },
+          "sample_dialogue": [
+            "Help me understand why your quote is $8,000 higher than Martinez Construction.",
+            "The other contractor said they could have this done in three weeks - is that realistic?",
+            "Jake, I love the quality talk, but at the end of the day, I have a budget to work with."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Jake introduces his approach while Linda outlines her project vision and budget concerns",
+          "emotional_tone": "neutral",
+          "key_points": ["Kitchen renovation scope confirmed", "Budget parameters discussed", "Timeline expectations set"]
+        },
+        {
+          "phase": "development",
+          "description": "Linda challenges pricing while Jake explains value proposition and quality differences",
+          "emotional_tone": "tense",
+          "key_points": ["Competitor pricing comparison", "Material quality differences explained", "Craftsmanship value proposition presented"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Jake offers modified package that meets budget while maintaining quality standards",
+          "emotional_tone": "hopeful",
+          "key_points": ["Compromise package agreed", "Payment schedule negotiated", "Project timeline confirmed"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Jake Martinez",
+          "task": "Prepare detailed proposal with material specifications and timeline",
+          "deadline": "Tomorrow by 2 PM",
+          "context": "Follow-up on verbal agreement with written contract terms"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "In-person contract signing and material selection",
+          "date_time": "Thursday at 10 AM",
+          "attendees": ["Jake Martinez", "Linda Patterson"],
+          "purpose": "Finalize contract details and select specific materials and finishes"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Commercial Software Solution Sales Call",
+      "duration_minutes": 20,
+      "context": {
+        "setting": "Video conference call with decision-makers at mid-size accounting firm",
+        "background": "Accounting firm struggling with manual processes and looking for integrated software solution",
+        "tension_point": "IT manager concerned about implementation complexity while managing partner wants immediate productivity gains",
+        "expected_outcome": "Address technical concerns while maintaining excitement about business benefits"
+      },
+      "participants": [
+        {
+          "name": "Alex Martinez",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Optimistic tech solutions focus with building analogies for complex systems",
+            "under_pressure": "Focuses on problem-solving and collaboration",
+            "verbal_tics": "Says 'we can build this together' and 'solid foundation'",
+            "emotional_tells": "Gestures more when explaining technical concepts"
+          },
+          "sample_dialogue": [
+            "Think of this like renovating your office workflow - we're building a solid foundation for growth.",
+            "Sarah, I hear your concerns, and we can absolutely build safeguards into the implementation plan.",
+            "Mr. Richardson, we can frame this rollout so it actually increases productivity from day one."
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Technical questions with security and integration focus",
+            "under_pressure": "Becomes more detailed about potential risks",
+            "verbal_tics": "Says 'from a technical standpoint' and 'integration concerns'",
+            "emotional_tells": "Types notes rapidly when hearing technical details"
+          },
+          "sample_dialogue": [
+            "Alex, from a technical standpoint, how does this integrate with our existing ERP system?",
+            "I have serious integration concerns about the data migration timeline you're proposing.",
+            "The construction metaphors are nice, but I need specifics about API compatibility and data security."
+          ]
+        },
+        {
+          "name": "Robert Richardson",
+          "voice": "M",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Business outcome focused, impatient with technical details",
+            "under_pressure": "Becomes more focused on ROI and timeline",
+            "verbal_tics": "Says 'bottom line' and 'what's it going to cost us'",
+            "emotional_tells": "Checks phone when technical discussions get lengthy"
+          },
+          "sample_dialogue": [
+            "Bottom line, Alex - what's it going to cost us and when will we see results?",
+            "Sarah raises good points, but we're bleeding efficiency every day we delay this decision.",
+            "I don't need all the technical details - just tell me this thing will work and save us money."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Alex presents solution overview while Robert emphasizes business needs and Sarah asks technical questions",
+          "emotional_tone": "neutral",
+          "key_points": ["Current pain points identified", "Solution capabilities demonstrated", "Initial concerns raised"]
+        },
+        {
+          "phase": "development",
+          "description": "Tension builds as Sarah details technical concerns while Robert pushes for quick decision",
+          "emotional_tone": "tense",
+          "key_points": ["Technical integration challenges discussed", "Implementation timeline debated", "Security requirements detailed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Alex proposes phased implementation that addresses both technical and business concerns",
+          "emotional_tone": "resolved",
+          "key_points": ["Phased rollout plan agreed", "Technical pilot program proposed", "Budget and timeline finalized"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Alex Martinez",
+          "task": "Prepare technical integration assessment with IT team",
+          "deadline": "Next week",
+          "context": "Detailed analysis of current systems and integration requirements"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Technical deep-dive session",
+          "date_time": "Next Tuesday at 2 PM",
+          "attendees": ["Alex Martinez", "Sarah Chen", "IT team members"],
+          "purpose": "Address technical integration details and security requirements"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Insurance Policy Renewal Sales Call",
+      "duration_minutes": 8,
+      "context": {
+        "setting": "Phone call from insurance agent's office to longtime client",
+        "background": "Annual policy renewal with significant premium increase due to claims history",
+        "tension_point": "Client shocked by 40% premium increase and threatening to switch carriers",
+        "expected_outcome": "Retain client by explaining increase rationale and offering alternative coverage options"
+      },
+      "participants": [
+        {
+          "name": "Mike Martinez",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Empathetic explanations with focus on long-term protection",
+            "under_pressure": "Becomes more detailed about policy benefits",
+            "verbal_tics": "Says 'let's work together' and 'build the right coverage'",
+            "emotional_tells": "Speaks more slowly when delivering bad news"
+          },
+          "sample_dialogue": [
+            "Tom, I know this increase hits hard, but let's work together to build coverage that makes sense.",
+            "You're absolutely right to question this - I'd be asking the same questions in your shoes.",
+            "Think of it like reinforcing your house after a storm - we're building stronger protection now."
+          ]
+        },
+        {
+          "name": "Tom Bradley",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Frustrated and questioning, focused on cost comparison",
+            "under_pressure": "Becomes more confrontational and impatient",
+            "verbal_tics": "Says 'this is ridiculous' and 'twenty years'",
+            "emotional_tells": "Voice volume increases when frustrated"
+          },
+          "sample_dialogue": [
+            "Mike, this is ridiculous - I've been with you guys for twenty years with minimal claims.",
+            "A forty percent increase? I can get the same coverage elsewhere for half what you're asking.",
+            "Don't give me construction analogies - just explain why my rates went through the roof!"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Mike explains premium increase factors while Tom expresses shock and frustration",
+          "emotional_tone": "tense",
+          "key_points": ["Premium increase explained", "Claims history reviewed", "Market factors discussed"]
+        },
+        {
+          "phase": "development",
+          "description": "Tom threatens to leave while Mike explains coverage value and loyalty benefits",
+          "emotional_tone": "escalating",
+          "key_points": ["Client threatens to switch carriers", "Coverage comparison with competitors", "Loyalty discounts offered"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Mike offers modified coverage package that reduces premium while maintaining key protections",
+          "emotional_tone": "hopeful",
+          "key_points": ["Alternative coverage options presented", "Premium reduction achieved", "Long-term relationship preserved"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Mike Martinez",
+          "task": "Prepare modified policy proposal with adjusted coverage levels",
+          "deadline": "Today by close of business",
+          "context": "Need to present alternatives before client shops with competitors"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Policy review and signing appointment",
+          "date_time": "Tomorrow at 4 PM",
+          "attendees": ["Mike Martinez", "Tom Bradley"],
+          "purpose": "Review modified coverage options and finalize annual policy"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Consulting Services Proposal Call",
+      "duration_minutes": 12,
+      "context": {
+        "setting": "Conference call with startup founders considering business consulting engagement",
+        "background": "Growing startup needs strategic guidance for next funding round and scaling operations",
+        "tension_point": "Co-founders disagree on whether to hire consultants or handle growth internally",
+        "expected_outcome": "Demonstrate consulting value while addressing concerns about cost and external involvement"
+      },
+      "participants": [
+        {
+          "name": "Carlos Martinez",
+          "voice": "M",
+          "role": "senior",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses building metaphors to explain business growth concepts",
+            "under_pressure": "Focuses on partnership and shared success",
+            "verbal_tics": "Says 'build together' and 'solid foundation'",
+            "emotional_tells": "Voice becomes warmer when discussing partnership"
+          },
+          "sample_dialogue": [
+            "What we're really talking about is building a solid foundation for your next growth phase.",
+            "Jennifer, I hear your concerns - we're not here to take over, but to build alongside you.",
+            "Think of this like hiring an experienced contractor - we bring tools and knowledge you can use forever."
+          ]
+        },
+        {
+          "name": "Jennifer Walsh",
+          "voice": "F",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Skeptical of outside help, protective of company culture",
+            "under_pressure": "Becomes more questioning and defensive",
+            "verbal_tics": "Says 'our team' and 'we've built this'",
+            "emotional_tells": "Speaks faster when feeling defensive"
+          },
+          "sample_dialogue": [
+            "Carlos, our team has built this company from nothing - why do we need outsiders now?",
+            "I'm concerned about bringing in consultants who don't understand our culture and values.",
+            "The construction metaphors are nice, but we're talking about diluting what we've built here."
+          ]
+        },
+        {
+          "name": "David Park",
+          "voice": "M",
+          "role": "exec",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Focused on data and measurable outcomes, cautious decision-maker",
+            "under_pressure": "Asks more detailed questions about methodology",
+            "verbal_tics": "Says 'show me the data' and 'measurable results'",
+            "emotional_tells": "Long pauses when evaluating proposals"
+          },
+          "sample_dialogue": [
+            "Carlos, can you show me the data on similar engagements and their measurable results?",
+            "Jennifer, I understand your concerns, but we need to be realistic about our scaling challenges.",
+            "What specific methodologies do you use, and how do you measure success in these partnerships?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Carlos outlines consulting approach while Jennifer and David express different concerns",
+          "emotional_tone": "neutral",
+          "key_points": ["Scaling challenges identified", "Consulting methodology presented", "Different founder perspectives revealed"]
+        },
+        {
+          "phase": "development",
+          "description": "Jennifer resists external involvement while David seeks more data on consulting ROI",
+          "emotional_tone": "tense",
+          "key_points": ["Culture preservation concerns raised", "ROI methodology questioned", "Internal vs external debate intensifies"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Carlos proposes collaborative approach that addresses both founders' concerns",
+          "emotional_tone": "hopeful",
+          "key_points": ["Collaborative methodology agreed", "Trial engagement proposed", "Success metrics defined"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Carlos Martinez",
+          "task": "Prepare case studies and ROI data for similar engagements",
+          "deadline": "Friday",
+          "context": "David requested specific performance data before making decision"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Follow-up decision meeting",
+          "date_time": "Next Monday at 11 AM",
+          "attendees": ["Carlos Martinez", "Jennifer Walsh", "David Park"],
+          "purpose": "Review case studies and make final decision on consulting engagement"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Equipment Leasing Sales Call",
+      "duration_minutes": 9,
+      "context": {
+        "setting": "Phone call from leasing company to construction business owner",
+        "background": "Construction company needs new equipment but concerned about cash flow impact",
+        "tension_point": "Business owner wants to purchase equipment outright while CFO insists on leasing for cash flow management",
+        "expected_outcome": "Demonstrate leasing benefits while addressing ownership concerns"
+      },
+      "participants": [
+        {
+          "name": "Tony Martinez",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Optimistic about business solutions, uses practical examples",
+            "under_pressure": "Provides more detailed financial comparisons",
+            "verbal_tics": "Says 'smart business move' and 'build your success'",
+            "emotional_tells": "Voice becomes more energetic when discussing benefits"
+          },
+          "sample_dialogue": [
+            "Mr. Rodriguez, this is really a smart business move that'll help you build success without the cash strain.",
+            "I totally get wanting to own your equipment - that's the contractor mindset, and I respect that.",
+            "Let me frame this differently - you're essentially renting money at a great rate to keep cash flowing."
+          ]
+        },
+        {
+          "name": "Marcus Rodriguez",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Traditional business owner perspective, values ownership",
+            "under_pressure": "Becomes more focused on long-term costs",
+            "verbal_tics": "Says 'I like to own' and 'worked hard for'",
+            "emotional_tells": "Pauses when considering financial decisions"
+          },
+          "sample_dialogue": [
+            "Tony, I like to own my equipment outright - I've worked hard for thirty years to get there.",
+            "Leasing feels like I'm just making payments forever without building anything.",
+            "My CFO keeps pushing this lease idea, but at the end of the day, I want assets on my books."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Tony presents leasing benefits while Marcus explains preference for ownership",
+          "emotional_tone": "neutral",
+          "key_points": ["Equipment needs confirmed", "Ownership vs leasing debate introduced", "Cash flow concerns discussed"]
+        },
+        {
+          "phase": "development",
+          "description": "Marcus questions long-term costs while Tony explains tax and cash flow advantages",
+          "emotional_tone": "analytical",
+          "key_points": ["Total cost comparison discussed", "Tax benefits explained", "Cash flow impact analyzed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Tony offers lease-to-own option that satisfies both ownership desire and cash flow needs",
+          "emotional_tone": "resolved",
+          "key_points": ["Lease-to-own option presented", "Payment structure agreed", "Equipment delivery scheduled"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Tony Martinez",
+          "task": "Prepare lease-to-own contract with flexible terms",
+          "deadline": "Tomorrow morning",
+          "context": "Need to accommodate both ownership goals and cash flow requirements"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Equipment inspection and contract signing",
+          "date_time": "Thursday at 1 PM",
+          "attendees": ["Tony Martinez", "Marcus Rodriguez", "Company CFO"],
+          "purpose": "Final equipment inspection and contract execution"
+        }
+      ]
+    }
+  ]
+}

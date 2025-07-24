@@ -1,0 +1,559 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Family Vacation Planning - Destination Disagreement",
+      "duration_minutes": 7,
+      "context": {
+        "setting": "Home kitchen, evening call with extended family",
+        "background": "Annual family reunion planning with multiple generations and preferences",
+        "tension_point": "Older family members want familiar destination while younger generation wants adventure",
+        "expected_outcome": "Compromise destination that accommodates different age groups and interests"
+      },
+      "participants": [
+        {
+          "name": "Margaret Thompson",
+          "voice": "F",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Inclusive language, considers everyone's needs",
+            "under_pressure": "Becomes more diplomatic, seeks compromise",
+            "verbal_tics": "Says 'what if we' frequently, shuffles through papers",
+            "emotional_tells": "Voice gets softer when trying to mediate conflicts"
+          },
+          "sample_dialogue": [
+            "What if we looked for somewhere that has both relaxation and activities?",
+            "I want to make sure everyone feels included in this decision.",
+            "Let's think about what worked well for us in previous years."
+          ]
+        },
+        {
+          "name": "Robert Thompson",
+          "voice": "M",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "References past experiences, emphasizes practicality",
+            "under_pressure": "Becomes more stubborn, cites more precedents",
+            "verbal_tics": "Says 'like we always do' frequently, sighs audibly",
+            "emotional_tells": "Voice gets gruffer when feeling pressured to change"
+          },
+          "sample_dialogue": [
+            "Like we always do, the lake house works perfectly fine for everyone.",
+            "Why fix something that isn't broken? We've been going there for fifteen years.",
+            "These adventure trips sound expensive and complicated for the older folks."
+          ]
+        },
+        {
+          "name": "Jessica Miller",
+          "voice": "F",
+          "role": "family",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Excited about new experiences, uses vivid descriptions",
+            "under_pressure": "Speaks faster, provides more alternatives",
+            "verbal_tics": "Says 'imagine' frequently, talks with hands",
+            "emotional_tells": "Voice gets higher when excited about possibilities"
+          },
+          "sample_dialogue": [
+            "Imagine how amazing it would be to try white-water rafting together!",
+            "The kids are finally old enough for real adventures - let's take advantage!",
+            "We could do a national park tour - there's something for every generation."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Margaret initiates planning discussion, Robert suggests usual location, Jessica proposes alternatives",
+          "emotional_tone": "neutral",
+          "key_points": ["Annual reunion planning begins", "Traditional lake house suggested", "Adventure alternatives proposed"]
+        },
+        {
+          "phase": "development",
+          "description": "Generational preferences clash, practical concerns versus adventure desires debated",
+          "emotional_tone": "tense",
+          "key_points": ["Cost considerations discussed", "Accessibility concerns raised", "Family tradition versus change debate"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Compromise location with mix of relaxation and adventure activities",
+          "emotional_tone": "hopeful",
+          "key_points": ["Mountain resort with varied activities chosen", "Accommodation options for all ages", "Planning committee formed"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Margaret Thompson",
+          "task": "Research mountain resort options with multi-generational activities",
+          "deadline": "By next Sunday",
+          "context": "Find location that balances adventure opportunities with comfortable accommodations"
+        },
+        {
+          "assignee": "Jessica Miller",
+          "task": "Create activity survey for all family members",
+          "deadline": "This week",
+          "context": "Gather input on preferred activities and accessibility needs"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Family reunion final planning call",
+          "date_time": "Next Sunday at 7 PM",
+          "attendees": ["Margaret Thompson", "Robert Thompson", "Jessica Miller", "All Family Representatives"],
+          "purpose": "Finalize destination, dates, and coordinate booking responsibilities"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Wedding Planning - Budget Allocation Stress",
+      "duration_minutes": 12,
+      "context": {
+        "setting": "Bride's apartment, video call with wedding planner and concerned parent",
+        "background": "Wedding planning session with mounting costs and family pressure",
+        "tension_point": "Wedding planner suggests expensive upgrades while budget-conscious decisions create family tension",
+        "expected_outcome": "Realistic budget allocation that balances desires with financial constraints"
+      },
+      "participants": [
+        {
+          "name": "Emily Rodriguez",
+          "voice": "F",
+          "role": "friend",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Excited about possibilities, uses superlatives",
+            "under_pressure": "Speaks faster, gets more animated",
+            "verbal_tics": "Says 'it's going to be perfect' frequently, shows pictures",
+            "emotional_tells": "Voice gets strained when discussing budget cuts"
+          },
+          "sample_dialogue": [
+            "It's going to be perfect - imagine the photos with those upgraded floral arrangements!",
+            "This is your special day - you can't compromise on the things that really matter.",
+            "I know the budget is tight, but these little touches make all the difference."
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F",
+          "role": "family",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Budget-focused, practical considerations",
+            "under_pressure": "Cites more specific numbers and concerns",
+            "verbal_tics": "Says 'but realistically' frequently, checks calculator",
+            "emotional_tells": "Voice gets tighter when discussing overspending"
+          },
+          "sample_dialogue": [
+            "But realistically, we're already 30% over the original budget.",
+            "These upgrades are beautiful, but we need to think about the bigger picture.",
+            "What's the total impact if we say yes to all these additional items?"
+          ]
+        },
+        {
+          "name": "Michael Chen",
+          "voice": "M",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Practical concerns, references long-term implications",
+            "under_pressure": "Becomes more blunt about financial realities",
+            "verbal_tics": "Says 'the bottom line is' frequently, speaks firmly",
+            "emotional_tells": "Longer pauses when discussing financial stress"
+          },
+          "sample_dialogue": [
+            "The bottom line is we can't afford to go into debt for one day.",
+            "I want Sarah to have a beautiful wedding, but we need to be responsible.",
+            "Let's focus on what's truly important and cut the extras."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Emily presents upgrade options, Sarah shows interest, Michael expresses budget concerns",
+          "emotional_tone": "excited",
+          "key_points": ["Floral and photography upgrades presented", "Initial enthusiasm from bride", "Budget concerns raised by father"]
+        },
+        {
+          "phase": "development",
+          "description": "Detailed cost discussion, emotional tension between dream wedding and financial reality",
+          "emotional_tone": "tense",
+          "key_points": ["Line-item budget review", "Priority ranking attempted", "Emotional stress about compromising"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Compromise plan with selective upgrades and creative alternatives",
+          "emotional_tone": "relieved",
+          "key_points": ["Top 3 priorities selected for upgrades", "DIY alternatives identified", "Revised budget approved"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Emily Rodriguez",
+          "task": "Source alternative vendors for selected items",
+          "deadline": "By Friday",
+          "context": "Find comparable quality options within revised budget parameters"
+        },
+        {
+          "assignee": "Sarah Chen",
+          "task": "Coordinate DIY elements with wedding party",
+          "deadline": "Next week",
+          "context": "Organize friends and family to help with decorations and favors"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Final vendor confirmation meeting",
+          "date_time": "Next Saturday at 10 AM",
+          "attendees": ["Emily Rodriguez", "Sarah Chen", "Michael Chen"],
+          "purpose": "Confirm all vendor selections within approved budget and timeline"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Elderly Parent Care - Living Arrangement Decision",
+      "duration_minutes": 15,
+      "context": {
+        "setting": "Family living room, difficult family discussion",
+        "background": "Adult children discussing care options for aging parent after recent health scare",
+        "tension_point": "Parent wants independence while children worry about safety and appropriate care",
+        "expected_outcome": "Develop care plan that balances independence with safety and family peace of mind"
+      },
+      "participants": [
+        {
+          "name": "Dorothy Williams",
+          "voice": "F",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Firm about independence, references past capabilities",
+            "under_pressure": "Becomes more adamant, cites examples of competence",
+            "verbal_tics": "Says 'I'm perfectly capable' frequently, sits straighter",
+            "emotional_tells": "Voice quavers slightly when feeling overwhelmed"
+          },
+          "sample_dialogue": [
+            "I'm perfectly capable of taking care of myself - I've been doing it for 40 years.",
+            "This is still my home, and I'm not ready to give up my independence.",
+            "One little incident doesn't mean I need to be treated like a child."
+          ]
+        },
+        {
+          "name": "James Williams",
+          "voice": "M",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Gentle but persistent, uses inclusive language",
+            "under_pressure": "Becomes more detailed about safety concerns",
+            "verbal_tics": "Says 'we just want what's best' frequently, leans forward",
+            "emotional_tells": "Voice gets softer when discussing fears"
+          },
+          "sample_dialogue": [
+            "We just want what's best for you, Mom - we're worried about your safety.",
+            "What if we looked into some in-home help, just a few hours a day?",
+            "Nobody's talking about taking away your independence - we want to support it."
+          ]
+        },
+        {
+          "name": "Linda Foster",
+          "voice": "F",
+          "role": "family",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Research-focused, cites specific options and costs",
+            "under_pressure": "Presents more data and alternatives",
+            "verbal_tics": "Says 'I've researched' frequently, shows printed materials",
+            "emotional_tells": "Speaks faster when trying to convince others"
+          },
+          "sample_dialogue": [
+            "I've researched several assisted living communities that are really quite nice.",
+            "The statistics show that seniors living alone have three times more accidents.",
+            "We need to be proactive here - waiting for another incident isn't an option."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "James raises safety concerns, Dorothy asserts independence, Linda presents research",
+          "emotional_tone": "worried",
+          "key_points": ["Recent fall discussed", "Independence versus safety debate begins", "Various care options introduced"]
+        },
+        {
+          "phase": "development",
+          "description": "Emotional discussion of fears, capabilities, and family responsibilities",
+          "emotional_tone": "emotional",
+          "key_points": ["Safety statistics debated", "Personal autonomy concerns raised", "Family guilt and responsibility discussed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Graduated care plan with trial period and regular family check-ins",
+          "emotional_tone": "resolved",
+          "key_points": ["In-home aide 3 days per week agreed", "Medical alert system installed", "Monthly family reviews scheduled"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Linda Foster",
+          "task": "Research and interview in-home care agencies",
+          "deadline": "Within one week",
+          "context": "Find reputable agency that matches Mom's personality and needs"
+        },
+        {
+          "assignee": "James Williams",
+          "task": "Install medical alert system and teach Mom how to use it",
+          "deadline": "This weekend",
+          "context": "Ensure emergency response capability while maintaining independence"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Family care plan review",
+          "date_time": "First Sunday of each month at 2 PM",
+          "attendees": ["Dorothy Williams", "James Williams", "Linda Foster"],
+          "purpose": "Assess care plan effectiveness and adjust as needed based on Mom's comfort and safety"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Teenage Driving Rules - Responsibility Negotiation",
+      "duration_minutes": 8,
+      "context": {
+        "setting": "Family car, driving home from DMV after teen passed driving test",
+        "background": "New teenage driver wanting car privileges while parents establish safety rules and boundaries",
+        "tension_point": "Teen wants maximum freedom while parents want strict supervision and limitations",
+        "expected_outcome": "Agreed-upon driving rules with clear consequences and graduated freedom"
+      },
+      "participants": [
+        {
+          "name": "Mark Anderson",
+          "voice": "M",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Firm boundaries, references safety statistics",
+            "under_pressure": "Cites more rules and restrictions",
+            "verbal_tics": "Says 'non-negotiable' frequently, grips steering wheel",
+            "emotional_tells": "Voice gets sterner when discussing safety concerns"
+          },
+          "sample_dialogue": [
+            "Some things are non-negotiable - no friends in the car for the first six months.",
+            "These aren't arbitrary rules - they're based on accident statistics for new drivers.",
+            "You'll earn more privileges by proving you can handle the responsibility."
+          ]
+        },
+        {
+          "name": "Tyler Anderson",
+          "voice": "M",
+          "role": "family",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Eager, makes promises about responsibility",
+            "under_pressure": "Speaks faster, makes more commitments",
+            "verbal_tics": "Says 'I promise' frequently, bounces in seat",
+            "emotional_tells": "Voice gets higher when excited about driving freedom"
+          },
+          "sample_dialogue": [
+            "I promise I'll be super careful - I've been preparing for this for months!",
+            "Come on, Dad - all my friends get to drive their friends around.",
+            "I'll follow every rule perfectly if you just give me a chance to prove myself."
+          ]
+        },
+        {
+          "name": "Susan Anderson",
+          "voice": "F",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "Moderate",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Seeks middle ground, references Tyler's maturity",
+            "under_pressure": "Focuses on building trust gradually",
+            "verbal_tics": "Says 'maybe we could' frequently, looks between father and son",
+            "emotional_tells": "Voice gets softer when mediating between family members"
+          },
+          "sample_dialogue": [
+            "Maybe we could start with short trips and see how it goes?",
+            "Tyler has shown good judgment in other areas - let's give him some credit.",
+            "What if we had a check-in system so everyone feels comfortable?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Tyler celebrates passing test, Mark immediately discusses rules, Susan mediates",
+          "emotional_tone": "excited",
+          "key_points": ["Driving test success celebrated", "Initial rules presented", "Negotiation begins"]
+        },
+        {
+          "phase": "development",
+          "description": "Back and forth on specific rules, safety concerns versus freedom desires",
+          "emotional_tone": "tense",
+          "key_points": ["Friend passenger rules debated", "Curfew times discussed", "Trust and responsibility themes"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Graduated privilege system with clear milestones and review periods",
+          "emotional_tone": "collaborative",
+          "key_points": ["3-month probation period agreed", "Milestone-based privilege increases", "Weekly review meetings scheduled"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Tyler Anderson",
+          "task": "Complete defensive driving course online",
+          "deadline": "Within 2 weeks",
+          "context": "Demonstrate commitment to safe driving practices and earn additional privileges"
+        },
+        {
+          "assignee": "Mark Anderson",
+          "task": "Create written driving agreement with clear rules and consequences",
+          "deadline": "By tomorrow evening",
+          "context": "Document all agreements so expectations are clear for entire family"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Weekly driving privilege review",
+          "date_time": "Every Sunday at 6 PM for next 3 months",
+          "attendees": ["Mark Anderson", "Tyler Anderson", "Susan Anderson"],
+          "purpose": "Review driving performance and adjust privileges based on demonstrated responsibility"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Friend Group Conflict - Event Planning Disagreement",
+      "duration_minutes": 6,
+      "context": {
+        "setting": "Coffee shop, informal meeting to plan mutual friend's surprise birthday",
+        "background": "Close friend group planning surprise party with different ideas about budget and style",
+        "tension_point": "One friend wants elaborate expensive party while others prefer simple, intimate gathering",
+        "expected_outcome": "Unified party plan that everyone can support and afford"
+      },
+      "participants": [
+        {
+          "name": "Rachel Green",
+          "voice": "F",
+          "role": "friend",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Dramatic, uses lots of adjectives and exclamations",
+            "under_pressure": "Gets more animated, talks with hands",
+            "verbal_tics": "Says 'it'll be amazing' frequently, shows pictures on phone",
+            "emotional_tells": "Voice gets higher when excited about party ideas"
+          },
+          "sample_dialogue": [
+            "It'll be amazing - we could rent that gorgeous rooftop venue downtown!",
+            "This is her 30th birthday - it has to be absolutely spectacular!",
+            "We can split the costs - it's only like $150 per person if we all chip in."
+          ]
+        },
+        {
+          "name": "David Kim",
+          "voice": "M",
+          "role": "friend",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Practical concerns, references group dynamics",
+            "under_pressure": "Becomes more detailed about logistics",
+            "verbal_tics": "Says 'have we considered' frequently, checks notes",
+            "emotional_tells": "Speaks slower when trying to be diplomatic about budget"
+          },
+          "sample_dialogue": [
+            "Have we considered that not everyone in our group can afford $150?",
+            "She's pretty low-key - would she actually want something this elaborate?",
+            "What about liability and logistics - who's handling all the details?"
+          ]
+        },
+        {
+          "name": "Lisa Martinez",
+          "voice": "F",
+          "role": "friend",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Diplomatic, seeks compromise solutions",
+            "under_pressure": "Focuses on group harmony and inclusion",
+            "verbal_tics": "Says 'what if we' frequently, nods encouragingly",
+            "emotional_tells": "Voice gets softer when trying to mediate disagreement"
+          },
+          "sample_dialogue": [
+            "What if we found a middle ground that's special but not overwhelming?",
+            "I think we all want to celebrate her - let's find something everyone can support.",
+            "Maybe we could do something intimate but still really meaningful?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Rachel proposes elaborate party, David raises practical concerns, Lisa seeks compromise",
+          "emotional_tone": "excited",
+          "key_points": ["Rooftop venue proposal", "Budget concerns raised", "Group dynamics discussed"]
+        },
+        {
+          "phase": "development",
+          "description": "Discussion of budget limitations and friend's actual preferences",
+          "emotional_tone": "tense",
+          "key_points": ["Individual budget constraints revealed", "Birthday person's personality considered", "Alternative venues explored"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Compromise on elegant but affordable gathering at someone's home",
+          "emotional_tone": "collaborative",
+          "key_points": ["Host home venue selected", "Potluck-style elegant dinner planned", "Decoration and music responsibilities divided"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Rachel Green",
+          "task": "Coordinate decorations and ambiance planning",
+          "deadline": "By next weekend",
+          "context": "Create elegant atmosphere within agreed budget at home venue"
+        },
+        {
+          "assignee": "David Kim",
+          "task": "Organize food coordination and guest communication",
+          "deadline": "This week",
+          "context": "Ensure all invited friends know about potluck assignments and party details"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Final party preparation meeting",
+          "date_time": "Two days before party at 7 PM",
+          "attendees": ["Rachel Green", "David Kim", "Lisa Martinez"],
+          "purpose": "Coordinate final details and ensure everything is ready for surprise party"
+        }
+      ]
+    }
+  ]
+}

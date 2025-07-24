@@ -1,0 +1,541 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Medical Equipment Vendor Pressure Call", 
+      "duration_minutes": 9,
+      "context": {
+        "setting": "Hospital office during lunch break with background paging system noise",
+        "background": "Vendor pushing expensive new patient monitoring system with end-of-quarter pricing",
+        "tension_point": "Aggressive sales tactics vs. careful evaluation needed for patient safety equipment",
+        "expected_outcome": "Decline immediate purchase but maintain relationship for future consideration"
+      },
+      "participants": [
+        {
+          "name": "Brad Morrison",
+          "voice": "M",
+          "role": "exec", 
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Uses high-energy sales language, speaks rapidly with lots of superlatives",
+            "under_pressure": "Becomes more aggressive with urgency tactics and price drops",
+            "verbal_tics": "Says 'This is incredible' and 'You'll never see' constantly",
+            "emotional_tells": "Voice gets louder when sensing resistance, talks faster"
+          },
+          "sample_dialogue": [
+            "This is incredible - I can offer you 30% off if you sign today, Dr. Chen!",
+            "You'll never see pricing like this again - my manager will kill me but I like you.",
+            "Sarah, can I call you Sarah? - this system will revolutionize your patient care!"
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F",
+          "role": "senior",
+          "style": "Analytical", 
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Asks detailed technical questions, speaks cautiously about commitments",
+            "under_pressure": "Becomes more withdrawn and asks even more clarifying questions",
+            "verbal_tics": "Says 'I need to understand' and 'What about when' frequently",
+            "emotional_tells": "Takes notes frantically, pauses longer before responding"
+          },
+          "sample_dialogue": [
+            "I need to understand the failure rate data over a five-year period first.",
+            "What about when the system malfunctions during a critical procedure?",
+            "Brad, this sounds promising but I can't make equipment decisions without our committee."
+          ]
+        },
+        {
+          "name": "James Rodriguez",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "Distracted",  
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Short responses, frequently checks phone, cuts to key points",
+            "under_pressure": "Becomes more blunt and impatient with sales pitches",
+            "verbal_tics": "Says 'Bottom line' and 'What's it gonna cost' often",
+            "emotional_tells": "Checks watch repeatedly, sighs when Brad talks too long"
+          },
+          "sample_dialogue": [
+            "Bottom line - what's it gonna cost and what's the catch?",
+            "Brad, I've got three patients waiting - can you email the specs?",
+            "Look, we've been burned by promises before - show me the data."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Brad launches into enthusiastic product pitch while Sarah and James show skepticism",
+          "emotional_tone": "high energy vs. cautious",
+          "key_points": ["Product benefits highlighted", "Special pricing mentioned", "Initial resistance noted"]
+        },
+        {
+          "phase": "development", 
+          "description": "Sarah asks technical questions Brad can't fully answer, James grows impatient with sales tactics",
+          "emotional_tone": "increasingly tense",
+          "key_points": ["Technical limitations exposed", "Sales pressure increases", "Committee approval required"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Call ends with agreement to review materials, no commitment made despite pressure",
+          "emotional_tone": "professionally distant",
+          "key_points": ["Information packet requested", "Evaluation timeline given", "No immediate purchase"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Sarah Chen",
+          "task": "Review technical specifications and safety data with biomedical team",
+          "deadline": "Within two weeks",
+          "context": "Need thorough evaluation before presenting to equipment committee"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Equipment committee meeting to discuss monitoring systems",
+          "date_time": "Next month, first Thursday at 2 PM", 
+          "attendees": ["Sarah Chen", "James Rodriguez", "Equipment Committee"],
+          "purpose": "Evaluate monitoring system options including Brad's proposal"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Pharmaceutical Rep Lunch Ambush",
+      "duration_minutes": 11,
+      "context": {
+        "setting": "Hospital cafeteria during busy lunch rush with limited privacy",
+        "background": "Drug rep wants to discuss new expensive cardiac medication with concerning side effect profile",
+        "tension_point": "Rep downplaying serious side effects while pushing for formulary inclusion",
+        "expected_outcome": "Gather information without committing to prescribing changes that could harm patients"
+      },
+      "participants": [
+        {
+          "name": "Michelle Stevens",
+          "voice": "F",
+          "role": "senior",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses empathetic language mixed with sales messaging",
+            "under_pressure": "Becomes more personal and emotional in appeals",
+            "verbal_tics": "Says 'I understand your concerns' and 'This could help so many' often",
+            "emotional_tells": "Leans in closer when making emotional appeals"
+          },
+          "sample_dialogue": [
+            "I understand your concerns, Dr. Chen, but think about the patients who could benefit.",
+            "This could help so many people - the side effects are really quite manageable.",
+            "Sarah, I know you care deeply about your patients - that's why I wanted to share this with you."
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F", 
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Asks probing questions about study methodology and adverse events",
+            "under_pressure": "Becomes more methodical and cautious in questioning",
+            "verbal_tics": "Says 'What about the patients who' and 'The studies don't show' frequently",
+            "emotional_tells": "Fidgets with pen when uncomfortable with sales pressure"
+          },
+          "sample_dialogue": [
+            "What about the patients who developed liver complications in the Phase III trials?",
+            "The studies don't show long-term safety data - that really worries me, Michelle.",
+            "I appreciate the information, but I need to see independent research, not company studies."
+          ]
+        },
+        {
+          "name": "Dr. Robert Kim",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Cuts through sales language with direct medical questions",
+            "under_pressure": "Becomes more blunt about pharmaceutical industry skepticism",
+            "verbal_tics": "Says 'Let's be honest' and 'Cut the marketing speak' often",
+            "emotional_tells": "Crosses arms when skeptical, interrupts lengthy sales pitches"
+          },
+          "sample_dialogue": [
+            "Let's be honest, Michelle - what's the real incidence of cardiac events?",
+            "Cut the marketing speak - I need to know about drug interactions with common meds.",
+            "We've seen this before - impressive trials, then real-world problems emerge."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Michelle presents drug benefits while Sarah and Robert express immediate safety concerns", 
+          "emotional_tone": "politely skeptical",
+          "key_points": ["Drug benefits presented", "Side effect concerns raised", "Study data questioned"]
+        },
+        {
+          "phase": "development",
+          "description": "Heated discussion about side effect reporting and study limitations, Michelle gets defensive",
+          "emotional_tone": "increasingly confrontational",
+          "key_points": ["Side effect severity debated", "Study methodology questioned", "Industry practices criticized"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Doctors agree to review independent literature, no formulary commitment made",
+          "emotional_tone": "professionally cautious",
+          "key_points": ["Independent review requested", "No prescribing commitments", "Future discussion possible"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Sarah Chen",
+          "task": "Research independent studies on cardiac medication safety profile",
+          "deadline": "Before next pharmacy committee meeting",
+          "context": "Need objective data to evaluate formulary inclusion request"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Pharmacy and therapeutics committee meeting",
+          "date_time": "Third Tuesday of next month at 7 AM",
+          "attendees": ["Sarah Chen", "Dr. Robert Kim", "Pharmacy Committee"],
+          "purpose": "Review new medication requests including cardiac drug proposal"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Insurance Software Sales Nightmare",
+      "duration_minutes": 8,
+      "context": {
+        "setting": "Conference call from hospital break room with bad connection and background noise",
+        "background": "Software vendor claiming their system will solve prior authorization delays and reduce denials",
+        "tension_point": "Expensive system with questionable integration capabilities and no trial period offered",
+        "expected_outcome": "End call without commitment while gathering enough information for future evaluation"
+      },
+      "participants": [
+        {
+          "name": "Tyler Johnson",
+          "voice": "M",
+          "role": "junior",
+          "style": "Enthusiastic", 
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks rapidly with lots of technical buzzwords and promises",
+            "under_pressure": "Gets more scattered and uses more jargon to sound impressive",
+            "verbal_tics": "Says 'synergistic solutions' and 'optimize workflows' constantly",
+            "emotional_tells": "Voice gets higher when trying to overcome objections"
+          },
+          "sample_dialogue": [
+            "Our synergistic solutions will optimize your workflows and maximize ROI immediately!",
+            "This AI-powered platform leverages machine learning to streamline prior auths - it's revolutionary!",
+            "Dr. Chen, you're gonna love how this integrates with your existing EMR infrastructure!"
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Asks specific technical questions about integration and failure scenarios",
+            "under_pressure": "Becomes more methodical in questioning capabilities",
+            "verbal_tics": "Says 'What happens when' and 'How exactly does' frequently", 
+            "emotional_tells": "Long pauses while processing technical claims"
+          },
+          "sample_dialogue": [
+            "What happens when your system goes down and we have urgent prior auths needed?",
+            "How exactly does this integrate with Epic - do you have specific experience with our version?",
+            "Tyler, I need to understand the failure rate and downtime statistics before considering this."
+          ]
+        },
+        {
+          "name": "David Park",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Direct",
+          "engagement": "Distracted",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Asks blunt questions about cost and contracts, sounds skeptical",
+            "under_pressure": "Becomes more direct about past vendor disappointments",
+            "verbal_tics": "Says 'How much' and 'Last vendor promised' often",
+            "emotional_tells": "Interrupts long sales pitches, sounds tired"
+          },
+          "sample_dialogue": [
+            "How much is this gonna cost and what's the minimum contract length?",
+            "Last vendor promised the same thing - six months later we were fighting to get refunds.",
+            "Tyler, do you have any current hospital clients we can actually talk to?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Tyler launches into buzzword-heavy pitch while Sarah and David express skepticism about claims",
+          "emotional_tone": "over-enthusiastic vs. skeptical",
+          "key_points": ["AI promises made", "Integration benefits claimed", "Immediate skepticism expressed"]
+        },
+        {
+          "phase": "development",
+          "description": "Technical questions reveal Tyler's limited real-world experience, David challenges cost structure",
+          "emotional_tone": "increasingly dubious",
+          "key_points": ["Technical knowledge gaps exposed", "Cost concerns raised", "Reference requests made"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Call ends with polite deflection, no demo scheduled despite Tyler's pressure",
+          "emotional_tone": "professionally dismissive", 
+          "key_points": ["Demo declined", "More information requested", "No follow-up commitment"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "David Park",
+          "task": "Contact references if Tyler provides any real hospital clients",
+          "deadline": "If references provided within one week",
+          "context": "Need to verify actual implementation success before any consideration"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "IT committee review of vendor proposals",
+          "date_time": "Next quarter review in three months",
+          "attendees": ["Sarah Chen", "David Park", "IT Committee"],
+          "purpose": "Evaluate software vendors with proven track records and references"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Staffing Agency Desperation Call",
+      "duration_minutes": 6,
+      "context": {
+        "setting": "Hospital parking lot on mobile phone during shift change chaos",
+        "background": "Nursing shortage crisis, agency promising immediate staff but at premium rates",
+        "tension_point": "Urgent staffing needs vs. budget constraints and quality concerns about temp staff",
+        "expected_outcome": "Arrange emergency coverage while negotiating better rates and screening standards"
+      },
+      "participants": [
+        {
+          "name": "Regina Foster",
+          "voice": "F",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Talks rapidly about availability and rates, uses urgency tactics",
+            "under_pressure": "Becomes more aggressive about limited availability",
+            "verbal_tics": "Says 'I can get you' and 'But you need to decide now' constantly",
+            "emotional_tells": "Voice gets more intense when discussing rates"
+          },
+          "sample_dialogue": [
+            "I can get you three experienced ICU nurses for this weekend, but you need to decide now.",
+            "Dr. Chen, I'm not gonna lie - rates are crazy right now but we're your best option.",
+            "But you need to decide now - I've got two other hospitals calling for the same nurses."
+          ]
+        },
+        {
+          "name": "Sarah Chen", 
+          "voice": "F",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Asks detailed questions about nurse qualifications and experience",
+            "under_pressure": "Becomes more focused on safety and competency verification",
+            "verbal_tics": "Says 'What's their experience with' and 'How do we verify' often",
+            "emotional_tells": "Voice gets tighter when discussing patient safety concerns"
+          },
+          "sample_dialogue": [
+            "What's their experience with ventilator management and cardiac drips?",
+            "How do we verify their competencies - we can't just throw them into our ICU blind.",
+            "Regina, I understand the urgency, but patient safety has to come first here."
+          ]
+        },
+        {
+          "name": "Mark Thompson",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged", 
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Tries to negotiate terms while acknowledging desperation",
+            "under_pressure": "Becomes more focused on finding middle ground solutions",
+            "verbal_tics": "Says 'What if we' and 'Can we work out' frequently",
+            "emotional_tells": "Sighs when hearing high rates, tries to stay diplomatic"
+          },
+          "sample_dialogue": [
+            "What if we took two nurses this weekend and see how they perform first?",
+            "Can we work out a better rate if we commit to using your agency regularly?",
+            "Regina, we're desperate but these rates are going to kill our budget."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Regina presents immediate availability at high rates while Sarah questions qualifications",
+          "emotional_tone": "urgent pressure",
+          "key_points": ["Immediate availability offered", "High rates revealed", "Qualification concerns raised"]
+        },
+        {
+          "phase": "development",
+          "description": "Negotiation over rates and screening requirements, Mark tries to find compromise solution",
+          "emotional_tone": "tense negotiation",
+          "key_points": ["Rate negotiation attempted", "Screening standards discussed", "Compromise options explored"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Agreement on two nurses for trial weekend with reduced rate for future bookings",
+          "emotional_tone": "reluctant agreement",
+          "key_points": ["Trial arrangement made", "Future rate reduction agreed", "Screening requirements confirmed"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Sarah Chen",
+          "task": "Review nurse credentials and create orientation checklist for agency staff",
+          "deadline": "Before weekend shift starts Friday evening",
+          "context": "Need to ensure agency nurses can safely function in ICU environment"
+        },
+        {
+          "assignee": "Mark Thompson",
+          "task": "Calculate budget impact and explore other agency options for comparison",
+          "deadline": "Early next week", 
+          "context": "Need cost analysis and backup options for ongoing staffing issues"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Weekend agency nurse performance review",
+          "date_time": "Monday morning at 8 AM",
+          "attendees": ["Sarah Chen", "Mark Thompson", "Charge nurses"],
+          "purpose": "Evaluate agency nurse performance and decide on future arrangements"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Medical Supply Vendor Emergency Upsell",
+      "duration_minutes": 7,
+      "context": {
+        "setting": "Supply closet while doing inventory with vendor rep who showed up unexpectedly",
+        "background": "Current surgical supplies running low, vendor pushing expensive premium products",
+        "tension_point": "Vendor claiming standard supplies are backordered, only premium versions available",
+        "expected_outcome": "Secure necessary supplies without falling for artificial scarcity tactics"
+      },
+      "participants": [
+        {
+          "name": "Steve Martinez",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses friendly approach mixed with subtle pressure tactics",
+            "under_pressure": "Becomes more insistent about limited availability",
+            "verbal_tics": "Says 'I'm trying to help you out' and 'Between you and me' often",
+            "emotional_tells": "Gestures toward empty shelves when discussing shortages"
+          },
+          "sample_dialogue": [
+            "I'm trying to help you out here, Sarah - the standard sutures are backordered indefinitely.",
+            "Between you and me, the premium line is actually better quality anyway.",
+            "Look, I can hold these premium products for you, but other hospitals are calling constantly."
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Questions the timing and availability claims, asks for documentation",
+            "under_pressure": "Becomes more methodical in verifying claims",
+            "verbal_tics": "Says 'When exactly did' and 'Can you show me' frequently",
+            "emotional_tells": "Counts inventory items while talking, double-checks numbers"
+          },
+          "sample_dialogue": [
+            "When exactly did the backorder start - we just got a shipment last week?",
+            "Can you show me official documentation about this shortage from your company?",
+            "Steve, this feels like artificial scarcity - we've had good relationships with other suppliers."
+          ]
+        },
+        {
+          "name": "Janet Miller",
+          "voice": "F",
+          "role": "midlevel",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Cuts to practical concerns about patient care and budget impact",
+            "under_pressure": "Becomes more blunt about business practices",
+            "verbal_tics": "Says 'We need' and 'This is about' often",
+            "emotional_tells": "Checks phone for other supplier contacts during conversation"
+          },
+          "sample_dialogue": [
+            "We need basic supplies for surgeries tomorrow - what's your real availability?",
+            "This is about patient care, Steve - we can't afford games with essential supplies.",
+            "I'm checking with three other suppliers right now - want to reconsider your story?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Steve presents shortage story while Sarah questions timing and Janet expresses suspicion",
+          "emotional_tone": "skeptical",
+          "key_points": ["Shortage claims made", "Premium products pushed", "Skepticism expressed immediately"]
+        },
+        {
+          "phase": "development",
+          "description": "Sarah demands documentation while Janet contacts other suppliers, Steve gets defensive",
+          "emotional_tone": "increasingly confrontational",
+          "key_points": ["Documentation requested", "Alternative suppliers contacted", "Claims challenged directly"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Standard supplies suddenly become available when competitive pressure applied",
+          "emotional_tone": "vindicated suspicion",
+          "key_points": ["Standard supplies found", "Normal pricing restored", "Future relationship strained"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Janet Miller",
+          "task": "Establish relationships with backup suppliers for critical items",
+          "deadline": "Within two weeks",
+          "context": "Need to prevent future supply manipulation by diversifying vendor base"
+        },
+        {
+          "assignee": "Sarah Chen",
+          "task": "Create inventory monitoring system to predict shortages earlier",
+          "deadline": "End of month",
+          "context": "Need better visibility into supply levels to avoid crisis situations"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Supply chain committee meeting to review vendor relationships",
+          "date_time": "Next month, second Wednesday at 1 PM",
+          "attendees": ["Sarah Chen", "Janet Miller", "Supply Chain Committee"],
+          "purpose": "Evaluate vendor performance and establish policies against artificial scarcity"
+        }
+      ]
+    }
+  ]
+}

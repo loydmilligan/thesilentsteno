@@ -1,0 +1,527 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Enterprise Software Demo - Technical Objections",
+      "duration_minutes": 14,
+      "context": {
+        "setting": "Screen-share video call from sales rep's office to client's conference room",
+        "background": "Software demo for enterprise document management system to potential client",
+        "tension_point": "Client IT director skeptical about integration complexity and security",
+        "expected_outcome": "Address technical concerns and secure follow-up technical deep-dive meeting"
+      },
+      "participants": [
+        {
+          "name": "Amanda Richardson",
+          "voice": "F",
+          "role": "exec",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Uses benefit-focused language, asks probing questions",
+            "under_pressure": "Talks faster, uses more superlatives",
+            "verbal_tics": "Says 'absolutely' frequently, clicks pen",
+            "emotional_tells": "Voice gets higher when sensing resistance"
+          },
+          "sample_dialogue": [
+            "Absolutely, I can see how security would be your top concern here.",
+            "Let me show you exactly how this integrates with your existing systems.",
+            "What I'm hearing is that seamless integration is non-negotiable for your team."
+          ]
+        },
+        {
+          "name": "Thomas Baker",
+          "voice": "M",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Technical questions, references compliance requirements",
+            "under_pressure": "Becomes more detailed in questioning",
+            "verbal_tics": "Says 'from a technical standpoint' frequently, adjusts glasses",
+            "emotional_tells": "Long pauses before expressing concerns"
+          },
+          "sample_dialogue": [
+            "From a technical standpoint, how does this handle our GDPR compliance requirements?",
+            "I need to understand the authentication protocols in more detail.",
+            "What happens to our data if we decide to migrate away from your platform?"
+          ]
+        },
+        {
+          "name": "Sandra Phillips",
+          "voice": "F",
+          "role": "midlevel",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Asks practical implementation questions",
+            "under_pressure": "Focuses on user adoption concerns",
+            "verbal_tics": "Says 'in terms of workflow' frequently, takes notes",
+            "emotional_tells": "Speaks softer when worried about user resistance"
+          },
+          "sample_dialogue": [
+            "In terms of workflow, how will this affect our current document approval process?",
+            "My team is already overwhelmed - what kind of training time are we looking at?",
+            "Can you walk us through what the transition period would actually look like?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Amanda demonstrates key features, Sandra shows interest, Thomas raises initial concerns",
+          "emotional_tone": "neutral",
+          "key_points": ["Product capabilities showcased", "Integration possibilities discussed", "Initial security questions raised"]
+        },
+        {
+          "phase": "development",
+          "description": "Technical deep-dive on security and compliance, workflow concerns addressed",
+          "emotional_tone": "analytical",
+          "key_points": ["GDPR compliance detailed", "Authentication protocols explained", "User training requirements discussed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Technical proof-of-concept agreed upon with implementation timeline discussion",
+          "emotional_tone": "hopeful",
+          "key_points": ["Pilot program proposed", "Technical evaluation scheduled", "Decision timeline established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Amanda Richardson",
+          "task": "Prepare detailed security documentation package",
+          "deadline": "Tomorrow by 5 PM",
+          "context": "Address all technical concerns raised during demo"
+        },
+        {
+          "assignee": "Thomas Baker",
+          "task": "Review technical documentation and prepare evaluation criteria",
+          "deadline": "End of week",
+          "context": "Create framework for assessing solution against current systems"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Technical deep-dive session",
+          "date_time": "Next Tuesday at 2 PM",
+          "attendees": ["Amanda Richardson", "Thomas Baker", "Technical Team"],
+          "purpose": "Detailed technical evaluation and proof-of-concept demonstration"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Consulting Services Pitch - Budget Resistance",
+      "duration_minutes": 11,
+      "context": {
+        "setting": "Client's office boardroom, formal presentation setup",
+        "background": "Management consulting firm pitching organizational restructuring project",
+        "tension_point": "Consultant proposes 6-month engagement while client wants 3-month timeline with lower budget",
+        "expected_outcome": "Negotiate project scope and timeline that meets client constraints"
+      },
+      "participants": [
+        {
+          "name": "Richard Stevens",
+          "voice": "M",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Confident assertions, references past successes",
+            "under_pressure": "Becomes more formal, cites more case studies",
+            "verbal_tics": "Says 'in our experience' frequently, straightens tie",
+            "emotional_tells": "Speaks slower when discussing difficult topics"
+          },
+          "sample_dialogue": [
+            "In our experience, meaningful organizational change requires at least six months.",
+            "We've successfully completed similar transformations for companies like yours.",
+            "I understand budget constraints, but we need to discuss what's realistic here."
+          ]
+        },
+        {
+          "name": "Maria Gonzalez",
+          "voice": "F",
+          "role": "exec",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Numbers-focused, questions assumptions",
+            "under_pressure": "Asks more detailed questions about ROI",
+            "verbal_tics": "Says 'show me the numbers' frequently, reviews documents",
+            "emotional_tells": "Voice gets sharper when discussing budget overruns"
+          },
+          "sample_dialogue": [
+            "Show me the numbers - what's the ROI projection for year one versus year two?",
+            "Your timeline doesn't align with our fiscal year planning cycle.",
+            "I need to understand exactly what deliverables justify this investment level."
+          ]
+        },
+        {
+          "name": "Josh Williams",
+          "voice": "M",
+          "role": "senior",
+          "style": "Collaborative",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Diplomatic, seeks compromise solutions",
+            "under_pressure": "Focuses on finding middle ground",
+            "verbal_tics": "Says 'perhaps we could' frequently, nods while thinking",
+            "emotional_tells": "Longer pauses when tensions rise"
+          },
+          "sample_dialogue": [
+            "Perhaps we could explore a phased approach that fits our constraints?",
+            "What if we focused on the highest-impact areas first?",
+            "I'm wondering if there's a way to achieve 80% of the value in less time."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Richard presents comprehensive proposal, Maria immediately questions timeline and budget",
+          "emotional_tone": "tense",
+          "key_points": ["6-month comprehensive restructuring proposed", "Budget significantly over client expectations", "Timeline conflicts with fiscal planning"]
+        },
+        {
+          "phase": "development",
+          "description": "Detailed discussion of scope reduction options and ROI justification",
+          "emotional_tone": "analytical",
+          "key_points": ["Phased approach explored", "High-impact initiatives prioritized", "ROI calculations challenged"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Modified 4-month engagement agreed upon with reduced scope and clear deliverables",
+          "emotional_tone": "resolved",
+          "key_points": ["Compromise timeline established", "Core deliverables defined", "Budget adjusted accordingly"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Richard Stevens",
+          "task": "Revise proposal with phased approach and updated pricing",
+          "deadline": "Friday by noon",
+          "context": "Reflect agreed-upon scope reduction and timeline modifications"
+        },
+        {
+          "assignee": "Maria Gonzalez",
+          "task": "Internal budget approval for modified proposal",
+          "deadline": "Next Monday",
+          "context": "Secure executive committee approval for revised engagement terms"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Contract finalization meeting",
+          "date_time": "Next Wednesday at 10 AM", 
+          "attendees": ["Richard Stevens", "Maria Gonzalez", "Josh Williams", "Legal Teams"],
+          "purpose": "Review final contract terms and execute service agreement"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Real Estate Investment Opportunity - Risk Assessment Debate",
+      "duration_minutes": 16,
+      "context": {
+        "setting": "Coffee shop meeting, informal but serious discussion",
+        "background": "Real estate agent presenting commercial property investment to potential buyer",
+        "tension_point": "Agent emphasizes upside potential while buyer focuses on market risks and cash flow concerns",
+        "expected_outcome": "Agree on due diligence process and evaluation timeline"
+      },
+      "participants": [
+        {
+          "name": "Patricia Holmes",
+          "voice": "F",
+          "role": "senior",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Paints vivid pictures of potential, uses emotional language",
+            "under_pressure": "References more comparable properties",
+            "verbal_tics": "Says 'picture this' frequently, gestures expansively",
+            "emotional_tells": "Voice gets more animated when describing opportunities"
+          },
+          "sample_dialogue": [
+            "Picture this - in five years, this whole district will be completely transformed.",
+            "Properties like this are exactly what smart investors were buying ten years ago.",
+            "You're not just buying real estate, you're buying into the future of this community."
+          ]
+        },
+        {
+          "name": "Gregory Hall",
+          "voice": "M",
+          "role": "exec",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Questions assumptions, requests documentation",
+            "under_pressure": "Becomes more methodical in analysis",
+            "verbal_tics": "Says 'what about' frequently, reviews papers carefully",
+            "emotional_tells": "Speaks slower when skeptical of projections"
+          },
+          "sample_dialogue": [
+            "What about the municipal debt issues I've been reading about?",
+            "These occupancy projections seem optimistic given current market conditions.",
+            "I need to see actual comparable sales, not just listing prices."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Patricia presents property with enthusiasm, Gregory asks for financial details",
+          "emotional_tone": "excited",
+          "key_points": ["Prime location emphasized", "Development potential highlighted", "Financial documentation requested"]
+        },
+        {
+          "phase": "development",
+          "description": "Detailed discussion of market risks, cash flow projections, and comparable properties",
+          "emotional_tone": "analytical",
+          "key_points": ["Market conditions debated", "Cash flow scenarios analyzed", "Risk factors thoroughly examined"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Due diligence process outlined with professional inspections and market analysis",
+          "emotional_tone": "focused",
+          "key_points": ["Inspection timeline agreed", "Financial analysis parameters set", "Decision deadline established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Patricia Holmes",
+          "task": "Compile comprehensive comparable sales analysis",
+          "deadline": "Next Thursday",
+          "context": "Provide detailed market analysis to support pricing and projections"
+        },
+        {
+          "assignee": "Gregory Hall",
+          "task": "Arrange professional property inspection and financial audit",
+          "deadline": "Within 10 days",
+          "context": "Complete thorough due diligence before making investment decision"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Property inspection walkthrough",
+          "date_time": "Next Tuesday at 9 AM",
+          "attendees": ["Patricia Holmes", "Gregory Hall", "Building Inspector"],
+          "purpose": "Comprehensive property evaluation and condition assessment"
+        },
+        {
+          "event": "Investment decision meeting",
+          "date_time": "Two weeks from today at 2 PM",
+          "attendees": ["Patricia Holmes", "Gregory Hall", "Financial Advisor"],
+          "purpose": "Review all due diligence findings and make final investment decision"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Insurance Policy Review - Coverage Gap Discovery",
+      "duration_minutes": 9,
+      "context": {
+        "setting": "Insurance agent's office, annual policy review meeting",
+        "background": "Business owner reviewing commercial insurance coverage during annual renewal",
+        "tension_point": "Agent discovers significant coverage gaps that require additional premium investment",
+        "expected_outcome": "Evaluate risk tolerance and adjust coverage accordingly"
+      },
+      "participants": [
+        {
+          "name": "Brian Foster",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses insurance terminology, explains risks clearly",
+            "under_pressure": "Provides more detailed risk scenarios",
+            "verbal_tics": "Says 'what this means is' frequently, organizes papers",
+            "emotional_tells": "Speaks more seriously when discussing significant risks"
+          },
+          "sample_dialogue": [
+            "What this means is you're completely exposed if something happens to your data systems.",
+            "Let me walk you through what a cyber incident could cost your business.",
+            "I need to be direct with you - your current coverage has some serious gaps."
+          ]
+        },
+        {
+          "name": "Helen Carter",
+          "voice": "F",
+          "role": "exec",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Cost-focused questions, compares to industry standards",
+            "under_pressure": "Asks more questions about probability and frequency",
+            "verbal_tics": "Says 'realistically' frequently, checks phone for messages",
+            "emotional_tells": "Voice gets sharper when discussing premium increases"
+          },
+          "sample_dialogue": [
+            "Realistically, what are the odds of a cyber attack affecting a business our size?",
+            "These premium increases are significant - what's the industry benchmark?",
+            "I need to understand if we're being conservative or if this is actually necessary."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Brian reviews current policy, Helen expects routine renewal",
+          "emotional_tone": "neutral",
+          "key_points": ["Current coverage reviewed", "Business growth since last year", "Initial renewal quote presented"]
+        },
+        {
+          "phase": "development",
+          "description": "Coverage gaps identified, risk scenarios discussed, Helen questions necessity",
+          "emotional_tone": "tense",
+          "key_points": ["Cyber liability gap identified", "Equipment coverage insufficient", "Risk scenarios become heated discussion"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Compromise coverage plan with prioritized risk protection",
+          "emotional_tone": "resolved",
+          "key_points": ["Essential coverage gaps addressed", "Premium increase minimized", "Review schedule established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Brian Foster",
+          "task": "Prepare detailed risk assessment report with industry comparisons",
+          "deadline": "End of week",
+          "context": "Document business-specific risks and recommend appropriate coverage levels"
+        },
+        {
+          "assignee": "Helen Carter",
+          "task": "Review business continuity plans and asset valuations",
+          "deadline": "Next week",
+          "context": "Ensure coverage levels align with actual business needs and values"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Final policy review and binding meeting",
+          "date_time": "Next Friday at 3 PM",
+          "attendees": ["Brian Foster", "Helen Carter"],
+          "purpose": "Finalize coverage decisions and execute insurance policy for coming year"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Technology Services Contract Negotiation - Service Level Disagreement",
+      "duration_minutes": 13,
+      "context": {
+        "setting": "Video conference call, contract negotiation session",
+        "background": "IT services provider negotiating managed services contract with mid-size company",
+        "tension_point": "Client demands 99.9% uptime guarantee while provider offers 99.5% with current pricing",
+        "expected_outcome": "Negotiate service levels and pricing that work for both parties"
+      },
+      "participants": [
+        {
+          "name": "David Chen",
+          "voice": "M",
+          "role": "senior",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Technical explanations balanced with business impact",
+            "under_pressure": "Provides more technical details to justify positions",
+            "verbal_tics": "Says 'technically speaking' frequently, references documentation",
+            "emotional_tells": "Pauses longer when discussing service commitments"
+          },
+          "sample_dialogue": [
+            "Technically speaking, 99.9% uptime requires redundant systems at every level.",
+            "Let me explain what goes into achieving that additional .4% availability.",
+            "We can absolutely do 99.9%, but it requires a different infrastructure investment."
+          ]
+        },
+        {
+          "name": "Angela Wright",
+          "voice": "F",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Business impact focused, references competitive requirements",
+            "under_pressure": "Becomes more insistent about business needs",
+            "verbal_tics": "Says 'our customers expect' frequently, taps pen impatiently",
+            "emotional_tells": "Voice gets more forceful when discussing non-negotiables"
+          },
+          "sample_dialogue": [
+            "Our customers expect our systems to be available 24/7 - that's non-negotiable.",
+            "Every minute of downtime costs us revenue and customer confidence.",
+            "Your competitors are offering 99.9% at comparable pricing levels."
+          ]
+        },
+        {
+          "name": "Marcus Johnson",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Methodical cost-benefit analysis, references contract terms",
+            "under_pressure": "Focuses more on risk mitigation strategies",
+            "verbal_tics": "Says 'from a cost perspective' frequently, reviews contract pages",
+            "emotional_tells": "Speaks slower when discussing budget implications"
+          },
+          "sample_dialogue": [
+            "From a cost perspective, we need to understand the long-term implications.",
+            "What penalty structures are we looking at if service levels aren't met?",
+            "Can we structure this with graduated service levels based on criticality?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "David presents standard service offerings, Angela immediately pushes for higher SLA",
+          "emotional_tone": "professional",
+          "key_points": ["Standard 99.5% SLA offered", "Client demands 99.9% minimum", "Pricing implications discussed"]
+        },
+        {
+          "phase": "development",
+          "description": "Technical requirements and cost implications debated, competitive comparisons made",
+          "emotional_tone": "tense",
+          "key_points": ["Infrastructure requirements detailed", "Competitive offerings referenced", "Penalty structures negotiated"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Tiered service model agreed with premium SLA option",
+          "emotional_tone": "collaborative",
+          "key_points": ["99.7% standard with 99.9% premium option", "Graduated penalty structure", "Implementation timeline set"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "David Chen",
+          "task": "Develop detailed technical specification for tiered service model",
+          "deadline": "Next Tuesday",
+          "context": "Document infrastructure requirements and service delivery commitments for each tier"
+        },
+        {
+          "assignee": "Angela Wright",
+          "task": "Internal stakeholder approval for tiered pricing structure",
+          "deadline": "Thursday this week",
+          "context": "Secure budget approval and business case justification for premium service level"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Contract finalization and signature meeting",
+          "date_time": "Next Friday at 11 AM",
+          "attendees": ["David Chen", "Angela Wright", "Marcus Johnson", "Legal Representatives"],
+          "purpose": "Review final contract terms and execute managed services agreement"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,490 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Family Vacation Planning Discussion",
+      "duration_minutes": 11,
+      "context": {
+        "setting": "Evening phone call between family members planning summer vacation",
+        "background": "Extended family trying to coordinate schedules and preferences for annual reunion trip",
+        "tension_point": "Budget constraints conflict with desire for luxury accommodations, and some family members have scheduling conflicts",
+        "expected_outcome": "Agree on destination, dates, and budget that works for most family members"
+      },
+      "participants": [
+        {
+          "name": "Jake Martinez",
+          "voice": "M",
+          "role": "friend",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Optimistic family mediator, uses building metaphors when problem-solving",
+            "under_pressure": "Focuses on solutions and compromise",
+            "verbal_tics": "Says 'we can work with this' and 'build some great memories'",
+            "emotional_tells": "Voice gets more animated when excited about ideas"
+          },
+          "sample_dialogue": [
+            "Come on everyone, we can work with this - let's build some great memories together!",
+            "Maria, I hear what you're saying, but maybe we can frame this differently.",
+            "Look, we've got a solid foundation here - three families who want to spend time together."
+          ]
+        },
+        {
+          "name": "Maria Rodriguez",
+          "voice": "F",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Practical and budget-focused, speaks rapidly when stressed",
+            "under_pressure": "Becomes more focused on logistics and costs",
+            "verbal_tics": "Says 'realistically speaking' and 'we need to be practical'",
+            "emotional_tells": "Voice pitch rises when discussing money concerns"
+          },
+          "sample_dialogue": [
+            "Jake, realistically speaking, we're looking at $3,000 per family just for the house rental.",
+            "We need to be practical here - not everyone can afford a luxury beach house for a week.",
+            "I love the enthusiasm, but someone has to think about the actual numbers and logistics."
+          ]
+        },
+        {
+          "name": "Carlos Martinez",
+          "voice": "M",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Thoughtful and diplomatic, tries to consider everyone's perspective",
+            "under_pressure": "Becomes more methodical and inclusive",
+            "verbal_tics": "Says 'what if we' and 'everyone's perspective'",
+            "emotional_tells": "Long pauses when trying to find compromise"
+          },
+          "sample_dialogue": [
+            "What if we considered a different approach that takes everyone's perspective into account?",
+            "I can see both sides here - Jake's excitement and Maria's practical concerns are both valid.",
+            "Maybe there's a middle ground where we can still have a great time without breaking the bank."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Jake presents vacation ideas while Maria immediately raises budget concerns",
+          "emotional_tone": "neutral",
+          "key_points": ["Vacation destination options discussed", "Budget parameters introduced", "Family availability reviewed"]
+        },
+        {
+          "phase": "development",
+          "description": "Tension builds as Maria details financial constraints while Jake pushes for memorable experience",
+          "emotional_tone": "tense",
+          "key_points": ["Luxury vs budget accommodation debate", "Schedule conflicts revealed", "Different family priorities clash"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Carlos proposes compromise solution that balances budget and experience",
+          "emotional_tone": "hopeful",
+          "key_points": ["Compromise location agreed", "Shared cost structure decided", "Flexible dates accommodated"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Maria Rodriguez",
+          "task": "Research accommodation options within agreed budget range",
+          "deadline": "This weekend",
+          "context": "Find options that balance affordability with family-friendly amenities"
+        },
+        {
+          "assignee": "Jake Martinez",
+          "task": "Coordinate with other family members about final dates",
+          "deadline": "Next week",
+          "context": "Confirm availability with families not on this call"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Final vacation planning call",
+          "date_time": "Next Sunday at 7 PM",
+          "attendees": ["All family members", "Jake Martinez", "Maria Rodriguez", "Carlos Martinez"],
+          "purpose": "Make final decisions on accommodation and confirm booking"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Friend's Wedding Planning Support Call",
+      "duration_minutes": 13,
+      "context": {
+        "setting": "Late evening phone call between close friends discussing wedding arrangements",
+        "background": "Bride-to-be feeling overwhelmed with wedding planning and seeking support from friends",
+        "tension_point": "Bride wants elaborate dream wedding while groom prefers simple ceremony, causing relationship stress",
+        "expected_outcome": "Provide emotional support and help find compromise between different wedding visions"
+      },
+      "participants": [
+        {
+          "name": "Mike Martinez",
+          "voice": "M",
+          "role": "friend",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Supportive friend using construction metaphors to help frame problems",
+            "under_pressure": "Becomes more encouraging and solution-focused",
+            "verbal_tics": "Says 'you've got this' and 'build something beautiful'",
+            "emotional_tells": "Voice becomes gentler when offering support"
+          },
+          "sample_dialogue": [
+            "Sarah, you've got this - you're just trying to build something beautiful for you and Tom.",
+            "I hear the stress in your voice, but remember, this is about laying a foundation for your marriage.",
+            "Maybe we can frame Tom's perspective differently - he might just want to focus on what matters most."
+          ]
+        },
+        {
+          "name": "Sarah Williams",
+          "voice": "F",
+          "role": "friend",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Rapid emotional delivery when stressed, detailed when describing dreams",
+            "under_pressure": "Talks faster and jumps between topics",
+            "verbal_tics": "Says 'I've always dreamed' and 'it's supposed to be perfect'",
+            "emotional_tells": "Voice wavers when discussing disappointment"
+          },
+          "sample_dialogue": [
+            "Mike, I've always dreamed of this perfect wedding, and Tom just wants to elope to Vegas!",
+            "It's supposed to be perfect - the flowers, the dress, the venue - and he acts like none of it matters.",
+            "I'm starting to think we want completely different things, and I don't know how to fix this."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Sarah expresses frustration about wedding planning conflicts while Mike listens supportively",
+          "emotional_tone": "worried",
+          "key_points": ["Wedding vision differences revealed", "Relationship stress discussed", "Support needs expressed"]
+        },
+        {
+          "phase": "development",
+          "description": "Sarah details specific conflicts while Mike helps her see Tom's perspective",
+          "emotional_tone": "escalating",
+          "key_points": ["Specific wedding disagreements detailed", "Communication breakdown explored", "Compromise possibilities discussed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Mike helps Sarah develop plan for honest conversation with Tom about priorities",
+          "emotional_tone": "hopeful",
+          "key_points": ["Communication strategy developed", "Compromise framework agreed", "Support system established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Sarah Williams",
+          "task": "Have honest conversation with Tom about wedding priorities and budget",
+          "deadline": "This weekend",
+          "context": "Focus on shared values rather than specific details"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Wedding planning check-in call",
+          "date_time": "Next Tuesday at 8 PM",
+          "attendees": ["Mike Martinez", "Sarah Williams"],
+          "purpose": "Follow up on conversation with Tom and provide continued support"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Elderly Parent Care Discussion",
+      "duration_minutes": 9,
+      "context": {
+        "setting": "Weekend phone call between adult siblings discussing parent's declining independence",
+        "background": "Elderly father had recent fall and may need assisted living, but refuses to consider moving",
+        "tension_point": "One sibling wants immediate assisted living placement while other believes father can remain at home with support",
+        "expected_outcome": "Develop care plan that respects father's wishes while ensuring his safety"
+      },
+      "participants": [
+        {
+          "name": "Tony Martinez",
+          "voice": "M",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Empathetic approach with focus on building solutions together",
+            "under_pressure": "Becomes more detailed about practical considerations",
+            "verbal_tics": "Says 'work together on this' and 'build the right support'",
+            "emotional_tells": "Voice softens when discussing father's dignity"
+          },
+          "sample_dialogue": [
+            "Linda, I know you're worried, but we need to work together on this and respect Dad's wishes.",
+            "Maybe we can build the right support system so he can stay in his own home safely.",
+            "This is like reinforcing a house - we add support where it's needed without tearing down everything."
+          ]
+        },
+        {
+          "name": "Linda Chen",
+          "voice": "F",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Urgent and safety-focused, speaks rapidly when anxious",
+            "under_pressure": "Becomes more insistent about immediate action",
+            "verbal_tics": "Says 'what if' and 'we can't wait'",
+            "emotional_tells": "Voice becomes strained when discussing safety fears"
+          },
+          "sample_dialogue": [
+            "Tony, what if he falls again and nobody finds him for hours? We can't wait for another accident.",
+            "I understand respecting his wishes, but we're talking about his safety here.",
+            "The construction metaphors are nice, but Dad needs professional care, not DIY solutions."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Linda expresses urgent safety concerns while Tony emphasizes father's independence",
+          "emotional_tone": "worried",
+          "key_points": ["Recent fall incident discussed", "Father's resistance to change addressed", "Different approaches to care outlined"]
+        },
+        {
+          "phase": "development",
+          "description": "Siblings disagree on urgency and approach while both caring about father's wellbeing",
+          "emotional_tone": "tense",
+          "key_points": ["Safety vs independence debate", "Professional care vs family support options", "Father's wishes vs children's concerns"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Agreement reached on gradual support increase with regular assessment",
+          "emotional_tone": "resolved",
+          "key_points": ["Gradual care plan agreed", "Regular family meetings scheduled", "Professional assessment arranged"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Linda Chen",
+          "task": "Research local home health aide services and costs",
+          "deadline": "By Wednesday",
+          "context": "Explore professional support options that allow father to remain at home"
+        },
+        {
+          "assignee": "Tony Martinez",
+          "task": "Talk with Dad about accepting some help at home",
+          "deadline": "This weekend",
+          "context": "Gentle conversation about small changes to increase safety"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Family care planning meeting",
+          "date_time": "Next Saturday at 2 PM",
+          "attendees": ["Tony Martinez", "Linda Chen", "Father"],
+          "purpose": "Discuss care options together as a family"
+        }
+      ]
+    },
+    {
+      "scenario_title": "College Friend Career Change Discussion",
+      "duration_minutes": 16,
+      "context": {
+        "setting": "Evening phone call between college friends catching up after several months",
+        "background": "Friend considering major career change from corporate job to starting own business",
+        "tension_point": "Friend torn between financial security of current job and passion for entrepreneurship, family pressures adding complexity",
+        "expected_outcome": "Provide supportive counsel and help friend think through decision systematically"
+      },
+      "participants": [
+        {
+          "name": "Alex Martinez",
+          "voice": "M",
+          "role": "friend",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Encouraging and optimistic, uses building metaphors to discuss life plans",
+            "under_pressure": "Focuses on possibilities and practical steps",
+            "verbal_tics": "Says 'you can build this' and 'solid foundation'",
+            "emotional_tells": "Voice becomes more energetic when discussing opportunities"
+          },
+          "sample_dialogue": [
+            "Dave, you've always had great ideas - maybe it's time to build something that's really yours.",
+            "I know it's scary, but you've got a solid foundation of experience to work from.",
+            "What if we looked at this like renovating a house - you don't have to tear everything down at once."
+          ]
+        },
+        {
+          "name": "David Kim",
+          "voice": "M",
+          "role": "friend",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Cautious and detailed, considers multiple scenarios before deciding",
+            "under_pressure": "Becomes more analytical and risk-focused",
+            "verbal_tics": "Says 'what if' and 'I need to consider'",
+            "emotional_tells": "Long pauses when weighing complex decisions"
+          },
+          "sample_dialogue": [
+            "Alex, I appreciate the encouragement, but what if the business fails and I can't get back into corporate?",
+            "I need to consider my family's financial security - this isn't just about my dreams anymore.",
+            "The construction metaphor is interesting, but I'm worried about burning bridges with my current employer."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "David shares career frustration while Alex listens and offers initial encouragement",
+          "emotional_tone": "neutral",
+          "key_points": ["Current job dissatisfaction discussed", "Entrepreneurial dreams revealed", "Family considerations introduced"]
+        },
+        {
+          "phase": "development",
+          "description": "David details financial fears while Alex encourages calculated risk-taking",
+          "emotional_tone": "tense",
+          "key_points": ["Financial security concerns detailed", "Business idea viability questioned", "Family pressure discussed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Alex helps David develop gradual transition plan that minimizes risk",
+          "emotional_tone": "hopeful",
+          "key_points": ["Gradual transition strategy developed", "Risk mitigation plan outlined", "Support network established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "David Kim",
+          "task": "Create detailed business plan and financial projections",
+          "deadline": "Next month",
+          "context": "Need concrete plan before making any major decisions"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Monthly check-in call",
+          "date_time": "First Sunday of each month at 8 PM",
+          "attendees": ["Alex Martinez", "David Kim"],
+          "purpose": "Track progress on business planning and provide ongoing support"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Neighborhood Dispute Mediation Call",
+      "duration_minutes": 7,
+      "context": {
+        "setting": "Three-way phone call between neighbors trying to resolve ongoing property dispute",
+        "background": "Property line disagreement about fence placement causing tension between longtime neighbors",
+        "tension_point": "One neighbor installed fence that other claims encroaches on their property, previous friendship now strained",
+        "expected_outcome": "Find mutually acceptable solution that preserves neighborhood relationships"
+      },
+      "participants": [
+        {
+          "name": "Carlos Martinez",
+          "voice": "M",
+          "role": "friend",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Diplomatic mediator using construction knowledge to find practical solutions",
+            "under_pressure": "Becomes more focused on finding win-win outcomes",
+            "verbal_tics": "Says 'let's work together' and 'build a solution'",
+            "emotional_tells": "Voice becomes calmer when tensions rise"
+          },
+          "sample_dialogue": [
+            "Hey everyone, let's work together here - we're all neighbors who care about this community.",
+            "Bob, I understand your property concerns, and Janet, I know you invested in that fence.",
+            "Maybe we can build a solution that works for everyone without getting lawyers involved."
+          ]
+        },
+        {
+          "name": "Bob Wilson",
+          "voice": "M",
+          "role": "friend",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Straightforward and fact-focused, references property surveys",
+            "under_pressure": "Becomes more insistent about property rights",
+            "verbal_tics": "Says 'according to the survey' and 'property rights'",
+            "emotional_tells": "Voice becomes firmer when discussing legal boundaries"
+          },
+          "sample_dialogue": [
+            "Carlos, I appreciate you trying to help, but according to the survey, that fence is two feet onto my property.",
+            "Janet, we've been neighbors for fifteen years, but property rights are property rights.",
+            "I don't want lawyers either, but I can't have a fence running through the middle of my garden."
+          ]
+        },
+        {
+          "name": "Janet Foster",
+          "voice": "F",
+          "role": "friend",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Defensive about investment made, speaks rapidly when stressed",
+            "under_pressure": "Becomes more emotional and justifies actions",
+            "verbal_tics": "Says 'I spent' and 'it's not fair'",
+            "emotional_tells": "Voice wavers when discussing financial impact"
+          },
+          "sample_dialogue": [
+            "Bob, I spent three thousand dollars on that fence based on where I thought the property line was.",
+            "It's not fair to ask me to tear down a brand new fence because of some old survey discrepancy.",
+            "Carlos, you know construction costs - moving this fence would basically mean starting over."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Carlos facilitates initial discussion while Bob and Janet state their positions",
+          "emotional_tone": "tense",
+          "key_points": ["Property line dispute outlined", "Financial investment concerns raised", "Neighborly relationship strain acknowledged"]
+        },
+        {
+          "phase": "development",
+          "description": "Bob insists on property rights while Janet defends her investment",
+          "emotional_tone": "escalating",
+          "key_points": ["Survey accuracy debated", "Financial burden discussed", "Legal implications mentioned"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Carlos proposes cost-sharing solution for fence relocation",
+          "emotional_tone": "hopeful",
+          "key_points": ["Shared cost solution proposed", "Professional survey agreed upon", "Neighborly relationship prioritized"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Bob Wilson",
+          "task": "Get professional property survey to confirm exact boundaries",
+          "deadline": "Next week",
+          "context": "Need definitive boundary determination before proceeding"
+        },
+        {
+          "assignee": "Janet Foster",
+          "task": "Get estimates for fence relocation costs",
+          "deadline": "Next week",
+          "context": "Determine actual costs for potential shared expense"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Follow-up resolution meeting",
+          "date_time": "Next Saturday at 10 AM",
+          "attendees": ["Carlos Martinez", "Bob Wilson", "Janet Foster"],
+          "purpose": "Review survey results and finalize cost-sharing agreement"
+        }
+      ]
+    }
+  ]
+}

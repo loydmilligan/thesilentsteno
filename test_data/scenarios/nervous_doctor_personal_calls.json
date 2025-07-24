@@ -1,0 +1,553 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Family Emergency During On-Call Night",
+      "duration_minutes": 4,
+      "context": {
+        "setting": "Hospital break room at 2 AM during quiet moment between emergencies",
+        "background": "Sarah's elderly mother fell at home, sister calling from emergency room",
+        "tension_point": "Family emergency while Sarah is on-call and can't leave hospital immediately",
+        "expected_outcome": "Arrange care for mother while managing work responsibilities and guilt"
+      },
+      "participants": [
+        {
+          "name": "Lisa Chen",
+          "voice": "F",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks rapidly when upset, provides medical details she's overheard",
+            "under_pressure": "Becomes more emotional and demands immediate action",
+            "verbal_tics": "Says 'Sarah, you need to' and 'The doctors here said' often",
+            "emotional_tells": "Voice breaks when describing mother's condition"
+          },
+          "sample_dialogue": [
+            "Sarah, you need to get here now - Mom's asking for you and she's really scared.",
+            "The doctors here said something about possible hip fracture - I don't understand everything.",
+            "I can't handle this alone - you're the doctor, you know what questions to ask!"
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F",
+          "role": "family",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Asks clinical questions while fighting emotional responses",
+            "under_pressure": "Becomes more clinical to cope with personal stress",
+            "verbal_tics": "Says 'What exactly did they' and 'I need to know' frequently",
+            "emotional_tells": "Voice wavers between professional and personal tone"
+          },
+          "sample_dialogue": [
+            "What exactly did they say about her vital signs and pain level?",
+            "I need to know if she's stable - Lisa, try to stay calm and give me facts.",
+            "I'm stuck here until 6 AM but I'll call the attending there to check on her."
+          ]
+        },
+        {
+          "name": "Michael Chen",
+          "voice": "M",
+          "role": "family", 
+          "style": "Collaborative",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Tries to mediate between sisters, speaks calmly despite stress",
+            "under_pressure": "Becomes more focused on practical solutions",
+            "verbal_tics": "Says 'Let's figure out' and 'What we need to do' often",
+            "emotional_tells": "Clears throat when trying to defuse tension"
+          },
+          "sample_dialogue": [
+            "Let's figure out who can stay with Mom while Sarah finishes her shift.",
+            "What we need to do is make sure someone medical is checking on her regularly.",
+            "*clears throat* Sarah, I know you feel guilty, but Mom understands your job."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Lisa calls in panic about mother's fall, Sarah immediately switches to clinical mode",
+          "emotional_tone": "panicked urgency",
+          "key_points": ["Emergency situation described", "Medical questions asked", "Work conflict identified"]
+        },
+        {
+          "phase": "development",
+          "description": "Sarah gathers medical information while Lisa expresses frustration about her absence",
+          "emotional_tone": "guilt and frustration",
+          "key_points": ["Clinical details gathered", "Family tension expressed", "Professional obligations acknowledged"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Plan made for Michael to stay with mother, Sarah to call attending physician",
+          "emotional_tone": "reluctant compromise",
+          "key_points": ["Coverage arranged", "Medical oversight requested", "Family support coordinated"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Sarah Chen",
+          "task": "Call attending physician at mother's hospital to ensure proper care",
+          "deadline": "Within 30 minutes",
+          "context": "Use professional connections to ensure mother receives appropriate attention"
+        },
+        {
+          "assignee": "Michael Chen", 
+          "task": "Stay with mother overnight and update family group text hourly",
+          "deadline": "Until Sarah arrives at 7 AM",
+          "context": "Provide family presence and communication during Sarah's work obligations"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Family meeting at mother's bedside",
+          "date_time": "Tomorrow morning at 7:30 AM when Sarah's shift ends",
+          "attendees": ["Sarah Chen", "Lisa Chen", "Michael Chen", "Mother"],
+          "purpose": "Discuss mother's care plan and long-term living arrangements"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Teenage Daughter's Academic Crisis",
+      "duration_minutes": 9,
+      "context": {
+        "setting": "Sarah's home office late evening after exhausting 12-hour shift",
+        "background": "Daughter Emily failed chemistry test, teacher requesting parent conference about academic struggles",
+        "tension_point": "Sarah's demanding work schedule vs. daughter's need for academic support and attention",
+        "expected_outcome": "Address daughter's struggles while managing guilt about work-life balance"
+      },
+      "participants": [
+        {
+          "name": "Emily Chen",
+          "voice": "F",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "Distracted",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Alternates between defensive and vulnerable, uses teen slang",
+            "under_pressure": "Becomes more sullen and withdrawn",
+            "verbal_tics": "Says 'It's not fair' and 'You don't understand' often",
+            "emotional_tells": "Voice gets quieter when admitting struggles"
+          },
+          "sample_dialogue": [
+            "It's not fair - everyone else's parents help them with homework but you're always at work.",
+            "You don't understand, Mom - chemistry is like impossible and Mr. Peterson hates me.",
+            "I tried to study but... *quietly* I don't know how to do it and you weren't here."
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Tries to balance motherly concern with practical problem-solving",
+            "under_pressure": "Becomes more anxious about failing as a parent",
+            "verbal_tics": "Says 'We can figure out' and 'I'm worried about' frequently",
+            "emotional_tells": "Rubs temples when feeling overwhelmed by competing demands"
+          },
+          "sample_dialogue": [
+            "We can figure out a better study schedule - I'm worried about you falling behind.",
+            "Emily, I know I've been working a lot, but your education is so important to me.",
+            "What if we find you a tutor, and I'll try to be home earlier on weeknights?"
+          ]
+        },
+        {
+          "name": "David Chen",
+          "voice": "M", 
+          "role": "family",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks methodically about practical solutions and schedules",
+            "under_pressure": "Becomes more focused on logistics and coordination",
+            "verbal_tics": "Says 'Maybe we should' and 'What about if' often",
+            "emotional_tells": "Checks calendar app while talking about scheduling"
+          },
+          "sample_dialogue": [
+            "Maybe we should look at Emily's whole schedule - see where the time management issues are.",
+            "What about if I take over homework help on the nights Sarah's on call?",
+            "I've been thinking... maybe we need better communication about who's available when."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Emily admits failing grade reluctantly, Sarah immediately feels guilty about work schedule",
+          "emotional_tone": "defensive and guilty",
+          "key_points": ["Academic failure revealed", "Parental guilt expressed", "Work schedule blamed"]
+        },
+        {
+          "phase": "development",
+          "description": "Discussion about study habits and parental availability, Emily opens up about feeling abandoned",
+          "emotional_tone": "increasingly emotional",
+          "key_points": ["Deeper issues explored", "Family dynamics discussed", "Emotional needs addressed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Plan developed for tutoring and better family coordination of academic support",
+          "emotional_tone": "hopeful commitment",
+          "key_points": ["Tutoring arranged", "Schedule coordination improved", "Family commitment made"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Sarah Chen",
+          "task": "Research chemistry tutors and schedule parent-teacher conference",
+          "deadline": "By weekend",
+          "context": "Need to address Emily's academic struggles with professional support"
+        },
+        {
+          "assignee": "David Chen",
+          "task": "Create family calendar showing who's available for homework help each night",
+          "deadline": "This week",
+          "context": "Need better coordination to ensure Emily has consistent academic support"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Parent-teacher conference with Mr. Peterson",
+          "date_time": "Next Friday at 3 PM",
+          "attendees": ["Sarah Chen", "David Chen", "Mr. Peterson"],
+          "purpose": "Discuss Emily's chemistry struggles and develop academic improvement plan"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Best Friend's Divorce Drama Intervention",
+      "duration_minutes": 13,
+      "context": {
+        "setting": "Sarah's kitchen during rare evening off, wine glasses and takeout containers",
+        "background": "Best friend Jessica going through messy divorce, making concerning decisions about custody and finances",
+        "tension_point": "Sarah's medical training makes her see red flags, but Jessica won't listen to advice",
+        "expected_outcome": "Maintain friendship while expressing serious concerns about Jessica's choices"
+      },
+      "participants": [
+        {
+          "name": "Jessica Martinez",
+          "voice": "F",
+          "role": "friend",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Talks rapidly when emotional, alternates between anger and hope",
+            "under_pressure": "Becomes more defensive and makes impulsive statements",
+            "verbal_tics": "Says 'I just want' and 'He doesn't deserve' frequently",
+            "emotional_tells": "Voice gets higher when discussing ex-husband, gestures wildly"
+          },
+          "sample_dialogue": [
+            "I just want him to suffer like he made me suffer - is that so wrong?",
+            "He doesn't deserve to see the kids after what he did to our family!",
+            "Sarah, you don't understand - I need to protect myself and the children from him."
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F", 
+          "role": "friend",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Asks careful questions while trying not to sound preachy",
+            "under_pressure": "Becomes more clinical in analyzing Jessica's decisions",
+            "verbal_tics": "Says 'I'm concerned about' and 'What if' constantly",
+            "emotional_tells": "Fidgets with wine glass when worried about Jessica's choices"
+          },
+          "sample_dialogue": [
+            "I'm concerned about how this revenge approach might backfire in court, Jess.",
+            "What if keeping the kids from their father actually hurts them more in the long run?",
+            "Jessica, I love you, but some of these decisions seem... impulsive and potentially harmful."
+          ]
+        },
+        {
+          "name": "Tom Rodriguez",
+          "voice": "M",
+          "role": "friend",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Tries to inject practical perspective, speaks bluntly about legal realities",
+            "under_pressure": "Becomes more direct about tough love approach",
+            "verbal_tics": "Says 'Look, Jessica' and 'The reality is' often",
+            "emotional_tells": "Leans back when Jessica gets emotional, maintains steady tone"
+          },
+          "sample_dialogue": [
+            "Look, Jessica - I get that you're hurt, but this isn't helping your case.",
+            "The reality is, judges don't like parents who interfere with custody arrangements.",
+            "You need to think about what's best for your kids, not what makes you feel better."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Jessica vents about ex-husband's latest transgression, friends listen supportively initially",
+          "emotional_tone": "supportive listening",
+          "key_points": ["Latest grievances shared", "Emotional support provided", "Concerning plans hinted at"]
+        },
+        {
+          "phase": "development",
+          "description": "Jessica reveals plans to violate custody agreement, Sarah and Tom express serious concerns",
+          "emotional_tone": "increasingly tense",
+          "key_points": ["Illegal plans revealed", "Friends express alarm", "Jessica becomes defensive"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Tough love conversation about getting professional help and focusing on children's welfare",
+          "emotional_tone": "difficult but caring",
+          "key_points": ["Professional help suggested", "Children's welfare prioritized", "Friendship boundaries set"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Sarah Chen",
+          "task": "Research family counselors and custody mediators to recommend to Jessica",
+          "deadline": "This weekend",
+          "context": "Jessica needs professional guidance to make better decisions for her family"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Follow-up coffee date to check on Jessica's progress",
+          "date_time": "Next Sunday afternoon",
+          "attendees": ["Sarah Chen", "Jessica Martinez"],
+          "purpose": "Monitor Jessica's decision-making and provide continued support"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Brother's Financial Crisis Confession",
+      "duration_minutes": 11,
+      "context": {
+        "setting": "Sarah's car parked outside brother's apartment after emergency text message",
+        "background": "Brother Mark lost job three months ago, hasn't told family, now facing eviction",
+        "tension_point": "Mark's pride vs. Sarah's desire to help vs. concern about enabling bad financial habits",
+        "expected_outcome": "Provide immediate assistance while establishing conditions for long-term support"
+      },
+      "participants": [
+        {
+          "name": "Mark Chen",
+          "voice": "M",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "Distracted",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks reluctantly, long pauses, admits things gradually",
+            "under_pressure": "Becomes more withdrawn and defensive about his choices",
+            "verbal_tics": "Says 'I didn't want to' and 'It's not that bad' often",
+            "emotional_tells": "Avoids eye contact when discussing money, voice gets quieter"
+          },
+          "sample_dialogue": [
+            "I didn't want to worry anyone - I thought I'd find something before it got this bad.",
+            "It's not that bad, Sarah... okay, maybe it is, but I can handle it myself.",
+            "*quietly* The eviction notice came yesterday - I've got five days to pay or move out."
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F",
+          "role": "family",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Asks probing questions about finances while trying to stay supportive",
+            "under_pressure": "Becomes more systematic in analyzing the financial situation",
+            "verbal_tics": "Says 'How much exactly' and 'We need to understand' frequently",
+            "emotional_tells": "Calculates numbers mentally while talking, looks worried"
+          },
+          "sample_dialogue": [
+            "How much exactly do you owe in back rent, and what other debts are there?",
+            "We need to understand the full picture, Mark - I can't help if I don't know everything.",
+            "I'm worried about you, but I also need to make sure this doesn't happen again."
+          ]
+        },
+        {
+          "name": "David Chen",
+          "voice": "M",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Tries to balance support with practical reality checks",
+            "under_pressure": "Becomes more focused on creating sustainable solutions",
+            "verbal_tics": "Says 'What we can do' and 'Moving forward' often",
+            "emotional_tells": "Leans forward when discussing solutions, uses reassuring tone"
+          },
+          "sample_dialogue": [
+            "What we can do is help with the immediate crisis, but we need a plan going forward.",
+            "Moving forward, Mark, you've got to be honest with us about your situation.",
+            "We're family - we'll figure this out together, but no more hiding financial problems."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Mark reluctantly admits to job loss and financial crisis, family expresses shock and concern",
+          "emotional_tone": "shocked concern",
+          "key_points": ["Job loss revealed", "Financial crisis exposed", "Family support offered"]
+        },
+        {
+          "phase": "development",
+          "description": "Full extent of financial problems discussed, family debates how much help to provide",
+          "emotional_tone": "increasingly serious",
+          "key_points": ["Complete debt picture revealed", "Family resources discussed", "Conditions for help debated"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Agreement to cover immediate needs with conditions about job search and financial transparency",
+          "emotional_tone": "supportive but conditional",
+          "key_points": ["Immediate help provided", "Conditions established", "Ongoing support planned"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Mark Chen",
+          "task": "Apply for unemployment benefits and document all job search activities",
+          "deadline": "This week",
+          "context": "Condition for continued family financial support"
+        },
+        {
+          "assignee": "Sarah Chen",
+          "task": "Research debt counseling services and budgeting resources for Mark",
+          "deadline": "By next weekend",
+          "context": "Help Mark develop sustainable financial management skills"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Weekly family check-in on Mark's job search progress",
+          "date_time": "Every Sunday evening via video call",
+          "attendees": ["Mark Chen", "Sarah Chen", "David Chen"],
+          "purpose": "Monitor job search progress and provide ongoing support and accountability"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Elderly Father's Driving Concerns",
+      "duration_minutes": 8,
+      "context": {
+        "setting": "Family dinner at parents' house, dishes cleared, serious conversation brewing",
+        "background": "Sarah's father had minor fender-bender last week, family worried about his driving safety",
+        "tension_point": "Father's independence vs. safety concerns vs. family responsibility for others on road",
+        "expected_outcome": "Address driving safety without destroying father's dignity and autonomy"
+      },
+      "participants": [
+        {
+          "name": "Robert Chen Sr.",
+          "voice": "M",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks defensively about his capabilities, uses past accomplishments",
+            "under_pressure": "Becomes more stubborn and dismissive of concerns",
+            "verbal_tics": "Says 'I've been driving' and 'You kids worry too much' often",
+            "emotional_tells": "Voice gets firmer when independence is questioned"
+          },
+          "sample_dialogue": [
+            "I've been driving for 50 years without any serious accidents - one little bump doesn't change that.",
+            "You kids worry too much - I know my limitations better than anyone else.",
+            "Taking away my car keys is like taking away my freedom - I won't be a prisoner in my own home."
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F",
+          "role": "family",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Carefully presents medical concerns while respecting father's dignity",
+            "under_pressure": "Becomes more clinical to avoid emotional confrontation",
+            "verbal_tics": "Says 'Dad, I'm concerned about' and 'What if' frequently",
+            "emotional_tells": "Voice gets gentler when discussing sensitive health topics"
+          },
+          "sample_dialogue": [
+            "Dad, I'm concerned about reaction times and vision changes that come with aging - it's just biology.",
+            "What if we started with an eye exam and driving assessment - just to get a baseline?",
+            "I've seen too many families dealing with preventable accidents - I can't bear that happening to us."
+          ]
+        },
+        {
+          "name": "Linda Chen",
+          "voice": "F",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Tries to find middle ground solutions, speaks diplomatically",
+            "under_pressure": "Becomes more focused on practical compromises",
+            "verbal_tics": "Says 'What about' and 'Maybe we could' often",
+            "emotional_tells": "Reaches out to touch father's hand when making suggestions"
+          },
+          "sample_dialogue": [
+            "What about we compromise - you keep driving locally, but family drives for longer trips?",
+            "Maybe we could look into those refresher driving courses for seniors - not because you need it, but to stay current.",
+            "Robert, I worry too - what if something happened and you hurt someone else? You'd never forgive yourself."
+          ]
+          }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Sarah gently raises concerns about recent accident, father immediately becomes defensive",
+          "emotional_tone": "cautious concern",
+          "key_points": ["Recent accident mentioned", "Safety concerns raised", "Defensive response triggered"]
+        },
+        {
+          "phase": "development",
+          "description": "Family discusses aging and driving safety, father resists suggestions, mother tries to mediate",
+          "emotional_tone": "increasingly tense",
+          "key_points": ["Age-related changes discussed", "Independence vs safety debated", "Compromise options explored"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Agreement on gradual approach starting with medical and vision evaluations",
+          "emotional_tone": "reluctant compromise",
+          "key_points": ["Medical evaluation agreed", "Gradual restrictions accepted", "Family support promised"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Sarah Chen",
+          "task": "Research senior driving assessment programs and vision specialists",
+          "deadline": "Next week",
+          "context": "Find respectful evaluation options that preserve father's dignity"
+        },
+        {
+          "assignee": "Linda Chen",
+          "task": "Schedule comprehensive eye exam and discuss concerns with family doctor",
+          "deadline": "Within two weeks",
+          "context": "Medical evaluation to determine if health issues are affecting driving ability"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Family meeting to review medical evaluation results",
+          "date_time": "After medical appointments, Sunday dinner next month",
+          "attendees": ["Robert Chen Sr.", "Linda Chen", "Sarah Chen", "David Chen"],
+          "purpose": "Discuss evaluation results and make decisions about driving restrictions if needed"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,521 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Software Platform Resistance Call",
+      "duration_minutes": 25,
+      "context": {
+        "setting": "Video conference call, enterprise software sales presentation",
+        "background": "Sales rep presenting CRM platform to company that's been using legacy system for 8 years",
+        "tension_point": "Prospect is skeptical about switching costs and change management, showing passive resistance to modernization",
+        "expected_outcome": "Overcome resistance by addressing specific concerns and establishing trial period"
+      },
+      "participants": [
+        {
+          "name": "Amanda Foster",
+          "voice": "F",
+          "role": "senior",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Uses benefits-focused language, speaks rapidly when excited about features",
+            "under_pressure": "Becomes more aggressive in pushing features, talks faster",
+            "verbal_tics": "Says 'imagine if' frequently, uses superlatives like 'incredible' and 'amazing'",
+            "emotional_tells": "Voice gets higher when sensing resistance"
+          },
+          "sample_dialogue": [
+            "Imagine if your team could reduce data entry time by 60% - that's what our clients are seeing.",
+            "This is going to be incredible for your sales productivity, Frank.",
+            "The ROI on this platform typically pays for itself within six months."
+          ]
+        },
+        {
+          "name": "Frank Morrison",
+          "voice": "M",
+          "role": "exec",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Asks detailed questions about costs and implementation, speaks slowly and deliberately",
+            "under_pressure": "Becomes more cautious, asks for more proof and references",
+            "verbal_tics": "Says 'what about' frequently, asks for specific numbers and timelines",
+            "emotional_tells": "Long pauses before committing to anything"
+          },
+          "sample_dialogue": [
+            "What about the integration costs with our existing ERP system?",
+            "Amanda, I need to understand the total cost of ownership over three years.",
+            "Our current system may be old, but it's stable and our people know it."
+          ]
+        },
+        {
+          "name": "Carol Zhang",
+          "voice": "F",
+          "role": "midlevel",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Asks practical questions about user experience, bridges between technical and business concerns",
+            "under_pressure": "Becomes more focused on implementation details and user adoption",
+            "verbal_tics": "Says 'from our team's perspective' often, asks about training and support",
+            "emotional_tells": "Becomes quieter when concerned about change impact"
+          },
+          "sample_dialogue": [
+            "From our team's perspective, the biggest concern is going to be user adoption.",
+            "How long does the typical implementation take for a company our size?",
+            "What kind of ongoing support do you provide during the transition period?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Amanda presents platform benefits enthusiastically, Frank and Carol listen politely but show initial skepticism",
+          "emotional_tone": "optimistic meeting cautious resistance",
+          "key_points": ["Platform benefits presentation", "Initial polite but reserved responses", "Underlying skepticism about change"]
+        },
+        {
+          "phase": "development",
+          "description": "Frank raises specific cost and risk concerns, Carol asks practical implementation questions, Amanda pushes harder on ROI",
+          "emotional_tone": "escalating tension between enthusiasm and caution",
+          "key_points": ["Detailed cost and risk analysis requested", "Implementation complexity concerns raised", "Sales pressure increasing while resistance solidifies"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Amanda offers pilot program to address concerns, Frank cautiously agrees to limited trial with specific conditions",
+          "emotional_tone": "cautious compromise",
+          "key_points": ["Pilot program proposed as compromise", "Specific trial parameters negotiated", "Follow-up evaluation criteria established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Amanda Foster",
+          "task": "Prepare detailed integration cost analysis and implementation timeline",
+          "deadline": "Wednesday by noon",
+          "context": "To address Frank's specific concerns about total cost of ownership and integration complexity"
+        },
+        {
+          "assignee": "Carol Zhang",
+          "task": "Identify 5-person pilot team for trial period",
+          "deadline": "End of week",
+          "context": "To prepare for limited trial implementation and gather user feedback"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Pilot program kick-off meeting",
+          "date_time": "Next Monday at 10 AM",
+          "attendees": ["Amanda Foster", "Frank Morrison", "Carol Zhang", "pilot team"],
+          "purpose": "Begin limited trial implementation with defined success criteria"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Insurance Renewal Pressure Call",
+      "duration_minutes": 18,
+      "context": {
+        "setting": "Phone call from insurance agent's office, annual policy renewal discussion",
+        "background": "Long-time client considering switching providers due to premium increases, agent trying to retain business",
+        "tension_point": "Client frustrated with rising costs and feeling undervalued, agent defensive about pricing while trying to preserve relationship",
+        "expected_outcome": "Find compromise on coverage adjustments to retain client while addressing cost concerns"
+      },
+      "participants": [
+        {
+          "name": "Robert Kim",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses relationship history and loyalty appeals, becomes more assertive when challenged",
+            "under_pressure": "References past service and claims history, speaks more quickly",
+            "verbal_tics": "Says 'after all these years' frequently, mentions specific past interactions",
+            "emotional_tells": "Voice becomes strained when feeling client slipping away"
+          },
+          "sample_dialogue": [
+            "Martha, after all these years, I think we can work something out that makes sense for both of us.",
+            "You know I've always taken care of you - remember when we handled that flood claim so quickly?",
+            "Let me see what options I have available to bring this number down."
+          ]
+        },
+        {
+          "name": "Martha Williams",
+          "voice": "F",
+          "role": "exec",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Compares specific numbers and benefits, speaks deliberately when making points",
+            "under_pressure": "Becomes more detailed in comparisons, cites competitor quotes",
+            "verbal_tics": "Says 'the bottom line is' frequently, references specific dollar amounts",
+            "emotional_tells": "Voice becomes firmer when feeling pressured"
+          },
+          "sample_dialogue": [
+            "The bottom line is, Robert, I'm looking at a 23% increase for essentially the same coverage.",
+            "I've got quotes from two other companies that are significantly lower than this.",
+            "I appreciate our history, but I have to make a business decision here."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Robert presents renewal terms, Martha immediately expresses shock at premium increase",
+          "emotional_tone": "surprised disappointment meeting defensive explanation",
+          "key_points": ["Renewal terms presented", "Sticker shock and disappointment expressed", "Initial defensive explanations about market conditions"]
+        },
+        {
+          "phase": "development",
+          "description": "Martha compares competitor quotes, Robert appeals to relationship history and service quality",
+          "emotional_tone": "escalating frustration with desperate relationship appeals",
+          "key_points": ["Competitor comparisons detailed", "Service history and loyalty appeals made", "Client's business decision priorities emphasized"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Robert offers coverage adjustments and discount packages, Martha cautiously agrees to review modified proposal",
+          "emotional_tone": "reluctant negotiation toward compromise",
+          "key_points": ["Coverage modification options presented", "Discount packages explored", "Review period established for decision"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Robert Kim",
+          "task": "Prepare three coverage modification scenarios with associated cost savings",
+          "deadline": "Tomorrow by 3 PM",
+          "context": "To provide Martha with options that address her cost concerns while maintaining adequate coverage"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Policy modification review call",
+          "date_time": "Thursday at 2 PM",
+          "attendees": ["Robert Kim", "Martha Williams"],
+          "purpose": "Review modified coverage options and finalize renewal decision"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Consulting Services Value Justification",
+      "duration_minutes": 22,
+      "context": {
+        "setting": "Client's boardroom, proposal presentation for organizational consulting engagement",
+        "background": "Consulting firm presenting 6-month organizational efficiency project to struggling manufacturing company",
+        "tension_point": "Client questions the ROI of consulting fees when company is already facing budget constraints",
+        "expected_outcome": "Justify consulting investment by demonstrating specific value and measurable outcomes"
+      },
+      "participants": [
+        {
+          "name": "Diana Chen",
+          "voice": "F",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses case studies and specific metrics, builds logical arguments step by step",
+            "under_pressure": "Provides more detailed examples and references, speaks with greater precision",
+            "verbal_tics": "Says 'specifically' and 'measurably' frequently, uses exact percentages",
+            "emotional_tells": "Leans forward when making key points"
+          },
+          "sample_dialogue": [
+            "Specifically, we've helped similar manufacturing companies reduce operational waste by 18-25%.",
+            "Let me show you measurably how this investment pays for itself within the first year.",
+            "The case study I'm thinking of involved a company almost exactly your size and situation."
+          ]
+        },
+        {
+          "name": "Paul Rodriguez",
+          "voice": "M",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks bluntly about financial realities, uses short declarative sentences",
+            "under_pressure": "Becomes more blunt about budget constraints, questions everything",
+            "verbal_tics": "Says 'frankly' and 'bottom line' frequently, references cash flow",
+            "emotional_tells": "Crosses arms when skeptical"
+          },
+          "sample_dialogue": [
+            "Frankly, Diana, we're already tight on cash flow and this is a significant expense.",
+            "Bottom line - how do I know this isn't just expensive advice we could figure out ourselves?",
+            "I need to see concrete guarantees, not just case studies from other companies."
+          ]
+        },
+        {
+          "name": "Lisa Thompson",
+          "voice": "F",
+          "role": "midlevel",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Asks practical questions about implementation, speaks quickly when engaged",
+            "under_pressure": "Focuses on internal capacity and change management concerns",
+            "verbal_tics": "Says 'what about' frequently, asks about employee impact",
+            "emotional_tells": "Speaks faster when excited about possibilities"
+          },
+          "sample_dialogue": [
+            "What about our internal team's capacity to implement these changes while running daily operations?",
+            "I'm excited about the potential, but what about employee buy-in and resistance to change?",
+            "How do we maintain productivity during the transition period?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Diana presents comprehensive efficiency analysis and improvement proposal, initial interest shown",
+          "emotional_tone": "professional optimism meeting cautious interest",
+          "key_points": ["Efficiency assessment results presented", "Improvement opportunities identified", "Initial engagement and questions from client team"]
+        },
+        {
+          "phase": "development",
+          "description": "Paul challenges the investment value given budget constraints, Lisa raises implementation concerns",
+          "emotional_tone": "growing skepticism and practical concerns",
+          "key_points": ["Budget and cash flow concerns raised", "ROI and guarantees questioned", "Implementation complexity and resource concerns detailed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Diana offers phased approach with performance guarantees, agreement on pilot phase with defined metrics",
+          "emotional_tone": "cautious optimism with conditional agreement",
+          "key_points": ["Phased implementation approach proposed", "Performance guarantees negotiated", "Pilot phase with clear success metrics agreed upon"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Diana Chen",
+          "task": "Develop phased implementation plan with specific ROI guarantees for each phase",
+          "deadline": "Monday by end of day",
+          "context": "To address budget concerns and provide measurable value at each implementation stage"
+        },
+        {
+          "assignee": "Lisa Thompson",
+          "task": "Assess internal team capacity and identify change management support needs",
+          "deadline": "Friday afternoon",
+          "context": "To prepare for implementation planning and ensure adequate internal resources"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Phased proposal review meeting",
+          "date_time": "Tuesday at 10 AM",
+          "attendees": ["Diana Chen", "Paul Rodriguez", "Lisa Thompson"],
+          "purpose": "Review phased approach proposal and finalize pilot phase parameters"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Real Estate Investment Pressure",
+      "duration_minutes": 20,
+      "context": {
+        "setting": "Property viewing location, investment property sales presentation",
+        "background": "Real estate agent showing commercial property to investor who's been looking for 8 months",
+        "tension_point": "Agent applying time pressure citing other interested buyers, investor suspicious of high-pressure tactics",
+        "expected_outcome": "Navigate pressure tactics while making informed investment decision"
+      },
+      "participants": [
+        {
+          "name": "Steve Patterson",
+          "voice": "M",
+          "role": "senior",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Uses urgency language and scarcity appeals, speaks rapidly when excited",
+            "under_pressure": "Becomes more aggressive with time pressure, uses FOMO tactics",
+            "verbal_tics": "Says 'opportunity like this' frequently, checks time repeatedly",
+            "emotional_tells": "Gestures more dramatically when sensing hesitation"
+          },
+          "sample_dialogue": [
+            "An opportunity like this in this location doesn't come around often, Jennifer.",
+            "I've got another couple looking at this same property tomorrow morning.",
+            "The owner is motivated to close quickly - we could have an offer accepted by Friday."
+          ]
+        },
+        {
+          "name": "Jennifer Walsh",
+          "voice": "F",
+          "role": "exec",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Asks detailed financial questions, wants time to analyze numbers",
+            "under_pressure": "Becomes more skeptical of pressure tactics, demands more information",
+            "verbal_tics": "Says 'I need to see' frequently, asks for written documentation",
+            "emotional_tells": "Voice becomes cooler when feeling pressured"
+          },
+          "sample_dialogue": [
+            "I need to see the actual rental history and maintenance costs over the past three years.",
+            "Steve, I appreciate the urgency, but I don't make investment decisions under pressure.",
+            "What's the real reason the owner is motivated to sell quickly?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Steve enthusiastically presents property benefits and investment potential, Jennifer shows measured interest",
+          "emotional_tone": "high energy meeting cautious evaluation",
+          "key_points": ["Property benefits and location advantages highlighted", "Investment potential and rental income projected", "Initial interest tempered by analytical approach"]
+        },
+        {
+          "phase": "development",
+          "description": "Steve increases pressure with urgency tactics, Jennifer becomes more skeptical and demands detailed information",
+          "emotional_tone": "increasing pressure meeting growing resistance",
+          "key_points": ["Time pressure and scarcity tactics applied", "Skepticism about high-pressure approach grows", "Demand for detailed financial documentation increases"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Jennifer sets clear boundaries about decision timeline, Steve backs off pressure and agrees to provide detailed analysis",
+          "emotional_tone": "professional boundaries established",
+          "key_points": ["Clear timeline for decision-making established", "Detailed financial analysis requested", "Professional relationship boundaries set"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Steve Patterson",
+          "task": "Compile comprehensive financial package including 3-year rental and maintenance history",
+          "deadline": "Monday morning",
+          "context": "To provide Jennifer with the detailed analysis she requires for investment decision"
+        },
+        {
+          "assignee": "Jennifer Walsh",
+          "task": "Schedule property inspection with independent contractor",
+          "deadline": "This week",
+          "context": "To conduct thorough due diligence on property condition and potential issues"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Financial analysis review meeting",
+          "date_time": "Wednesday at 2 PM",
+          "attendees": ["Steve Patterson", "Jennifer Walsh"],
+          "purpose": "Review comprehensive financial documentation and discuss investment decision"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Marketing Agency Retention Call",
+      "duration_minutes": 15,
+      "context": {
+        "setting": "Video conference call, client retention meeting",
+        "background": "Digital marketing agency trying to retain client who's dissatisfied with campaign performance and considering switching agencies",
+        "tension_point": "Client frustrated with poor campaign results and lack of communication, agency defensive about performance metrics",
+        "expected_outcome": "Address performance concerns and rebuild client confidence to prevent contract termination"
+      },
+      "participants": [
+        {
+          "name": "Marcus Thompson",
+          "voice": "M",
+          "role": "senior",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Acknowledges concerns first, then provides explanations with supporting data",
+            "under_pressure": "Becomes more detailed in explanations, uses more industry terminology",
+            "verbal_tics": "Says 'I understand your frustration' frequently, references specific metrics",
+            "emotional_tells": "Speaks more carefully when trying to rebuild trust"
+          },
+          "sample_dialogue": [
+            "I understand your frustration, Sarah, and I want to address these performance issues directly.",
+            "Let me walk you through the data we're seeing and what adjustments we're making.",
+            "You're absolutely right that our communication could have been more proactive."
+          ]
+        },
+        {
+          "name": "Sarah Mitchell",
+          "voice": "F",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "States problems bluntly, compares results to expectations and competitors",
+            "under_pressure": "Becomes more direct about dissatisfaction, speaks faster when frustrated",
+            "verbal_tics": "Says 'the fact is' frequently, references specific disappointments",
+            "emotional_tells": "Voice becomes sharper when listing problems"
+          },
+          "sample_dialogue": [
+            "The fact is, Marcus, we're three months in and the results are nowhere near what we discussed.",
+            "I'm seeing better performance from companies spending half what we're spending with you.",
+            "Honestly, I'm questioning whether this partnership is working at all."
+          ]
+        },
+        {
+          "name": "David Park",
+          "voice": "M",
+          "role": "junior",
+          "style": "Enthusiastic",
+          "engagement": "Distracted",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Interjects with technical explanations, speaks quickly when nervous",
+            "under_pressure": "Provides more technical detail, tries to deflect to external factors",
+            "verbal_tics": "Says 'actually' frequently, explains technical processes",
+            "emotional_tells": "Voice gets higher when trying to explain poor performance"
+          },
+          "sample_dialogue": [
+            "Actually, Sarah, the algorithm changes in Q3 affected everyone in your industry sector.",
+            "We've been optimizing the targeting parameters based on the performance data we're collecting.",
+            "The conversion tracking is actually showing improvement in the qualified lead metrics."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Marcus addresses meeting purpose, Sarah immediately expresses dissatisfaction with campaign results",
+          "emotional_tone": "professional tension with underlying frustration",
+          "key_points": ["Performance concerns stated directly", "Relationship strain acknowledged", "Initial defensive responses from agency team"]
+        },
+        {
+          "phase": "development",
+          "description": "Sarah details specific performance failures, David offers technical explanations, tension escalates",
+          "emotional_tone": "escalating frustration with defensive explanations",
+          "key_points": ["Specific performance gaps detailed", "Technical excuses and external factors cited", "Client's trust and confidence eroding"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Marcus takes accountability and proposes comprehensive performance improvement plan with guarantees",
+          "emotional_tone": "cautious hope with conditional trust",
+          "key_points": ["Accountability accepted by agency", "Performance improvement plan proposed", "Success metrics and guarantees negotiated"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Marcus Thompson",
+          "task": "Develop comprehensive campaign optimization plan with performance guarantees",
+          "deadline": "Wednesday by noon",
+          "context": "To address Sarah's performance concerns and demonstrate commitment to results improvement"
+        },
+        {
+          "assignee": "David Park",
+          "task": "Implement weekly performance reporting with clear metrics dashboard",
+          "deadline": "End of week",
+          "context": "To improve communication and provide transparent visibility into campaign performance"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Performance improvement review",
+          "date_time": "Friday at 11 AM",
+          "attendees": ["Marcus Thompson", "Sarah Mitchell", "David Park"],
+          "purpose": "Present optimization plan and establish new performance monitoring protocols"
+        },
+        {
+          "event": "Weekly performance check-ins",
+          "date_time": "Every Monday at 10 AM",
+          "attendees": ["Marcus Thompson", "Sarah Mitchell"],
+          "purpose": "Review campaign performance and ensure communication improvements"
+        }
+      ]
+    }
+  ]
+}

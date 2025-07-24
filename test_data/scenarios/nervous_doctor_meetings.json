@@ -1,0 +1,559 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Budget Review Meeting Goes Off Track",
+      "duration_minutes": 8,
+      "context": {
+        "setting": "Hospital conference room with flickering overhead lights",
+        "background": "Quarterly budget review with new CFO who's questioning every line item",
+        "tension_point": "CFO wants to cut nursing staff by 15% while patient volumes are increasing",
+        "expected_outcome": "Reach compromise on staffing levels without compromising patient care"
+      },
+      "participants": [
+        {
+          "name": "Marcus Thompson",
+          "voice": "M", 
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks in bullet points, interrupts with numbers",
+            "under_pressure": "Gets louder and more aggressive with statistics",
+            "verbal_tics": "Constantly says 'bottom line is' and 'ROI-wise'",
+            "emotional_tells": "Shuffles papers aggressively when challenged"
+          },
+          "sample_dialogue": [
+            "Bottom line is, we're hemorrhaging money on overtime pay.",
+            "ROI-wise, these staffing numbers just don't add up anymore.",
+            "Look, I get it, but we need to make some tough calls here."
+          ]
+        },
+        {
+          "name": "Jennifer Walsh",
+          "voice": "F",
+          "role": "senior", 
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses medical analogies, speaks in careful measured tones",
+            "under_pressure": "Voice gets higher, talks faster about worst-case scenarios",
+            "verbal_tics": "Says 'What if' and 'We need to consider' frequently",
+            "emotional_tells": "Fidgets with pen when discussing staff cuts"
+          },
+          "sample_dialogue": [
+            "What if we have another surge like last winter? We barely managed then.",
+            "We need to consider the ripple effects - tired staff make mistakes, Marcus.",
+            "I've seen what happens when we're understaffed... it's not pretty."
+          ]
+        },
+        {
+          "name": "David Kim",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Analytical", 
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks methodically with long pauses, references data",
+            "under_pressure": "Becomes more withdrawn, speaks even slower",
+            "verbal_tics": "Says 'According to my analysis' and clears throat often",
+            "emotional_tells": "Adjusts glasses when uncomfortable with conflict"
+          },
+          "sample_dialogue": [
+            "According to my analysis, we could... *clears throat* ...potentially reduce agency costs instead.",
+            "The data shows patient satisfaction drops significantly below 2.5 nurses per bed.",
+            "I need to... *adjusts glasses* ...double-check these projections before we decide."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Marcus presents cost-cutting proposal, Jennifer immediately raises safety concerns",
+          "emotional_tone": "tense",
+          "key_points": ["Budget deficit revealed", "Staff reduction proposal", "Initial pushback on patient safety"]
+        },
+        {
+          "phase": "development",
+          "description": "Heated exchange over staffing ratios, David tries to mediate with data",
+          "emotional_tone": "escalating", 
+          "key_points": ["Personal experiences shared", "Data contradictions", "Worst-case scenarios discussed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Compromise reached to pilot reduced agency staff first, monitor closely",
+          "emotional_tone": "cautiously hopeful",
+          "key_points": ["Trial period agreed", "Weekly check-ins scheduled", "Contingency plans outlined"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "David Kim",
+          "task": "Create staffing impact analysis with three scenarios",
+          "deadline": "Thursday by noon",
+          "context": "Need data to support pilot program proposal before board meeting"
+        },
+        {
+          "assignee": "Jennifer Walsh", 
+          "task": "Develop patient safety monitoring metrics for pilot",
+          "deadline": "Friday end of day",
+          "context": "Must track quality indicators during reduced staffing trial"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Weekly staffing review meeting",
+          "date_time": "Every Tuesday at 7 AM for next 6 weeks",
+          "attendees": ["Marcus Thompson", "Jennifer Walsh", "David Kim"],
+          "purpose": "Monitor pilot program impact on patient care and costs"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Emergency Protocol Training Disaster",
+      "duration_minutes": 12,
+      "context": {
+        "setting": "Hospital training room with broken projector and uncomfortable chairs",
+        "background": "Mandatory monthly training session with new emergency protocols that nobody has reviewed",
+        "tension_point": "Half the staff is missing, protocols are confusing, and there's a real emergency happening upstairs", 
+        "expected_outcome": "Complete required training while managing actual crisis situation"
+      },
+      "participants": [
+        {
+          "name": "Patricia Rodriguez",
+          "voice": "F",
+          "role": "senior",
+          "style": "Enthusiastic", 
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks rapidly with lots of gestures, uses exclamation points verbally",
+            "under_pressure": "Gets even more energetic and talks over people",
+            "verbal_tics": "Says 'Absolutely!' and 'This is so important!' constantly",
+            "emotional_tells": "Gestures wildly when trying to maintain control"
+          },
+          "sample_dialogue": [
+            "Absolutely! This new protocol is going to revolutionize how we handle codes!",
+            "This is so important - I can't stress enough how critical this training is!",
+            "Okay everyone, let's focus - I know there's chaos upstairs but we NEED to do this!"
+          ]
+        },
+        {
+          "name": "Robert Chen",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Direct",
+          "engagement": "Distracted",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Short responses, keeps checking phone, sighs frequently",
+            "under_pressure": "Becomes more blunt and impatient",
+            "verbal_tics": "Says 'Can we just' and sighs audibly",
+            "emotional_tells": "Checks watch repeatedly, taps foot when frustrated"
+          },
+          "sample_dialogue": [
+            "Can we just skip to the important parts? Half my patients are waiting.",
+            "*sighs* Look, I've been doing this for eight years - these protocols change every month.",
+            "Patricia, with all due respect, there's a trauma coming in and I need to prep."
+          ]
+        },
+        {
+          "name": "Amanda Foster",
+          "voice": "F",
+          "role": "junior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Asks detailed questions, seeks clarification on every point",
+            "under_pressure": "Becomes more anxious and asks even more questions",
+            "verbal_tics": "Says 'Wait, I'm confused' and 'Can you explain again'",
+            "emotional_tells": "Voice gets quieter when overwhelmed, takes notes frantically"
+          },
+          "sample_dialogue": [
+            "Wait, I'm confused - does this new protocol override the one we learned last month?",
+            "Can you explain again what happens if the primary route is blocked?",
+            "I'm sorry, but what if... what if we're dealing with multiple casualties?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening", 
+          "description": "Patricia enthusiastically starts training despite technical difficulties and missing staff",
+          "emotional_tone": "forced optimism",
+          "key_points": ["Training begins with broken equipment", "Staff shortages acknowledged", "Emergency upstairs mentioned"]
+        },
+        {
+          "phase": "development",
+          "description": "Robert grows impatient while Amanda asks numerous clarifying questions, emergency calls interrupt",
+          "emotional_tone": "increasingly frantic",
+          "key_points": ["Protocol confusion emerges", "Real emergency demands attention", "Training vs reality conflict"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Training abbreviated, hands-on practice scheduled for next week when fully staffed",
+          "emotional_tone": "frustrated but pragmatic", 
+          "key_points": ["Training postponed", "Immediate crisis prioritized", "Make-up session planned"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Amanda Foster",
+          "task": "Review protocol documentation and prepare questions list",
+          "deadline": "Before next Tuesday's make-up session",
+          "context": "Need to maximize efficiency of rescheduled training session"
+        },
+        {
+          "assignee": "Patricia Rodriguez",
+          "task": "Coordinate with IT to fix training room equipment",
+          "deadline": "By Monday morning",
+          "context": "Cannot run effective training without working projector and sound system"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Make-up emergency protocol training",
+          "date_time": "Next Tuesday at 2 PM",
+          "attendees": ["All ER staff", "Patricia Rodriguez", "Robert Chen", "Amanda Foster"],
+          "purpose": "Complete mandatory training with full attendance and working equipment"
+        }
+      ]
+    },
+    {
+      "scenario_title": "IT System Upgrade Anxiety Session",
+      "duration_minutes": 6,
+      "context": {
+        "setting": "Cramped IT office with multiple monitors and cable mess everywhere",
+        "background": "Hospital upgrading patient records system over weekend, staff panicking about workflow changes",
+        "tension_point": "New system looks completely different, training was inadequate, go-live is Monday morning",
+        "expected_outcome": "Create survival guide for Monday morning chaos and identify key support contacts"
+      },
+      "participants": [
+        {
+          "name": "Kevin Park",
+          "voice": "M",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged", 
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Uses technical jargon, speaks rapidly about multiple issues at once",
+            "under_pressure": "Becomes more scattered, jumps between problems",
+            "verbal_tics": "Says 'So basically' and 'The thing is' frequently",
+            "emotional_tells": "Types while talking, multiple browser tabs open"
+          },
+          "sample_dialogue": [
+            "So basically, the new interface is completely different - nothing is where it used to be.",
+            "The thing is, we've got backup procedures but honestly, nobody's tested them fully.",
+            "Look, I'm gonna be here all weekend, but Monday morning is going to be... interesting."
+          ]
+        },
+        {
+          "name": "Lisa Martinez",
+          "voice": "F",
+          "role": "midlevel",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Focuses on practical concerns, asks specific procedural questions",
+            "under_pressure": "Becomes more focused and task-oriented",
+            "verbal_tics": "Says 'What exactly' and 'How specifically' often",
+            "emotional_tells": "Takes detailed notes, asks for step-by-step confirmations"
+          },
+          "sample_dialogue": [
+            "What exactly happens if the system crashes during a code blue?",
+            "How specifically do I access patient allergies in the new system?",
+            "Kevin, I need you to walk me through the backup process step by step."
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F",
+          "role": "senior",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Worries aloud about all possible failure scenarios",
+            "under_pressure": "Voice gets higher, talks faster about worst-case outcomes",
+            "verbal_tics": "Says 'What if' and 'I'm really worried about' constantly",
+            "emotional_tells": "Fidgets with hands, asks multiple follow-up questions"
+          },
+          "sample_dialogue": [
+            "What if the system goes down right when we're trying to admit someone critical?",
+            "I'm really worried about the overnight shift - they won't have any IT support.",
+            "Has anyone thought about what happens if our internet connection fails too?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Kevin explains system changes while Sarah and Lisa express growing concerns",
+          "emotional_tone": "worried",
+          "key_points": ["Major interface changes revealed", "Backup concerns raised", "Training inadequacy acknowledged"]
+        },
+        {
+          "phase": "development",
+          "description": "Multiple failure scenarios discussed, creating escalating anxiety about Monday launch",
+          "emotional_tone": "increasingly anxious",
+          "key_points": ["Worst-case scenarios explored", "Support limitations identified", "Staff preparedness questioned"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Emergency contact list created, simplified quick-reference guide planned",
+          "emotional_tone": "cautiously prepared",
+          "key_points": ["Support structure established", "Key procedures simplified", "Emergency protocols defined"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Kevin Park",
+          "task": "Create one-page quick reference guide for common tasks",
+          "deadline": "Sunday night by 11 PM", 
+          "context": "Staff need simple visual guide for Monday morning basic functions"
+        },
+        {
+          "assignee": "Lisa Martinez",
+          "task": "Test critical patient lookup procedures and document issues",
+          "deadline": "Saturday evening",
+          "context": "Need to identify and resolve major workflow problems before go-live"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Emergency IT support availability",
+          "date_time": "Monday 6 AM to 6 PM",
+          "attendees": ["Kevin Park", "IT backup team"],
+          "purpose": "Provide immediate support for system transition issues"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Quality Improvement Committee Clash",
+      "duration_minutes": 10,
+      "context": {
+        "setting": "Boardroom with too-bright fluorescent lights and uncomfortable chairs",
+        "background": "Monthly quality review meeting with recent patient complaint escalation",
+        "tension_point": "Disagreement over root cause analysis - system failure vs. individual performance issue",
+        "expected_outcome": "Determine investigation approach and corrective actions without assigning blame prematurely"
+      },
+      "participants": [
+        {
+          "name": "Dr. Michael Torres",
+          "voice": "M",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks with authority, uses medical terminology precisely",
+            "under_pressure": "Becomes more formal and clinical in language",
+            "verbal_tics": "Says 'In my experience' and 'Clinically speaking' often",
+            "emotional_tells": "Steeples fingers when making serious points"
+          },
+          "sample_dialogue": [
+            "In my experience, these patterns usually indicate systemic communication breakdowns.",
+            "Clinically speaking, we need to look at the entire care pathway, not just one person.",
+            "This isn't about blame - it's about preventing the next adverse event."
+          ]
+        },
+        {
+          "name": "Nancy Williams",
+          "voice": "F",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged", 
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Methodical speaker, references data and statistics frequently",
+            "under_pressure": "Speaks even more slowly and deliberately",
+            "verbal_tics": "Says 'The data indicates' and 'Statistically' often",
+            "emotional_tells": "Shuffles through papers when challenged, adjusts reading glasses"
+          },
+          "sample_dialogue": [
+            "The data indicates this is the third similar incident in six months.",
+            "Statistically, individual error rates don't typically cluster like this without system factors.",
+            "I've reviewed the timeline... there are gaps in the documentation that concern me."
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F",
+          "role": "senior",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Expresses multiple concerns rapidly, seeks consensus",
+            "under_pressure": "Talks faster and brings up more potential complications",
+            "verbal_tics": "Says 'I'm concerned that' and 'What if we're missing' frequently",
+            "emotional_tells": "Gestures more when worried, leans forward when making points"
+          },
+          "sample_dialogue": [
+            "I'm concerned that we're not seeing the full picture here - there might be other factors.",
+            "What if we're missing something about the handoff process between shifts?",
+            "Have we considered how the new residents are being supervised during these situations?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Dr. Torres presents case overview, Nancy shares statistical analysis, Sarah raises additional concerns",
+          "emotional_tone": "professional but tense",
+          "key_points": ["Case details reviewed", "Pattern analysis presented", "Multiple factors identified"]
+        },
+        {
+          "phase": "development",
+          "description": "Debate over investigation scope - individual vs. system focus, with Sarah advocating for comprehensive review",
+          "emotional_tone": "increasingly focused",
+          "key_points": ["Root cause methodology debated", "Investigation scope discussed", "Resource allocation considered"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Agreement on multi-pronged investigation including both individual and system factors", 
+          "emotional_tone": "collaboratively determined",
+          "key_points": ["Investigation plan approved", "Timeline established", "Roles assigned"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Nancy Williams",
+          "task": "Conduct comprehensive data analysis of similar incidents over past year",
+          "deadline": "Next Friday",
+          "context": "Need to identify patterns and system-level contributing factors"
+        },
+        {
+          "assignee": "Sarah Chen",
+          "task": "Interview staff involved in incidents to understand workflow challenges",
+          "deadline": "Within two weeks",
+          "context": "Gather qualitative data on systemic barriers and communication issues"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Investigation findings review meeting",
+          "date_time": "In three weeks, Thursday at 3 PM",
+          "attendees": ["Dr. Michael Torres", "Nancy Williams", "Sarah Chen", "Risk Management"],
+          "purpose": "Review investigation results and determine corrective action plan"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Scheduling Nightmare Crisis Meeting",
+      "duration_minutes": 7,
+      "context": {
+        "setting": "Nurse manager's office with scheduling whiteboard covered in crossed-out names",
+        "background": "Three staff members called in sick for weekend shift, holiday weekend approaching with no coverage",
+        "tension_point": "Mandatory overtime vs. patient safety vs. staff burnout - no good solutions available",
+        "expected_outcome": "Create weekend coverage plan that doesn't violate union rules or compromise patient care"
+      },
+      "participants": [
+        {
+          "name": "Carlos Mendez",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks quickly under pressure, uses union terminology",
+            "under_pressure": "Gets louder and more assertive about worker rights",
+            "verbal_tics": "Says 'According to the contract' and 'That's not legal' often",
+            "emotional_tells": "Points at scheduling board when making arguments"
+          },
+          "sample_dialogue": [
+            "According to the contract, you can't force anyone to work more than two doubles in a week.",
+            "That's not legal - mandatory overtime has specific notification requirements.",
+            "Look, I get it, but we can't just ignore the union rules because we're desperate."
+          ]
+        },
+        {
+          "name": "Margaret Foster",
+          "voice": "F",
+          "role": "exec",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Tries to find middle ground, speaks diplomatically",
+            "under_pressure": "Becomes more conciliatory but firm about patient safety",
+            "verbal_tics": "Says 'I understand but' and 'What if we tried' frequently",
+            "emotional_tells": "Rubs temples when dealing with competing demands"
+          },
+          "sample_dialogue": [
+            "I understand but we cannot compromise patient safety - that's non-negotiable.",
+            "What if we tried splitting some of the shifts differently - maybe 10-hour instead of 12?",
+            "Carlos, I hear you about the contract, but we need creative solutions here."
+          ]
+        },
+        {
+          "name": "Sarah Chen",
+          "voice": "F",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Asks detailed questions about every proposed solution's risks",
+            "under_pressure": "Becomes more focused on worst-case scenarios",
+            "verbal_tics": "Says 'But what about' and 'I'm worried about' constantly",
+            "emotional_tells": "Counts on fingers when listing potential problems"
+          },
+          "sample_dialogue": [
+            "But what about the inexperienced staff working without adequate supervision?",
+            "I'm worried about medication errors when everyone's exhausted from overtime.",
+            "Have we considered what happens if someone else calls in sick Saturday morning?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Margaret presents the staffing crisis, Carlos immediately cites union constraints",
+          "emotional_tone": "urgent",
+          "key_points": ["Staffing shortage detailed", "Union rules referenced", "Patient safety concerns raised"]
+        },
+        {
+          "phase": "development",
+          "description": "Multiple solutions proposed and shot down due to various constraints, Sarah raises safety concerns",
+          "emotional_tone": "increasingly frustrated",
+          "key_points": ["Multiple options explored", "Legal and safety barriers identified", "Creative alternatives sought"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Hybrid solution involving voluntary overtime incentives and temporary agency staff",
+          "emotional_tone": "reluctantly accepting",
+          "key_points": ["Compromise plan developed", "Incentives offered", "Backup plans established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Carlos Mendez",
+          "task": "Contact union representative to confirm overtime incentive legality",
+          "deadline": "By end of day Thursday",
+          "context": "Need union approval for weekend premium pay structure"
+        },
+        {
+          "assignee": "Margaret Foster",
+          "task": "Arrange emergency agency nurse coverage for Saturday night",
+          "deadline": "Friday morning",
+          "context": "Backup plan if voluntary overtime doesn't provide sufficient coverage"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Weekend staffing check-in calls",
+          "date_time": "Saturday and Sunday at 6 AM and 6 PM",
+          "attendees": ["Margaret Foster", "Charge nurses"],
+          "purpose": "Monitor coverage levels and address immediate staffing issues"
+        }
+      ]
+    }
+  ]
+}

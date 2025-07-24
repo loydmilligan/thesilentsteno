@@ -1,0 +1,728 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "High-Stakes Enterprise Software Deal",
+      "duration_minutes": 12,
+      "context": {
+        "setting": "Video conference with potential major client's decision-making team",
+        "background": "Six-month sales cycle for $2M enterprise software solution, final presentation before decision",
+        "tension_point": "Client has concerns about implementation timeline and competitor offering lower price",
+        "expected_outcome": "Address concerns and secure commitment or clear next steps"
+      },
+      "participants": [
+        {
+          "name": "Brian Mitchell",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Confident opener, addresses objections head-on",
+            "under_pressure": "Becomes more assertive and detailed",
+            "verbal_tics": "Says 'Let me be clear' when handling objections",
+            "emotional_tells": "Slight pause before discussing pricing"
+          },
+          "sample_dialogue": [
+            "Let me be clear about our implementation approach - we've done this 50 times with companies your size.",
+            "I understand price is a factor, but let's talk about the cost of getting this wrong.",
+            "Our competitor's solution looks cheaper upfront, but you'll pay triple in integration costs."
+          ]
+        },
+        {
+          "name": "Catherine Stevens",
+          "voice": "F",
+          "role": "exec",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Data-driven questions, methodical evaluation",
+            "under_pressure": "Becomes more detailed in requirements",
+            "verbal_tics": "Says 'I need to understand' before technical questions",
+            "emotional_tells": "Voice gets flatter when considering risks"
+          },
+          "sample_dialogue": [
+            "I need to understand exactly how your solution handles our compliance requirements.",
+            "The board is asking tough questions about ROI timeline - what's realistic here?",
+            "Your competitor claims they can do this in half the time - explain the difference."
+          ]
+        },
+        {
+          "name": "Marcus Thompson",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Energetic support, uses success story metaphors",
+            "under_pressure": "Gets more passionate about client success",
+            "verbal_tics": "Says 'This is exciting because...' when building enthusiasm",
+            "verbal_tells": "Voice rises when describing transformation possibilities"
+          },
+          "sample_dialogue": [
+            "This is exciting because you're not just buying software - you're transforming how your whole team works!",
+            "I've seen this transformation before - it's like moving from cooking on a camp stove to a professional kitchen!",
+            "The timeline concerns are real, but what you're getting is a perfectly orchestrated implementation."
+          ]
+        },
+        {
+          "name": "David Wong",
+          "voice": "M",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Technical concerns, risk-focused questions",
+            "under_pressure": "Becomes more detailed about potential problems",
+            "verbal_tics": "Says 'What happens if...' when exploring failure scenarios",
+            "emotional_tells": "Long pauses when considering implementation risks"
+          },
+          "sample_dialogue": [
+            "What happens if your implementation team gets pulled to other projects mid-stream?",
+            "I've seen enterprise rollouts fail because of integration complexities - how do you prevent that?",
+            "Our IT team is already stretched thin - how much of their time does this really require?"
+          ]
+        },
+        {
+          "name": "Jennifer Park",
+          "voice": "F",
+          "role": "midlevel",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "User experience focused, practical concerns",
+            "under_pressure": "Focuses more on team adoption challenges",
+            "verbal_tics": "Says 'My team will ask...' when representing user concerns",
+            "emotional_tells": "Voice gets more concerned when discussing change management"
+          },
+          "sample_dialogue": [
+            "My team will ask about training - how do we get 200 people comfortable with a new system?",
+            "Change management is our biggest challenge - what support do you provide there?",
+            "The current system is frustrating, but at least people know how to use it..."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Brian presents final proposal summary, Catherine raises timeline and cost concerns",
+          "emotional_tone": "professional but tense",
+          "key_points": ["$2M investment decision pending", "Implementation timeline concerns", "Competitor pricing pressure", "Board approval required"]
+        },
+        {
+          "phase": "development",
+          "description": "Detailed discussion of implementation approach, Marcus builds enthusiasm while David raises technical concerns, Jennifer focuses on user adoption",
+          "emotional_tone": "analytical with growing excitement",
+          "key_points": ["Implementation methodology explained", "Risk mitigation strategies discussed", "Training and change management addressed", "ROI timeline clarified"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Team addresses remaining concerns, establishes proof of concept trial, sets decision timeline",
+          "emotional_tone": "cautiously optimistic",
+          "key_points": ["30-day pilot program agreed", "Implementation guarantees provided", "Next steps and decision timeline set"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Brian Mitchell",
+          "task": "Prepare detailed ROI analysis with conservative estimates",
+          "deadline": "By tomorrow end of day",
+          "context": "Catherine needs board-ready financial justification"
+        },
+        {
+          "assignee": "Marcus Thompson",
+          "task": "Design 30-day pilot program scope and success metrics",
+          "deadline": "By Wednesday",
+          "context": "Proof of concept to reduce implementation risk perception"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Pilot program kickoff",
+          "date_time": "Next Monday at 10 AM",
+          "attendees": ["Implementation team", "Jennifer Park", "David Wong"],
+          "purpose": "Begin 30-day proof of concept with key stakeholders"
+        },
+        {
+          "event": "Board presentation preparation",
+          "date_time": "Friday at 2 PM",
+          "attendees": ["Catherine Stevens", "Brian Mitchell"],
+          "purpose": "Review materials for board decision meeting"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Struggling Startup Seeking Investment Platform",
+      "duration_minutes": 8,
+      "context": {
+        "setting": "Startup's cramped office conference room",
+        "background": "Early-stage startup needs CRM solution but has limited budget and uncertain growth trajectory",
+        "tension_point": "Startup wants enterprise features at startup pricing, sales team needs to qualify opportunity",
+        "expected_outcome": "Determine if there's a viable deal structure or if timing isn't right"
+      },
+      "participants": [
+        {
+          "name": "Alex Rivera",
+          "voice": "M",
+          "role": "junior",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Optimistic about growth, defensive about budget constraints",
+            "under_pressure": "Becomes more passionate about company potential",
+            "verbal_tics": "Says 'When we scale...' frequently",
+            "emotional_tells": "Voice gets tighter when discussing budget limitations"
+          },
+          "sample_dialogue": [
+            "When we scale to 100 customers, we'll need all these enterprise features - we just need to get there first!",
+            "Look, I know our budget is tight now, but we're about to close a Series A round...",
+            "Can we start with basic features and upgrade as we grow? We're moving fast here."
+          ]
+        },
+        {
+          "name": "Dr. Sarah Kim",
+          "voice": "F",
+          "role": "exec",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Cautious, research-focused, asks probing questions",
+            "under_pressure": "Becomes more concerned about long-term viability",
+            "verbal_tics": "Says 'We need to be realistic' when discussing constraints",
+            "emotional_tells": "Longer pauses when considering financial commitments"
+          },
+          "sample_dialogue": [
+            "We need to be realistic about our runway - we have maybe 18 months of funding.",
+            "What's the minimum viable package that gives us real value?",
+            "I've seen too many startups overspend on tools they're not ready for..."
+          ]
+        },
+        {
+          "name": "Marcus Thompson",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Supportive of startup journey, uses growth metaphors",
+            "under_pressure": "Focuses on finding creative solutions",
+            "verbal_tics": "Says 'I love the energy here' when connecting with startup passion",
+            "emotional_tells": "Gets more animated when discussing growth possibilities"
+          },
+          "sample_dialogue": [
+            "I love the energy here - this reminds me of other startups we've helped scale successfully!",
+            "Think of this like building a kitchen - you start with basics but plan for the full menu.",
+            "We've got a startup program that might be perfect - it grows with you organically."
+          ]
+        },
+        {
+          "name": "Tom Jackson",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Practical questions, qualification focused",
+            "under_pressure": "Becomes more direct about deal viability",
+            "verbal_tics": "Says 'Let's be honest' when addressing difficult topics",
+            "emotional_tells": "Voice gets more businesslike when qualifying budget"
+          },
+          "sample_dialogue": [
+            "Let's be honest about budget - what can you actually commit to for the next 12 months?",
+            "I need to understand your customer acquisition timeline to see if this makes sense.",
+            "We want to help, but we also need deals that work for both sides."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Alex enthusiastically presents startup vision, Sarah explains budget constraints, team explores needs",
+          "emotional_tone": "optimistic but cautious",
+          "key_points": ["Startup vision and growth projections", "Budget constraints and runway concerns", "Enterprise feature needs vs startup reality"]
+        },
+        {
+          "phase": "development",
+          "description": "Discussion of startup program options, Marcus gets excited about growth potential, Tom qualifies the opportunity",
+          "emotional_tone": "collaborative exploration",
+          "key_points": ["Startup program features and pricing", "Growth timeline and funding status", "Minimum viable solution identification", "Risk assessment for both sides"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Agreement on pilot program with growth-based pricing, clear success metrics established",
+          "emotional_tone": "cautiously optimistic",
+          "key_points": ["6-month pilot program agreed", "Growth-based pricing model", "Clear upgrade path defined"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Marcus Thompson",
+          "task": "Create startup program proposal with growth milestones",
+          "deadline": "By Thursday",
+          "context": "Pricing that scales with their customer acquisition"
+        },
+        {
+          "assignee": "Tom Jackson",
+          "task": "Verify startup program approval and contract terms",
+          "deadline": "By end of week",
+          "context": "Ensure deal structure is viable for company"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Startup program setup call",
+          "date_time": "Next Tuesday at 11 AM",
+          "attendees": ["Marcus Thompson", "Alex Rivera", "Implementation team"],
+          "purpose": "Configure initial system and establish success metrics"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Competitive Displacement Battle",
+      "duration_minutes": 10,
+      "context": {
+        "setting": "Client's boardroom during vendor review process",
+        "background": "Existing client considering switching to competitor due to pricing and new features",
+        "tension_point": "Long relationship vs. better competitive offer, trust vs. economics",
+        "expected_outcome": "Retain client through improved offer or graceful transition planning"
+      },
+      "participants": [
+        {
+          "name": "Robert Chen",
+          "voice": "M",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Business-focused, values relationship but needs results",
+            "under_pressure": "Becomes more focused on bottom-line impact",
+            "verbal_tics": "Says 'Here's the reality' when discussing difficult decisions",
+            "emotional_tells": "Voice gets slightly softer when discussing relationship value"
+          },
+          "sample_dialogue": [
+            "Here's the reality - your competitor is offering 40% savings and features we've been asking for.",
+            "We value our relationship, but I have to justify costs to the board every quarter.",
+            "Help me understand why we should stay when the alternative looks objectively better."
+          ]
+        },
+        {
+          "name": "Lisa Rodriguez",
+          "voice": "F",
+          "role": "senior",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Relationship-focused, emphasizes partnership value",
+            "under_pressure": "Becomes more emotional about relationship preservation",
+            "verbal_tics": "Says 'We've been through this before' when referencing history",
+            "emotional_tells": "Voice wavers slightly when discussing potential loss"
+          },
+          "sample_dialogue": [
+            "We've been through this before - remember the integration nightmare three years ago?",
+            "This isn't just about features and pricing - it's about partnership and reliability.",
+            "I'm concerned about the disruption to our teams who finally have everything working smoothly."
+          ]
+        },
+        {
+          "name": "Marcus Thompson",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Problem-solving focused, energetic about solutions",
+            "under_pressure": "Gets more creative about retention strategies",
+            "verbal_tics": "Says 'What if we could...' when proposing alternatives",
+            "emotional_tells": "Gestures more when passionate about solutions"
+          },
+          "sample_dialogue": [
+            "What if we could match their pricing AND accelerate the features you've been waiting for?",
+            "This feels like a perfect time to restructure our partnership - like upgrading the whole recipe!",
+            "I'm excited about this challenge - let's create something better than what the competitor offers!"
+          ]
+        },
+        {
+          "name": "Jennifer Walsh",
+          "voice": "F",
+          "role": "midlevel",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Risk-focused, detailed about transition concerns",
+            "under_pressure": "Becomes more systematic about evaluation criteria",
+            "verbal_tics": "Says 'We need to consider' when raising concerns",
+            "emotional_tells": "Speaks faster when worried about risks"
+          },
+          "sample_dialogue": [
+            "We need to consider the total cost of switching - it's not just about monthly fees.",
+            "Data migration alone could take six months and cost $200K in downtime.",
+            "Their features look good on paper, but do they actually work in our environment?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Robert presents competitor offer, Lisa emphasizes relationship value, competitive pressure revealed",
+          "emotional_tone": "tense but respectful",
+          "key_points": ["40% cost savings from competitor", "New features currently unavailable", "Board pressure for cost reduction", "Long relationship history"]
+        },
+        {
+          "phase": "development",
+          "description": "Detailed comparison of offers, Marcus proposes creative solutions, Jennifer analyzes switching costs",
+          "emotional_tone": "analytical with growing collaboration",
+          "key_points": ["Total cost of ownership analysis", "Feature comparison and timeline", "Risk assessment of switching", "Partnership restructuring possibilities"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Agreement on improved retention package with accelerated roadmap and matched pricing",
+          "emotional_tone": "collaborative relief",
+          "key_points": ["Pricing matched with volume commitment", "Accelerated feature development agreed", "Extended partnership terms negotiated"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Marcus Thompson",
+          "task": "Draft restructured partnership proposal with matched pricing",
+          "deadline": "By Monday morning",
+          "context": "Need formal proposal for board review"
+        },
+        {
+          "assignee": "Lisa Rodriguez",
+          "task": "Coordinate with product team on accelerated feature timeline",
+          "deadline": "By Tuesday",
+          "context": "Confirm feasibility of promised development schedule"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Board presentation of retention proposal",
+          "date_time": "Wednesday at 2 PM",
+          "attendees": ["Robert Chen", "Board members", "Marcus Thompson"],
+          "purpose": "Present improved partnership terms for approval"
+        },
+        {
+          "event": "Partnership restructuring finalization",
+          "date_time": "Friday at 10 AM",
+          "attendees": ["All participants", "Legal teams"],
+          "purpose": "Sign amended agreement and establish new terms"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Complex Multi-Stakeholder Procurement Process",
+      "duration_minutes": 15,
+      "context": {
+        "setting": "Large conference room with multiple department representatives",
+        "background": "Government agency procurement for system serving multiple departments with different needs",
+        "tension_point": "Different departments have conflicting requirements and budget constraints",
+        "expected_outcome": "Navigate complex stakeholder needs and establish unified requirements"
+      },
+      "participants": [
+        {
+          "name": "Colonel James Wright",
+          "voice": "M",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Military precision, focused on security and reliability",
+            "under_pressure": "Becomes more structured and hierarchical",
+            "verbal_tics": "Says 'Mission critical' when emphasizing importance",
+            "emotional_tells": "Voice gets more clipped when discussing security concerns"
+          },
+          "sample_dialogue": [
+            "This is mission critical - we cannot compromise on security protocols or system reliability.",
+            "I need absolute certainty that this system meets our compliance requirements.",
+            "We've had system failures cost lives before - that cannot happen again."
+          ]
+        },
+        {
+          "name": "Dr. Patricia Adams",
+          "voice": "F",
+          "role": "exec",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Research-focused, evidence-based decisions",
+            "under_pressure": "Becomes more detailed about validation requirements",
+            "verbal_tics": "Says 'The data shows' when supporting arguments",
+            "emotional_tells": "Pauses longer when considering research implications"
+          },
+          "sample_dialogue": [
+            "The data shows that user adoption fails when interfaces are too complex for field operations.",
+            "We need extensive pilot testing before any full deployment - research protocols are non-negotiable.",
+            "Integration with existing research systems is absolutely critical for data continuity."
+          ]
+        },
+        {
+          "name": "Marcus Thompson",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Bridge-building, focuses on unified solutions",
+            "under_pressure": "Gets more energetic about finding common ground",
+            "verbal_tics": "Says 'Everyone wins when...' when building consensus",
+            "emotional_tells": "Voice rises with excitement when seeing synthesis opportunities"
+          },
+          "sample_dialogue": [
+            "Everyone wins when we design something that serves both operational and research needs seamlessly!",
+            "This is like creating a menu that satisfies completely different palates - challenging but exciting!",
+            "I'm seeing patterns here - both teams need reliability, just measured differently."
+          ]
+        },
+        {
+          "name": "Budget Director Karen Foster",
+          "voice": "F",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Cost-focused, practical about budget reality",
+            "under_pressure": "Becomes more blunt about financial constraints",
+            "verbal_tics": "Says 'Bottom line' when discussing financial limits",
+            "emotional_tells": "Voice gets tighter when discussing budget overruns"
+          },
+          "sample_dialogue": [
+            "Bottom line - we have $1.2M allocated and that's it, regardless of wishlist features.",
+            "Every requirement you add costs money - we need to prioritize ruthlessly here.",
+            "I've seen projects like this balloon to triple the budget - that's not happening."
+          ]
+        },
+        {
+          "name": "Tech Lead David Park",
+          "voice": "M",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Technical feasibility focus, cautious about promises",
+            "under_pressure": "Becomes more detailed about technical constraints",
+            "verbal_tics": "Says 'Technically speaking' when explaining limitations",
+            "emotional_tells": "Sighs before explaining complex technical trade-offs"
+          },
+          "sample_dialogue": [
+            "Technically speaking, real-time data sync across all these systems is extremely complex.",
+            "We can build it, but the integration timeline depends on cooperation from legacy system vendors.",
+            "Some of these requirements conflict at a fundamental architecture level."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Each stakeholder presents their department's requirements, conflicts immediately apparent",
+          "emotional_tone": "professional but tense",
+          "key_points": ["Security vs usability requirements", "Budget constraints vs feature needs", "Timeline pressure vs thorough testing", "Legacy system integration challenges"]
+        },
+        {
+          "phase": "development",
+          "description": "Detailed discussion of trade-offs, Marcus facilitates consensus building, technical constraints explored",
+          "emotional_tone": "analytical collaboration",
+          "key_points": ["Requirement prioritization matrix developed", "Phased implementation approach considered", "Security compliance framework established", "Budget allocation strategies discussed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Unified requirements document agreed upon with clear priorities and phased approach",
+          "emotional_tone": "collaborative achievement",
+          "key_points": ["Core requirements vs nice-to-have features defined", "Three-phase implementation timeline agreed", "Budget allocation by phase established", "Success metrics for each phase set"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "David Park",
+          "task": "Create technical architecture proposal for phased implementation",
+          "deadline": "Next Friday",
+          "context": "Need detailed technical plan for vendor evaluation"
+        },
+        {
+          "assignee": "Dr. Patricia Adams",
+          "task": "Design pilot testing protocol for Phase 1",
+          "deadline": "In two weeks",
+          "context": "Research validation requirements for initial deployment"
+        },
+        {
+          "assignee": "Marcus Thompson",
+          "task": "Coordinate vendor demonstrations aligned with unified requirements",
+          "deadline": "Next week",
+          "context": "Ensure all stakeholders can evaluate solutions consistently"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Vendor demonstration sessions",
+          "date_time": "Next Tuesday through Thursday",
+          "attendees": ["All stakeholders", "Vendor teams"],
+          "purpose": "Evaluate solutions against unified requirements"
+        },
+        {
+          "event": "Final vendor selection meeting",
+          "date_time": "Following Monday at 9 AM",
+          "attendees": ["All participants", "Procurement team"],
+          "purpose": "Make final vendor selection and approve contract terms"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Product Demo Disaster Recovery",
+      "duration_minutes": 6,
+      "context": {
+        "setting": "Client's office during scheduled product demonstration",
+        "background": "Critical product demo failing due to technical issues, client losing confidence",
+        "tension_point": "Technical failure undermining months of relationship building and trust",
+        "expected_outcome": "Recover credibility and maintain sales opportunity despite demo failure"
+      },
+      "participants": [
+        {
+          "name": "Steve Martinez",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Damage control focused, honest about problems",
+            "under_pressure": "Becomes more transparent and solution-oriented",
+            "verbal_tics": "Says 'I take full responsibility' when addressing failures",
+            "emotional_tells": "Voice gets steadier when taking ownership"
+          },
+          "sample_dialogue": [
+            "I take full responsibility for this technical failure - this is not the experience we promised.",
+            "Let me show you exactly what went wrong and how we prevent this in production environments.",
+            "This demo environment clearly isn't representative of our actual system performance."
+          ]
+        },
+        {
+          "name": "Amanda Foster",
+          "voice": "F",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Skeptical questions, trust concerns prominent",
+            "under_pressure": "Becomes more critical and risk-focused",
+            "verbal_tics": "Says 'How do I know' when questioning reliability",
+            "emotional_tells": "Voice gets cooler when confidence is shaken"
+          },
+          "sample_dialogue": [
+            "How do I know this won't happen when we're presenting to our biggest client?",
+            "This was supposed to show us why your system is more reliable than our current one.",
+            "I need to see evidence that your production system actually works as advertised."
+          ]
+        },
+        {
+          "name": "Marcus Thompson",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Recovery-focused, builds confidence through alternative demonstration",
+            "under_pressure": "Channels energy into creative solutions",
+            "verbal_tics": "Says 'Let me show you differently' when pivoting approach",
+            "emotional_tells": "Gets more animated when finding alternative solutions"
+          },
+          "sample_dialogue": [
+            "Let me show you differently - I can walk through actual client success stories with real data.",
+            "This is like when a dish doesn't plate properly but the flavors are still perfect - let me prove the quality!",
+            "I've got live production screenshots from three clients who are online right now."
+          ]
+        },
+        {
+          "name": "Technical Director Paul Kim",
+          "voice": "M",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Technical questions, focused on system architecture",
+            "under_pressure": "Becomes more detailed about technical requirements",
+            "verbal_tics": "Says 'From an architecture standpoint' when evaluating systems",
+            "emotional_tells": "Longer pauses when assessing technical credibility"
+          },
+          "sample_dialogue": [
+            "From an architecture standpoint, I need to understand your redundancy and failover systems.",
+            "This demo failure suggests there might be fundamental scalability issues.",
+            "Can you show me actual system monitoring data from your production environment?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Demo crashes immediately, client confidence drops, Steve takes responsibility",
+          "emotional_tone": "embarrassed and concerned",
+          "key_points": ["Critical demo failure", "Client trust shaken", "Technical credibility questioned", "Months of relationship building at risk"]
+        },
+        {
+          "phase": "development",
+          "description": "Team pivots to alternative demonstration methods, Marcus shows real client data, Paul asks technical questions",
+          "emotional_tone": "recovery mode",
+          "key_points": ["Alternative demonstration approaches", "Real client success stories", "Production system evidence", "Technical architecture discussion"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Client agrees to production system visit and reference calls, credibility partially restored",
+          "emotional_tone": "cautiously optimistic",
+          "key_points": ["Production site visit scheduled", "Client reference calls arranged", "Technical documentation provided", "Second chance earned"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Steve Martinez",
+          "task": "Arrange production facility visit with full technical team",
+          "deadline": "By tomorrow",
+          "context": "Show actual working system to restore credibility"
+        },
+        {
+          "assignee": "Marcus Thompson",
+          "task": "Coordinate client reference calls with similar companies",
+          "deadline": "By end of week",
+          "context": "Third-party validation of system reliability"
+        },
+        {
+          "assignee": "Paul Kim",
+          "task": "Prepare detailed technical architecture documentation",
+          "deadline": "Before site visit",
+          "context": "Address technical concerns raised during demo failure"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Production facility visit",
+          "date_time": "Thursday at 10 AM",
+          "attendees": ["Amanda Foster", "Paul Kim", "Technical team"],
+          "purpose": "Demonstrate actual working system and technical capabilities"
+        },
+        {
+          "event": "Client reference calls",
+          "date_time": "Friday afternoon",
+          "attendees": ["Amanda Foster", "Marcus Thompson", "Reference clients"],
+          "purpose": "Third-party validation of system reliability and performance"
+        }
+      ]
+    }
+  ]
+}

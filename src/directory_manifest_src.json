@@ -1,0 +1,184 @@
+{
+  "version": "1.0",
+  "generated": "2025-07-24T10:30:00Z",
+  "directory": "./src",
+  "depth": 1,
+  "description": "Main source package for The Silent Steno - Bluetooth AI Meeting Recorder",
+  "structure": {
+    "__init__.py": {
+      "type": "file",
+      "purpose": "Package initialization file for the main source package",
+      "content_summary": "Simple package marker with project description comment"
+    },
+    "ai/": {
+      "type": "directory",
+      "purpose": "AI processing modules for transcription, analysis, and LLM integration",
+      "file_count": 16,
+      "key_modules": [
+        "whisper_transcriber.py - Whisper-based transcription",
+        "gemini_analyzer.py - Gemini LLM integration", 
+        "transcription_pipeline.py - Main transcription processing pipeline",
+        "analysis_pipeline.py - Audio analysis coordination"
+      ]
+    },
+    "analysis/": {
+      "type": "directory", 
+      "purpose": "Audio analysis and processing utilities",
+      "file_count": 7,
+      "key_modules": [
+        "audio_chunker.py - Audio segmentation",
+        "silence_detector.py - Voice activity detection",
+        "speaker_detector.py - Speaker identification",
+        "quality_assessor.py - Audio quality assessment"
+      ]
+    },
+    "audio/": {
+      "type": "directory",
+      "purpose": "Low-level audio handling and ALSA integration",
+      "file_count": 6,
+      "key_modules": [
+        "audio_pipeline.py - Main audio processing pipeline",
+        "alsa_manager.py - ALSA system integration",
+        "latency_optimizer.py - Audio latency optimization",
+        "level_monitor.py - Audio level monitoring"
+      ]
+    },
+    "bluetooth/": {
+      "type": "directory",
+      "purpose": "Bluetooth connectivity and device management",
+      "file_count": 3,
+      "key_modules": [
+        "bluez_manager.py - BlueZ stack integration",
+        "connection_manager.py - Bluetooth connection handling"
+      ]
+    },
+    "config/": {
+      "type": "directory",
+      "purpose": "Configuration management system",
+      "file_count": 1,
+      "key_modules": [
+        "settings_manager.py - Application settings management"
+      ]
+    },
+    "core/": {
+      "type": "directory",
+      "purpose": "Core application framework and shared utilities",
+      "file_count": 9,
+      "key_modules": [
+        "application.py - Main application class",
+        "config.py - Configuration loading and validation",
+        "registry.py - Component registry system",
+        "events.py - Event system",
+        "logging.py - Logging configuration"
+      ]
+    },
+    "data/": {
+      "type": "directory",
+      "purpose": "Database models, migrations, and data management",
+      "file_count": 7,
+      "key_modules": [
+        "database.py - Database connection and ORM",
+        "models.py - SQLAlchemy data models",
+        "migrations.py - Database migration handling",
+        "backup_manager.py - Data backup functionality"
+      ]
+    },
+    "export/": {
+      "type": "directory",
+      "purpose": "Data export and sharing functionality",
+      "file_count": 7,
+      "key_modules": [
+        "pdf_generator.py - PDF export functionality",
+        "email_exporter.py - Email sharing",
+        "usb_exporter.py - USB export handling",
+        "bulk_exporter.py - Batch export operations"
+      ]
+    },
+    "integration/": {
+      "type": "directory",
+      "purpose": "External system integration adapters",
+      "file_count": 1,
+      "key_modules": [
+        "walking_skeleton_adapter.py - Basic integration adapter"
+      ]
+    },
+    "llm/": {
+      "type": "directory",
+      "purpose": "Local LLM processing and meeting analysis",
+      "file_count": 7,
+      "key_modules": [
+        "local_llm_processor.py - Local LLM integration",
+        "meeting_analyzer.py - Meeting content analysis",
+        "action_item_extractor.py - Action item identification",
+        "topic_identifier.py - Meeting topic extraction"
+      ]
+    },
+    "recording/": {
+      "type": "directory",
+      "purpose": "Audio recording, session management, and file handling",
+      "file_count": 9,
+      "key_modules": [
+        "session_manager.py - Recording session coordination",
+        "audio_recorder.py - Main audio recording functionality",
+        "bluetooth_audio_recorder_module.py - Bluetooth-specific recording",
+        "file_manager.py - Audio file management"
+      ]
+    },
+    "system/": {
+      "type": "directory",
+      "purpose": "System-level functionality and device management",
+      "file_count": 8,
+      "key_modules": [
+        "device_manager.py - Hardware device management",
+        "health_monitor.py - System health monitoring",
+        "diagnostics.py - System diagnostics",
+        "update_manager.py - Software update handling"
+      ]
+    },
+    "ui/": {
+      "type": "directory",
+      "purpose": "User interface components and touch controls",
+      "file_count": 17,
+      "key_modules": [
+        "main_window.py - Main application window",
+        "session_controls.py - Recording session UI controls",
+        "transcription_display.py - Live transcription display",
+        "touch_controls.py - Touch interface handling",
+        "session_list_view.py - Session management interface"
+      ]
+    }
+  },
+  "totals": {
+    "directories": 12,
+    "files_analyzed": 1,
+    "total_estimated_files": 95
+  },
+  "architecture_overview": {
+    "main_components": [
+      "ai/ - AI processing and transcription",
+      "audio/ - Low-level audio handling", 
+      "bluetooth/ - Device connectivity",
+      "recording/ - Session and file management",
+      "ui/ - User interface and controls"
+    ],
+    "support_components": [
+      "core/ - Application framework",
+      "data/ - Database and persistence",
+      "export/ - Data sharing and export",
+      "system/ - Device and system management"
+    ],
+    "integration_layers": [
+      "config/ - Configuration management",
+      "integration/ - External system adapters",
+      "llm/ - Local LLM processing"
+    ]
+  },
+  "technology_stack": {
+    "audio_processing": "ALSA, PulseAudio, Python audio libraries",
+    "bluetooth": "BlueZ stack integration",
+    "ai_models": "Whisper (transcription), Local LLM (analysis)", 
+    "database": "SQLAlchemy ORM with SQLite",
+    "ui_framework": "Touch-optimized interface (likely Kivy/PyQt)",
+    "platform": "Raspberry Pi 5 with touchscreen"
+  }
+}

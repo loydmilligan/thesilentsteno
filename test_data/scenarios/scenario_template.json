@@ -1,0 +1,67 @@
+{
+  "scenario_title": "Brief descriptive title",
+  "duration_minutes": 5,
+  "context": {
+    "setting": "Where/how the conversation takes place",
+    "background": "What led to this conversation",
+    "tension_point": "The main conflict, disagreement, or emotional tension",
+    "expected_outcome": "What should be resolved or decided"
+  },
+  "participants": [
+    {
+      "name": "John Smith",
+      "voice": "M",
+      "role": "senior",
+      "style": "Direct",
+      "engagement": "HighlyEngaged", 
+      "pace": "Average",
+      "behavioral_traits": {
+        "speech_patterns": "Uses short sentences, interrupts when excited",
+        "under_pressure": "Becomes more direct and blunt",
+        "verbal_tics": "Says 'frankly' often, taps pen when thinking",
+        "emotional_tells": "Voice gets quieter when uncertain"
+      },
+      "sample_dialogue": [
+        "Frankly, I think we're overthinking this whole process.",
+        "Wait, wait - let me just clarify something here...",
+        "I need you to walk me through that again, step by step."
+      ]
+    }
+  ],
+  "conversation_flow": [
+    {
+      "phase": "opening",
+      "description": "How the conversation starts, who speaks first",
+      "emotional_tone": "neutral/tense/excited/worried",
+      "key_points": ["Main topics introduced", "Initial reactions"]
+    },
+    {
+      "phase": "development", 
+      "description": "Where the main discussion/conflict happens",
+      "emotional_tone": "escalating/collaborative/analytical",
+      "key_points": ["Arguments presented", "Questions raised", "Tensions revealed"]
+    },
+    {
+      "phase": "resolution",
+      "description": "How decisions are made and next steps determined", 
+      "emotional_tone": "resolved/frustrated/hopeful",
+      "key_points": ["Agreements reached", "Tasks assigned", "Schedule set"]
+    }
+  ],
+  "specific_assignments": [
+    {
+      "assignee": "John Smith",
+      "task": "Complete market research analysis",
+      "deadline": "Friday at 3 PM",
+      "context": "Why this task is needed and any constraints"
+    }
+  ],
+  "scheduled_items": [
+    {
+      "event": "Follow-up meeting",
+      "date_time": "Tuesday at 10 AM", 
+      "attendees": ["John Smith", "Jane Doe"],
+      "purpose": "Review market research findings and make final decision"
+    }
+  ]
+}

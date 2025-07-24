@@ -1,0 +1,552 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Project Budget Reallocation Tension",
+      "duration_minutes": 8,
+      "context": {
+        "setting": "Conference room, quarterly budget review meeting",
+        "background": "Marketing team requested additional budget allocation, but Engineering is concerned about their own resource constraints",
+        "tension_point": "Competing departmental priorities creating underlying resentment about resource distribution",
+        "expected_outcome": "Reach compromise on budget reallocation while addressing interpersonal tensions"
+      },
+      "participants": [
+        {
+          "name": "Marcus Chen",
+          "voice": "M",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses data points to support arguments, speaks in measured tones",
+            "under_pressure": "Becomes more rigid in reasoning, cites more statistics",
+            "verbal_tics": "Says 'the data shows' frequently, adjusts glasses when challenged",
+            "emotional_tells": "Voice becomes slightly higher when feeling defensive"
+          },
+          "sample_dialogue": [
+            "The data shows that our current allocation is already stretched thin across core initiatives.",
+            "I need to push back on this - we're talking about a 15% reduction in our operational capacity.",
+            "Look, I understand the marketing perspective, but we have to be realistic about what's achievable."
+          ]
+        },
+        {
+          "name": "Sarah Rodriguez",
+          "voice": "F",
+          "role": "midlevel",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Uses inclusive language, seeks common ground, speaks quickly when excited",
+            "under_pressure": "Tries to mediate, becomes more animated in gestures",
+            "verbal_tics": "Says 'What if we...' often, drums fingers when thinking",
+            "emotional_tells": "Laughs nervously when tension rises"
+          },
+          "sample_dialogue": [
+            "What if we looked at this as an opportunity to create synergies between our departments?",
+            "I hear what you're saying, Marcus, and I really do appreciate the engineering constraints...",
+            "Okay, okay - let me just throw out a different perspective here for a second."
+          ]
+        },
+        {
+          "name": "David Thompson",
+          "voice": "M",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Uses power language, longer pauses before speaking",
+            "under_pressure": "Becomes more authoritative, speaks slower and more deliberately",
+            "verbal_tics": "Clears throat before important points, uses people's names frequently",
+            "emotional_tells": "Leans back in chair when displeased"
+          },
+          "sample_dialogue": [
+            "Marcus, I need you to help me understand why this is such a non-starter for engineering.",
+            "Sarah, what you're proposing sounds innovative, but I'm concerned about execution.",
+            "Let's take a step back here - we're all fighting for the same company's success."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "David introduces the budget reallocation request, Sarah presents marketing's case enthusiastically",
+          "emotional_tone": "neutral transitioning to slightly tense",
+          "key_points": ["Marketing's growth opportunity presentation", "Initial budget request outlined", "Engineering's immediate concern expressed"]
+        },
+        {
+          "phase": "development",
+          "description": "Marcus pushes back with data-driven concerns, Sarah attempts to find middle ground, tension escalates",
+          "emotional_tone": "escalating with defensive undertones",
+          "key_points": ["Engineering capacity constraints detailed", "Marketing revenue projections challenged", "Personal frustrations about past resource decisions surface"]
+        },
+        {
+          "phase": "resolution",
+          "description": "David mediates by reframing the discussion around shared goals, compromise solution emerges",
+          "emotional_tone": "cautiously collaborative",
+          "key_points": ["Phased budget approach agreed upon", "Cross-departmental collaboration established", "Follow-up accountability measures set"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Marcus Chen",
+          "task": "Provide detailed engineering resource analysis with alternative timelines",
+          "deadline": "Wednesday by end of day",
+          "context": "Needed to support the phased budget approach and identify potential efficiency gains"
+        },
+        {
+          "assignee": "Sarah Rodriguez",
+          "task": "Revise marketing projections with conservative and aggressive scenarios",
+          "deadline": "Thursday morning",
+          "context": "Required for risk assessment of the budget reallocation proposal"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Budget reconciliation meeting",
+          "date_time": "Friday at 2 PM",
+          "attendees": ["Marcus Chen", "Sarah Rodriguez", "David Thompson"],
+          "purpose": "Review revised proposals and finalize budget allocation decision"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Performance Review Confrontation",
+      "duration_minutes": 12,
+      "context": {
+        "setting": "Manager's office, annual performance review session",
+        "background": "Employee has been struggling with project deliveries and team collaboration issues",
+        "tension_point": "Employee feels unfairly criticized and becomes defensive about feedback, manager struggles with how to address the performance gap",
+        "expected_outcome": "Establish performance improvement plan while maintaining working relationship"
+      },
+      "participants": [
+        {
+          "name": "Jennifer Walsh",
+          "voice": "F",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses specific examples, maintains professional tone even when uncomfortable",
+            "under_pressure": "Becomes more formal, relies on documented evidence",
+            "verbal_tics": "Says 'as documented' frequently, organizes papers when anxious",
+            "emotional_tells": "Speaks more quietly when delivering difficult feedback"
+          },
+          "sample_dialogue": [
+            "Alex, I need to address some patterns I've been observing in your project delivery.",
+            "As documented in our team feedback sessions, there have been several instances where...",
+            "I want to be clear that this isn't about your technical skills - those are solid."
+          ]
+        },
+        {
+          "name": "Alex Kim",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Enthusiastic",
+          "engagement": "Distracted",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Interrupts when feeling criticized, speaks rapidly when explaining",
+            "under_pressure": "Becomes more animated, makes excuses, deflects to external factors",
+            "verbal_tics": "Says 'but' frequently, gestures more when explaining",
+            "emotional_tells": "Voice gets louder when feeling attacked"
+          },
+          "sample_dialogue": [
+            "But Jennifer, you have to understand the circumstances I was dealing with...",
+            "I don't think that's a fair characterization of what happened with the Johnson project.",
+            "Look, I've been putting in extra hours - I'm not sure what more you want from me."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Jennifer starts with positive feedback before transitioning to areas of concern, Alex initially receptive",
+          "emotional_tone": "professional but underlying tension",
+          "key_points": ["Acknowledgment of technical strengths", "Introduction of performance concerns", "Alex's initial defensive reaction"]
+        },
+        {
+          "phase": "development",
+          "description": "Specific incidents discussed, Alex becomes increasingly defensive and deflects responsibility",
+          "emotional_tone": "escalating defensiveness and frustration",
+          "key_points": ["Specific project failures analyzed", "Team collaboration issues addressed", "Alex's emotional reaction intensifies"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Jennifer reframes discussion around support and development, Alex reluctantly engages in solution-finding",
+          "emotional_tone": "cautiously constructive",
+          "key_points": ["Performance improvement plan outlined", "Support resources identified", "Regular check-in schedule established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Alex Kim",
+          "task": "Complete project management training course",
+          "deadline": "Within 30 days",
+          "context": "To address timeline and deliverable management issues identified in review"
+        },
+        {
+          "assignee": "Jennifer Walsh",
+          "task": "Schedule weekly one-on-ones with Alex for next quarter",
+          "deadline": "Starting next week",
+          "context": "To provide ongoing support and monitor improvement progress"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "30-day performance check-in",
+          "date_time": "Same time next month",
+          "attendees": ["Jennifer Walsh", "Alex Kim"],
+          "purpose": "Review progress on improvement plan and adjust support strategies"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Client Strategy Disagreement",
+      "duration_minutes": 15,
+      "context": {
+        "setting": "Client conference room, strategy presentation meeting",
+        "background": "Agency team presenting new campaign strategy to client, but client has strong opinions about different direction",
+        "tension_point": "Creative vision clash between agency's data-driven approach and client's intuitive preferences",
+        "expected_outcome": "Find compromise that satisfies client's vision while maintaining strategic integrity"
+      },
+      "participants": [
+        {
+          "name": "Robert Martinez",
+          "voice": "M",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Uses industry jargon, speaks with authority, long pauses for emphasis",
+            "under_pressure": "Becomes more dominating in conversation, uses client relationship leverage",
+            "verbal_tics": "Says 'in my experience' often, taps table for emphasis",
+            "emotional_tells": "Crosses arms when disagreeing"
+          },
+          "sample_dialogue": [
+            "In my experience, this demographic responds better to emotional storytelling, not data points.",
+            "I have to be honest - this doesn't align with our brand vision at all.",
+            "Look, we're paying for strategic thinking, but this feels like playing it safe."
+          ]
+        },
+        {
+          "name": "Lisa Park",
+          "voice": "F",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "References research and case studies, builds logical arguments",
+            "under_pressure": "Becomes more detailed in explanations, cites more examples",
+            "verbal_tics": "Says 'the research indicates' frequently, uses precise metrics",
+            "emotional_tells": "Speaks faster when challenged professionally"
+          },
+          "sample_dialogue": [
+            "The research indicates that this approach has delivered 23% higher engagement rates.",
+            "Robert, I understand the emotional appeal, but we need to consider the conversion data.",
+            "What we're seeing across similar campaigns is a clear pattern of performance metrics."
+          ]
+        },
+        {
+          "name": "Tom Wilson",
+          "voice": "M",
+          "role": "junior",
+          "style": "Collaborative",
+          "engagement": "Moderate",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Attempts to bridge perspectives, speaks quickly when nervous",
+            "under_pressure": "Tries to please both sides, becomes more hesitant",
+            "verbal_tics": "Says 'maybe we could' often, fidgets with presentation materials",
+            "emotional_tells": "Voice becomes uncertain when caught between conflicting opinions"
+          },
+          "sample_dialogue": [
+            "Maybe we could find a way to incorporate both the emotional elements and the data-driven approach?",
+            "What if we tested both concepts with a small focus group first?",
+            "I'm wondering if there's a middle ground that could work for everyone here."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Lisa presents research-backed strategy, Robert immediately expresses skepticism about approach",
+          "emotional_tone": "professional but skeptical",
+          "key_points": ["Strategy presentation with data support", "Client's immediate pushback", "Different philosophical approaches revealed"]
+        },
+        {
+          "phase": "development",
+          "description": "Disagreement escalates as both sides defend their approaches, Tom attempts mediation",
+          "emotional_tone": "increasingly tense with professional frustration",
+          "key_points": ["Data vs. intuition debate intensifies", "Past campaign examples cited", "Relationship dynamics affecting decision-making"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Tom's suggestion for hybrid approach gains traction, compromise solution emerges with testing phase",
+          "emotional_tone": "reluctantly collaborative",
+          "key_points": ["Hybrid strategy concept agreed upon", "Testing phase established", "Revised timeline negotiated"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Lisa Park",
+          "task": "Develop hybrid campaign concepts incorporating emotional storytelling with data backing",
+          "deadline": "Monday by noon",
+          "context": "To bridge the gap between analytical approach and client's creative vision"
+        },
+        {
+          "assignee": "Tom Wilson",
+          "task": "Set up focus group testing for both strategic approaches",
+          "deadline": "End of week",
+          "context": "To provide objective feedback on the competing campaign directions"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Revised strategy presentation",
+          "date_time": "Wednesday at 3 PM",
+          "attendees": ["Robert Martinez", "Lisa Park", "Tom Wilson"],
+          "purpose": "Present hybrid strategy concepts and focus group setup for client approval"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Team Restructuring Anxiety",
+      "duration_minutes": 10,
+      "context": {
+        "setting": "Team meeting room, organizational change announcement",
+        "background": "Company restructuring requires team members to be reassigned to different projects and managers",
+        "tension_point": "Team members expressing anxiety about job security and relationship changes, manager struggling to maintain morale",
+        "expected_outcome": "Address concerns while communicating necessary changes and maintaining team cohesion"
+      },
+      "participants": [
+        {
+          "name": "Patricia Johnson",
+          "voice": "F",
+          "role": "senior",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses reassuring language, acknowledges emotions directly",
+            "under_pressure": "Becomes more empathetic, asks more questions about concerns",
+            "verbal_tics": "Says 'I understand' frequently, uses people's names for connection",
+            "emotional_tells": "Leans forward when someone expresses worry"
+          },
+          "sample_dialogue": [
+            "I understand this news is unsettling, and I want to address your concerns directly.",
+            "Michael, I can see you're worried about this - talk to me about what's going through your mind.",
+            "Let me be completely transparent about what this means for each of you."
+          ]
+        },
+        {
+          "name": "Michael Foster",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Asks detailed questions, wants specifics about changes",
+            "under_pressure": "Becomes more questioning, seeks concrete information",
+            "verbal_tics": "Says 'what exactly' often, takes notes during important discussions",
+            "emotional_tells": "Voice becomes flat when anxious"
+          },
+          "sample_dialogue": [
+            "What exactly does this mean for our current project timelines and deliverables?",
+            "I need to understand - are these reassignments permanent or temporary?",
+            "Patricia, what exactly should we be telling our stakeholders about these changes?"
+          ]
+        },
+        {
+          "name": "Nina Rodriguez",
+          "voice": "F",
+          "role": "junior",
+          "style": "Enthusiastic",
+          "engagement": "Distracted",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Speaks quickly when anxious, asks multiple questions in succession",
+            "under_pressure": "Becomes more scattered in thinking, jumps between concerns",
+            "verbal_tics": "Says 'wait, also' frequently, plays with hair when nervous",
+            "emotional_tells": "Laughs inappropriately when stressed"
+          },
+          "sample_dialogue": [
+            "Wait, so does this mean I won't be working with the design team anymore?",
+            "I'm sorry, I'm just trying to process all of this - wait, also, what about our training budget?",
+            "This is just so much change all at once, you know?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Patricia announces restructuring changes, immediate concern and questions from team members",
+          "emotional_tone": "anxious and uncertain",
+          "key_points": ["Restructuring announcement delivered", "Immediate anxiety and questions surface", "Team members seek clarity and reassurance"]
+        },
+        {
+          "phase": "development",
+          "description": "Detailed discussion of individual impacts, team members express specific fears about changes",
+          "emotional_tone": "mixed anxiety with cautious hope",
+          "key_points": ["Individual reassignment details explained", "Job security concerns addressed", "Relationship and workflow impacts discussed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Patricia provides timeline and support resources, team members cautiously accept changes",
+          "emotional_tone": "resigned acceptance with remaining concerns",
+          "key_points": ["Transition timeline established", "Support resources offered", "Follow-up communication plan set"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Michael Foster",
+          "task": "Document current project status and transition requirements",
+          "deadline": "Friday at 5 PM",
+          "context": "To ensure smooth handover of responsibilities during restructuring"
+        },
+        {
+          "assignee": "Nina Rodriguez",
+          "task": "Attend orientation session with new team lead",
+          "deadline": "Next Tuesday at 10 AM",
+          "context": "To begin building relationships and understanding new role expectations"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Individual transition meetings",
+          "date_time": "Throughout next week",
+          "attendees": ["Patricia Johnson", "each team member individually"],
+          "purpose": "Address personal concerns and finalize transition details"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Deadline Crisis Blame Session",
+      "duration_minutes": 18,
+      "context": {
+        "setting": "Emergency meeting room, crisis management session",
+        "background": "Major project deadline missed due to cascading delays across multiple departments",
+        "tension_point": "Team members deflecting responsibility and blaming other departments while client relationship is at risk",
+        "expected_outcome": "Take accountability, develop recovery plan, and prevent future coordination failures"
+      },
+      "participants": [
+        {
+          "name": "Kevin Chen",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Uses blame language initially, speaks rapidly when defensive",
+            "under_pressure": "Becomes more accusatory, focuses on others' failures",
+            "verbal_tics": "Says 'they should have' frequently, points when explaining",
+            "emotional_tells": "Voice gets louder when feeling cornered"
+          },
+          "sample_dialogue": [
+            "They should have flagged these issues weeks ago - we can't deliver what we don't know about.",
+            "I'm sorry, but the development team missed three critical milestones in a row.",
+            "Look, we communicated our requirements clearly from day one."
+          ]
+        },
+        {
+          "name": "Rachel Thompson",
+          "voice": "F",
+          "role": "midlevel",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Cites specific dates and communications, builds timeline arguments",
+            "under_pressure": "Becomes more detailed in defending her team's actions",
+            "verbal_tics": "Says 'on record' often, references email timestamps",
+            "emotional_tells": "Becomes very precise with language when criticized"
+          },
+          "sample_dialogue": [
+            "On record, we sent three status updates highlighting the resource constraints.",
+            "The timeline was unrealistic from the beginning - I have the email chain to prove it.",
+            "We delivered everything on our end according to the original specifications."
+          ]
+        },
+        {
+          "name": "James Rodriguez",
+          "voice": "M",
+          "role": "exec",
+          "style": "Collaborative",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Attempts to refocus on solutions, uses inclusive language",
+            "under_pressure": "Becomes more directive while maintaining diplomatic tone",
+            "verbal_tics": "Says 'moving forward' frequently, uses calming gestures",
+            "emotional_tells": "Speaks more slowly when trying to de-escalate"
+          },
+          "sample_dialogue": [
+            "Moving forward, we need to focus on what we can control and fix.",
+            "I hear everyone's frustrations, but right now our client is waiting for answers.",
+            "Let's take a step back and figure out how we got here together."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "James presents the crisis situation, Kevin and Rachel immediately begin defending their departments",
+          "emotional_tone": "tense and defensive",
+          "key_points": ["Crisis situation outlined", "Immediate blame and defensiveness emerge", "Departmental silos become apparent"]
+        },
+        {
+          "phase": "development",
+          "description": "Escalating blame game with specific accusations, communication failures revealed",
+          "emotional_tone": "increasingly hostile and frustrated",
+          "key_points": ["Specific failures and miscommunications detailed", "Timeline and responsibility disputes intensify", "Underlying process problems exposed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "James redirects focus to client recovery and process improvements, reluctant collaboration emerges",
+          "emotional_tone": "grudgingly cooperative",
+          "key_points": ["Client recovery plan prioritized", "Process improvement commitments made", "Future communication protocols established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Kevin Chen",
+          "task": "Prepare client communication explaining delays and recovery timeline",
+          "deadline": "Today by 6 PM",
+          "context": "To maintain client relationship and demonstrate accountability"
+        },
+        {
+          "assignee": "Rachel Thompson",
+          "task": "Conduct post-mortem analysis of communication breakdowns",
+          "deadline": "Monday morning",
+          "context": "To identify specific process failures and prevent recurrence"
+        },
+        {
+          "assignee": "James Rodriguez",
+          "task": "Schedule individual meetings with each department head",
+          "deadline": "This week",
+          "context": "To address underlying coordination issues and rebuild working relationships"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Daily crisis management check-ins",
+          "date_time": "9 AM daily until project recovery",
+          "attendees": ["Kevin Chen", "Rachel Thompson", "James Rodriguez"],
+          "purpose": "Monitor recovery progress and prevent further coordination failures"
+        },
+        {
+          "event": "Client recovery presentation",
+          "date_time": "Friday at 2 PM",
+          "attendees": ["James Rodriguez", "Kevin Chen", "client team"],
+          "purpose": "Present recovery plan and rebuilt timeline to maintain client relationship"
+        }
+      ]
+    }
+  ]
+}

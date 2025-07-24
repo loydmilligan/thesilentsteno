@@ -1,0 +1,733 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Family Wedding Planning Stress",
+      "duration_minutes": 9,  
+      "context": {
+        "setting": "Three-way video call between family members planning a wedding",
+        "background": "Sister's wedding is 8 weeks away, vendor issues and family disagreements causing stress",
+        "tension_point": "Budget overruns and family members have different visions for the celebration",
+        "expected_outcome": "Resolve vendor crisis and align family on realistic expectations"
+      },
+      "participants": [
+        {
+          "name": "Sarah Thompson",
+          "voice": "F",
+          "role": "family",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Excited but overwhelmed, rapid topic switching",
+            "under_pressure": "Becomes more emotional and scattered",
+            "verbal_tics": "Says 'I just want everything perfect' when stressed",
+            "emotional_tells": "Voice pitch rises when anxiety peaks"
+          },
+          "sample_dialogue": [
+            "I just want everything perfect, but the florist just canceled and we're already $3,000 over budget!",
+            "Mom keeps suggesting these vintage ideas that don't match my vision at all...",
+            "Marcus, you understand timing and coordination - tell me this can still work!"
+          ]
+        },
+        {
+          "name": "Patricia Thompson",
+          "voice": "F",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Practical advice, references her own wedding experience",
+            "under_pressure": "Becomes more controlling and detailed",
+            "verbal_tics": "Says 'When I got married' frequently",
+            "emotional_tells": "Voice gets firmer when giving unsolicited advice"
+          },
+          "sample_dialogue": [
+            "When I got married, we kept things simple and focused on what mattered - the marriage, not the party.",
+            "Sarah, you're making this too complicated - people remember good food and good company, not fancy centerpieces.",
+            "We need to get realistic about the budget before this gets completely out of hand."
+          ]
+        },
+        {
+          "name": "Marcus Thompson",
+          "voice": "M",
+          "role": "family",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Solution-focused, uses coordination and event planning metaphors",
+            "under_pressure": "Gets more energetic about finding creative solutions",
+            "verbal_tics": "Says 'We can make this work' when problem-solving",
+            "emotional_tells": "Voice gets warmer when mediating between family members"
+          },
+          "sample_dialogue": [
+            "We can make this work! This is like service at a packed restaurant - it looks chaotic but there's always a solution.",
+            "Sarah, let's break this down course by course - what are the absolute must-haves versus nice-to-haves?",
+            "Mom, your vintage ideas are beautiful - what if we blend them with Sarah's vision? Best of both worlds!"
+          ]
+        },
+        {
+          "name": "David Thompson",
+          "voice": "M",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Calm mediator, focuses on practical solutions",
+            "under_pressure": "Becomes more diplomatic and soothing",
+            "verbal_tics": "Says 'Let's take a step back' when tensions rise",
+            "emotional_tells": "Voice gets softer when trying to calm others"
+          },
+          "sample_dialogue": [
+            "Let's take a step back - we all want Sarah to have a beautiful wedding, we just have different ideas about how.",
+            "Maybe we should focus on solving the florist crisis first, then deal with the other decisions?",
+            "I know a guy who does event coordination - want me to reach out and see if he has emergency vendor contacts?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Sarah panics about florist cancellation and budget overruns, Mom offers unwanted advice, tensions rise",
+          "emotional_tone": "stressed and frustrated",
+          "key_points": ["Florist canceled 8 weeks before wedding", "$3,000 over budget already", "Family vision conflicts", "Time pressure mounting"]
+        },
+        {
+          "phase": "development",
+          "description": "Marcus facilitates problem-solving, David suggests practical solutions, family finds common ground on priorities",
+          "emotional_tone": "collaborative problem-solving",
+          "key_points": ["Emergency vendor options explored", "Budget prioritization discussion", "Vision blending possibilities", "Family coordination improved"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Family agrees on budget limits, emergency plan for vendors, and compromise vision combining everyone's input",
+          "emotional_tone": "relieved and unified",
+          "key_points": ["Budget ceiling established", "Emergency vendor contacts secured", "Compromise wedding vision agreed", "Task assignments made"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Marcus Thompson",
+          "task": "Research emergency florists and get quotes by Tuesday",
+          "deadline": "Tuesday evening",
+          "context": "Wedding is 8 weeks away, need vendor secured immediately"
+        },
+        {
+          "assignee": "David Thompson",
+          "task": "Contact event coordinator friend for emergency vendor network",
+          "deadline": "Tomorrow morning",
+          "context": "Professional connections might have last-minute availability"
+        },
+        {
+          "assignee": "Patricia Thompson",
+          "task": "Create detailed budget breakdown with Sarah to identify cuts",
+          "deadline": "This weekend",
+          "context": "Need to get spending under control before more vendors"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Emergency vendor coordination meeting",
+          "date_time": "Wednesday at 7 PM",
+          "attendees": ["All family members"],
+          "purpose": "Review vendor options and make final decisions on remaining planning"
+        },
+        {
+          "event": "Final budget review",
+          "date_time": "Sunday at 2 PM",
+          "attendees": ["Sarah Thompson", "Patricia Thompson"],
+          "purpose": "Lock in final budget and spending priorities"
+        }
+      ]
+    },
+    {
+      "scenario_title": "College Decision Family Conference",
+      "duration_minutes": 11,
+      "context": {
+        "setting": "Video call with extended family discussing nephew's college choices",
+        "background": "High school senior accepted to multiple colleges with very different costs and career paths",
+        "tension_point": "Family split between practical state school vs. prestigious expensive private college",
+        "expected_outcome": "Help nephew make informed decision with family support"
+      },
+      "participants": [
+        {
+          "name": "Tyler Chen",
+          "voice": "M",
+          "role": "family",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Thoughtful but uncertain, weighs pros and cons carefully",
+            "under_pressure": "Becomes more confused and seeks validation",
+            "verbal_tics": "Says 'I keep going back and forth' when uncertain",
+            "emotional_tells": "Long pauses when considering life-changing decisions"
+          },
+          "sample_dialogue": [
+            "I keep going back and forth - State has a great engineering program and I'd graduate debt-free...",
+            "But MIT has always been my dream, and the connections and opportunities there are incredible.",
+            "Everyone keeps giving me different advice and I'm getting more confused, not less."
+          ]
+        },
+        {
+          "name": "Linda Chen",
+          "voice": "F",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Practical concerns, focused on financial realities",
+            "under_pressure": "Becomes more insistent about practical choices",
+            "verbal_tics": "Says 'We need to be realistic' about costs",
+            "emotional_tells": "Voice gets tighter when discussing debt and finances"
+          },
+          "sample_dialogue": [
+            "We need to be realistic about $200,000 in student loans - that's a mortgage payment for 20 years!",
+            "State University has an excellent engineering program and companies recruit there heavily.",
+            "I don't want Tyler starting his career with crushing debt when there's a perfectly good alternative."
+          ]
+        },
+        {
+          "name": "Marcus Thompson",
+          "voice": "M",
+          "role": "family",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Encouraging, focuses on opportunities and potential",
+            "under_pressure": "Gets more passionate about following dreams",
+            "verbal_tics": "Says 'This is your moment' when encouraging big decisions",
+            "emotional_tells": "Voice gets more energetic when talking about pursuing passion"
+          },
+          "sample_dialogue": [
+            "This is your moment, Tyler - how often do you get into MIT? Some opportunities don't come twice!",
+            "Think of it like choosing between a solid local restaurant and culinary school in Paris - totally different paths!",
+            "The debt is scary, but the network and opportunities at MIT could change your entire trajectory!"
+          ]
+        },
+        {
+          "name": "Dr. Robert Chen",
+          "voice": "M",
+          "role": "family",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Academic perspective, data-driven analysis",
+            "under_pressure": "Becomes more professorial and detailed",
+            "verbal_tics": "Says 'From an academic standpoint' when giving advice",
+            "emotional_tells": "Pauses to consider long-term implications"
+          },
+          "sample_dialogue": [
+            "From an academic standpoint, both programs will prepare you well - the question is about fit and goals.",
+            "The research opportunities at MIT are extraordinary, but State has excellent industry partnerships.",
+            "You need to think about what kind of engineer you want to be - researcher or practitioner?"
+          ]
+        },
+        {
+          "name": "Aunt Susan",
+          "voice": "F",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "Moderate",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Supportive, shares personal experience",
+            "under_pressure": "Focuses on emotional support and confidence",
+            "verbal_tics": "Says 'Whatever you choose' when being supportive",
+            "emotional_tells": "Voice gets warmer when offering unconditional support"
+          },
+          "sample_dialogue": [
+            "Whatever you choose, we'll support you - but you have to live with this decision, not us.",
+            "I went to a state school and had an amazing career - it's really about what you make of the opportunity.",
+            "Trust your gut, Tyler - you're mature enough to make this choice with all the information we're giving you."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Tyler explains his dilemma, family members immediately offer conflicting advice based on their values",
+          "emotional_tone": "supportive but overwhelming",
+          "key_points": ["MIT acceptance vs State University full scholarship", "$200K debt vs debt-free graduation", "Dream school vs practical choice", "Family divided on advice"]
+        },
+        {
+          "phase": "development",
+          "description": "Detailed discussion of career implications, Marcus advocates for dreams, Linda emphasizes practicality, Dr. Chen provides academic perspective",
+          "emotional_tone": "passionate but respectful debate",
+          "key_points": ["Long-term career trajectory analysis", "Financial burden vs opportunity cost", "Different definitions of success", "Research vs industry focus"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Family agrees Tyler should visit both campuses and make final decision based on fit rather than others' opinions",
+          "emotional_tone": "unified support",
+          "key_points": ["Campus visit plan established", "Decision timeline set", "Family support confirmed regardless of choice", "Focus on personal fit over external pressure"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Tyler Chen",
+          "task": "Schedule campus visits and talk to current students at both schools",
+          "deadline": "Next two weeks",
+          "context": "Decision deadline is May 1st, need firsthand experience"
+        },
+        {
+          "assignee": "Dr. Robert Chen",
+          "task": "Connect Tyler with professors in his field at both universities",
+          "deadline": "This week",
+          "context": "Academic perspective on program differences"
+        },
+        {
+          "assignee": "Marcus Thompson",
+          "task": "Research scholarship and financial aid options for MIT",
+          "deadline": "Next week",
+          "context": "Explore ways to reduce financial burden if he chooses MIT"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "MIT campus visit",
+          "date_time": "Next Friday through Sunday",
+          "attendees": ["Tyler Chen", "Linda Chen"],
+          "purpose": "Experience campus culture and meet with engineering faculty"
+        },
+        {
+          "event": "Final decision family call",
+          "date_time": "April 25th at 7 PM",
+          "attendees": ["All family members"],
+          "purpose": "Support Tyler in final decision before May 1st deadline"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Aging Parent Care Coordination Crisis",
+      "duration_minutes": 13,
+      "context": {
+        "setting": "Emergency family conference call after Dad's fall",
+        "background": "80-year-old father fell at home, can no longer live independently, siblings disagree on care options",
+        "tension_point": "In-home care vs assisted living vs moving in with family, emotions and logistics clash",
+        "expected_outcome": "Develop immediate safety plan and long-term care strategy"
+      },
+      "participants": [
+        {
+          "name": "Margaret Wilson",
+          "voice": "F",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Crisis management mode, practical and urgent",
+            "under_pressure": "Becomes more controlling and decisive",
+            "verbal_tics": "Says 'We can't wait' when discussing urgent needs",
+            "emotional_tells": "Voice gets higher when worried about safety"
+          },
+          "sample_dialogue": [
+            "We can't wait for another fall - Dad was on the floor for three hours before the neighbor found him!",
+            "He's being stubborn about admitting he needs help, but this is about safety now, not independence.",
+            "I live closest and I'm seeing the daily reality - he's not eating properly and forgetting medications."
+          ]
+        },
+        {
+          "name": "Frank Wilson Sr.",
+          "voice": "M",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Defensive about independence, frustrated with children's concern",
+            "under_pressure": "Becomes more stubborn and resistant",
+            "verbal_tics": "Says 'I'm fine' when rejecting help",
+            "emotional_tells": "Voice gets gruffer when feeling controlled"
+          },
+          "sample_dialogue": [
+            "I'm fine in my own house - one little fall doesn't mean I need to be put away somewhere!",
+            "I've been taking care of myself for 80 years, I don't need you kids hovering over me.",
+            "Those assisted living places are just waiting rooms for death - I'm not ready for that."
+          ]
+        },
+        {
+          "name": "Marcus Thompson",
+          "voice": "M",
+          "role": "family",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Mediating between perspectives, solution-focused",
+            "under_pressure": "Gets more energetic about finding compromise solutions",
+            "verbal_tics": "Says 'What if we tried...' when proposing alternatives",
+            "emotional_tells": "Voice gets warmer when building bridges between family members"
+          },
+          "sample_dialogue": [
+            "What if we tried a hybrid approach - keep Dad at home but with professional support during the day?",
+            "This is like designing a menu that works for everyone - we need options that honor Dad's independence AND keep him safe.",
+            "Dad, we're not trying to control you - we're trying to set up systems so you can stay independent longer!"
+          ]
+        },
+        {
+          "name": "Thomas Wilson",
+          "voice": "M",
+          "role": "family",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Financial focus, research-driven approach",
+            "under_pressure": "Becomes more detailed about costs and logistics",
+            "verbal_tics": "Says 'We need to consider the costs' frequently",
+            "emotional_tells": "Pauses longer when calculating financial implications"
+          },
+          "sample_dialogue": [
+            "We need to consider the costs - in-home care is $4,000 a month, assisted living is $6,000, and that's just the beginning.",
+            "I've researched Medicare coverage and there are specific requirements for different types of care.",
+            "Dad's house needs major modifications for safety - grab bars, ramps, maybe a stair lift - that's another $15,000."
+          ]
+        },
+        {
+          "name": "Carol Wilson-Martinez",
+          "voice": "F",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Emotional support focus, worried about family dynamics",
+            "under_pressure": "Becomes more concerned about everyone's wellbeing",
+            "verbal_tics": "Says 'How is everyone holding up?' when checking on family",
+            "emotional_tells": "Voice wavers when discussing emotional impact"
+          },
+          "sample_dialogue": [
+            "How is everyone holding up? This is stressful for all of us, including Dad.",
+            "Margaret, you're carrying so much of this burden - we need to support you too.",
+            "Maybe we should look at assisted living places together as a family, so Dad can see they're not all depressing."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Margaret describes crisis, Dad resists change, immediate safety concerns vs independence desires clash",
+          "emotional_tone": "urgent and emotional",
+          "key_points": ["Dad fell and was alone for hours", "Safety concerns vs independence", "Immediate decision needed", "Family scattered geographically"]
+        },
+        {
+          "phase": "development",
+          "description": "Discussion of care options, costs, and logistics, Marcus proposes compromise solutions, family explores alternatives",
+          "emotional_tone": "collaborative problem-solving with underlying emotion",
+          "key_points": ["In-home care vs assisted living costs", "House modifications needed", "Medicare coverage research", "Hybrid care approaches", "Family support systems"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Agreement on immediate safety measures and gradual transition plan that honors Dad's preferences while ensuring safety",
+          "emotional_tone": "relieved consensus",
+          "key_points": ["Immediate in-home aide arranged", "House safety modifications planned", "Assisted living tours scheduled", "Family rotation support system", "Regular family check-ins established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Margaret Wilson",
+          "task": "Arrange immediate in-home aide for daily check-ins and meal prep",
+          "deadline": "By Monday",
+          "context": "Safety concern requires immediate professional support"
+        },
+        {
+          "assignee": "Thomas Wilson",
+          "task": "Research Medicare coverage and get quotes for house modifications",
+          "deadline": "End of week",
+          "context": "Need financial planning for long-term care options"
+        },
+        {
+          "assignee": "Carol Wilson-Martinez",
+          "task": "Research assisted living facilities and schedule tours",
+          "deadline": "Next two weeks",
+          "context": "Backup plan if in-home care doesn't work"
+        },
+        {
+          "assignee": "Marcus Thompson",
+          "task": "Coordinate family rotation schedule for weekend visits and support",
+          "deadline": "This week",
+          "context": "Ensure Dad has regular family contact and Margaret gets support"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Weekly family check-in calls",
+          "date_time": "Every Sunday at 6 PM",
+          "attendees": ["All family members"],
+          "purpose": "Monitor Dad's condition and coordinate ongoing care"
+        },
+        {
+          "event": "Care plan review meeting",
+          "date_time": "In one month",
+          "attendees": ["All family members", "Care coordinator"],
+          "purpose": "Assess effectiveness of current plan and make adjustments"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Friendship Strain Over Money Issues",
+      "duration_minutes": 7,
+      "context": {
+        "setting": "Video call between longtime friends after awkward money situation",
+        "background": "Best friend borrowed $2,000 six months ago, hasn't repaid or discussed it, friendship getting tense",
+        "tension_point": "Money vs friendship, awkwardness around expectations and communication",
+        "expected_outcome": "Address financial issue while preserving friendship"
+      },
+      "participants": [
+        {
+          "name": "Jake Morrison",
+          "voice": "M",
+          "role": "friend",
+          "style": "Direct",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Uncomfortable discussing money, defensive about financial struggles",
+            "under_pressure": "Becomes more withdrawn and explanatory",
+            "verbal_tics": "Says 'Things have been tough' when explaining delays",
+            "emotional_tells": "Voice gets quieter when discussing money problems"
+          },
+          "sample_dialogue": [
+            "Things have been tough with the job market - I know I said three months but everything's taken longer...",
+            "I didn't want to keep bothering you about it when I didn't have good news to share.",
+            "You know I'm good for it, right? This isn't like me to just ignore a debt to a friend."
+          ]
+        },
+        {
+          "name": "Marcus Thompson",
+          "voice": "M",
+          "role": "friend",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Trying to balance friendship with practical concerns",
+            "under_pressure": "Gets more direct about needing resolution",
+            "verbal_tics": "Says 'I get it, but...' when addressing difficult topics",
+            "emotional_tells": "Voice gets more serious when discussing relationship boundaries"
+          },
+          "sample_dialogue": [
+            "I get it, but the silence has been harder than the money issue - I didn't know if something was wrong between us.",
+            "Look, we've been friends for 15 years - money shouldn't be able to break that up!",
+            "I need to know where we stand - both with the money and with our friendship."
+          ]
+        },
+        {
+          "name": "Amy Rodriguez",
+          "voice": "F",
+          "role": "friend",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Mediating perspective, relationship-focused",
+            "under_pressure": "Focuses on maintaining group harmony",
+            "verbal_tics": "Says 'You guys are both...' when mediating",
+            "emotional_tells": "Voice gets more concerned when friends are in conflict"
+          },
+          "sample_dialogue": [
+            "You guys are both handling this weird - Jake, you disappeared, and Marcus, you've been passive-aggressive about it.",
+            "This is exactly how friendships get ruined over money - by not talking about it directly.",
+            "Can we figure out a plan that works for everyone so we can get back to normal?"
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Marcus addresses the elephant in the room, Jake explains difficulties, awkwardness is apparent",
+          "emotional_tone": "uncomfortable but caring",
+          "key_points": ["$2,000 borrowed six months ago", "No communication about repayment", "Job market struggles", "Friendship tension"]
+        },
+        {
+          "phase": "development",
+          "description": "Amy mediates discussion about communication breakdown, friends explore feelings and practical solutions",
+          "emotional_tone": "honest and supportive",
+          "key_points": ["Communication breakdown addressed", "Financial struggles acknowledged", "Friendship priority established", "Practical repayment options discussed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Agreement on repayment plan and communication protocol, friendship boundaries clarified",
+          "emotional_tone": "relieved and strengthened",
+          "key_points": ["Monthly payment plan established", "Regular check-ins agreed", "Friendship communication improved", "Clear expectations set"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Jake Morrison",
+          "task": "Set up automatic monthly payment plan for agreed amount",
+          "deadline": "By end of week",
+          "context": "Remove awkwardness by making payments automatic"
+        },
+        {
+          "assignee": "Marcus Thompson",
+          "task": "Stop being passive-aggressive and communicate directly about concerns",
+          "deadline": "Ongoing",
+          "context": "Maintain friendship by addressing issues directly"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Regular friend hangout",
+          "date_time": "Next Friday at 7 PM",
+          "attendees": ["All friends"],
+          "purpose": "Get back to normal friendship activities without money stress"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Holiday Family Drama Prevention",
+      "duration_minutes": 8,
+      "context": {
+        "setting": "Pre-holiday family planning call to avoid repeat of last year's disasters",
+        "background": "Last year's family gathering was a disaster with political arguments and hurt feelings",
+        "tension_point": "Family wants to gather but worried about repeating conflicts, need ground rules",
+        "expected_outcome": "Establish guidelines and roles to ensure peaceful holiday gathering"
+      },
+      "participants": [
+        {
+          "name": "Helen Martinez",
+          "voice": "F",
+          "role": "family",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "No-nonsense, focused on preventing problems",
+            "under_pressure": "Becomes more controlling about boundaries",
+            "verbal_tics": "Says 'I won't have a repeat of last year' when setting limits",
+            "emotional_tells": "Voice gets firmer when establishing non-negotiables"
+          },
+          "sample_dialogue": [
+            "I won't have a repeat of last year - Uncle Bill made everyone miserable with his political rants.",
+            "We're setting ground rules this time: no politics, no personal attacks, no alcohol before 4 PM.",
+            "Anyone who can't follow basic civility rules can celebrate elsewhere this year."
+          ]
+        },
+        {
+          "name": "Marcus Thompson",
+          "voice": "M",
+          "role": "family",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Optimistic about family harmony, solution-focused",
+            "under_pressure": "Gets more energetic about planning positive alternatives",
+            "verbal_tics": "Says 'We can create something beautiful' when envisioning success",
+            "emotional_tells": "Voice rises with excitement when planning positive activities"
+          },
+          "sample_dialogue": [
+            "We can create something beautiful here - think of it like planning a perfect dinner party for people you love!",
+            "What if we plan activities that bring out everyone's best? Games, cooking together, sharing good memories?",
+            "I'm excited about this - we have the power to make holidays something everyone actually enjoys!"
+          ]
+        },
+        {
+          "name": "Roberto Martinez",
+          "voice": "M",
+          "role": "family",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Cautious, references specific past incidents",
+            "under_pressure": "Becomes more detailed about potential problems",
+            "verbal_tics": "Says 'Remember when...' before describing past conflicts",
+            "emotional_tells": "Long pauses when considering family dynamics"
+          },
+          "sample_dialogue": [
+            "Remember when Uncle Bill and Cousin Sarah got into that screaming match about immigration?",
+            "The kids were crying and Grandma left early - we can't put the children through that again.",
+            "Maybe we need designated peacekeepers who can redirect conversations when they get heated?"
+          ]
+        },
+        {
+          "name": "Lisa Chen-Martinez",
+          "voice": "F",
+          "role": "family",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Focuses on inclusion while maintaining peace",
+            "under_pressure": "Worries about excluding family members",
+            "verbal_tics": "Says 'But they're still family' when discussing difficult relatives",
+            "emotional_tells": "Voice gets softer when worried about hurting feelings"
+          },
+          "sample_dialogue": [
+            "But they're still family - how do we set boundaries without making people feel unwelcome?",
+            "Maybe we can assign conversation topics? Like everyone shares a good memory or something they're grateful for?",
+            "I want the kids to have good memories of family gatherings, not trauma from adult arguments."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Helen establishes need for ground rules, family recalls last year's disasters, concerns about repeating problems",
+          "emotional_tone": "determined but cautious",
+          "key_points": ["Last year's political arguments and hurt feelings", "Need for clear boundaries", "Concern for children's experience", "Desire for positive family gathering"]
+        },
+        {
+          "phase": "development",
+          "description": "Family discusses specific ground rules, Marcus proposes positive activities, Roberto suggests practical safeguards",
+          "emotional_tone": "collaborative planning",
+          "key_points": ["No politics rule established", "Positive activity planning", "Peacekeeper role assignments", "Alcohol timing limits", "Conversation redirection strategies"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Agreement on comprehensive holiday plan with rules, activities, and accountability measures",
+          "emotional_tone": "hopeful and organized",
+          "key_points": ["Clear ground rules established", "Positive activities planned", "Accountability system created", "Emergency plan for conflicts", "Focus on children's experience"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Helen Martinez",
+          "task": "Send ground rules email to all family members before gathering",
+          "deadline": "One week before holiday",
+          "context": "Everyone needs clear expectations in advance"
+        },
+        {
+          "assignee": "Marcus Thompson",
+          "task": "Plan structured activities and conversation starters for gathering",
+          "deadline": "Week before holiday",
+          "context": "Positive activities prevent problematic conversations"
+        },
+        {
+          "assignee": "Roberto Martinez",
+          "task": "Coordinate with designated peacekeepers on intervention strategies",
+          "deadline": "Few days before gathering",
+          "context": "Plan for redirecting conversations that get heated"
+        },
+        {
+          "assignee": "Lisa Chen-Martinez",
+          "task": "Prepare kid-friendly activities and safe spaces for children",
+          "deadline": "Before gathering",
+          "context": "Protect children from adult conflicts"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Final family coordination call",
+          "date_time": "Two days before holiday",
+          "attendees": ["All family coordinators"],
+          "purpose": "Final check on plans and assignments"
+        },
+        {
+          "event": "Post-holiday debrief call",
+          "date_time": "Week after holiday",
+          "attendees": ["All participants"],
+          "purpose": "Assess what worked and plan improvements for next gathering"
+        }
+      ]
+    }
+  ]
+}

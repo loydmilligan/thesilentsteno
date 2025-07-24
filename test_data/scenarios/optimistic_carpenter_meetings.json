@@ -1,0 +1,559 @@
+{
+  "scenarios": [
+    {
+      "scenario_title": "Construction Project Budget Review",
+      "duration_minutes": 8,
+      "context": {
+        "setting": "Conference room at construction company headquarters",
+        "background": "Monthly budget review meeting where project costs have exceeded initial estimates",
+        "tension_point": "Material costs have increased 15% but client refuses to adjust contract terms",
+        "expected_outcome": "Find cost-saving measures or negotiate with client for budget adjustment"
+      },
+      "participants": [
+        {
+          "name": "Marcus Rodriguez",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Uses construction metaphors naturally, speaks in measured tones",
+            "under_pressure": "Gets more detailed and methodical",
+            "verbal_tics": "Says 'let's build on that' and 'solid foundation'",
+            "emotional_tells": "Drums fingers when calculating in his head"
+          },
+          "sample_dialogue": [
+            "We need to lay a solid foundation for these numbers before we proceed.",
+            "Look, I've been framing buildings for twenty years - this isn't just about lumber costs.",
+            "Let's build on what Sarah just said and see where we can trim some fat."
+          ]
+        },
+        {
+          "name": "Sarah Kim",
+          "voice": "F",
+          "role": "midlevel",
+          "style": "Analytical",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Rapid-fire delivery with lots of data references",
+            "under_pressure": "Talks faster and uses more technical jargon",
+            "verbal_tics": "Says 'according to the data' frequently",
+            "emotional_tells": "Shuffles papers when disagreeing"
+          },
+          "sample_dialogue": [
+            "According to the data, we're looking at a 15.3% increase across all material categories.",
+            "Wait, Marcus, that's not entirely accurate - the steel costs alone account for 8% of that increase.",
+            "I need to push back on this timeline - the numbers just don't add up that way."
+          ]
+        },
+        {
+          "name": "Tom Bradley",
+          "voice": "M",
+          "role": "exec",
+          "style": "Collaborative",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Long pauses between thoughts, asks clarifying questions",
+            "under_pressure": "Becomes quieter and more thoughtful",
+            "verbal_tics": "Says 'help me understand' often",
+            "emotional_tells": "Leans back in chair when overwhelmed"
+          },
+          "sample_dialogue": [
+            "Help me understand... are we talking about eating these costs or passing them along?",
+            "I'm hearing two different approaches here, and I'm not sure which foundation we're building on.",
+            "Tom here - just want to make sure we're all rowing in the same direction before we commit."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Marcus presents budget overrun data while Sarah provides supporting analysis",
+          "emotional_tone": "neutral",
+          "key_points": ["15% cost increase revealed", "Material price volatility discussed", "Client contract terms reviewed"]
+        },
+        {
+          "phase": "development",
+          "description": "Tension builds as Tom questions feasibility while Sarah insists on data accuracy",
+          "emotional_tone": "escalating",
+          "key_points": ["Sarah challenges Marcus's calculations", "Tom expresses concern about client reaction", "Alternative cost-cutting measures debated"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Team agrees on phased approach with client communication strategy",
+          "emotional_tone": "hopeful",
+          "key_points": ["Compromise on material substitutions", "Client meeting scheduled", "Contingency plan established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Sarah Kim",
+          "task": "Prepare detailed cost breakdown analysis with alternative materials",
+          "deadline": "Wednesday by 2 PM",
+          "context": "Needed for client presentation to justify budget adjustment request"
+        },
+        {
+          "assignee": "Marcus Rodriguez",
+          "task": "Contact three suppliers for bulk discount negotiations",
+          "deadline": "Thursday morning",
+          "context": "Explore cost reduction options before client meeting"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Client budget review meeting",
+          "date_time": "Friday at 10 AM",
+          "attendees": ["Marcus Rodriguez", "Tom Bradley", "Client representative"],
+          "purpose": "Present cost analysis and negotiate contract adjustment"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Software Development Sprint Planning",
+      "duration_minutes": 12,
+      "context": {
+        "setting": "Tech startup office via video conference with remote team members",
+        "background": "Sprint planning for new feature release with tight deadline pressure from investors",
+        "tension_point": "Engineering team says timeline is unrealistic while product manager insists on commitment to investors",
+        "expected_outcome": "Agree on realistic sprint scope and communicate timeline to stakeholders"
+      },
+      "participants": [
+        {
+          "name": "Jake Martinez",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Optimistic language with building metaphors, solutions-focused",
+            "under_pressure": "Becomes more animated and uses hands while talking",
+            "verbal_tics": "Says 'we can build this' and 'solid framework'",
+            "emotional_tells": "Voice gets higher when excited about solutions"
+          },
+          "sample_dialogue": [
+            "I hear what you're saying, but I think we can build something solid here if we frame it right.",
+            "This is like laying a foundation - we need to get the structure right before we add the fancy features.",
+            "Come on team, we've hammered through tougher problems than this before!"
+          ]
+        },
+        {
+          "name": "Priya Patel",
+          "voice": "F",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "No-nonsense delivery, cuts through ambiguity quickly",
+            "under_pressure": "Becomes more blunt and impatient",
+            "verbal_tics": "Says 'bottom line' frequently",
+            "emotional_tells": "Types loudly on keyboard when frustrated"
+          },
+          "sample_dialogue": [
+            "Bottom line - we promised investors a working demo by month-end, and that's what they're expecting.",
+            "Jake, I appreciate the optimism, but we need concrete commitments, not construction metaphors.",
+            "Look, I'm not trying to be difficult here, but someone has to be realistic about what we can deliver."
+          ]
+        },
+        {
+          "name": "David Chen",
+          "voice": "M",
+          "role": "senior",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Technical precision, long explanations of complex concepts",
+            "under_pressure": "Becomes more technical and detailed",
+            "verbal_tics": "Says 'from a technical standpoint' often",
+            "emotional_tells": "Long pauses when calculating complexity"
+          },
+          "sample_dialogue": [
+            "From a technical standpoint, the authentication system alone requires at least 40 hours of development time.",
+            "Priya, I understand the business pressure, but we're talking about fundamental architecture changes here.",
+            "Let me walk through the technical dependencies... this isn't just about writing more code faster."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Priya outlines investor expectations while David presents technical complexity concerns",
+          "emotional_tone": "tense",
+          "key_points": ["Investor demo deadline confirmed", "Technical scope larger than anticipated", "Previous sprint velocity reviewed"]
+        },
+        {
+          "phase": "development",
+          "description": "Jake tries to mediate while tension escalates between business and technical perspectives",
+          "emotional_tone": "escalating",
+          "key_points": ["David explains technical roadblocks", "Priya pushes back on timeline estimates", "Jake proposes compromise solutions"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Team agrees on MVP approach with clear communication plan for stakeholders",
+          "emotional_tone": "resolved",
+          "key_points": ["MVP feature set defined", "Stakeholder communication strategy agreed", "Fallback plan established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "David Chen",
+          "task": "Create technical specification for MVP authentication system",
+          "deadline": "Tomorrow by end of day",
+          "context": "Simplified version focusing only on core login functionality"
+        },
+        {
+          "assignee": "Priya Patel",
+          "task": "Draft investor communication about scope adjustment",
+          "deadline": "Wednesday morning",
+          "context": "Explain MVP approach while maintaining confidence in delivery"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Daily standup check-in",
+          "date_time": "Every morning at 9 AM",
+          "attendees": ["Jake Martinez", "Priya Patel", "David Chen"],
+          "purpose": "Monitor progress on MVP development and address blockers"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Marketing Campaign Performance Review",
+      "duration_minutes": 6,
+      "context": {
+        "setting": "Marketing department meeting room with campaign performance metrics displayed",
+        "background": "Quarterly review of digital marketing campaigns showing mixed results across channels",
+        "tension_point": "Social media campaigns underperformed while email marketing exceeded expectations, causing budget allocation disagreement",
+        "expected_outcome": "Reallocate budget and adjust strategy for next quarter based on performance data"
+      },
+      "participants": [
+        {
+          "name": "Elena Rodriguez",
+          "voice": "F",
+          "role": "exec",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Asks questions to build consensus, uses inclusive language",
+            "under_pressure": "Becomes more diplomatic and careful with words",
+            "verbal_tics": "Says 'what do you think' and 'help me see'",
+            "emotional_tells": "Adjusts glasses when considering different viewpoints"
+          },
+          "sample_dialogue": [
+            "Help me see how we can build on these email marketing wins for next quarter.",
+            "What do you think went wrong with our social media approach? I want to understand the foundation issues.",
+            "I'm hearing some good insights here - how do we hammer out a strategy that works for everyone?"
+          ]
+        },
+        {
+          "name": "Mike Thompson",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Enthusiastic",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Energetic delivery with lots of ideas, jumps between topics",
+            "under_pressure": "Talks faster and offers multiple solutions quickly",
+            "verbal_tics": "Says 'absolutely' and 'that's huge' frequently",
+            "emotional_tells": "Gestures more when passionate about ideas"
+          },
+          "sample_dialogue": [
+            "Absolutely! The email ROI is huge - we're talking 300% return on that channel alone.",
+            "Elena, that's exactly what I was thinking - we need to double down on what's working.",
+            "But wait, before we scrap social entirely, what if we just restructured the approach?"
+          ]
+        },
+        {
+          "name": "Lisa Park",
+          "voice": "F",
+          "role": "junior",
+          "style": "Direct",
+          "engagement": "Distracted",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Hesitant delivery, often qualifies statements",
+            "under_pressure": "Becomes more withdrawn and speaks less",
+            "verbal_tics": "Says 'I think maybe' and 'it might be'",
+            "emotional_tells": "Looks down at notes when disagreeing"
+          },
+          "sample_dialogue": [
+            "I think maybe the social media timing was off... it might be worth testing different posting schedules.",
+            "Um, Mike, I have to respectfully disagree with the doubling down approach.",
+            "The data shows... well, it might be more complicated than just channel performance."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Elena presents performance overview while Mike highlights email success metrics",
+          "emotional_tone": "neutral",
+          "key_points": ["Email marketing exceeded goals", "Social media underperformed", "Overall ROI still positive"]
+        },
+        {
+          "phase": "development",
+          "description": "Mike pushes for aggressive email expansion while Lisa raises concerns about over-reliance",
+          "emotional_tone": "analytical",
+          "key_points": ["Budget reallocation debate begins", "Lisa questions single-channel focus", "Mike defends high-performing strategies"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Elena facilitates compromise on diversified but weighted approach",
+          "emotional_tone": "resolved",
+          "key_points": ["70/30 budget split agreed", "Social media testing program approved", "Monthly review schedule established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Mike Thompson",
+          "task": "Design expanded email marketing campaign with increased budget",
+          "deadline": "Next Friday",
+          "context": "Scale successful campaigns while maintaining quality and compliance"
+        },
+        {
+          "assignee": "Lisa Park",
+          "task": "Develop social media testing framework with limited budget",
+          "deadline": "Next Wednesday",
+          "context": "Small-scale experiments to identify what went wrong and potential fixes"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Monthly marketing performance review",
+          "date_time": "First Tuesday of each month at 2 PM",
+          "attendees": ["Elena Rodriguez", "Mike Thompson", "Lisa Park"],
+          "purpose": "Track progress on adjusted strategy and make incremental improvements"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Project Timeline Crisis Meeting",
+      "duration_minutes": 10,
+      "context": {
+        "setting": "Emergency video call between project stakeholders",
+        "background": "Key project milestone missed due to vendor delays and resource constraints",
+        "tension_point": "Client threatening to cancel contract while team lead insists more time needed for quality delivery",
+        "expected_outcome": "Develop recovery plan that satisfies client while maintaining project viability"
+      },
+      "participants": [
+        {
+          "name": "Alex Rivera",
+          "voice": "M",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Construction-influenced problem-solving language, methodical approach",
+            "under_pressure": "Becomes more systematic and detail-oriented",
+            "verbal_tics": "Says 'let's nail down' and 'build from here'",
+            "emotional_tells": "Pauses to think before proposing solutions"
+          },
+          "sample_dialogue": [
+            "Okay, let's nail down exactly what went sideways and build our recovery plan from there.",
+            "Jennifer, I hear your concerns, but we need a solid foundation before we can frame the solution.",
+            "This is like renovating while people are living in the house - messy, but definitely doable."
+          ]
+        },
+        {
+          "name": "Jennifer Walsh",
+          "voice": "F",
+          "role": "exec",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Rapid-fire questions and demands, business-focused language",
+            "under_pressure": "Becomes more demanding and impatient",
+            "verbal_tics": "Says 'bottom line' and 'end of the day'",
+            "emotional_tells": "Voice pitch rises when frustrated"
+          },
+          "sample_dialogue": [
+            "Alex, bottom line - the client is ready to walk, and at the end of the day, that's our revenue.",
+            "I don't need construction metaphors right now, I need concrete solutions and timelines.",
+            "We promised delivery by month-end, and now you're telling me we need another six weeks?"
+          ]
+        },
+        {
+          "name": "Robert Kim",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Detailed explanations with risk analysis, cautious tone",
+            "under_pressure": "Becomes more technical and thorough",
+            "verbal_tics": "Says 'we need to consider' and 'potential impact'",
+            "emotional_tells": "Long silences when processing complex problems"
+          },
+          "sample_dialogue": [
+            "We need to consider the potential impact of rushing this delivery on our long-term client relationship.",
+            "Jennifer, I understand the urgency, but the vendor delays created cascading effects across three workstreams.",
+            "Let me walk through the dependencies... if we skip quality assurance, we're looking at significant rework costs."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Jennifer presents client ultimatum while Alex acknowledges timeline failure",
+          "emotional_tone": "tense",
+          "key_points": ["Client cancellation threat outlined", "Milestone delay causes identified", "Immediate action required"]
+        },
+        {
+          "phase": "development",
+          "description": "Robert details technical constraints while Jennifer pushes for faster delivery",
+          "emotional_tone": "escalating",
+          "key_points": ["Technical dependencies explained", "Quality vs speed debate intensifies", "Resource reallocation discussed"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Alex proposes phased delivery approach that addresses both client needs and quality concerns",
+          "emotional_tone": "hopeful",
+          "key_points": ["Phased delivery plan agreed", "Client communication strategy set", "Resource surge plan approved"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Alex Rivera",
+          "task": "Create detailed phased delivery timeline with weekly milestones",
+          "deadline": "Today by 6 PM",
+          "context": "Needed for client call tomorrow morning to prevent contract cancellation"
+        },
+        {
+          "assignee": "Robert Kim",
+          "task": "Identify which team members can be temporarily reassigned to critical path",
+          "deadline": "Tonight",
+          "context": "Resource surge needed to meet compressed timeline"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "Client emergency meeting",
+          "date_time": "Tomorrow at 8 AM",
+          "attendees": ["Jennifer Walsh", "Alex Rivera", "Client stakeholders"],
+          "purpose": "Present recovery plan and renegotiate contract terms"
+        }
+      ]
+    },
+    {
+      "scenario_title": "Team Restructuring Discussion",
+      "duration_minutes": 7,
+      "context": {
+        "setting": "HR conference room with department managers present",
+        "background": "Company growth requiring team reorganization and role clarifications",
+        "tension_point": "Some team members will report to new managers and territory boundaries are unclear",
+        "expected_outcome": "Define new reporting structure and minimize disruption to ongoing projects"
+      },
+      "participants": [
+        {
+          "name": "Carlos Martinez",
+          "voice": "M",
+          "role": "midlevel",
+          "style": "Collaborative",
+          "engagement": "HighlyEngaged",
+          "pace": "Average",
+          "behavioral_traits": {
+            "speech_patterns": "Optimistic and team-focused, uses building metaphors naturally",
+            "under_pressure": "Focuses on solutions and team morale",
+            "verbal_tics": "Says 'we can work with this' and 'solid team'",
+            "emotional_tells": "Leans forward when engaged in problem-solving"
+          },
+          "sample_dialogue": [
+            "I think we can work with this structure - we've got a solid team foundation to build on.",
+            "The way I see it, this is like adding a new room to the house - everything else stays strong.",
+            "Come on, Diana, we've weathered bigger changes than this before as a team."
+          ]
+        },
+        {
+          "name": "Diana Foster",
+          "voice": "F",
+          "role": "senior",
+          "style": "Direct",
+          "engagement": "HighlyEngaged",
+          "pace": "FastPaced",
+          "behavioral_traits": {
+            "speech_patterns": "Protective of her team, speaks with authority and concern",
+            "under_pressure": "Becomes more protective and questioning",
+            "verbal_tics": "Says 'my team' and 'we've built'",
+            "emotional_tells": "Crosses arms when defensive"
+          },
+          "sample_dialogue": [
+            "Carlos, my team has worked incredibly hard to build the processes we have in place.",
+            "I'm not opposed to change, but I need to understand how this protects the relationships we've built.",
+            "These aren't just reporting lines we're talking about - these are people's careers and projects."
+          ]
+        },
+        {
+          "name": "Martin Zhao",
+          "voice": "M",
+          "role": "exec",
+          "style": "Analytical",
+          "engagement": "Moderate",
+          "pace": "Slow",
+          "behavioral_traits": {
+            "speech_patterns": "Diplomatic with focus on long-term organizational health",
+            "under_pressure": "Becomes more formal and process-oriented",
+            "verbal_tics": "Says 'organizational perspective' and 'strategic alignment'",
+            "emotional_tells": "Steeples fingers when weighing options"
+          },
+          "sample_dialogue": [
+            "From an organizational perspective, we need to balance individual concerns with strategic alignment.",
+            "Diana, I appreciate your team's investment, and Carlos, I value your optimistic approach to change.",
+            "Let's step back and look at how this restructuring serves our long-term growth objectives."
+          ]
+        }
+      ],
+      "conversation_flow": [
+        {
+          "phase": "opening",
+          "description": "Martin outlines restructuring rationale while Diana expresses concerns about team disruption",
+          "emotional_tone": "worried",
+          "key_points": ["Growth necessitates reorganization", "Current team dynamics reviewed", "Change timeline presented"]
+        },
+        {
+          "phase": "development",
+          "description": "Carlos tries to mediate while Diana pushes back on changes affecting her direct reports",
+          "emotional_tone": "tense",
+          "key_points": ["Diana defends team stability", "Carlos proposes gradual transition", "Territory boundaries debated"]
+        },
+        {
+          "phase": "resolution",
+          "description": "Agreement reached on phased transition with input from affected team members",
+          "emotional_tone": "resolved",
+          "key_points": ["Phased transition plan approved", "Team input sessions scheduled", "Clear communication plan established"]
+        }
+      ],
+      "specific_assignments": [
+        {
+          "assignee": "Diana Foster",
+          "task": "Schedule one-on-one meetings with affected team members",
+          "deadline": "By end of week",
+          "context": "Gather input and address concerns before final structure announcement"
+        },
+        {
+          "assignee": "Carlos Martinez",
+          "task": "Draft transition communication plan for all teams",
+          "deadline": "Wednesday",
+          "context": "Ensure consistent messaging about changes and timeline"
+        }
+      ],
+      "scheduled_items": [
+        {
+          "event": "All-hands restructuring announcement",
+          "date_time": "Next Friday at 3 PM",
+          "attendees": ["All department staff", "Martin Zhao", "Diana Foster", "Carlos Martinez"],
+          "purpose": "Announce new structure and address team questions"
+        }
+      ]
+    }
+  ]
+}

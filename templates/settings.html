@@ -470,6 +470,29 @@
                         </div>
                     </label>
                 </div>
+                
+                <!-- Gemini AI Enhancement -->
+                <div class="setting-row">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Gemini AI Enhancement</label>
+                        <p class="text-slate-400 text-sm mt-1">Advanced analysis and summaries</p>
+                    </div>
+                    <label class="chunky-toggle">
+                        <input type="checkbox" id="use-gemini-enhancement">
+                        <div class="toggle-slider">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </label>
+                </div>
+                
+                <!-- Gemini API Key -->
+                <div class="setting-row" id="gemini-api-key-row" style="display: none;">
+                    <div>
+                        <label class="text-xl font-semibold text-white block">Gemini API Key</label>
+                        <p class="text-slate-400 text-sm mt-1">Required for AI enhancement features</p>
+                    </div>
+                    <input type="password" id="gemini-api-key" class="chunky-input bg-slate-700 text-white border border-slate-600 rounded-lg px-4 w-80" placeholder="Enter your Gemini API key">
+                </div>
             </div>
             
             <!-- Interface Settings -->
@@ -990,6 +1013,22 @@
             const gainSlider = document.getElementById('input-gain');
             const gainValue = document.getElementById('gain-value');
             
+            // Gemini enhancement toggle
+            const geminiToggle = document.getElementById('use-gemini-enhancement');
+            const geminiApiKeyRow = document.getElementById('gemini-api-key-row');
+            
+            function toggleGeminiApiKey() {
+                if (geminiToggle.checked) {
+                    geminiApiKeyRow.style.display = 'flex';
+                } else {
+                    geminiApiKeyRow.style.display = 'none';
+                }
+            }
+            
+            geminiToggle.addEventListener('change', toggleGeminiApiKey);
+            // Set initial state
+            toggleGeminiApiKey();
+            
             gainSlider.addEventListener('input', function() {
                 const value = Math.round(this.value * 100);
                 gainValue.textContent = value + '%';
@@ -1028,6 +1067,8 @@
                 document.getElementById('custom-vocabulary').value = settings.transcription.custom_vocabulary || '';
                 document.getElementById('automatic-punctuation').checked = settings.transcription.automatic_punctuation !== false;
                 document.getElementById('post-meeting-summaries').checked = settings.transcription.post_meeting_summaries !== false;
+                document.getElementById('use-gemini-enhancement').checked = settings.transcription.use_gemini_enhancement || false;
+                document.getElementById('gemini-api-key').value = settings.transcription.gemini_api_key || '';
             }
             
             // Interface settings
@@ -1052,7 +1093,9 @@
                     whisper_model: document.getElementById('whisper-model').value,
                     custom_vocabulary: document.getElementById('custom-vocabulary').value,
                     automatic_punctuation: document.getElementById('automatic-punctuation').checked,
-                    post_meeting_summaries: document.getElementById('post-meeting-summaries').checked
+                    post_meeting_summaries: document.getElementById('post-meeting-summaries').checked,
+                    use_gemini_enhancement: document.getElementById('use-gemini-enhancement').checked,
+                    gemini_api_key: document.getElementById('gemini-api-key').value
                 },
                 interface: {
                     theme: document.getElementById('theme').value,

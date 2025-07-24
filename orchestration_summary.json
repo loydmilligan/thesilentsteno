@@ -1,0 +1,58 @@
+{
+  "orchestration_metadata": {
+    "execution_timestamp": "2025-01-23T18:50:00Z",
+    "filter_strategy": "core",
+    "repository_root": "/home/mmariani/projects/thesilentsteno",
+    "max_depth_analyzed": 3,
+    "batch_size": 4,
+    "total_directories_found": 2,
+    "total_directories_analyzed": 2,
+    "total_sub_agents_deployed": 2,
+    "execution_duration_seconds": 45
+  },
+  "directory_analysis_results": [
+    {
+      "directory_path": "./src",
+      "directory_category": "src",
+      "analysis_status": "SUCCESS",
+      "manifest_file_path": "/home/mmariani/projects/thesilentsteno/src/directory_manifest_src.json",
+      "files_analyzed": 1,
+      "estimated_total_files": 95,
+      "primary_language": "Python",
+      "error_details": null,
+      "key_modules": [
+        "ai/ - AI processing and transcription (16 files)",
+        "audio/ - Low-level audio handling (6 files)", 
+        "bluetooth/ - Device connectivity (3 files)",
+        "recording/ - Session and file management (9 files)",
+        "ui/ - User interface and controls (17 files)"
+      ]
+    },
+    {
+      "directory_path": "./src/ui",
+      "directory_category": "components",
+      "analysis_status": "SUCCESS", 
+      "manifest_file_path": "/home/mmariani/projects/thesilentsteno/src/ui/directory_manifest_ui.json",
+      "files_analyzed": 16,
+      "estimated_total_files": 16,
+      "primary_language": "Python",
+      "error_details": null,
+      "ui_framework": "Kivy-based touch interface system",
+      "architecture": "Component-based with factory functions"
+    }
+  ],
+  "filtering_summary": {
+    "directories_included": 2,
+    "directories_excluded_by_filter": 2,
+    "directories_skipped_empty": 0,
+    "categories_included": ["src", "components"],
+    "categories_excluded": ["virtual_environments"]
+  },
+  "success_metrics": {
+    "successful_analyses": 2,
+    "failed_analyses": 0,
+    "success_rate_percentage": 100,
+    "total_manifest_files_created": 2,
+    "total_source_files_analyzed": 112
+  }
+}

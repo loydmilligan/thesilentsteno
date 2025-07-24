@@ -1,0 +1,692 @@
+{
+  "version": "1.0",
+  "generated": "2025-01-25T12:45:00Z",
+  "directory": "./src/ui",
+  "depth": 1,
+  "description": "User interface components and touch controls for The Silent Steno - Bluetooth AI Meeting Recorder",
+  "structure": {
+    "audio_visualizer.py": {
+      "type": "file",
+      "purpose": "Real-time audio level visualization component with multiple display modes",
+      "content_summary": "Provides AudioVisualizer widget with bars, waveform, spectrum, circular, and VU meter visualization modes for live audio monitoring",
+      "exports": {
+        "classes": [
+          "AudioVisualizer - Main audio visualization widget with real-time updates",
+          "VisualizerType - Enum defining visualization modes (BARS, WAVEFORM, SPECTRUM, CIRCULAR, VU_METER)",
+          "VisualizerConfig - Configuration dataclass for visualization settings"
+        ],
+        "functions": [
+          "create_audio_visualizer(config) - Factory function to create visualizer with configuration",
+          "create_default_config() - Creates default visualizer configuration",
+          "create_minimal_config() - Creates minimal visualizer for low-resource devices"
+        ],
+        "constants": []
+      },
+      "imports": [
+        "kivy.uix.widget.Widget",
+        "kivy.uix.boxlayout.BoxLayout", 
+        "kivy.graphics (Color, Rectangle, Line, Ellipse)",
+        "kivy.clock.Clock",
+        "kivy.properties (NumericProperty, ObjectProperty)",
+        "numpy - for audio data processing",
+        "math, logging - standard libraries",
+        "dataclasses, enum, typing - type definitions"
+      ],
+      "side_effects": [
+        "Schedules periodic canvas updates via Clock",
+        "Performs real-time audio data processing",
+        "Updates GPU graphics primitives for visualization"
+      ]
+    },
+    "export_dialog.py": {
+      "type": "file", 
+      "purpose": "Comprehensive export dialog for sessions with multiple format options",
+      "content_summary": "Provides ExportDialog popup with support for PDF, DOCX, TXT, JSON, HTML formats and customizable export options",
+      "exports": {
+        "classes": [
+          "ExportDialog - Main export dialog popup widget",
+          "ExportFormat - Enum for export formats (PDF, DOCX, TXT, JSON, HTML)",
+          "ExportOptions - Dataclass for export configuration",
+          "FormatOptionsWidget - Format-specific options widget",
+          "ExportProgressDialog - Progress dialog for export operations"
+        ],
+        "functions": [
+          "create_export_dialog(session_data, callback) - Factory to create export dialog",
+          "get_default_export_options(format) - Get default options for format"
+        ],
+        "constants": []
+      },
+      "imports": [
+        "kivy.uix.popup.Popup",
+        "kivy.uix.boxlayout.BoxLayout",
+        "kivy.uix.gridlayout.GridLayout", 
+        "kivy.uix.button.Button",
+        "kivy.uix.label.Label",
+        "kivy.uix.checkbox.CheckBox",
+        "kivy.uix.spinner.Spinner",
+        "kivy.uix.progressbar.ProgressBar",
+        "kivy.properties (StringProperty, BooleanProperty)",
+        "dataclasses, enum, typing, datetime, logging"
+      ],
+      "side_effects": [
+        "Creates popup windows for user interaction",
+        "Spawns background threads for export processing",
+        "Writes files to filesystem during export",
+        "Shows progress dialogs with updates"
+      ]
+    },
+    "feedback_manager.py": {
+      "type": "file",
+      "purpose": "Manages visual, audio, and haptic feedback for user interactions",
+      "content_summary": "Provides FeedbackManager to coordinate multi-sensory feedback including visual highlights, sound effects, and haptic vibration",
+      "exports": {
+        "classes": [
+          "FeedbackManager - Main feedback coordination system",
+          "FeedbackType - Enum for feedback types (VISUAL, AUDIO, HAPTIC, COMBINED)",
+          "FeedbackConfig - Configuration for feedback behavior",
+          "VisualFeedback - Visual feedback effects manager",
+          "AudioFeedback - Sound effects manager", 
+          "HapticFeedback - Vibration feedback manager"
+        ],
+        "functions": [
+          "create_feedback_manager(config) - Factory function for feedback manager",
+          "create_touch_optimized_config() - Config optimized for touch interfaces"
+        ],
+        "constants": []
+      },
+      "imports": [
+        "kivy.uix.widget.Widget",
+        "kivy.animation.Animation",
+        "kivy.graphics (Color, Rectangle)",
+        "kivy.clock.Clock",
+        "kivy.core.audio.SoundLoader",
+        "dataclasses, enum, typing, logging",
+        "threading - for background feedback processing"
+      ],
+      "side_effects": [
+        "Plays audio files for sound feedback",
+        "Triggers device vibration (platform-dependent)",
+        "Creates visual animations on widgets",
+        "Schedules timed feedback cleanup"
+      ]
+    },
+    "main_window.py": {
+      "type": "file",
+      "purpose": "Main application window and UI framework orchestration",
+      "content_summary": "Provides MainWindow class managing the primary app interface, screen navigation, and performance monitoring",
+      "exports": {
+        "classes": [
+          "MainWindow - Primary application window container",
+          "SilentStenoApp - Main Kivy application class",
+          "ScreenManager - Screen navigation manager",
+          "AppConfig - Application configuration dataclass",
+          "PerformanceMonitor - UI performance tracking"
+        ],
+        "functions": [
+          "create_main_window(config) - Factory for main window creation",
+          "setup_window_properties(window) - Configure window properties"
+        ],
+        "constants": [
+          "DEFAULT_WINDOW_SIZE - Default window dimensions",
+          "MIN_WINDOW_SIZE - Minimum allowed window size"
+        ]
+      },
+      "imports": [
+        "kivy.app.App",
+        "kivy.uix.widget.Widget",
+        "kivy.uix.screenmanager (ScreenManager, Screen)",
+        "kivy.uix.boxlayout.BoxLayout",
+        "kivy.core.window.Window",
+        "kivy.clock.Clock",
+        "kivy.properties (StringProperty, NumericProperty)",
+        "dataclasses, typing, logging, threading"
+      ],
+      "side_effects": [
+        "Creates and manages main application window",
+        "Registers keyboard event handlers", 
+        "Schedules performance monitoring updates",
+        "Manages screen transitions and navigation state"
+      ]
+    },
+    "navigation.py": {
+      "type": "file",
+      "purpose": "Touch-optimized navigation system with gesture support",
+      "content_summary": "Implements NavigationManager with swipe gestures, back navigation, and smooth screen transitions for touch interfaces",
+      "exports": {
+        "classes": [
+          "NavigationManager - Main navigation coordinator",
+          "GestureDetector - Touch gesture recognition system", 
+          "NavigationBar - Touch-optimized navigation bar widget",
+          "SwipeGesture - Swipe gesture data container",
+          "NavigationHistory - Navigation state history manager"
+        ],
+        "functions": [
+          "create_navigation_manager(config) - Factory for navigation manager",
+          "register_swipe_handlers(widget, callbacks) - Register swipe callbacks"
+        ],
+        "constants": [
+          "SWIPE_THRESHOLD - Minimum distance for swipe recognition",
+          "GESTURE_TIMEOUT - Maximum time for gesture completion"
+        ]
+      },
+      "imports": [
+        "kivy.uix.widget.Widget",
+        "kivy.uix.boxlayout.BoxLayout",
+        "kivy.uix.button.Button",
+        "kivy.vector.Vector",
+        "kivy.clock.Clock",
+        "kivy.animation.Animation",
+        "dataclasses, enum, typing, logging"
+      ],
+      "side_effects": [
+        "Registers touch event handlers globally",
+        "Manages navigation history stack",
+        "Triggers screen transition animations",
+        "Updates navigation bar state"
+      ]
+    },
+    "session_controls.py": {
+      "type": "file",
+      "purpose": "Recording session control interface with visual feedback",
+      "content_summary": "Provides SessionControls widget with start/stop/pause/resume buttons and visual state indicators for recording management",
+      "exports": {
+        "classes": [
+          "SessionControls - Main session control widget",
+          "SessionControlButton - Specialized control button with state",
+          "ControlState - Enum for control states (IDLE, RECORDING, PAUSED, STOPPING)",
+          "SessionTimer - Recording duration timer widget",
+          "ControlConfig - Configuration for session controls"
+        ],
+        "functions": [
+          "create_session_controls(config, callbacks) - Factory for session controls",
+          "create_minimal_controls() - Minimal control set for simple UI"
+        ],
+        "constants": []
+      },
+      "imports": [
+        "kivy.uix.widget.Widget",
+        "kivy.uix.boxlayout.BoxLayout",
+        "kivy.uix.button.Button",
+        "kivy.uix.label.Label",
+        "kivy.graphics (Color, Rectangle, Ellipse)",
+        "kivy.clock.Clock",
+        "kivy.properties (StringProperty, BooleanProperty)",
+        "dataclasses, enum, typing, datetime, logging"
+      ],
+      "side_effects": [
+        "Schedules timer updates during recording",
+        "Updates button visual states based on recording status",
+        "Triggers haptic feedback on button interactions",
+        "Manages recording session state transitions"
+      ]
+    },
+    "session_details_view.py": {
+      "type": "file",
+      "purpose": "Detailed session information display with metadata and analysis",
+      "content_summary": "Shows comprehensive session details including metadata, transcript preview, analysis results, and audio player controls",
+      "exports": {
+        "classes": [
+          "SessionDetailsView - Main session details display",
+          "SessionMetadata - Session metadata container",
+          "AudioPlayerWidget - Embedded audio playback controls",
+          "TranscriptPreview - Condensed transcript display",
+          "AnalysisResults - AI analysis results display",
+          "SessionActions - Action buttons for session management"
+        ],
+        "functions": [
+          "create_session_details_view(session_data) - Factory for details view",
+          "format_session_metadata(session) - Format metadata for display"
+        ],
+        "constants": []
+      },
+      "imports": [
+        "kivy.uix.widget.Widget", 
+        "kivy.uix.boxlayout.BoxLayout",
+        "kivy.uix.scrollview.ScrollView",
+        "kivy.uix.label.Label",
+        "kivy.uix.button.Button",
+        "kivy.uix.progressbar.ProgressBar",
+        "kivy.properties (StringProperty, ObjectProperty)",
+        "dataclasses, typing, datetime, logging"
+      ],
+      "side_effects": [
+        "Loads and displays audio file metadata",
+        "Creates scrollable content areas",
+        "Updates playback progress indicators",
+        "Manages session modification actions"
+      ]
+    },
+    "session_list_view.py": {
+      "type": "file",
+      "purpose": "Session browsing and management interface with search and filtering",
+      "content_summary": "Implements comprehensive session list with search, filter, sort, multi-select, and bulk operations for session management",
+      "exports": {
+        "classes": [
+          "SessionListView - Main session list interface",
+          "SessionListItem - Individual session list item widget",
+          "SessionSort - Enum for sort options (DATE, DURATION, SIZE, NAME)",
+          "SessionFilter - Enum for filter criteria (ALL, TODAY, WEEK, MONTH)",
+          "SearchBar - Session search input widget",
+          "FilterPanel - Advanced filtering controls"
+        ],
+        "functions": [
+          "create_session_list_view(sessions, callbacks) - Factory for list view",
+          "apply_filters(sessions, filter_criteria) - Apply filtering logic"
+        ],
+        "constants": []
+      },
+      "imports": [
+        "kivy.uix.widget.Widget",
+        "kivy.uix.boxlayout.BoxLayout", 
+        "kivy.uix.scrollview.ScrollView",
+        "kivy.uix.gridlayout.GridLayout",
+        "kivy.uix.label.Label",
+        "kivy.uix.button.Button",
+        "kivy.uix.textinput.TextInput",
+        "kivy.uix.checkbox.CheckBox",
+        "kivy.properties (StringProperty, ListProperty)",
+        "dataclasses, enum, typing, datetime, logging"
+      ],
+      "side_effects": [
+        "Loads session data from storage",
+        "Updates list display based on filters",
+        "Manages selection state across items",
+        "Triggers bulk operations on selected sessions"
+      ]
+    },
+    "session_view.py": {
+      "type": "file",
+      "purpose": "Main live session recording interface with real-time transcript display",
+      "content_summary": "Orchestrates the primary recording screen with transcript display, audio visualization, session controls, and status indicators",
+      "exports": {
+        "classes": [
+          "SessionView - Main live session interface",
+          "SessionViewModel - Session state management",
+          "SessionState - Enum for session states (IDLE, RECORDING, PAUSED, PROCESSING)",
+          "LiveTranscriptArea - Real-time transcript display area",
+          "SessionHeader - Session information header"
+        ],
+        "functions": [
+          "create_session_view(config, callbacks) - Factory for session view",
+          "setup_live_session(session_id) - Initialize live session"
+        ],
+        "constants": []
+      },
+      "imports": [
+        "kivy.uix.widget.Widget",
+        "kivy.uix.boxlayout.BoxLayout",
+        "kivy.uix.gridlayout.GridLayout",
+        "kivy.clock.Clock",
+        "kivy.properties (StringProperty, ObjectProperty)",
+        "dataclasses, enum, typing, datetime, logging"
+      ],
+      "side_effects": [
+        "Manages real-time audio processing",
+        "Updates transcript display continuously", 
+        "Coordinates multiple UI components",
+        "Handles session state transitions"
+      ]
+    },
+    "settings_view.py": {
+      "type": "file",
+      "purpose": "Application settings interface with configuration management",
+      "content_summary": "Provides comprehensive settings interface with validation, persistence, and organized categories for all app configuration",
+      "exports": {
+        "classes": [
+          "SettingsView - Main settings interface",
+          "SettingItem - Individual setting control widget",
+          "SettingCategory - Enum for setting categories (AUDIO, UI, BLUETOOTH, AI, EXPORT)",
+          "SettingsValidator - Setting validation system",
+          "SettingsPanel - Category-based settings panel"
+        ],
+        "functions": [
+          "create_settings_view(config, save_callback) - Factory for settings view",
+          "validate_setting_value(category, key, value) - Validate setting value"
+        ],
+        "constants": []
+      },
+      "imports": [
+        "kivy.uix.widget.Widget",
+        "kivy.uix.boxlayout.BoxLayout",
+        "kivy.uix.scrollview.ScrollView",
+        "kivy.uix.accordion.Accordion",
+        "kivy.uix.label.Label",
+        "kivy.uix.slider.Slider",
+        "kivy.uix.switch.Switch",
+        "kivy.uix.textinput.TextInput",
+        "kivy.properties (StringProperty, DictProperty)",
+        "dataclasses, enum, typing, json, logging"
+      ],
+      "side_effects": [
+        "Loads configuration from persistent storage",
+        "Validates and saves setting changes",
+        "Updates application behavior based on settings",
+        "Manages setting categories and organization"
+      ]
+    },
+    "simple_recording_ui.py": {
+      "type": "file",
+      "purpose": "Simplified recording interface extracted from minimal demo",
+      "content_summary": "Provides basic 3-button recording interface (Start/Stop/Play) with status display and transcript area for simple operation",
+      "exports": {
+        "classes": [
+          "SimpleRecordingUI - Basic recording interface widget",
+          "SimpleRecordingApp - Standalone app wrapper for simple UI"
+        ],
+        "functions": [
+          "create_simple_recording_ui(**kwargs) - Factory for simple UI widget",
+          "create_simple_recording_app(audio_recorder, transcriber) - Factory for simple app"
+        ],
+        "constants": []
+      },
+      "imports": [
+        "kivy.app.App",
+        "kivy.uix.boxlayout.BoxLayout",
+        "kivy.uix.button.Button",
+        "kivy.uix.label.Label",
+        "kivy.clock.Clock",
+        "kivy.metrics.dp",
+        "logging, typing, datetime, threading, uuid"
+      ],
+      "side_effects": [
+        "Manages simple recording state machine",
+        "Schedules UI updates via Clock",
+        "Spawns background transcription threads",
+        "Handles basic session management"
+      ]
+    },
+    "status_indicators.py": {
+      "type": "file",
+      "purpose": "Connection and system status monitoring with real-time visual indicators",
+      "content_summary": "Provides comprehensive status indicators for Bluetooth, recording, battery, storage, and system health with alerts and animations",
+      "exports": {
+        "classes": [
+          "StatusIndicators - Main status indicators widget",
+          "StatusIndicatorWidget - Individual status indicator",
+          "ConnectionStatus - Enum for Bluetooth connection states",
+          "SystemStatus - Enum for system health states",
+          "StatusLevel - Enum for indicator levels (INFO, SUCCESS, WARNING, ERROR, CRITICAL)",
+          "StatusInfo - Status message container",
+          "IndicatorConfig - Configuration for status display"
+        ],
+        "functions": [
+          "create_status_indicators(config) - Factory for status indicators",
+          "create_minimal_indicators() - Minimal indicator set",
+          "create_detailed_indicators() - Full indicator set",
+          "create_dashboard_indicators() - Dashboard-style indicators"
+        ],
+        "constants": []
+      },
+      "imports": [
+        "kivy.uix.widget.Widget",
+        "kivy.uix.boxlayout.BoxLayout",
+        "kivy.uix.gridlayout.GridLayout",
+        "kivy.uix.label.Label",
+        "kivy.uix.progressbar.ProgressBar",
+        "kivy.graphics (Color, Ellipse, Rectangle, Line)",
+        "kivy.animation.Animation",
+        "kivy.clock.Clock",
+        "kivy.properties (StringProperty, BooleanProperty, NumericProperty, ListProperty)",
+        "dataclasses, enum, typing, logging, datetime"
+      ],
+      "side_effects": [
+        "Schedules periodic status updates",
+        "Creates blinking animations for alerts",
+        "Monitors system resources continuously",
+        "Triggers status change callbacks"
+      ]
+    },
+    "storage_monitor_widget.py": {
+      "type": "file",
+      "purpose": "Storage usage monitoring and management with cleanup functionality",
+      "content_summary": "Provides comprehensive storage monitoring with usage visualization, cleanup options, session management, and storage alerts",
+      "exports": {
+        "classes": [
+          "StorageMonitorWidget - Main storage monitoring widget",
+          "StorageBarWidget - Visual storage usage bar",
+          "StorageInfo - Storage information container",
+          "StorageConfig - Configuration for storage monitoring",
+          "StorageAlert - Enum for storage alert levels (NONE, LOW, CRITICAL, FULL)"
+        ],
+        "functions": [
+          "create_storage_monitor(storage_path, config) - Factory for storage monitor",
+          "create_minimal_monitor(storage_path) - Minimal storage monitor",
+          "create_detailed_monitor(storage_path) - Detailed storage monitor",
+          "demo_storage_monitor() - Demo function for testing",
+          "storage_monitor_context(storage_path, config) - Context manager"
+        ],
+        "constants": []
+      },
+      "imports": [
+        "kivy.uix.boxlayout.BoxLayout",
+        "kivy.uix.gridlayout.GridLayout",
+        "kivy.uix.label.Label",
+        "kivy.uix.button.Button",
+        "kivy.uix.progressbar.ProgressBar",
+        "kivy.uix.popup.Popup",
+        "kivy.uix.scrollview.ScrollView",
+        "kivy.graphics (Color, Rectangle, Line)",
+        "kivy.properties (StringProperty, NumericProperty, BooleanProperty, ObjectProperty)",
+        "kivy.event.EventDispatcher",
+        "kivy.clock.Clock",
+        "kivy.utils.get_color_from_hex",
+        "os, shutil, datetime, timedelta, typing, enum, contextlib"
+      ],
+      "side_effects": [
+        "Monitors filesystem usage continuously",
+        "Schedules automatic storage updates",
+        "Performs file cleanup operations",
+        "Creates confirmation dialogs for destructive actions",
+        "Manages storage-related callbacks and events"
+      ]
+    },
+    "themes.py": {
+      "type": "file",
+      "purpose": "UI theming system with dark/light modes and accessibility support",
+      "content_summary": "Implements comprehensive theming with ThemeManager, multiple theme variants, and dynamic theme switching for the application",
+      "exports": {
+        "classes": [
+          "ThemeManager - Main theme management system",
+          "Theme - Base theme class with color palettes",
+          "DarkTheme - Dark mode theme implementation",
+          "LightTheme - Light mode theme implementation", 
+          "HighContrastTheme - Accessibility-focused high contrast theme",
+          "ThemeConfig - Theme configuration container"
+        ],
+        "functions": [
+          "create_theme_manager(initial_theme) - Factory for theme manager",
+          "apply_theme_to_widget(widget, theme) - Apply theme to widget",
+          "get_available_themes() - List available theme options"
+        ],
+        "constants": [
+          "DEFAULT_THEME - Default theme name",
+          "THEME_COLORS - Standard color definitions"
+        ]
+      },
+      "imports": [
+        "kivy.uix.widget.Widget",
+        "kivy.event.EventDispatcher", 
+        "kivy.properties (StringProperty, DictProperty)",
+        "dataclasses, typing, logging, json"
+      ],
+      "side_effects": [
+        "Modifies widget appearance globally",
+        "Persists theme preferences to storage",
+        "Triggers theme change callbacks across application",
+        "Updates system UI elements dynamically"
+      ]
+    },
+    "touch_controls.py": {
+      "type": "file",
+      "purpose": "Touch-optimized UI controls with minimum target sizes and feedback",
+      "content_summary": "Provides touch-friendly widgets (TouchButton, TouchSlider, TouchSwitch) with proper sizing, feedback, and accessibility features",
+      "exports": {
+        "classes": [
+          "TouchButton - Touch-optimized button with haptic feedback",
+          "TouchSlider - Touch-friendly slider with large touch targets",
+          "TouchSwitch - Touch-optimized toggle switch",
+          "TouchConfig - Configuration for touch behavior",
+          "TouchTargetMixin - Mixin for minimum touch target sizing"
+        ],
+        "functions": [
+          "create_touch_button(text, callback, config) - Factory for touch button",
+          "create_touch_slider(min_val, max_val, callback, config) - Factory for touch slider",
+          "ensure_minimum_touch_size(widget) - Ensure widget meets touch standards"
+        ],
+        "constants": [
+          "MIN_TOUCH_TARGET_SIZE - Minimum recommended touch target size",
+          "TOUCH_FEEDBACK_DURATION - Duration for touch feedback effects"
+        ]
+      },
+      "imports": [
+        "kivy.uix.button.Button",
+        "kivy.uix.slider.Slider", 
+        "kivy.uix.switch.Switch",
+        "kivy.uix.widget.Widget",
+        "kivy.metrics.dp",
+        "kivy.animation.Animation",
+        "kivy.graphics (Color, Rectangle)",
+        "dataclasses, typing, logging"
+      ],
+      "side_effects": [
+        "Enforces minimum touch target sizes",
+        "Provides haptic feedback on interactions",
+        "Creates visual feedback animations",
+        "Manages touch state and interaction timing"
+      ]
+    },
+    "transcription_display.py": {
+      "type": "file",
+      "purpose": "Real-time scrolling transcript display with speaker identification and timestamps",
+      "content_summary": "Implements comprehensive transcript display with real-time updates, speaker colors, confidence indicators, search, and export functionality",
+      "exports": {
+        "classes": [
+          "TranscriptionDisplay - Main scrollable transcript display",
+          "TranscriptEntryWidget - Individual transcript entry widget",
+          "TranscriptEntry - Transcript entry data container",
+          "SpeakerInfo - Speaker information container",
+          "TranscriptState - Enum for transcript states (IDLE, ACTIVE, PAUSED, SCROLLING, ERROR)",
+          "TranscriptConfig - Configuration for transcript display"
+        ],
+        "functions": [
+          "create_transcription_display(config) - Factory for transcript display",
+          "create_default_config() - Default transcript configuration",
+          "create_accessible_config() - Accessibility-optimized configuration", 
+          "create_compact_config() - Compact transcript configuration"
+        ],
+        "constants": []
+      },
+      "imports": [
+        "kivy.uix.widget.Widget",
+        "kivy.uix.scrollview.ScrollView",
+        "kivy.uix.boxlayout.BoxLayout",
+        "kivy.uix.label.Label",
+        "kivy.uix.gridlayout.GridLayout",
+        "kivy.properties (ObjectProperty, StringProperty, BooleanProperty, NumericProperty)",
+        "kivy.clock.Clock",
+        "kivy.metrics.dp",
+        "kivy.graphics (Color, Rectangle, Line)",
+        "kivy.uix.anchorlayout.AnchorLayout",
+        "dataclasses, datetime, enum, typing, logging, collections.deque"
+      ],
+      "side_effects": [
+        "Manages scrollable transcript content",
+        "Schedules highlight updates for recent entries",
+        "Handles auto-scroll behavior based on user interaction",
+        "Maintains speaker statistics and history",
+        "Creates and manages entry widgets dynamically"
+      ]
+    }
+  },
+  "totals": {
+    "files_analyzed": 16,
+    "total_classes": 85,
+    "total_functions": 47,
+    "total_constants": 8
+  },
+  "architecture_overview": {
+    "ui_framework": "Kivy-based touch-optimized interface for Raspberry Pi",
+    "design_patterns": [
+      "Widget-based component architecture",
+      "Factory pattern for widget creation", 
+      "Configuration-driven UI behavior",
+      "Event-driven communication between components",
+      "State management through enums and dataclasses"
+    ],
+    "main_components": [
+      "session_view.py - Primary recording interface orchestration",
+      "transcription_display.py - Real-time transcript with speaker identification", 
+      "session_controls.py - Recording control interface",
+      "audio_visualizer.py - Real-time audio visualization",
+      "main_window.py - Application framework and window management"
+    ],
+    "supporting_components": [
+      "navigation.py - Touch gesture navigation system",
+      "status_indicators.py - System and connection monitoring",
+      "settings_view.py - Configuration management interface",
+      "session_list_view.py - Session browsing and management"
+    ],
+    "specialized_widgets": [
+      "touch_controls.py - Touch-optimized input widgets",
+      "themes.py - Dynamic theming system",
+      "feedback_manager.py - Multi-sensory user feedback",
+      "storage_monitor_widget.py - Storage monitoring and cleanup"
+    ],
+    "utility_components": [
+      "export_dialog.py - Multi-format session export",
+      "session_details_view.py - Detailed session information",
+      "simple_recording_ui.py - Simplified recording interface"
+    ]
+  },
+  "technology_integration": {
+    "ui_framework": "Kivy with touch-optimized widgets and animations",
+    "graphics": "Hardware-accelerated graphics with OpenGL backend",
+    "audio_visualization": "Real-time audio processing with numpy integration",
+    "touch_interface": "Gesture recognition and haptic feedback support",
+    "theming": "Dynamic theme switching with accessibility support",
+    "data_export": "Multiple format export (PDF, DOCX, HTML, JSON, TXT)",
+    "system_monitoring": "Real-time system resource and connection monitoring"
+  },
+  "key_features": {
+    "real_time_capabilities": [
+      "Live audio visualization with multiple display modes",
+      "Real-time transcript display with speaker identification", 
+      "Continuous system status monitoring",
+      "Live session recording with visual feedback"
+    ],
+    "touch_optimization": [
+      "Minimum touch target size enforcement",
+      "Gesture-based navigation (swipe, tap, long-press)",
+      "Haptic and visual feedback for all interactions",
+      "Touch-friendly controls and layouts"
+    ],
+    "accessibility_features": [
+      "High contrast theme support",
+      "Configurable font sizes and spacing",
+      "Screen reader compatibility considerations",
+      "Visual and audio feedback options"
+    ],
+    "session_management": [
+      "Comprehensive session browsing with search and filters",
+      "Detailed session metadata and analysis display",
+      "Multi-format export capabilities",
+      "Session history and statistics tracking"
+    ],
+    "system_integration": [
+      "Bluetooth connection monitoring and management",
+      "Storage usage monitoring with cleanup automation",
+      "System resource monitoring (CPU, memory, temperature)",
+      "Battery level monitoring with low-power alerts"
+    ]
+  },
+  "dependencies": {
+    "kivy": "Primary UI framework with comprehensive widget set",
+    "numpy": "Audio data processing for visualization",
+    "threading": "Background processing for transcription and export",
+    "dataclasses": "Type-safe configuration and data containers",
+    "enum": "State management and configuration options",
+    "datetime": "Timestamp handling and session tracking",
+    "json": "Configuration persistence and data export",
+    "logging": "Comprehensive logging throughout UI components"
+  }
+}
