@@ -972,6 +972,74 @@
         "Do you have any references, perhaps, from other fuel marketers with a similar focus on, uh, specialized lubricants or dairy farm clients? Yes, I absolutely do, Peter",
         "Speaking of a proposal, what's the typical process for getting one? And, uh, what's a rough estimate for implementation? We're not looking for something that will disrupt our operations for months"
       ]
+    },
+    {
+      "session_id": "skeleton_1753382012",
+      "timestamp": "2025-07-24T11:34:42.435763",
+      "duration": 69.83616780045351,
+      "title": "Recording 2025-07-24 11:34",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250724_113332.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "Peter, thanks for taking the time to speak with me today. My name is Sarah, and I'm with Apex Automation Solutions. We specialize in software design specifically for fuel marketers and card luck operators like Toro Petroleum. Good morning, Sarah. Peter here, what can I do for you? Well, Peter, we've been helping companies in your industry. A, streamline their operations, significantly reduce errors, and ultimately do more with their existing team. Our core value proposition really revives us."
+        }
+      ],
+      "summary": "Peter, thanks for taking the time to speak with me today.",
+      "action_items": [],
+      "key_moments": [
+        {
+          "timestamp": "00:00:00",
+          "description": "team"
+        }
+      ],
+      "sentiment": "positive",
+      "topics": [
+        "timeline"
+      ],
+      "questions": [
+        "Peter here, what can I do for you? Well, Peter, we've been helping companies in your industry"
+      ]
+    },
+    {
+      "session_id": "skeleton_1753383833",
+      "timestamp": "2025-07-24T12:10:36.792669",
+      "duration": 403.0002494331066,
+      "title": "Recording 2025-07-24 12:10",
+      "participants": [
+        "Unknown"
+      ],
+      "wav_file": "demo_sessions/recording_20250724_120353.wav",
+      "transcript": [
+        {
+          "speaker": "Unknown",
+          "timestamp": "00:00:00",
+          "text": "You give orders to the king of the third god. 16. Vague promises and hints. They had left behind family and hereditary home, something many would find unconscionable, from the way of kings, forth parable. Shalana lay on her back on the floor underneath the shower, letting the water wash over her. She turned it down to a sprinkle, like the riddens of a storm, to rain on her bare skin, and tap on the stones around her. The air was humid from the steam, so she breathed it in thick. She could have lain there forever, enjoying a satisfaction and a fullness, she could never have captured in a painting. This fragment of time was about the sensation, more than the description, the knowledge that she'd opened herself to Adolin, and he had accepted her, flaws, issues, and dreams alike. Water, stone, and steam, the contentment of knowing that all was, briefly, right. Lazy joy-sprin, swirling around her like blue leaves. This was her reward. She let it linger, as Adolin closed a trunk outside, and called his goodbye. With a sigh, Shalana rolled onto her stomach, water beating against her back, and was greeted by a collection of soap bars, cleansing stones, and other bathing paraphernalia. A dozen of them, all in a cluster, glowing faintly silver, bouncing up and down. Shalana, Shalana, Shalana! You guys were watching? She asked the creation's sprin. Shalana, Shalana, Shalana! Well, nice to have a cheering section, and a little bit of a pose. She looked up and found pattern, dimpling the stone of the wall. Don't say it, she told him, climbing to her feet. What, he said. It's absolutely allowed, even encouraged now. She smiled and finished rinsing, then turned off the water, then searched the wall by pattern, for any sign of testament. Nothing. They might still be bonded, but it wasn't enough to pull testament through. Shalana's good mood faded, as she imagined her poor sprin, sitting alone on the other side. I'll fix it, she thought. I'll find a way. First, she had worked to do. She put on one of Vale's outfits, and crossed the main sitting room. She and Adelene had a prime location with a large balcony adorned with planters, which she stepped out onto, pattern having taken his customary place, on her long white coat. Well, she asked. One of the planters stood up. Stormlight steaming off as the light weaving vanished, revealing a short bearded man. Gas no longer wore an eye patch. He'd healed from that wound, but he often rubbed at his eye. Got a crook in my neck. Gas grumbled, stretching. But I didn't spot anything odd. Red, what about you? Another planter stood up. A lanky man in bright red suspenders emerging. Nothing. If they're going to strike, they're smart enough not to be obvious. Shalon leaned back against the wall, and folded her arms. She nodded to red, who took out a span read, and clicked it on and off. They didn't bother writing things out, instead using the flashing ruby, intended for indicating one was done writing, as the actual communication. Windrunners had started developing a code for that. The door to her rooms opened, and two more of her team entered from the hallway outside, where they'd been hidden. Star-guile, a tall handsome man with a ready grin, shook his head. Darceira followed one of the newer members of the unseen court. No one had so much as scouted Shalon's rooms, best any of them could tell. The five of them gathered around her front room table. \"'Whitsons' word!' Gaz said, pulling over a chair. She could see his cryptic, writing on his shoulder. All of her agents were full light-weavers, having spoken the first ideal, and at least one truth. None of those here were shard-bearers yet, but Gaz and Red were close. Your brothers are safe, but Whit wouldn't even tell me where he took them.\" \"'We can trust Whit,' Shalon said. \"'He won't join us,' Star-guile said."
+        }
+      ],
+      "summary": "You give orders to the king of the third god.  She could have lain there forever, enjoying a satisfaction and a fullness, she could never have captured in a painting.  Darceira followed one of the newer members of the unseen court",
+      "action_items": [
+        "strike"
+      ],
+      "key_moments": [
+        {
+          "timestamp": "00:00:00",
+          "description": "team"
+        }
+      ],
+      "sentiment": "negative",
+      "topics": [
+        "timeline",
+        "team"
+      ],
+      "questions": [
+        "Shalana, Shalana, Shalana! You guys were watching? She asked the creation's sprin",
+        "Red, what about you? Another planter stood up"
+      ]
     }
   ]
 }

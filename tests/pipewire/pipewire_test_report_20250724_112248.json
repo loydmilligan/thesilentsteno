@@ -1,0 +1,57 @@
+{
+  "timestamp": "2025-07-24T11:22:48.439406",
+  "system_checks": {
+    "pipewire_installed": true,
+    "pipewire_running": true,
+    "bluetooth_available": true,
+    "python_modules": false
+  },
+  "unit_tests": {
+    "backend_tests": {
+      "returncode": 1,
+      "stdout": "PipeWire Backend Test Suite\n==================================================\nDetected audio system: pipewire\n\u2705 PipeWire detected - running full test suite\n\nDetected audio system: pipewire\nFound 0 Bluetooth devices\nFound 0 audio devices\n\n==================================================\nTEST SUMMARY\n==================================================\nTests run: 23\nFailures: 2\nErrors: 0\nSkipped: 0\n\nFailures:\n  - test_pw_cli_info (__main__.TestPipeWireCommands.test_pw_cli_info): 'core' not found in ''\n  - test_pw_dump (__main__.TestPipeWireCommands.test_pw_dump): False is not true\n",
+      "stderr": "INFO:audio:Audio module initialized (version 1.0.0)\nINFO:audio.audio_system_factory:PipeWire audio system detected\nINFO:audio.audio_system_factory:PipeWire audio system detected\ntest_pipewire_command_available (__main__.TestPipeWireDetection.test_pipewire_command_available)\nTest if pw-cli command is available ... ok\ntest_pipewire_running (__main__.TestPipeWireDetection.test_pipewire_running)\nTest if PipeWire service is running ... ok\ntest_create_backend (__main__.TestAudioSystemFactory.test_create_backend)\nTest backend creation ... INFO:audio.audio_system_factory:PipeWire audio system detected\nINFO:audio.audio_system_factory:Created PipeWire audio backend\nok\ntest_detect_audio_system (__main__.TestAudioSystemFactory.test_detect_audio_system)\nTest audio system detection ... INFO:audio.audio_system_factory:PipeWire audio system detected\nok\ntest_get_system_info (__main__.TestAudioSystemFactory.test_get_system_info)\nTest getting system information ... INFO:audio.audio_system_factory:PipeWire audio system detected\nok\ntest_backend_initialization (__main__.TestPipeWireBackend.test_backend_initialization)\nTest backend initializes correctly ... ok\ntest_bluetooth_device_detection (__main__.TestPipeWireBackend.test_bluetooth_device_detection)\nTest Bluetooth device detection ... ERROR:audio.pipewire_backend:Command timed out: pw-cli dump -m\nok\ntest_device_info (__main__.TestPipeWireBackend.test_device_info)\nTest getting detailed device information ... ERROR:audio.pipewire_backend:Command timed out: pw-cli dump -m\nok\ntest_get_sinks (__main__.TestPipeWireBackend.test_get_sinks)\nTest getting audio sinks ... ok\ntest_get_sources (__main__.TestPipeWireBackend.test_get_sources)\nTest getting audio sources ... ok\ntest_latency_info (__main__.TestPipeWireBackend.test_latency_info)\nTest latency information retrieval ... ok\ntest_refresh_devices (__main__.TestPipeWireBackend.test_refresh_devices)\nTest device discovery ... ERROR:audio.pipewire_backend:Command timed out: pw-cli dump -m\nok\ntest_pw_cli_info (__main__.TestPipeWireCommands.test_pw_cli_info)\nTest pw-cli info command ... FAIL\ntest_pw_dump (__main__.TestPipeWireCommands.test_pw_dump)\nTest pw-cli dump command ... FAIL\ntest_wpctl_status (__main__.TestPipeWireCommands.test_wpctl_status)\nTest wpctl status command ... ok\ntest_config_file_syntax (__main__.TestPipeWireConfiguration.test_config_file_syntax)\nTest configuration file syntax ... ok\ntest_config_files_exist (__main__.TestPipeWireConfiguration.test_config_files_exist)\nTest that configuration files exist ... ok\ntest_latency_optimization (__main__.TestPipeWireLatency.test_latency_optimization)\nTest latency optimization ... INFO:audio.audio_system_factory:PipeWire audio system detected\nINFO:audio.pipewire_backend:Set quantum to 1024 for ~40ms latency\nok\ntest_quantum_calculation (__main__.TestPipeWireLatency.test_quantum_calculation)\nTest quantum calculation for latency ... INFO:audio.audio_system_factory:PipeWire audio system detected\nok\ntest_bluetooth_service_running (__main__.TestBluetoothIntegration.test_bluetooth_service_running)\nTest if Bluetooth service is running ... ok\ntest_bluetoothctl_available (__main__.TestBluetoothIntegration.test_bluetoothctl_available)\nTest if bluetoothctl is available ... ok\ntest_command_timeout (__main__.TestErrorHandling.test_command_timeout)\nTest command timeout handling ... ok\ntest_invalid_device_id (__main__.TestErrorHandling.test_invalid_device_id)\nTest handling of invalid device IDs ... INFO:audio.audio_system_factory:PipeWire audio system detected\nok\n\n======================================================================\nFAIL: test_pw_cli_info (__main__.TestPipeWireCommands.test_pw_cli_info)\nTest pw-cli info command\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/mmariani/projects/thesilentsteno/tests/pipewire/test_pipewire_backend.py\", line 159, in test_pw_cli_info\n    self.assertIn('core', result.stdout.lower())\nAssertionError: 'core' not found in ''\n\n======================================================================\nFAIL: test_pw_dump (__main__.TestPipeWireCommands.test_pw_dump)\nTest pw-cli dump command\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/mmariani/projects/thesilentsteno/tests/pipewire/test_pipewire_backend.py\", line 174, in test_pw_dump\n    self.assertTrue(len(result.stdout) > 0)\nAssertionError: False is not true\n\n----------------------------------------------------------------------\nRan 23 tests in 15.374s\n\nFAILED (failures=2)\n"
+    },
+    "bluetooth_tests": {
+      "returncode": 1,
+      "stdout": "Warning: Could not import Bluetooth modules: attempted relative import beyond top-level package\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/mmariani/projects/thesilentsteno/tests/pipewire/test_bluetooth_manager.py\", line 93, in <module>\n    AudioSystemFactory.detect_audio_system() == AudioSystemType.PIPEWIRE,\n    ^^^^^^^^^^^^^^^^^^\nNameError: name 'AudioSystemFactory' is not defined\n"
+    }
+  },
+  "integration_tests": {
+    "audio_system_detection": {
+      "system": "pipewire",
+      "success": true
+    },
+    "backend_creation": {
+      "success": true
+    },
+    "device_discovery": {
+      "device_count": 0,
+      "success": true
+    },
+    "bluetooth_manager": {
+      "success": false
+    }
+  },
+  "performance_tests": {
+    "device_refresh": {
+      "avg_time_seconds": 5.013448476791382,
+      "device_count": 0
+    },
+    "latency_info": {
+      "time_seconds": 0.013840436935424805,
+      "quantum": null,
+      "rate": null
+    }
+  },
+  "summary": {
+    "total_checks": 4,
+    "passed_checks": 3,
+    "overall_success": false,
+    "unit_tests_passed": 0,
+    "unit_tests_total": 2,
+    "integration_tests_passed": 3,
+    "integration_tests_total": 4
+  }
+}

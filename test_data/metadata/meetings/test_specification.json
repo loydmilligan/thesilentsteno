@@ -1,0 +1,116 @@
+{
+  "testScenario": "methodical_librarian_meetings_strategic-planning-session-vision-alignment-challenge",
+  "description": "The leadership team held a strategic planning session to define their 3-year vision, facing a challenge to align conflicting departmental priorities. Catherine Wong presented a data-driven proposal for aggressive 40% growth via simultaneous global market expansion, which Rachel Green enthusiastically supported, emphasizing market opportunity. James Patterson, representing operations, raised significant concerns about the feasibility and risks of such rapid expansion without sufficient infrastructure and staffing. A detailed debate ensued, focusing on operational constraints, resource allocation, and lead times for critical components. The team ultimately agreed on a phased approach to market entry, starting with APAC in Year 1, then LATAM, and finally EMEA, allowing for controlled scaling and risk mitigation. Clear action items were assigned for detailed planning and a follow-up meeting was scheduled to finalize Year 1 objectives.",
+  "participants": [
+    {
+      "gender": "F",
+      "name": "Catherine Wong"
+    },
+    {
+      "gender": "M",
+      "name": "James Patterson"
+    },
+    {
+      "gender": "F",
+      "name": "Rachel Green"
+    }
+  ],
+  "expectedResults": {
+    "conversation_type": "Strategic Planning Session",
+    "key_topics": [
+      "Global market expansion",
+      "Operational capacity and scaling",
+      "Risk management",
+      "Phased strategic rollout",
+      "Resource allocation",
+      "Sales growth targets"
+    ],
+    "sentiment": "Mixed (Excited, then Tense, resolving to Positive)",
+    "speaker_diarization_accuracy": 95,
+    "transcription_accuracy_target": 98.5
+  },
+  "validation": {
+    "conversation_flow_markers": [
+      {
+        "event": "Opening Phase Begins - Growth Analysis",
+        "timestamp": "Turn 1"
+      },
+      {
+        "event": "Tension Point - Operational Concerns",
+        "timestamp": "Turn 3"
+      },
+      {
+        "event": "Resolution Phase Begins - Phased Approach Proposal",
+        "timestamp": "Turn 10"
+      },
+      {
+        "event": "Meeting Conclusion - Action Items Finalized",
+        "timestamp": "Turn 17"
+      }
+    ],
+    "critical_phrases": [
+      "The data shows we can achieve 40% growth if we expand into three new markets",
+      "rapid expansion without infrastructure leads to service failures",
+      "My projections already factor in a conservative yet significant operational expenditure increase",
+      "a controlled, phased rollout significantly de-risks the expansion",
+      "a realistic but robust 15% overall company growth target for year one",
+      "detailed operational roadmap for that initial 15% growth"
+    ],
+    "must_detect_speakers": [
+      "Catherine Wong",
+      "James Patterson",
+      "Rachel Green"
+    ]
+  },
+  "groundTruth": {
+    "action_items": [
+      "Catherine to refine market entry strategy and financial projections for APAC Year 1 (Singapore & Australia).",
+      "James to outline detailed operational roadmap for 15% growth, focusing on APAC readiness and foundational preparations for LATAM/EMEA.",
+      "Schedule a follow-up meeting in two weeks to review James's detailed plan, cross-reference with Catherine's refined projections, and jointly finalize the year one objectives."
+    ],
+    "average_turn_length": 101,
+    "overlapping_speech": true,
+    "silence_periods": 8,
+    "turn_count": 17,
+    "word_count": 1715
+  },
+  "audioFiles": [
+    "001_Catherine_Wong.wav",
+    "002_Rachel_Green.wav",
+    "003_James_Patterson.wav",
+    "004_Catherine_Wong.wav",
+    "005_Rachel_Green.wav",
+    "006_James_Patterson.wav",
+    "007_Catherine_Wong.wav",
+    "008_James_Patterson.wav",
+    "009_Rachel_Green.wav",
+    "010_Catherine_Wong.wav",
+    "011_James_Patterson.wav",
+    "012_Rachel_Green.wav",
+    "013_Catherine_Wong.wav",
+    "014_James_Patterson.wav",
+    "015_Rachel_Green.wav",
+    "016_Catherine_Wong.wav",
+    "017_James_Patterson.wav",
+    "conversation.wav"
+  ],
+  "generatedAt": "2025-07-24T19:01:02.064Z",
+  "testInstructions": {
+    "setup": [
+      "Load audio files into transcription device",
+      "Configure device for conversation mode",
+      "Enable speaker diarization if available"
+    ],
+    "execution": [
+      "Process each audio file sequentially",
+      "Record transcription output and speaker identification",
+      "Note any processing errors or failures"
+    ],
+    "validation": [
+      "Compare transcription against expected ground truth",
+      "Verify speaker identification accuracy",
+      "Check for detection of critical phrases",
+      "Validate conversation flow markers"
+    ]
+  }
+}

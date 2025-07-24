@@ -1,0 +1,91 @@
+{
+  "timestamp": "2025-07-24T11:21:51.248480",
+  "audio_system": "pipewire",
+  "system_info": {
+    "system_type": "pipewire",
+    "available_backends": [
+      "pipewire"
+    ],
+    "version": "pipewire\nCompiled with libpipewire 1.2.7\nLinked with libpipewire 1.2.7",
+    "cpu_count": 4,
+    "memory_total_gb": 15.83514404296875,
+    "python_version": "3.11.2 (main, Apr 28 2025, 14:11:48) [GCC 12.2.0]"
+  },
+  "benchmark_results": [
+    {
+      "test_name": "device_discovery",
+      "success": true,
+      "duration_seconds": 50.07843232154846,
+      "metrics": {
+        "avg_discovery_time": 5.007814264297485,
+        "min_discovery_time": 5.00285005569458,
+        "max_discovery_time": 5.01560115814209,
+        "avg_device_count": 0,
+        "iterations": 10
+      },
+      "errors": [],
+      "timestamp": "2025-07-24T11:21:36.884369"
+    },
+    {
+      "test_name": "latency_measurement",
+      "success": true,
+      "duration_seconds": 0.010280370712280273,
+      "metrics": {
+        "quantum": null,
+        "rate": null
+      },
+      "errors": [],
+      "timestamp": "2025-07-24T11:21:36.894696"
+    },
+    {
+      "test_name": "bluetooth_discovery",
+      "success": false,
+      "duration_seconds": 0.015174388885498047,
+      "metrics": {},
+      "errors": [
+        "No Bluetooth manager available"
+      ],
+      "timestamp": "2025-07-24T11:21:36.909908"
+    },
+    {
+      "test_name": "system_resources",
+      "success": true,
+      "duration_seconds": 14.338227987289429,
+      "metrics": {
+        "duration_seconds": 10,
+        "sample_count": 21,
+        "cpu_percent_avg": 89.34761904761905,
+        "cpu_percent_max": 95.1,
+        "memory_percent_avg": 20.204761904761906,
+        "memory_percent_max": 20.7,
+        "audio_cpu_avg": 2.3857142857142857,
+        "audio_cpu_max": 9.8,
+        "audio_memory_avg_mb": 44.328125,
+        "audio_process_count": 3
+      },
+      "errors": [],
+      "timestamp": "2025-07-24T11:21:51.248200"
+    },
+    {
+      "test_name": "audio_forwarding",
+      "success": true,
+      "duration_seconds": 1.811981201171875e-05,
+      "metrics": {
+        "total_sources": 0,
+        "total_sinks": 0,
+        "bluetooth_sources": 0,
+        "bluetooth_sinks": 0,
+        "forwarding_possible": false
+      },
+      "errors": [],
+      "timestamp": "2025-07-24T11:21:51.248284"
+    }
+  ],
+  "summary": {
+    "total_tests": 5,
+    "successful_tests": 4,
+    "failed_tests": 1,
+    "overall_success_rate": 0.8,
+    "device_discovery_avg_ms": 5007.814264297485
+  }
+}

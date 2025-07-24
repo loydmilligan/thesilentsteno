@@ -69,6 +69,17 @@ from .level_monitor import (
     AlertType
 )
 
+# Audio system factory for backend selection
+from .audio_system_factory import (
+    AudioSystemFactory,
+    AudioSystemType,
+    get_audio_backend,
+    get_bluetooth_manager,
+    is_pipewire_available,
+    is_pulseaudio_available,
+    get_preferred_latency
+)
+
 # Version information
 __version__ = "1.0.0"
 __author__ = "The Silent Steno Team"
@@ -116,7 +127,16 @@ __all__ = [
     "AudioAlert",
     "MonitorConfig",
     "LevelScale",
-    "AlertType"
+    "AlertType",
+    
+    # Audio system factory
+    "AudioSystemFactory",
+    "AudioSystemType",
+    "get_audio_backend",
+    "get_bluetooth_manager",
+    "is_pipewire_available",
+    "is_pulseaudio_available",
+    "get_preferred_latency"
 ]
 
 # Module initialization
@@ -160,13 +180,31 @@ def setup_low_latency_audio() -> bool:
         bool: True if setup successful
     """
     try:
-        # Initialize ALSA manager
-        alsa_manager = ALSAManager()
-        
-        # Configure for low latency
-        if not alsa_manager.optimize_latency():
-            logger.error("Failed to optimize ALSA for low latency")
+        # Detect and initialize appropriate backend
+        backend = get_audio_backend()
+        if not backend:
+            logger.error("No audio backend available")
             return False
+            
+        # Log which system we're using
+        system_info = AudioSystemFactory.get_system_info()
+        logger.info(f"Using audio system: {system_info['system_type']}")
+        
+        # Get preferred latency for this system
+        target_latency = get_preferred_latency()
+        logger.info(f"Target latency: {target_latency}ms")
+        
+        # PipeWire-specific optimization
+        if is_pipewire_available() and hasattr(backend, 'optimize_latency'):
+            backend.optimize_latency(target_latency)
+        else:
+            # Fall back to ALSA optimization for PulseAudio
+            alsa_manager = ALSAManager()
+            
+            # Configure for low latency
+            if not alsa_manager.optimize_latency():
+                logger.error("Failed to optimize ALSA for low latency")
+                return False
         
         # Initialize latency optimizer
         latency_optimizer = LatencyOptimizer()
@@ -195,8 +233,29 @@ def get_audio_system_status() -> dict:
         "timestamp": __import__('time').time()
     }
     
+    # Get audio system info
     try:
-        # ALSA status
+        system_info = AudioSystemFactory.get_system_info()
+        status["audio_system"] = system_info
+    except Exception as e:
+        status["audio_system"] = {"error": str(e)}
+    
+    # Get backend status
+    try:
+        backend = get_audio_backend()
+        if backend:
+            devices = backend.refresh_devices()
+            status["backend"] = {
+                "type": backend.__class__.__name__,
+                "device_count": len(devices),
+                "sources": len(backend.get_sources()),
+                "sinks": len(backend.get_sinks())
+            }
+    except Exception as e:
+        status["backend"] = {"error": str(e)}
+    
+    try:
+        # ALSA status (still relevant for low-level info)
         alsa_manager = ALSAManager()
         status["alsa"] = alsa_manager.get_alsa_status()
     except Exception as e:
