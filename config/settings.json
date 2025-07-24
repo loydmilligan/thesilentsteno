@@ -1,0 +1,40 @@
+{
+  "audio": {
+    "microphone_source": "default",
+    "input_gain": 0.5,
+    "noise_suppression": "low",
+    "voice_activity_detection": true,
+    "vad_sensitivity": 0.5,
+    "recording_format": "wav",
+    "recording_quality": "high"
+  },
+  "transcription": {
+    "transcription_language": "en",
+    "whisper_model": "base",
+    "custom_vocabulary": "",
+    "speaker_diarization": "manual",
+    "automatic_punctuation": true,
+    "profanity_filter": false,
+    "post_meeting_summaries": true,
+    "use_gemini_enhancement": false,
+    "gemini_api_key": "AIzaSyC9VN-FdjazQvKu2jVuDGrLsUIUNw-I8BE"
+  },
+  "data": {
+    "default_save_location": "demo_sessions",
+    "cloud_sync_enabled": false,
+    "cloud_provider": "none",
+    "auto_delete_policy": "never",
+    "default_export_format": "txt",
+    "include_timestamps": true,
+    "include_speaker_labels": true,
+    "include_highlight_markers": true
+  },
+  "interface": {
+    "theme": "dark",
+    "font_size": "medium",
+    "button_size": "large",
+    "screen_orientation_lock": false,
+    "show_waveform": true,
+    "auto_scroll_transcript": false
+  }
+}

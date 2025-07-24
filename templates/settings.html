@@ -607,39 +607,124 @@
         
         function createDeviceElement(device, type) {
             const div = document.createElement('div');
-            div.className = 'bg-slate-800 rounded-lg p-4 flex items-center justify-between';
+            
+            // Card-based selection styling - highlight if active
+            const isActive = device.active;
+            const baseClasses = 'rounded-lg p-4 border-2 transition-all duration-200 cursor-pointer';
+            const activeClasses = isActive 
+                ? 'bg-blue-900 border-blue-500 shadow-lg shadow-blue-500/20' 
+                : 'bg-slate-800 border-slate-700 hover:border-slate-600';
+            
+            div.className = `${baseClasses} ${activeClasses}`;
+            
+            // Main content container
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'flex items-center justify-between';
             
             const infoDiv = document.createElement('div');
-            infoDiv.className = 'flex items-center gap-3';
+            infoDiv.className = 'flex items-center gap-3 flex-1';
             
-            // Device icon
+            // Selection indicator + device icon
             const iconDiv = document.createElement('div');
-            iconDiv.className = 'p-3 rounded-full ' + (device.connected ? 'bg-green-900' : 'bg-slate-700');
-            iconDiv.innerHTML = getDeviceIcon(device.type || type);
+            iconDiv.className = 'relative';
+            
+            // Device icon with status-based background
+            const statusInfo = getDeviceStatusInfo(device);
+            const deviceIcon = document.createElement('div');
+            deviceIcon.className = `p-3 rounded-full ${statusInfo.bgClass}`;
+            deviceIcon.innerHTML = getDeviceIcon(device.type || type);
+            
+            // Active selection checkmark
+            if (isActive) {
+                const checkmark = document.createElement('div');
+                checkmark.className = 'absolute -top-1 -right-1 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-bold';
+                checkmark.innerHTML = '✓';
+                iconDiv.appendChild(checkmark);
+            }
+            
+            iconDiv.appendChild(deviceIcon);
             
             // Device info
             const textDiv = document.createElement('div');
             textDiv.innerHTML = `
-                <h4 class="text-lg font-semibold text-white">${device.name}</h4>
-                <p class="text-sm text-slate-400">${device.mac}</p>
-                <p class="text-sm ${device.connected ? 'text-green-400' : 'text-slate-500'}">
-                    ${device.connected ? (device.active ? '● Connected & Active' : '● Connected') : '○ Disconnected'}
-                </p>
+                <h4 class="text-lg font-semibold text-white flex items-center gap-2">
+                    ${device.name}
+                    ${isActive ? '<span class="text-xs bg-blue-500 text-white px-2 py-1 rounded-full">ACTIVE</span>' : ''}
+                </h4>
+                <p class="text-sm text-slate-400">${device.mac === 'builtin' ? 'Built-in Audio' : device.mac}</p>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-2xl">${statusInfo.indicator}</span>
+                    <span class="${statusInfo.textClass}">${statusInfo.statusText}</span>
+                </div>
             `;
             
             infoDiv.appendChild(iconDiv);
             infoDiv.appendChild(textDiv);
             
-            // Action button
-            const button = document.createElement('button');
-            button.className = device.connected 
-                ? 'bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors'
-                : 'bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors';
-            button.textContent = device.connected ? 'Disconnect' : 'Connect';
-            button.onclick = () => device.connected ? disconnectDevice(device, type) : connectDevice(device, type);
+            // Button controls container
+            const buttonsDiv = document.createElement('div');
+            buttonsDiv.className = 'flex flex-col gap-2';
             
-            div.appendChild(infoDiv);
-            div.appendChild(button);
+            // Select/Activate button (only for connected devices)
+            if (device.connected && !isActive) {
+                const selectButton = document.createElement('button');
+                selectButton.className = 'bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors flex items-center gap-2';
+                selectButton.innerHTML = `
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
+                    </svg>
+                    Select
+                `;
+                
+                if (device.mac === 'builtin') {
+                    selectButton.onclick = () => switchToBuiltinSpeakers(device);
+                } else if (type === 'output') {
+                    selectButton.onclick = () => switchToDevice(device, 'output');
+                } else {
+                    selectButton.onclick = () => switchToDevice(device, 'source');
+                }
+                
+                buttonsDiv.appendChild(selectButton);
+            }
+            
+            // Connect/Disconnect button
+            const connectionButton = document.createElement('button');
+            if (device.mac === 'builtin') {
+                // Built-in devices can't be disconnected
+                connectionButton.className = 'bg-slate-600 text-slate-400 font-semibold py-2 px-4 rounded-lg cursor-default';
+                connectionButton.textContent = 'Built-in';
+                connectionButton.disabled = true;
+            } else {
+                connectionButton.className = device.connected 
+                    ? 'bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors'
+                    : 'bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors';
+                connectionButton.textContent = device.connected ? 'Disconnect' : 'Connect';
+                connectionButton.onclick = () => device.connected ? disconnectDevice(device, type) : connectDevice(device, type);
+            }
+            
+            buttonsDiv.appendChild(connectionButton);
+            
+            // Card click to select (for connected devices)
+            if (device.connected && !isActive) {
+                div.onclick = (e) => {
+                    // Don't trigger if clicking on buttons
+                    if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
+                    
+                    if (device.mac === 'builtin') {
+                        switchToBuiltinSpeakers(device);
+                    } else if (type === 'output') {
+                        switchToDevice(device, 'output');
+                    } else {
+                        switchToDevice(device, 'source');
+                    }
+                };
+            } else {
+                div.style.cursor = 'default';
+            }
+            
+            contentDiv.appendChild(infoDiv);
+            contentDiv.appendChild(buttonsDiv);
+            div.appendChild(contentDiv);
             
             return div;
         }
@@ -650,10 +735,65 @@
                     return '<svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17,2A2,2 0 0,1 19,4V20A2,2 0 0,1 17,22H7A2,2 0 0,1 5,20V4A2,2 0 0,1 7,2H17M12,4A1,1 0 0,0 11,5A1,1 0 0,0 12,6A1,1 0 0,0 13,5A1,1 0 0,0 12,4M12,18A1,1 0 0,0 11,19A1,1 0 0,0 12,20A1,1 0 0,0 13,19A1,1 0 0,0 12,18Z"/></svg>';
                 case 'headphones':
                     return '<svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12,1C7,1 3,5 3,10V17A3,3 0 0,0 6,20H9V12H5V10A7,7 0 0,1 12,3A7,7 0 0,1 19,10V12H15V20H18A3,3 0 0,0 21,17V10C21,5 17,1 12,1Z"/></svg>';
+                case 'speakers':
+                    return '<svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.03C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z"/></svg>';
                 case 'speaker':
                     return '<svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.03C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z"/></svg>';
                 default:
                     return '<svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M14.88,16.29L13,18.17V14.41M13,5.83L14.88,7.71L13,9.58M17.71,7.71L12,2H11V9.58L6.41,5L5,6.41L10.59,12L5,17.58L6.41,19L11,14.41V22H12L17.71,16.29L13.41,12L17.71,7.71Z"/></svg>';
+            }
+        }
+        
+        function getDeviceStatusInfo(device) {
+            // Three-state visual indicators based on PulseAudio status
+            const status = device.status || 'not_available';
+            
+            switch(status) {
+                case 'not_available':
+                    return {
+                        indicator: '🔴',
+                        statusText: 'Not Connected',
+                        textClass: 'text-red-400',
+                        bgClass: 'bg-red-900'
+                    };
+                case 'idle':
+                    return {
+                        indicator: '🟡',
+                        statusText: 'Ready',
+                        textClass: 'text-yellow-400',
+                        bgClass: 'bg-yellow-900'
+                    };
+                case 'running':
+                    return {
+                        indicator: '🟢',
+                        statusText: 'Active',
+                        textClass: 'text-green-400',
+                        bgClass: 'bg-green-900'
+                    };
+                default:
+                    // Fallback for old connected/active system
+                    if (device.active) {
+                        return {
+                            indicator: '🟢',
+                            statusText: 'Active',
+                            textClass: 'text-green-400',
+                            bgClass: 'bg-green-900'
+                        };
+                    } else if (device.connected) {
+                        return {
+                            indicator: '🟡',
+                            statusText: 'Ready',
+                            textClass: 'text-yellow-400',
+                            bgClass: 'bg-yellow-900'
+                        };
+                    } else {
+                        return {
+                            indicator: '🔴',
+                            statusText: 'Not Connected',
+                            textClass: 'text-red-400',
+                            bgClass: 'bg-red-900'
+                        };
+                    }
             }
         }
         
@@ -701,6 +841,70 @@
             }
         }
         
+        async function switchToBuiltinSpeakers(device) {
+            showMessage('Switching to built-in speakers...', 'info');
+            try {
+                const response = await fetch('/api/audio/switch_sink', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sink_name: device.pa_sink })
+                });
+                
+                const result = await response.json();
+                if (response.ok && result.success) {
+                    showMessage('Switched to built-in speakers', 'success');
+                    await loadBluetoothDevices();
+                } else {
+                    showMessage(result.error || 'Failed to switch audio output', 'error');
+                }
+            } catch (error) {
+                showMessage('Error switching audio output', 'error');
+                console.error('Audio switch error:', error);
+            }
+        }
+        
+        async function switchToDevice(device, deviceType) {
+            const deviceTypeText = deviceType === 'output' ? 'output' : 'source';
+            showMessage(`Switching to ${device.name}...`, 'info');
+            
+            try {
+                if (deviceType === 'output') {
+                    // Switch audio output (sink)
+                    const response = await fetch('/api/audio/switch_sink', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ sink_name: device.pa_sink })
+                    });
+                    
+                    const result = await response.json();
+                    if (response.ok && result.success) {
+                        showMessage(`Audio output switched to ${device.name}`, 'success');
+                        await loadBluetoothDevices();
+                    } else {
+                        showMessage(result.error || 'Failed to switch audio output', 'error');
+                    }
+                } else {
+                    // Switch audio input (source)
+                    const response = await fetch('/api/audio/switch_source', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ source_name: device.pa_source })
+                    });
+                    
+                    const result = await response.json();
+                    if (response.ok && result.success) {
+                        showMessage(`Audio input switched to ${device.name}`, 'success');
+                        await loadBluetoothDevices();
+                    } else {
+                        showMessage(result.error || 'Failed to switch audio input', 'error');
+                    }
+                }
+            } catch (error) {
+                showMessage(`Error switching to ${device.name}`, 'error');
+                console.error('Device switch error:', error);
+            }
+        }
+        
         function refreshBluetoothDevices() {
             showMessage('Refreshing Bluetooth devices...', 'info');
             loadBluetoothDevices();
@@ -710,16 +914,21 @@
             const enableBtn = document.getElementById('enable-forwarding-btn');
             const stopBtn = document.getElementById('stop-forwarding-btn');
             
-            if (connectedSource && connectedOutput) {
-                enableBtn.classList.remove('hidden');
-            } else {
-                enableBtn.classList.add('hidden');
-            }
+            // Check if forwarding is active (both source and output are active)
+            const isForwardingActive = connectedSource && connectedOutput && 
+                                     connectedSource.active && connectedOutput.active;
             
-            // Check if forwarding is active (simplified check)
-            if (connectedSource && connectedOutput && connectedSource.active && connectedOutput.active) {
+            if (isForwardingActive) {
+                // Forwarding is active - show stop button, hide enable button
+                enableBtn.classList.add('hidden');
                 stopBtn.classList.remove('hidden');
+            } else if (connectedSource && connectedOutput) {
+                // Devices are connected but not actively forwarding - show enable button
+                enableBtn.classList.remove('hidden');
+                stopBtn.classList.add('hidden');
             } else {
+                // Not enough devices connected - hide both buttons
+                enableBtn.classList.add('hidden');
                 stopBtn.classList.add('hidden');
             }
         }

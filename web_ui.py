@@ -427,7 +427,7 @@ def stop_bluetooth_forwarding():
 
 @app.route('/api/bluetooth/devices')
 def get_bluetooth_devices():
-    """Get list of all paired Bluetooth devices with their status"""
+    """Get list of all paired Bluetooth devices with three-state status detection"""
     try:
         import subprocess
         
@@ -444,25 +444,127 @@ def get_bluetooth_devices():
             logger.error(f"Failed to get paired devices: {paired_result.stderr}")
             return jsonify({'error': 'Failed to get Bluetooth devices'}), 500
         
-        # Get connected devices
-        connected_result = subprocess.run(['bluetoothctl', 'devices', 'Connected'], 
-                                        capture_output=True, text=True, timeout=5)
-        connected_macs = []
-        if connected_result.returncode == 0:
-            for line in connected_result.stdout.strip().split('\n'):
-                if line.strip():
-                    parts = line.split(' ', 2)
-                    if len(parts) >= 2:
-                        connected_macs.append(parts[1])
-        
-        # Get PulseAudio sources and sinks
-        sources_result = subprocess.run(['pactl', 'list', 'sources', 'short'], 
+        # Get PulseAudio sources and sinks with detailed status
+        sources_result = subprocess.run(['pactl', 'list', 'sources'], 
                                       capture_output=True, text=True, timeout=5)
-        sinks_result = subprocess.run(['pactl', 'list', 'sinks', 'short'], 
+        sinks_result = subprocess.run(['pactl', 'list', 'sinks'], 
                                     capture_output=True, text=True, timeout=5)
         
-        pa_sources = sources_result.stdout if sources_result.returncode == 0 else ""
-        pa_sinks = sinks_result.stdout if sinks_result.returncode == 0 else ""
+        pa_sources_detailed = sources_result.stdout if sources_result.returncode == 0 else ""
+        pa_sinks_detailed = sinks_result.stdout if sinks_result.returncode == 0 else ""
+        
+        # Get short list for quick checks
+        sources_short_result = subprocess.run(['pactl', 'list', 'sources', 'short'], 
+                                            capture_output=True, text=True, timeout=5)
+        sinks_short_result = subprocess.run(['pactl', 'list', 'sinks', 'short'], 
+                                          capture_output=True, text=True, timeout=5)
+        
+        pa_sources_short = sources_short_result.stdout if sources_short_result.returncode == 0 else ""
+        pa_sinks_short = sinks_short_result.stdout if sinks_short_result.returncode == 0 else ""
+        
+        def get_device_connection_info(mac_address, pa_device_name, is_source=True):
+            """Get comprehensive device connection info"""
+            detailed_output = pa_sources_detailed if is_source else pa_sinks_detailed
+            short_output = pa_sources_short if is_source else pa_sinks_short
+            
+            # Check if PulseAudio device exists
+            pa_device_exists = pa_device_name in short_output
+            
+            # Get PulseAudio state if device exists
+            pa_status = 'not_available'
+            if pa_device_exists:
+                lines = detailed_output.split('\n')
+                for i, line in enumerate(lines):
+                    if pa_device_name in line and 'Name:' in line:
+                        # Look backwards for the State line
+                        for j in range(max(0, i - 5), i):
+                            if 'State:' in lines[j]:
+                                state_line = lines[j]
+                                if 'RUNNING' in state_line.upper():
+                                    pa_status = 'running'
+                                elif 'IDLE' in state_line.upper():
+                                    pa_status = 'idle'
+                                elif 'SUSPENDED' in state_line.upper():
+                                    pa_status = 'idle'
+                                break
+                        break
+                if pa_status == 'not_available':
+                    pa_status = 'idle'  # Default if device exists but no state found
+            
+            # Check Bluetooth connection status (try multiple controllers)
+            bt_connected = False
+            bt_paired = False
+            if mac_address not in ['builtin']:
+                # Get list of available controllers
+                controllers = []
+                try:
+                    ctrl_result = subprocess.run(['bluetoothctl', 'list'], 
+                                               capture_output=True, text=True, timeout=3)
+                    for line in ctrl_result.stdout.split('\n'):
+                        if 'Controller' in line:
+                            ctrl_mac = line.split()[1]
+                            controllers.append(ctrl_mac)
+                except:
+                    pass
+                
+                # Check device on all controllers
+                for controller in controllers:
+                    try:
+                        # Select controller and check device
+                        subprocess.run(['bluetoothctl', 'select', controller], 
+                                     capture_output=True, timeout=2)
+                        result = subprocess.run(['bluetoothctl', 'info', mac_address], 
+                                              capture_output=True, text=True, timeout=3)
+                        if result.returncode == 0:
+                            if 'Connected: yes' in result.stdout:
+                                bt_connected = True
+                                break
+                            if 'Paired: yes' in result.stdout:
+                                bt_paired = True
+                    except:
+                        continue
+            
+            # Determine overall status
+            if mac_address == 'builtin':
+                # Built-in devices are always "connected"
+                return {
+                    'status': pa_status if pa_device_exists else 'idle',
+                    'connected': True,
+                    'active': pa_status == 'running',
+                    'audio_ready': pa_device_exists
+                }
+            elif pa_device_exists:
+                # Device has active audio profile
+                return {
+                    'status': pa_status,
+                    'connected': True,  # Audio profile exists = effectively connected
+                    'active': pa_status == 'running',
+                    'audio_ready': True
+                }
+            elif bt_connected:
+                # Bluetooth connected but no audio profile active
+                return {
+                    'status': 'idle',  # Show as ready but not active
+                    'connected': True,
+                    'active': False,
+                    'audio_ready': False
+                }
+            elif bt_paired:
+                # Paired but not connected - can potentially reconnect quickly
+                return {
+                    'status': 'idle',  # Show as potentially available
+                    'connected': True,  # Consider paired devices as "connected" for UI purposes
+                    'active': False,
+                    'audio_ready': False
+                }
+            else:
+                # Not connected at all
+                return {
+                    'status': 'not_available',
+                    'connected': False,
+                    'active': False,
+                    'audio_ready': False
+                }
         
         # Parse paired devices
         for line in paired_result.stdout.strip().split('\n'):
@@ -476,66 +578,117 @@ def get_bluetooth_devices():
                     # Clean MAC address format for PulseAudio
                     pa_mac = mac_address.replace(':', '_')
                     
-                    # Check if it's a source or sink
-                    is_source = f"bluez_source.{pa_mac}" in pa_sources
-                    is_sink = f"bluez_sink.{pa_mac}" in pa_sinks
-                    is_connected = mac_address in connected_macs
+                    # Check device capabilities
+                    source_name = f"bluez_source.{pa_mac}.a2dp_source"
+                    sink_name = f"bluez_sink.{pa_mac}.a2dp_sink"
                     
+                    # Determine device type and get status
                     device_info = {
                         'name': device_name,
-                        'mac': mac_address,
-                        'connected': is_connected,
-                        'active': False  # Will be set if audio is actively playing
+                        'mac': mac_address
                     }
                     
-                    # Determine device type based on name and capabilities
-                    if is_sink or 'buds' in device_name.lower() or 'headphone' in device_name.lower() or 'speaker' in device_name.lower():
-                        if is_sink:
-                            device_info['pa_sink'] = f"bluez_sink.{pa_mac}.a2dp_sink"
-                            device_info['active'] = is_connected  # Simplified for now
-                        device_info['type'] = 'headphones'  # Could be headphones, speaker
+                    # Check if it's a sink (output device)
+                    if ('buds' in device_name.lower() or 'headphone' in device_name.lower() or 
+                        'speaker' in device_name.lower() or sink_name in pa_sinks_short):
+                        
+                        conn_info = get_device_connection_info(mac_address, sink_name, is_source=False)
+                        device_info.update({
+                            'pa_sink': sink_name,
+                            'type': 'headphones',
+                            'status': conn_info['status'],
+                            'connected': conn_info['connected'],
+                            'active': conn_info['active']
+                        })
                         devices['outputs'].append(device_info)
-                    elif is_source or 'phone' in device_name.lower() or 'pixel' in device_name.lower():
-                        if is_source:
-                            device_info['pa_source'] = f"bluez_source.{pa_mac}.a2dp_source"
-                            device_info['active'] = is_connected  # Simplified for now
-                        device_info['type'] = 'phone'  # Could be phone, tablet, laptop
+                    
+                    # Check if it's a source (input device)
+                    elif ('phone' in device_name.lower() or 'pixel' in device_name.lower() or 
+                          source_name in pa_sources_short):
+                        
+                        conn_info = get_device_connection_info(mac_address, source_name, is_source=True)
+                        device_info.update({
+                            'pa_source': source_name,
+                            'type': 'phone',
+                            'status': conn_info['status'],
+                            'connected': conn_info['connected'],
+                            'active': conn_info['active']
+                        })
                         devices['sources'].append(device_info)
         
-        # Add hardcoded known devices if not already present
-        known_source = {
-            'name': 'Pixel 9 Pro',
-            'mac': 'C0:1C:6A:AD:78:E6',
-            'pa_source': 'bluez_source.C0_1C_6A_AD_78_E6.a2dp_source'
-        }
-        known_sink = {
-            'name': 'Galaxy Buds3 Pro',
-            'mac': 'BC:A0:80:EB:21:AA',
-            'pa_sink': 'bluez_sink.BC_A0_80_EB_21_AA.a2dp_sink'
-        }
-        
-        # Check if known devices are already in lists
-        source_macs = [d['mac'] for d in devices['sources']]
-        if known_source['mac'] not in source_macs and known_source['pa_source'] in pa_sources:
-            devices['sources'].append({
-                'name': known_source['name'],
-                'mac': known_source['mac'],
-                'connected': known_source['mac'] in connected_macs,
-                'active': known_source['pa_source'] in pa_sources,
-                'pa_source': known_source['pa_source'],
+        # Add known devices if not already present and available in PulseAudio
+        known_devices = [
+            {
+                'name': 'Pixel 9 Pro',
+                'mac': 'C0:1C:6A:AD:78:E6',
+                'pa_source': 'bluez_source.C0_1C_6A_AD_78_E6.a2dp_source',
+                'is_source': True,
                 'type': 'phone'
-            })
-        
-        sink_macs = [d['mac'] for d in devices['outputs']]
-        if known_sink['mac'] not in sink_macs and known_sink['pa_sink'] in pa_sinks:
-            devices['outputs'].append({
-                'name': known_sink['name'],
-                'mac': known_sink['mac'],
-                'connected': known_sink['mac'] in connected_macs,
-                'active': known_sink['pa_sink'] in pa_sinks,
-                'pa_sink': known_sink['pa_sink'],
+            },
+            {
+                'name': 'Galaxy Buds3 Pro',
+                'mac': 'BC:A0:80:EB:21:AA',
+                'pa_sink': 'bluez_sink.BC_A0_80_EB_21_AA.a2dp_sink',
+                'is_source': False,
                 'type': 'headphones'
-            })
+            }
+        ]
+        
+        # Check existing devices to avoid duplicates
+        existing_source_macs = [d['mac'] for d in devices['sources']]
+        existing_sink_macs = [d['mac'] for d in devices['outputs']]
+        
+        for known in known_devices:
+            if known['is_source'] and known['mac'] not in existing_source_macs:
+                conn_info = get_device_connection_info(known['mac'], known['pa_source'], is_source=True)
+                devices['sources'].append({
+                    'name': known['name'],
+                    'mac': known['mac'],
+                    'pa_source': known['pa_source'],
+                    'type': known['type'],
+                    'status': conn_info['status'],
+                    'connected': conn_info['connected'],
+                    'active': conn_info['active']
+                })
+            elif not known['is_source'] and known['mac'] not in existing_sink_macs:
+                conn_info = get_device_connection_info(known['mac'], known['pa_sink'], is_source=False)
+                devices['outputs'].append({
+                    'name': known['name'],
+                    'mac': known['mac'],
+                    'pa_sink': known['pa_sink'],
+                    'type': known['type'],
+                    'status': conn_info['status'],
+                    'connected': conn_info['connected'],
+                    'active': conn_info['active']
+                })
+        
+        # Add built-in speakers as an always-available sink option
+        builtin_speakers_name = None
+        # Common built-in speaker names on Raspberry Pi
+        builtin_candidates = ['alsa_output.platform-bcm2835_audio.analog-stereo', 
+                            'alsa_output.0.analog-stereo',
+                            'alsa_output.hw_0_0',
+                            'alsa_output.platform-107c701400.hdmi.hdmi-stereo']
+        
+        for candidate in builtin_candidates:
+            if candidate in pa_sinks_short:
+                builtin_speakers_name = candidate
+                break
+        
+        if builtin_speakers_name:
+            # Check if already in outputs (shouldn't be, but be safe)
+            builtin_exists = any(d.get('pa_sink') == builtin_speakers_name for d in devices['outputs'])
+            if not builtin_exists:
+                conn_info = get_device_connection_info('builtin', builtin_speakers_name, is_source=False)
+                devices['outputs'].append({
+                    'name': 'Built-in Speakers',
+                    'mac': 'builtin',  # Special identifier
+                    'pa_sink': builtin_speakers_name,
+                    'type': 'speakers',
+                    'status': conn_info['status'],
+                    'connected': conn_info['connected'],
+                    'active': conn_info['active']
+                })
         
         return jsonify(devices)
         
@@ -629,6 +782,90 @@ def disconnect_bluetooth_device():
             
     except Exception as e:
         logger.error(f"Error disconnecting from Bluetooth device: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/audio/switch_sink', methods=['POST'])
+def switch_audio_sink():
+    """Switch the default audio sink (output device)"""
+    try:
+        import subprocess
+        
+        data = request.json
+        sink_name = data.get('sink_name')
+        
+        if not sink_name:
+            return jsonify({'error': 'Sink name required'}), 400
+        
+        # Set the default sink using pactl
+        switch_result = subprocess.run(['pactl', 'set-default-sink', sink_name], 
+                                     capture_output=True, text=True, timeout=5)
+        
+        if switch_result.returncode == 0:
+            # Also move any existing sink inputs to the new sink
+            move_result = subprocess.run(['pactl', 'list', 'short', 'sink-inputs'], 
+                                       capture_output=True, text=True, timeout=5)
+            
+            if move_result.returncode == 0:
+                for line in move_result.stdout.strip().split('\n'):
+                    if line.strip():
+                        sink_input_id = line.split()[0]
+                        subprocess.run(['pactl', 'move-sink-input', sink_input_id, sink_name], 
+                                     capture_output=True, timeout=3)
+            
+            return jsonify({
+                'success': True,
+                'message': f"Audio output switched to {sink_name}"
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': f"Failed to switch sink: {switch_result.stderr or switch_result.stdout}"
+            }), 500
+            
+    except Exception as e:
+        logger.error(f"Error switching audio sink: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/audio/switch_source', methods=['POST'])
+def switch_audio_source():
+    """Switch the default audio source (input device)"""
+    try:
+        import subprocess
+        
+        data = request.json
+        source_name = data.get('source_name')
+        
+        if not source_name:
+            return jsonify({'error': 'Source name required'}), 400
+        
+        # Set the default source using pactl
+        switch_result = subprocess.run(['pactl', 'set-default-source', source_name], 
+                                     capture_output=True, text=True, timeout=5)
+        
+        if switch_result.returncode == 0:
+            # Also move any existing source outputs to the new source
+            move_result = subprocess.run(['pactl', 'list', 'short', 'source-outputs'], 
+                                       capture_output=True, text=True, timeout=5)
+            
+            if move_result.returncode == 0:
+                for line in move_result.stdout.strip().split('\n'):
+                    if line.strip():
+                        source_output_id = line.split()[0]
+                        subprocess.run(['pactl', 'move-source-output', source_output_id, source_name], 
+                                     capture_output=True, timeout=3)
+            
+            return jsonify({
+                'success': True,
+                'message': f"Audio input switched to {source_name}"
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': f"Failed to switch source: {switch_result.stderr or switch_result.stdout}"
+            }), 500
+            
+    except Exception as e:
+        logger.error(f"Error switching audio source: {e}")
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/play/<session_id>')
